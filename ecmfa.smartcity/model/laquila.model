@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<smart_city:SmartCityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:smart_city="http://cs.gssi.it/smart_city">
-  <smartCity city="L'Aquila">
-    <pillar monitoringInfrastructure="//@smartCity.0/@monitoringinfrastructure.0" stakeholder="//@smartCity.0/@monitoringinfrastructure.0/@monitoringAuthority.0" name="Environment"/>
-    <monitoringinfrastructure name="Air Monitoring">
-      <monitoringTool name="Air Monitoring Unit">
-        <iotDevice xsi:type="smart_city:Sensor" parameter="//@smartCity.0/@parameter.1 //@smartCity.0/@parameter.3 //@smartCity.0/@parameter.0 //@smartCity.0/@parameter.2" type="Environment Monitor"/>
+<smart_city:SmartCityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:smart_city="http://cs.gssi.it/smart_city" xmi:id="_M98MMDx0EeqSXfxb0fTk4w">
+  <smartCity xmi:id="_M98MMTx0EeqSXfxb0fTk4w" city="L'Aquila">
+    <pillar xmi:id="_M98MMjx0EeqSXfxb0fTk4w" monitoringInfrastructure="_M98MMzx0EeqSXfxb0fTk4w" stakeholder="_M98zQDx0EeqSXfxb0fTk4w" name="Environment"/>
+    <monitoringinfrastructure xmi:id="_M98MMzx0EeqSXfxb0fTk4w" name="Air Monitoring">
+      <monitoringTool xmi:id="_M98MNDx0EeqSXfxb0fTk4w" name="Air Monitoring Unit">
+        <iotDevice xsi:type="smart_city:Sensor" xmi:id="_M98MNTx0EeqSXfxb0fTk4w" parameter="_M98zQjx0EeqSXfxb0fTk4w _M98zRDx0EeqSXfxb0fTk4w _M98zQTx0EeqSXfxb0fTk4w _M98zQzx0EeqSXfxb0fTk4w" type="Environment Monitor"/>
       </monitoringTool>
-      <monitoringAuthority xsi:type="smart_city:PolicyMaker" type="Public Administration" monitoringtool="//@smartCity.0/@monitoringinfrastructure.0/@monitoringTool.0" authority="Municipality"/>
+      <monitoringAuthority xsi:type="smart_city:PolicyMaker" xmi:id="_M98zQDx0EeqSXfxb0fTk4w" type="Public Administration" monitoringtool="_M98MNDx0EeqSXfxb0fTk4w" authority="Municipality"/>
     </monitoringinfrastructure>
-    <parameter name="PM"/>
-    <parameter name="NO2"/>
-    <parameter name="SO2"/>
-    <parameter name="O2"/>
+    <parameter xmi:id="_M98zQTx0EeqSXfxb0fTk4w" name="PM" value="2.0"/>
+    <parameter xmi:id="_M98zQjx0EeqSXfxb0fTk4w" name="NO2" value="1.0"/>
+    <parameter xmi:id="_M98zQzx0EeqSXfxb0fTk4w" name="SO2" value="3.0"/>
+    <parameter xmi:id="_M98zRDx0EeqSXfxb0fTk4w" name="O2" value="5.0"/>
   </smartCity>
 </smart_city:SmartCityModel>

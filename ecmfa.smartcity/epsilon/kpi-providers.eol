@@ -1,0 +1,46 @@
+
+
+
+
+for (kpi in kpi!Kpi.all) { 
+	kpi.value.valuetype.getPolluttant().println();
+	
+}
+
+
+operation kpi!AggregatedValue getPolluttant(): Real{
+var  polluttants: Sequence<Real>=new Sequence();
+
+for (par in self.singlevalues.parameter) { 
+var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
+	polluttants.add(parameter.value);
+}
+
+return polluttants.getop(self.oper); 
+}
+
+operation kpi!SingleValue getPolluttant(): Real{
+var  polluttants: Sequence<Real>=new Sequence();
+
+for (par in self.parameter) { 
+var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
+	polluttants.add(parameter.value);
+}
+
+return polluttants.first; 
+}
+
+operation Any getop(op: kpi!EEnumLiteral): Any{
+
+switch (op) {
+case kpi!Operation#GET: return self;
+case kpi!Operation#SUM: return self.sum();
+case kpi!Operation#AVG: return self.sum()/self.size();
+case kpi!Operation#MIN: return self.min();
+case kpi!Operation#MAX: return self.max();
+default : "No operation provided ".println(); }
+}
+
+
+
+

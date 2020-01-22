@@ -1,0 +1,93 @@
+@namespace(uri="http://cs.gssi.it/kpi", prefix="kpi")
+package kpi_model;
+
+class KpiModel {
+  val Dimension[*] dimension;
+  attr String subject;
+  
+}
+
+class Dimension {
+  val Dimension[*] dimension;
+  val Category[*] category;
+  attr String name;
+}
+
+class Category {
+  val Kpi[*] kpi;
+   val Parameter[*] parameter;
+  attr String name;
+}
+
+class Kpi {
+  attr String name;
+ ref Category[1]#kpi category;
+  val Value[1]#kpi value;
+}
+
+class Value {
+ 
+ ref Kpi[1]#value kpi;
+  val ValueType[1]#value valuetype;
+}
+
+class Parameter {
+  attr String name;
+
+}
+
+abstract class ValueType {
+ref Value[1]#valuetype value;
+}
+
+abstract class CalculatedValue extends ValueType{
+	attr String calculatedBy;  
+	
+}
+abstract class SingleValue extends CalculatedValue {
+  attr String name;
+  ref Parameter[1] parameter;
+}
+
+class RealValue extends SingleValue {
+  attr double actualizedvalue;
+}
+class IntegerValue extends SingleValue {
+  attr Integer actualizedvalue;
+}
+class StringValue extends SingleValue {
+  attr String actualizedvalue;
+}
+
+class RangedValue extends ValueType {
+  attr String actualizedvalue;
+  val Range[*] ranges;
+}
+
+class Range {
+attr String rangeName;
+  attr double min;
+  attr double max;
+  
+}
+
+ class AggregatedValue extends CalculatedValue {
+  
+
+  attr Operation[1] oper;
+  val SingleValue[*] singlevalues;
+}
+
+enum Operation{
+	GET=0;
+	SUM=1;
+	DIFF=1;
+	AVG=3;
+	MIN=4;
+	MAX=5;
+}
+
+
+
+
+
