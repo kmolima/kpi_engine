@@ -71,12 +71,29 @@ attr String rangeName;
   
 }
 
- class AggregatedValue extends CalculatedValue {
+ abstract class AggregatedValue extends CalculatedValue {
   
 
   attr Operation[1] oper;
   val SingleValue[*] singlevalues;
 }
+
+class AggregatedRealValue extends AggregatedValue {
+  attr double actualizedvalue;
+}
+class AggregatedIntegerValue extends AggregatedValue {
+  attr Integer actualizedvalue;
+}
+class AggregatedStringValue extends AggregatedValue {
+  attr String actualizedvalue;
+}
+
+class AggregatedRangedValue extends AggregatedValue {
+  attr String actualizedvalue;
+  val Range[*] ranges;
+}
+
+
 
 enum Operation{
 	GET=0;
@@ -85,6 +102,7 @@ enum Operation{
 	AVG=3;
 	MIN=4;
 	MAX=5;
+	DIV=6;
 }
 
 

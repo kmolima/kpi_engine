@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="smart_city_model" nsURI="http://cs.gssi.it/smart_city" nsPrefix="smart_city">
+  <eClassifiers xsi:type="ecore:EClass" name="SmartCityModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smartCity" upperBound="-1"
+        eType="#//SmartCity" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SmartCity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="city" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pillar" lowerBound="1"
         upperBound="-1" eType="#//Pillar" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stakeholder" upperBound="-1"
-        eType="#//Stakeholder" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoringinfrastructure"
-        upperBound="-1" eType="#//MonitoringInfrastructure" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//SmartElement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1" eType="#//Data"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Stakeholder">
+  <eClassifiers xsi:type="ecore:EClass" name="SmartElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pillars" upperBound="-1"
+        eType="#//Pillar"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stakeholder" abstract="true" eSuperTypes="#//SmartElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provides" upperBound="-1"
         eType="#//Data"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoringtool" upperBound="-1"
-        eType="#//MonitoringTool"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MonitoringInfrastructure">
+  <eClassifiers xsi:type="ecore:EClass" name="Infrastructure" eSuperTypes="#//SmartElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="monitoringTool" upperBound="-1"
         eType="#//MonitoringTool" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,26 +37,27 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="iotDevice" upperBound="-1"
         eType="#//IotDevice" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IotDevice"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+  <eClassifiers xsi:type="ecore:EClass" name="IotDevice" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SensedParameter" eSuperTypes="#//Parameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensor" lowerBound="1"
+        eType="#//Sensor" eOpposite="#//Sensor/parameters"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvidedParameter" eSuperTypes="#//Parameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providers" upperBound="-1"
+        eType="#//Stakeholder" eOpposite="#//Stakeholder/provides"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
-        eType="#//Parameter"/>
+        eType="#//ProvidedParameter"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pillar">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoringInfrastructure"
-        eType="#//MonitoringInfrastructure"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stakeholder" upperBound="-1"
-        eType="#//Stakeholder"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SmartCityModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="smartCity" upperBound="-1"
-        eType="#//SmartCity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Gateway" eSuperTypes="#//IotDevice">
     <eStructuralFeatures xsi:type="ecore:EReference" name="gathers" upperBound="-1"
@@ -58,17 +65,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="send" upperBound="-1" eType="#//Actuator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//IotDevice">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="send" upperBound="-1" eType="#//Actuator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
-        eType="#//Parameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actuator" upperBound="-1"
+        eType="#//Actuator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//SensedParameter" eOpposite="#//SensedParameter/sensor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//IotDevice"/>
   <eClassifiers xsi:type="ecore:EClass" name="PolicyMaker" eSuperTypes="#//Stakeholder">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="authority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Citizen" eSuperTypes="#//Stakeholder"/>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceProvider" eSuperTypes="#//Stakeholder">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="company" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="authority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Citizen" eSuperTypes="#//Stakeholder"/>
 </ecore:EPackage>

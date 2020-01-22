@@ -1,0 +1,96 @@
+@namespace(uri="http://cs.gssi.it/smart_city", prefix="smart_city")
+package smart_city_model;
+
+class SmartCityModel {
+  val SmartCity[*] smartCity;
+}
+
+class SmartCity {
+  attr String city;
+  val Pillar[+] pillar;
+  val SmartElement[*] elements;
+  
+  val Parameter[*] parameter;
+  val Data[*] data;
+}
+
+abstract class SmartElement{
+	ref Pillar[*] pillars;
+}
+
+abstract class Stakeholder extends SmartElement{
+  attr String type;
+  ref Data[*] provides;
+ 
+}
+
+
+class Infrastructure extends SmartElement{
+  val MonitoringTool[*] monitoringTool;
+  attr String name;
+  val Stakeholder[*] monitoringAuthority;
+}
+
+class MonitoringTool {
+  attr String name;
+  val IotDevice[*] iotDevice;
+}
+
+abstract class IotDevice {
+}
+
+abstract class Parameter {
+  attr String name;
+  attr double value;
+  attr String unit;
+
+}
+
+class SensedParameter extends Parameter{
+	ref Sensor[1]#parameters sensor;
+}
+
+class ProvidedParameter extends Parameter{
+	ref Stakeholder[*]#provides providers;
+}
+
+class Data {
+  ref ProvidedParameter[*] parameter;
+  attr String url;
+}
+
+class Pillar {
+  
+  
+  attr String name;
+}
+
+
+
+class Gateway extends IotDevice {
+  ref Sensor[*] gathers;
+  ref Actuator[*] send;
+}
+
+class Sensor extends IotDevice {
+  ref Actuator[*] actuator;
+  ref SensedParameter[*]#sensor parameters;
+  attr String type;
+}
+
+class Actuator extends IotDevice {
+}
+
+class PolicyMaker extends Stakeholder {
+  attr String authority;
+}
+
+class ServiceProvider extends Stakeholder {
+  attr String authority;
+}
+
+class Citizen extends Stakeholder {
+}
+
+
+

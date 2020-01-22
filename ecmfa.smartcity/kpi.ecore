@@ -67,10 +67,24 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AggregatedValue" eSuperTypes="#//CalculatedValue">
+  <eClassifiers xsi:type="ecore:EClass" name="AggregatedValue" abstract="true" eSuperTypes="#//CalculatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oper" lowerBound="1" eType="#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="singlevalues" upperBound="-1"
         eType="#//SingleValue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregatedRealValue" eSuperTypes="#//AggregatedValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregatedIntegerValue" eSuperTypes="#//AggregatedValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregatedStringValue" eSuperTypes="#//AggregatedValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregatedRangedValue" eSuperTypes="#//AggregatedValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
+        eType="#//Range" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Operation">
     <eLiterals name="GET"/>
@@ -79,5 +93,6 @@
     <eLiterals name="AVG" value="3"/>
     <eLiterals name="MIN" value="4"/>
     <eLiterals name="MAX" value="5"/>
+    <eLiterals name="DIV" value="6"/>
   </eClassifiers>
 </ecore:EPackage>

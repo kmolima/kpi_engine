@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kpi="http://cs.gssi.it/kpi" xmi:id="_c-LBQD0GEeqSXfxb0fTk4w">
   <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w">
-    <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w">
+    <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Environment">
       <kpi xmi:id="_fnDIAD0GEeqSXfxb0fTk4w" name="QAI">
         <value xmi:id="__H0nID0GEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:AggregatedValue" xmi:id="_Kx62wD0HEeqSXfxb0fTk4w" calculatedBy="getMaxPolluttant" oper="MAX">
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="getPolluttant" oper="MAX">
             <singlevalues xsi:type="kpi:RealValue" xmi:id="_M8_nMD0HEeqSXfxb0fTk4w" name="SO2" parameter="_Q7grMD0HEeqSXfxb0fTk4w"/>
             <singlevalues xsi:type="kpi:RealValue" xmi:id="_yFaEQD0HEeqSXfxb0fTk4w" name="NO2" parameter="_l-jnMD0HEeqSXfxb0fTk4w"/>
             <singlevalues xsi:type="kpi:RealValue" xmi:id="_0GRIwD0HEeqSXfxb0fTk4w" name="PM" parameter="_jKbSsD0HEeqSXfxb0fTk4w"/>
@@ -21,6 +21,18 @@
       <parameter xmi:id="_jKbSsD0HEeqSXfxb0fTk4w" name="PM"/>
       <parameter xmi:id="_l-jnMD0HEeqSXfxb0fTk4w" name="NO2"/>
       <parameter xmi:id="_voGUUD0HEeqSXfxb0fTk4w" name="O2"/>
+    </category>
+    <category xmi:id="_X4R7ID0qEeqSXfxb0fTk4w" name="Networking">
+      <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC">
+        <value xmi:id="_b6Gx0D0qEeqSXfxb0fTk4w">
+          <valuetype xsi:type="kpi:AggregatedIntegerValue" xmi:id="_c7Hi4D0qEeqSXfxb0fTk4w" calculatedBy="getWBC" oper="DIV">
+            <singlevalues xsi:type="kpi:IntegerValue" xmi:id="_f7eVgD0qEeqSXfxb0fTk4w" name="4GCoverage" parameter="_lSDYoD0qEeqSXfxb0fTk4w"/>
+            <singlevalues xsi:type="kpi:IntegerValue" xmi:id="_pl7BkD0qEeqSXfxb0fTk4w" name="CityExt" parameter="_mW6u8D0qEeqSXfxb0fTk4w"/>
+          </valuetype>
+        </value>
+      </kpi>
+      <parameter xmi:id="_lSDYoD0qEeqSXfxb0fTk4w" name="4GCoverage"/>
+      <parameter xmi:id="_mW6u8D0qEeqSXfxb0fTk4w" name="CityExt"/>
     </category>
   </dimension>
 </kpi:KpiModel>

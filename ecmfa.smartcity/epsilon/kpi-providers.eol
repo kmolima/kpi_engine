@@ -1,12 +1,24 @@
 
+//empty the actualized values
+
+var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first.value.valuetype.getPolluttant();
+("QAI: "+QAI).println();
+
+var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first.value.valuetype.getWBC();
+("WBC: "+WBC).println();
 
 
 
-for (kpi in kpi!Kpi.all) { 
-	kpi.value.valuetype.getPolluttant().println();
-	
+operation kpi!AggregatedValue getWBC(): Real{
+var  elements: Sequence<Real>=new Sequence();
+
+for (par in self.singlevalues.parameter) { 
+var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
+	 elements.add(parameter.value);
 }
 
+return elements.getop(self.oper)*100; 
+}
 
 operation kpi!AggregatedValue getPolluttant(): Real{
 var  polluttants: Sequence<Real>=new Sequence();
@@ -38,6 +50,7 @@ case kpi!Operation#SUM: return self.sum();
 case kpi!Operation#AVG: return self.sum()/self.size();
 case kpi!Operation#MIN: return self.min();
 case kpi!Operation#MAX: return self.max();
+case kpi!Operation#DIV: return self.get(0)/self.get(1);
 default : "No operation provided ".println(); }
 }
 

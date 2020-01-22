@@ -2,6 +2,7 @@
 <smart_city:SmartCityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:smart_city="http://cs.gssi.it/smart_city" xmi:id="_M98MMDx0EeqSXfxb0fTk4w">
   <smartCity xmi:id="_M98MMTx0EeqSXfxb0fTk4w" city="L'Aquila">
     <pillar xmi:id="_M98MMjx0EeqSXfxb0fTk4w" monitoringInfrastructure="_M98MMzx0EeqSXfxb0fTk4w" stakeholder="_M98zQDx0EeqSXfxb0fTk4w" name="Environment"/>
+    <pillar xmi:id="_ox3BAD0iEeqSXfxb0fTk4w" name="Infrastructure"/>
     <monitoringinfrastructure xmi:id="_M98MMzx0EeqSXfxb0fTk4w" name="Air Monitoring">
       <monitoringTool xmi:id="_M98MNDx0EeqSXfxb0fTk4w" name="Air Monitoring Unit">
         <iotDevice xsi:type="smart_city:Sensor" xmi:id="_M98MNTx0EeqSXfxb0fTk4w" parameter="_M98zQjx0EeqSXfxb0fTk4w _M98zRDx0EeqSXfxb0fTk4w _M98zQTx0EeqSXfxb0fTk4w _M98zQzx0EeqSXfxb0fTk4w" type="Environment Monitor"/>
@@ -12,5 +13,6 @@
     <parameter xmi:id="_M98zQjx0EeqSXfxb0fTk4w" name="NO2" value="1.0"/>
     <parameter xmi:id="_M98zQzx0EeqSXfxb0fTk4w" name="SO2" value="3.0"/>
     <parameter xmi:id="_M98zRDx0EeqSXfxb0fTk4w" name="O2" value="5.0"/>
+    <parameter xmi:id="_xtgGUD0iEeqSXfxb0fTk4w" name="Extension" value="473.9"/>
   </smartCity>
 </smart_city:SmartCityModel>
