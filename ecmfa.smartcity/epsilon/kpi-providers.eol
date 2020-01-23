@@ -1,46 +1,31 @@
 
 //empty the actualized values
 
-var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first.value.valuetype.getPolluttant();
-("QAI: "+QAI).println();
+var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first.get();
+("Quality of Air index: "+QAI).println();
 
-var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first.value.valuetype.getWBC();
-("WBC: "+WBC).println();
+var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first.get();
+("Wireless Broadband coverage: "+WBC).println();
 
 
+operation kpi!Kpi get(): Real{
 
-operation kpi!AggregatedValue getWBC(): Real{
 var  elements: Sequence<Real>=new Sequence();
 
-for (par in self.singlevalues.parameter) { 
+for (par in self.value.valuetype.singlevalues.parameter) { 
+if(smartcity!Parameter.all.select(p|p.name==par.name).size()>0){
 var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
 	 elements.add(parameter.value);
+	 	
+	 }else{
+	 ("ERROR: no parameter defined for: "+par.name).println();
+	 return 0;
+	 }
 }
 
-return elements.getop(self.oper)*100; 
+ return elements.getop(self.value.valuetype.oper); 
 }
 
-operation kpi!AggregatedValue getPolluttant(): Real{
-var  polluttants: Sequence<Real>=new Sequence();
-
-for (par in self.singlevalues.parameter) { 
-var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
-	polluttants.add(parameter.value);
-}
-
-return polluttants.getop(self.oper); 
-}
-
-operation kpi!SingleValue getPolluttant(): Real{
-var  polluttants: Sequence<Real>=new Sequence();
-
-for (par in self.parameter) { 
-var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
-	polluttants.add(parameter.value);
-}
-
-return polluttants.first; 
-}
 
 operation Any getop(op: kpi!EEnumLiteral): Any{
 

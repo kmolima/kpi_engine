@@ -76,6 +76,7 @@ attr String rangeName;
 
   attr Operation[1] oper;
   val SingleValue[*] singlevalues;
+  val AggregatedValue[*] subvalues; 
 }
 
 class AggregatedRealValue extends AggregatedValue {
@@ -91,9 +92,8 @@ class AggregatedStringValue extends AggregatedValue {
 class AggregatedRangedValue extends AggregatedValue {
   attr String actualizedvalue;
   val Range[*] ranges;
+  
 }
-
-
 
 enum Operation{
 	GET=0;
