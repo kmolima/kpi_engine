@@ -31,6 +31,13 @@
           </valuetype>
         </value>
       </kpi>
+      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w">
+        <value xmi:id="_r0YuUD1YEeqSXfxb0fTk4w">
+          <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_s41N4D1YEeqSXfxb0fTk4w">
+            <ranges xmi:id="_wSFosD1YEeqSXfxb0fTk4w"/>
+          </valuetype>
+        </value>
+      </kpi>
       <parameter xmi:id="_lSDYoD0qEeqSXfxb0fTk4w" name="4GCoverage"/>
       <parameter xmi:id="_mW6u8D0qEeqSXfxb0fTk4w" name="CityExt"/>
     </category>
