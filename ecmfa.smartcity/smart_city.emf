@@ -2,7 +2,7 @@
 package smart_city_model;
 
 class SmartCityModel {
-  val SmartCity[*] smartCity;
+  val SmartCity[*] smartCities;
 }
 
 class SmartCity {

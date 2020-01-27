@@ -75,8 +75,8 @@ attr String rangeName;
   
 
   attr Operation[1] oper;
-  val SingleValue[*] singlevalues;
-  val AggregatedValue[*] subvalues; 
+  val ValueType[*] values;
+  
 }
 
 class AggregatedRealValue extends AggregatedValue {

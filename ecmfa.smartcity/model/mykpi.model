@@ -5,29 +5,32 @@
       <kpi xmi:id="_fnDIAD0GEeqSXfxb0fTk4w" name="QAI">
         <value xmi:id="__H0nID0GEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="getPolluttant" oper="MAX">
-            <singlevalues xsi:type="kpi:RealValue" xmi:id="_M8_nMD0HEeqSXfxb0fTk4w" name="SO2" parameter="_Q7grMD0HEeqSXfxb0fTk4w"/>
-            <singlevalues xsi:type="kpi:RealValue" xmi:id="_yFaEQD0HEeqSXfxb0fTk4w" name="NO2" parameter="_l-jnMD0HEeqSXfxb0fTk4w"/>
-            <singlevalues xsi:type="kpi:RealValue" xmi:id="_0GRIwD0HEeqSXfxb0fTk4w" name="PM" parameter="_jKbSsD0HEeqSXfxb0fTk4w"/>
-            <singlevalues xsi:type="kpi:RealValue" xmi:id="_24gm4D0HEeqSXfxb0fTk4w" name="O2" parameter="_jKbSsD0HEeqSXfxb0fTk4w"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_WmORgEEIEeqtQNccB7KKVQ" name="" parameter="_aKaJ8EEIEeqtQNccB7KKVQ"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_XAsnAEEIEeqtQNccB7KKVQ" parameter="_e_u6IEEIEeqtQNccB7KKVQ"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_XaPIYEEIEeqtQNccB7KKVQ" parameter="_nSMfkEEIEeqtQNccB7KKVQ"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_xKVCUEEIEeqtQNccB7KKVQ" parameter="_p22NoEEIEeqtQNccB7KKVQ"/>
           </valuetype>
         </value>
       </kpi>
       <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM">
         <value xmi:id="_1SMPsD0PEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" name="PM" parameter="_jKbSsD0HEeqSXfxb0fTk4w"/>
+          <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" name="PM" parameter="_aKaJ8EEIEeqtQNccB7KKVQ"/>
         </value>
       </kpi>
-      <parameter xmi:id="_Q7grMD0HEeqSXfxb0fTk4w" name="SO2"/>
-      <parameter xmi:id="_jKbSsD0HEeqSXfxb0fTk4w" name="PM"/>
-      <parameter xmi:id="_l-jnMD0HEeqSXfxb0fTk4w" name="NO2"/>
-      <parameter xmi:id="_voGUUD0HEeqSXfxb0fTk4w" name="O2"/>
+      <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM"/>
+      <parameter xmi:id="_e_u6IEEIEeqtQNccB7KKVQ" name="NO2"/>
+      <parameter xmi:id="_nSMfkEEIEeqtQNccB7KKVQ" name="O2"/>
+      <parameter xmi:id="_p22NoEEIEeqtQNccB7KKVQ" name="SO2"/>
     </category>
     <category xmi:id="_X4R7ID0qEeqSXfxb0fTk4w" name="Networking">
       <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC">
         <value xmi:id="_b6Gx0D0qEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:AggregatedIntegerValue" xmi:id="_c7Hi4D0qEeqSXfxb0fTk4w" calculatedBy="getWBC" oper="DIV">
-            <singlevalues xsi:type="kpi:IntegerValue" xmi:id="_f7eVgD0qEeqSXfxb0fTk4w" name="4GCoverage" parameter="_lSDYoD0qEeqSXfxb0fTk4w"/>
-            <singlevalues xsi:type="kpi:IntegerValue" xmi:id="_pl7BkD0qEeqSXfxb0fTk4w" name="CityExt" parameter="_mW6u8D0qEeqSXfxb0fTk4w"/>
+            <values xsi:type="kpi:AggregatedRealValue" xmi:id="_wRRhIEENEeqtQNccB7KKVQ" oper="SUM">
+              <values xsi:type="kpi:IntegerValue" xmi:id="_f7eVgD0qEeqSXfxb0fTk4w" name="4GCoverage" parameter="_Ek6HgEEQEeqtQNccB7KKVQ"/>
+              <values xsi:type="kpi:IntegerValue" xmi:id="_M4yCMEEQEeqtQNccB7KKVQ" name="5GCoverage" parameter="_IKCbIEEQEeqtQNccB7KKVQ"/>
+            </values>
+            <values xsi:type="kpi:RealValue" xmi:id="_4_E-wEENEeqtQNccB7KKVQ" name="CityExt" parameter="_CgG-MEEQEeqtQNccB7KKVQ"/>
           </valuetype>
         </value>
       </kpi>
@@ -38,8 +41,9 @@
           </valuetype>
         </value>
       </kpi>
-      <parameter xmi:id="_lSDYoD0qEeqSXfxb0fTk4w" name="4GCoverage"/>
-      <parameter xmi:id="_mW6u8D0qEeqSXfxb0fTk4w" name="CityExt"/>
+      <parameter xmi:id="_CgG-MEEQEeqtQNccB7KKVQ" name="CityExt"/>
+      <parameter xmi:id="_Ek6HgEEQEeqtQNccB7KKVQ" name="4GCoverage"/>
+      <parameter xmi:id="_IKCbIEEQEeqtQNccB7KKVQ" name="5GCoverage"/>
     </category>
   </dimension>
 </kpi:KpiModel>

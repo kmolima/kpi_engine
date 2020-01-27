@@ -1,29 +1,56 @@
 
 //empty the actualized values
 
-var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first.get();
+var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first;
 ("Quality of Air index: "+QAI).println();
+smartcity!SmartCity.all.collect(sc|sc.get(QAI)).first.println();
 
-var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first.get();
+
+var QAIPM=kpi!Kpi.all.select(k|k.name=="QAI-PM").first;
+("Quality of Air index based on PM10: "+QAIPM).println();
+smartcity!SmartCity.all.collect(sc|sc.get(QAIPM)).first.println();
+
+
+var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first;
 ("Wireless Broadband coverage: "+WBC).println();
+smartcity!SmartCity.all.collect(sc|sc.get(WBC)).first.println();
 
 
-operation kpi!Kpi get(): Real{
+operation smartcity!SmartCity get(kpi: kpi!Kpi): Any{
 
 var  elements: Sequence<Real>=new Sequence();
+return kpi.value.valuetype.get(self);
 
-for (par in self.value.valuetype.singlevalues.parameter) { 
-if(smartcity!Parameter.all.select(p|p.name==par.name).size()>0){
-var parameter=smartcity!Parameter.all.select(p|p.name==par.name).first;
-	 elements.add(parameter.value);
-	 	
-	 }else{
-	 ("ERROR: no parameter defined for: "+par.name).println();
-	 return 0;
-	 }
+
 }
 
- return elements.getop(self.value.valuetype.oper); 
+operation kpi!SingleValue get(city: smartcity!SmartCity): Any{
+
+
+	return city.parameter.select(p|self.parameter.name==p.name).value.first;
+
+
+
+}
+
+operation kpi!AggregatedValue get(city: smartcity!SmartCity): Any{
+
+	return self.values.get(city, self.oper);
+//	return city.parameter.select(p|self.values.parameter.name.includes(p.name)).getop(self.oper);
+
+}
+
+operation OrderedSet<kpi!ValueType> get(city: smartcity!SmartCity, oper: kpi!EEnumLiteral): Any{
+
+var values : Sequence<Any> ;
+//for (s in self) { 
+	return self.collect(s|s.get(city)).getop(oper);
+//}
+
+	//return city.parameter.select(p|self.parameter.name.includes(p.name)).getop(oper);
+
+
+
 }
 
 
