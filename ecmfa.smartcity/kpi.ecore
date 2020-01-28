@@ -44,9 +44,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="calculatedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleValue" abstract="true" eSuperTypes="#//CalculatedValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
         eType="#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BoolValue" eSuperTypes="#//SingleValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//SingleValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -72,6 +74,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
         eType="#//ValueType" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregatedBoolValue" eSuperTypes="#//AggregatedValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedRealValue" eSuperTypes="#//AggregatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
@@ -94,5 +99,8 @@
     <eLiterals name="MIN" value="4"/>
     <eLiterals name="MAX" value="5"/>
     <eLiterals name="DIV" value="6"/>
+    <eLiterals name="AND" value="7"/>
+    <eLiterals name="OR" value="8"/>
+    <eLiterals name="XOR" value="9"/>
   </eClassifiers>
 </ecore:EPackage>

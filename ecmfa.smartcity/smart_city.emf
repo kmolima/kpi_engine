@@ -1,5 +1,5 @@
-@namespace(uri="http://cs.gssi.it/smart_city", prefix="smart_city")
-package smart_city_model;
+@namespace(uri="http://cs.gssi.it/smartcity", prefix="smartcity")
+package smartcity;
 
 class SmartCityModel {
   val SmartCity[*] smartCities;
@@ -7,90 +7,90 @@ class SmartCityModel {
 
 class SmartCity {
   attr String city;
-  val Pillar[+] pillar;
-  val SmartElement[*] elements;
-  
-  val Parameter[*] parameter;
-  val Data[*] data;
+  val stakeholder.Stakeholder[*] stakeholders;
+  val DataAnalytics.DataPackage[*] data;
+  val infrastructure.PublicInfrastructureLayer infrastructurelayer;
 }
 
-abstract class SmartElement{
-	ref Pillar[*] pillars;
+@namespace(uri="http://cs.gssi.it/smartcity/dataanalytics", prefix="DataAnalytics")
+package DataAnalytics {
+
+  abstract class Data {
+    attr String name;
+    attr String unit;
+    ref Source src;
+  }
+
+  class RealValue extends Data {
+    attr double value;
+  }
+
+  class BoolValue extends Data {
+    attr boolean value;
+  }
+
+  class IntegerValue extends Data {
+    attr int value;
+  }
+
+  class DataPackage {
+    attr String name;
+    val Data[*] data;
+  }
+
+  abstract class Source {
+  }
+
+  class SocialMedia extends Source {
+    attr String url;
+    attr String name;
+  }
+
+  class OpenData extends Source {
+    attr String url;
+    attr String name;
+  }
+
+  class ProvidedData extends Source {
+    ref stakeholder.Stakeholder[*] provider;
+  }
+
 }
 
-abstract class Stakeholder extends SmartElement{
-  attr String type;
-  ref Data[*] provides;
- 
+@namespace(uri="http://cs.gssi.it/smartcity/infrastructure", prefix="infrastructure")
+package infrastructure {
+  class MonitoringInfrastructure extends DataAnalytics.Source, InfrastructureComponent {
+    val IoTDev[*] devices;
+  }
+
+  class Sensor extends IoTDev {
+  }
+
+  class Actuator extends IoTDev {
+  }
+
+  abstract class IoTDev {
+    attr String model;
+    attr String location;
+  }
+
+  class PublicInfrastructureLayer {
+    attr String name;
+    val InfrastructureComponent[*] components;
+  }
+
+  class InfrastructureComponent {
+    attr String name;
+  }
+
 }
 
-
-class Infrastructure extends SmartElement{
-  val MonitoringTool[*] monitoringTool;
-  attr String name;
-  val Stakeholder[*] monitoringAuthority;
-}
-
-class MonitoringTool {
-  attr String name;
-  val IotDevice[*] iotDevice;
-}
-
-abstract class IotDevice {
-}
-
-abstract class Parameter {
-  attr String name;
-  attr double value;
-  attr String unit;
+@namespace(uri="http://cs.gssi.it/smartcity/stakeholder", prefix="stakeholder")
+package stakeholder {
+  class Stakeholder extends DataAnalytics.Source {
+    attr String name;
+    attr String organization;
+  }
 
 }
-
-class SensedParameter extends Parameter{
-	ref Sensor[1]#parameters sensor;
-}
-
-class ProvidedParameter extends Parameter{
-	ref Stakeholder[*]#provides providers;
-}
-
-class Data {
-  ref ProvidedParameter[*] parameter;
-  attr String url;
-}
-
-class Pillar {
-  
-  
-  attr String name;
-}
-
-
-
-class Gateway extends IotDevice {
-  ref Sensor[*] gathers;
-  ref Actuator[*] send;
-}
-
-class Sensor extends IotDevice {
-  ref Actuator[*] actuator;
-  ref SensedParameter[*]#sensor parameters;
-  attr String type;
-}
-
-class Actuator extends IotDevice {
-}
-
-class PolicyMaker extends Stakeholder {
-  attr String authority;
-}
-
-class ServiceProvider extends Stakeholder {
-  attr String authority;
-}
-
-class Citizen extends Stakeholder {
-}
-
-
 

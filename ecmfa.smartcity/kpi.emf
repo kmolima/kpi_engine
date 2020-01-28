@@ -45,10 +45,13 @@ abstract class CalculatedValue extends ValueType{
 	
 }
 abstract class SingleValue extends CalculatedValue {
-  attr String name;
+ 
   ref Parameter[1] parameter;
 }
 
+class BoolValue extends SingleValue {
+  attr boolean actualizedvalue;
+}
 class RealValue extends SingleValue {
   attr double actualizedvalue;
 }
@@ -79,6 +82,11 @@ attr String rangeName;
   
 }
 
+
+class AggregatedBoolValue extends AggregatedValue {
+  attr boolean actualizedvalue;
+}
+
 class AggregatedRealValue extends AggregatedValue {
   attr double actualizedvalue;
 }
@@ -103,6 +111,9 @@ enum Operation{
 	MIN=4;
 	MAX=5;
 	DIV=6;
+	AND=7;
+	OR=8;
+	XOR=9;
 }
 
 

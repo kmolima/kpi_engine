@@ -4,20 +4,20 @@
     <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Environment">
       <kpi xmi:id="_fnDIAD0GEeqSXfxb0fTk4w" name="QAI">
         <value xmi:id="__H0nID0GEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="getPolluttant" oper="MAX">
-            <values xsi:type="kpi:RealValue" xmi:id="_WmORgEEIEeqtQNccB7KKVQ" name="" parameter="_aKaJ8EEIEeqtQNccB7KKVQ"/>
-            <values xsi:type="kpi:RealValue" xmi:id="_XAsnAEEIEeqtQNccB7KKVQ" parameter="_e_u6IEEIEeqtQNccB7KKVQ"/>
-            <values xsi:type="kpi:RealValue" xmi:id="_XaPIYEEIEeqtQNccB7KKVQ" parameter="_nSMfkEEIEeqtQNccB7KKVQ"/>
-            <values xsi:type="kpi:RealValue" xmi:id="_xKVCUEEIEeqtQNccB7KKVQ" parameter="_p22NoEEIEeqtQNccB7KKVQ"/>
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="getPolluttant" oper="MAX" actualizedvalue="6.0">
+            <values xsi:type="kpi:RealValue" xmi:id="_WmORgEEIEeqtQNccB7KKVQ" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_XAsnAEEIEeqtQNccB7KKVQ" parameter="_e_u6IEEIEeqtQNccB7KKVQ" actualizedvalue="3.0"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_XaPIYEEIEeqtQNccB7KKVQ" parameter="_nSMfkEEIEeqtQNccB7KKVQ" actualizedvalue="1.0"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_xKVCUEEIEeqtQNccB7KKVQ" parameter="_p22NoEEIEeqtQNccB7KKVQ" actualizedvalue="6.0"/>
           </valuetype>
         </value>
       </kpi>
       <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM">
         <value xmi:id="_1SMPsD0PEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" name="PM" parameter="_aKaJ8EEIEeqtQNccB7KKVQ"/>
+          <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
         </value>
       </kpi>
-      <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM"/>
+      <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM10"/>
       <parameter xmi:id="_e_u6IEEIEeqtQNccB7KKVQ" name="NO2"/>
       <parameter xmi:id="_nSMfkEEIEeqtQNccB7KKVQ" name="O2"/>
       <parameter xmi:id="_p22NoEEIEeqtQNccB7KKVQ" name="SO2"/>
@@ -25,25 +25,45 @@
     <category xmi:id="_X4R7ID0qEeqSXfxb0fTk4w" name="Networking">
       <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC">
         <value xmi:id="_b6Gx0D0qEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:AggregatedIntegerValue" xmi:id="_c7Hi4D0qEeqSXfxb0fTk4w" calculatedBy="getWBC" oper="DIV">
-            <values xsi:type="kpi:AggregatedRealValue" xmi:id="_wRRhIEENEeqtQNccB7KKVQ" oper="SUM">
-              <values xsi:type="kpi:IntegerValue" xmi:id="_f7eVgD0qEeqSXfxb0fTk4w" name="4GCoverage" parameter="_Ek6HgEEQEeqtQNccB7KKVQ"/>
-              <values xsi:type="kpi:IntegerValue" xmi:id="_M4yCMEEQEeqtQNccB7KKVQ" name="5GCoverage" parameter="_IKCbIEEQEeqtQNccB7KKVQ"/>
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_c7Hi4D0qEeqSXfxb0fTk4w" calculatedBy="getWBC" oper="DIV" actualizedvalue="0.8333333333333334">
+            <values xsi:type="kpi:AggregatedRealValue" xmi:id="_wRRhIEENEeqtQNccB7KKVQ" oper="SUM" actualizedvalue="400.0">
+              <values xsi:type="kpi:RealValue" xmi:id="_f7eVgD0qEeqSXfxb0fTk4w" parameter="_Ek6HgEEQEeqtQNccB7KKVQ" actualizedvalue="300.0"/>
+              <values xsi:type="kpi:RealValue" xmi:id="_M4yCMEEQEeqtQNccB7KKVQ" parameter="_IKCbIEEQEeqtQNccB7KKVQ" actualizedvalue="100.0"/>
             </values>
-            <values xsi:type="kpi:RealValue" xmi:id="_4_E-wEENEeqtQNccB7KKVQ" name="CityExt" parameter="_CgG-MEEQEeqtQNccB7KKVQ"/>
-          </valuetype>
-        </value>
-      </kpi>
-      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w">
-        <value xmi:id="_r0YuUD1YEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_s41N4D1YEeqSXfxb0fTk4w">
-            <ranges xmi:id="_wSFosD1YEeqSXfxb0fTk4w"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_4_E-wEENEeqtQNccB7KKVQ" parameter="_CgG-MEEQEeqtQNccB7KKVQ" actualizedvalue="480.0"/>
           </valuetype>
         </value>
       </kpi>
       <parameter xmi:id="_CgG-MEEQEeqtQNccB7KKVQ" name="CityExt"/>
       <parameter xmi:id="_Ek6HgEEQEeqtQNccB7KKVQ" name="4GCoverage"/>
       <parameter xmi:id="_IKCbIEEQEeqtQNccB7KKVQ" name="5GCoverage"/>
+    </category>
+    <category xmi:id="_Qd7EAEGsEeqtQNccB7KKVQ" name="Urban Development">
+      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w" name="Urban Plan">
+        <value xmi:id="_r0YuUD1YEeqSXfxb0fTk4w">
+          <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_cf8zAEHOEeq2bOokeSHWaw" actualizedvalue="smart">
+            <values xsi:type="kpi:AggregatedIntegerValue" xmi:id="_9hux4EHOEeq2bOokeSHWaw" oper="SUM" actualizedvalue="5">
+              <values xsi:type="kpi:IntegerValue" xmi:id="_CRlMMEHPEeq2bOokeSHWaw" parameter="_ISu2UEHPEeq2bOokeSHWaw" actualizedvalue="1"/>
+              <values xsi:type="kpi:IntegerValue" xmi:id="_SgGCMEHPEeq2bOokeSHWaw" parameter="_JKZeIEHPEeq2bOokeSHWaw" actualizedvalue="1"/>
+              <values xsi:type="kpi:IntegerValue" xmi:id="_TMq0UEHPEeq2bOokeSHWaw" parameter="_LDK9oEHPEeq2bOokeSHWaw" actualizedvalue="1"/>
+              <values xsi:type="kpi:IntegerValue" xmi:id="_UvJ6wEHPEeq2bOokeSHWaw" parameter="_NPVTMEHPEeq2bOokeSHWaw" actualizedvalue="1"/>
+              <values xsi:type="kpi:IntegerValue" xmi:id="_V6KVUEHPEeq2bOokeSHWaw" parameter="_P72j0EHPEeq2bOokeSHWaw" actualizedvalue="1"/>
+            </values>
+            <ranges xmi:id="_fm3goEHOEeq2bOokeSHWaw" rangeName="partial" max="4.0"/>
+            <ranges xmi:id="_f81woEHOEeq2bOokeSHWaw" rangeName="smart" min="5.0" max="5.0"/>
+          </valuetype>
+        </value>
+      </kpi>
+      <parameter xmi:id="_WjoeAEGsEeqtQNccB7KKVQ" name="compact"/>
+      <parameter xmi:id="_ZagkgEGsEeqtQNccB7KKVQ" name="connectivity"/>
+      <parameter xmi:id="_boCzEEGsEeqtQNccB7KKVQ" name="integration"/>
+      <parameter xmi:id="_keUQMEGsEeqtQNccB7KKVQ" name="sociallyinclusive"/>
+      <parameter xmi:id="_luWUsEGsEeqtQNccB7KKVQ" name="resilient"/>
+      <parameter xmi:id="_ISu2UEHPEeq2bOokeSHWaw" name="sustainabilityprinciple.compact"/>
+      <parameter xmi:id="_JKZeIEHPEeq2bOokeSHWaw" name="sustainabilityprinciple.connectivity"/>
+      <parameter xmi:id="_LDK9oEHPEeq2bOokeSHWaw" name="sustainabilityprinciple.integration"/>
+      <parameter xmi:id="_NPVTMEHPEeq2bOokeSHWaw" name="sustainabilityprinciple.sociallyinclusive"/>
+      <parameter xmi:id="_P72j0EHPEeq2bOokeSHWaw" name="sustainabilityprinciple.resilient"/>
     </category>
   </dimension>
 </kpi:KpiModel>
