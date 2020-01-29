@@ -2,19 +2,30 @@
 <kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kpi="http://cs.gssi.it/kpi" xmi:id="_c-LBQD0GEeqSXfxb0fTk4w">
   <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w">
     <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Environment">
-      <kpi xmi:id="_fnDIAD0GEeqSXfxb0fTk4w" name="QAI">
-        <value xmi:id="__H0nID0GEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="getPolluttant" oper="MAX" actualizedvalue="6.0">
-            <values xsi:type="kpi:RealValue" xmi:id="_WmORgEEIEeqtQNccB7KKVQ" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
-            <values xsi:type="kpi:RealValue" xmi:id="_XAsnAEEIEeqtQNccB7KKVQ" parameter="_e_u6IEEIEeqtQNccB7KKVQ" actualizedvalue="3.0"/>
-            <values xsi:type="kpi:RealValue" xmi:id="_XaPIYEEIEeqtQNccB7KKVQ" parameter="_nSMfkEEIEeqtQNccB7KKVQ" actualizedvalue="1.0"/>
-            <values xsi:type="kpi:RealValue" xmi:id="_xKVCUEEIEeqtQNccB7KKVQ" parameter="_p22NoEEIEeqtQNccB7KKVQ" actualizedvalue="6.0"/>
-          </valuetype>
-        </value>
-      </kpi>
-      <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM">
+      <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM" unit="ng/m3">
         <value xmi:id="_1SMPsD0PEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
+        </value>
+      </kpi>
+      <kpi xmi:id="_cFI5sEKnEeq2bOokeSHWaw" name="QAI" unit="">
+        <value xmi:id="_f257IEKnEeq2bOokeSHWaw">
+          <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_gmN4MEKnEeq2bOokeSHWaw" actualizedvalue="Excellent">
+            <values xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="" oper="MULT" actualizedvalue="20.0">
+              <values xsi:type="kpi:StaticRealValue" xmi:id="_9IrlYEKiEeq2bOokeSHWaw" staticvalue="100.0"/>
+              <values xsi:type="kpi:AggregatedRealValue" xmi:id="_FaBUAEKkEeq2bOokeSHWaw" oper="DIV" actualizedvalue="0.2">
+                <values xsi:type="kpi:AggregatedRealValue" xmi:id="_Y1cc0EKiEeq2bOokeSHWaw" oper="MAX" actualizedvalue="6.0">
+                  <values xsi:type="kpi:RealValue" xmi:id="_WmORgEEIEeqtQNccB7KKVQ" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
+                  <values xsi:type="kpi:RealValue" xmi:id="_XAsnAEEIEeqtQNccB7KKVQ" parameter="_e_u6IEEIEeqtQNccB7KKVQ" actualizedvalue="3.0"/>
+                  <values xsi:type="kpi:RealValue" xmi:id="_XaPIYEEIEeqtQNccB7KKVQ" parameter="_nSMfkEEIEeqtQNccB7KKVQ" actualizedvalue="1.0"/>
+                  <values xsi:type="kpi:RealValue" xmi:id="_xKVCUEEIEeqtQNccB7KKVQ" parameter="_p22NoEEIEeqtQNccB7KKVQ" actualizedvalue="6.0"/>
+                </values>
+                <values xsi:type="kpi:StaticRealValue" xmi:id="_X0E0gEKkEeq2bOokeSHWaw" staticvalue="30.0"/>
+              </values>
+            </values>
+            <ranges xmi:id="_he-FIEKnEeq2bOokeSHWaw" rangeName="Excellent" max="30.0"/>
+            <ranges xmi:id="_mJ8mgEKnEeq2bOokeSHWaw" rangeName="Discrete" min="30.0" max="99.0"/>
+            <ranges xmi:id="_oCutEEKnEeq2bOokeSHWaw" rangeName="Terrible" min="99.0" max="150.0"/>
+          </valuetype>
         </value>
       </kpi>
       <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM10"/>
@@ -23,14 +34,17 @@
       <parameter xmi:id="_p22NoEEIEeqtQNccB7KKVQ" name="SO2"/>
     </category>
     <category xmi:id="_X4R7ID0qEeqSXfxb0fTk4w" name="Networking">
-      <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC">
+      <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC" unit="%">
         <value xmi:id="_b6Gx0D0qEeqSXfxb0fTk4w">
-          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_c7Hi4D0qEeqSXfxb0fTk4w" calculatedBy="getWBC" oper="DIV" actualizedvalue="0.8333333333333334">
-            <values xsi:type="kpi:AggregatedRealValue" xmi:id="_wRRhIEENEeqtQNccB7KKVQ" oper="SUM" actualizedvalue="400.0">
-              <values xsi:type="kpi:RealValue" xmi:id="_f7eVgD0qEeqSXfxb0fTk4w" parameter="_Ek6HgEEQEeqtQNccB7KKVQ" actualizedvalue="300.0"/>
-              <values xsi:type="kpi:RealValue" xmi:id="_M4yCMEEQEeqtQNccB7KKVQ" parameter="_IKCbIEEQEeqtQNccB7KKVQ" actualizedvalue="100.0"/>
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_qddOoEKdEeq2bOokeSHWaw" oper="MULT" actualizedvalue="83.33333333333334">
+            <values xsi:type="kpi:StaticRealValue" xmi:id="_5HmH0EKdEeq2bOokeSHWaw" staticvalue="100.0"/>
+            <values xsi:type="kpi:AggregatedRealValue" xmi:id="_7fM4YEKdEeq2bOokeSHWaw" oper="DIV" actualizedvalue="0.8333333333333334">
+              <values xsi:type="kpi:AggregatedRealValue" xmi:id="_WQfJkEKeEeq2bOokeSHWaw" oper="SUM" actualizedvalue="400.0">
+                <values xsi:type="kpi:RealValue" xmi:id="_X7lZcEKeEeq2bOokeSHWaw" parameter="_Ek6HgEEQEeqtQNccB7KKVQ" actualizedvalue="300.0"/>
+                <values xsi:type="kpi:RealValue" xmi:id="_ZqhAcEKeEeq2bOokeSHWaw" parameter="_IKCbIEEQEeqtQNccB7KKVQ" actualizedvalue="100.0"/>
+              </values>
+              <values xsi:type="kpi:RealValue" xmi:id="_c-UTgEKeEeq2bOokeSHWaw" parameter="_CgG-MEEQEeqtQNccB7KKVQ" actualizedvalue="480.0"/>
             </values>
-            <values xsi:type="kpi:RealValue" xmi:id="_4_E-wEENEeqtQNccB7KKVQ" parameter="_CgG-MEEQEeqtQNccB7KKVQ" actualizedvalue="480.0"/>
           </valuetype>
         </value>
       </kpi>
@@ -39,7 +53,7 @@
       <parameter xmi:id="_IKCbIEEQEeqtQNccB7KKVQ" name="5GCoverage"/>
     </category>
     <category xmi:id="_Qd7EAEGsEeqtQNccB7KKVQ" name="Urban Development">
-      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w" name="Urban Plan">
+      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w" name="Urban Plan" unit="category">
         <value xmi:id="_r0YuUD1YEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_cf8zAEHOEeq2bOokeSHWaw" actualizedvalue="smart">
             <values xsi:type="kpi:AggregatedIntegerValue" xmi:id="_9hux4EHOEeq2bOokeSHWaw" oper="SUM" actualizedvalue="5">

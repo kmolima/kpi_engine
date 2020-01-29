@@ -1,0 +1,30 @@
+import "kpi-providers.eol";
+
+
+for (smartc in smartcity!SmartCity.all) { 
+	
+("==========KPI model calculation applied on "+smartc.city+"==========").println();
+var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first;
+("Quality of Air index: "+QAI ).println();
+(smartc.collect(sc|sc.get(QAI)).first+" "+QAI.unit).println();
+
+"=================================================================".println();
+
+var QAIPM=kpi!Kpi.all.select(k|k.name=="QAI-PM").first;
+("Quality of Air index based on PM10: "+QAIPM).println();
+(smartc.collect(sc|sc.get(QAIPM)).first+" "+QAIPM.unit).println();
+
+"=================================================================".println();
+
+var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first;
+("Wireless Broadband coverage: "+WBC).println();
+(smartc.collect(sc|sc.get(WBC)).first+" "+WBC.unit).println();
+
+
+"=================================================================".println();
+var urbanplan=kpi!Kpi.all.select(k|k.name=="Urban Plan").first;
+("Urban Plan: " + urbanplan).println();
+(smartc.collect(sc|sc.get(urbanplan)).first+" "+urbanplan.unit).println();
+
+"=================================================================".println();
+}

@@ -1,24 +1,5 @@
 
-//empty the actualized values
 
-var QAI=kpi!Kpi.all.select(k|k.name=="QAI").first;
-("Quality of Air index: "+QAI).println();
-smartcity!SmartCity.all.collect(sc|sc.get(QAI)).first.println();
-
-
-
-var QAIPM=kpi!Kpi.all.select(k|k.name=="QAI-PM").first;
-("Quality of Air index based on PM10: "+QAIPM).println();
-smartcity!SmartCity.all.collect(sc|sc.get(QAIPM)).first.println();
-
-
-var WBC=kpi!Kpi.all.select(k|k.name=="WBC").first;
-("Wireless Broadband coverage: "+WBC).println();
-smartcity!SmartCity.all.collect(sc|sc.get(WBC)).first.println();
-
-var urbanplan=kpi!Kpi.all.select(k|k.name=="Urban Plan").first;
-("Urban Plan: " + urbanplan).println();
-smartcity!SmartCity.all.collect(sc|sc.get(urbanplan)).first.println();
 
 
 operation smartcity!SmartCity get(kpi: kpi!Kpi): Any{
@@ -30,10 +11,17 @@ return kpi.value.valuetype.get(self);
 
 operation kpi!SingleValue get(city: smartcity!SmartCity): Any{
 self.actualizedvalue=city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first;
-	//self.actualizedvalue=city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first;
+
 	return city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first;
 	
 }
+
+operation kpi!StaticRealValue get(city: smartcity!SmartCity): Any{
+
+	return self.staticvalue;
+	
+}
+
 
 operation kpi!AggregatedValue get(city: smartcity!SmartCity): Any{
 	self.actualizedvalue=self.values.get(city, self.oper);
@@ -64,7 +52,7 @@ case kpi!Operation#AVG: return self.sum()/self.size();
 case kpi!Operation#MIN: return self.min();
 case kpi!Operation#MAX: return self.max();
 case kpi!Operation#DIV: return self.get(0)/self.get(1);
-
+case kpi!Operation#MULT: return self.get(0)*self.get(1);
 default : "No operation provided ".println(); }
 }
 

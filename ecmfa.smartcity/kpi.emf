@@ -17,12 +17,14 @@ class Category {
   val Kpi[*] kpi;
    val Parameter[*] parameter;
   attr String name;
+
 }
 
 class Kpi {
   attr String name;
  ref Category[1]#kpi category;
   val Value[1]#kpi value;
+    attr String unit;
 }
 
 class Value {
@@ -38,6 +40,7 @@ class Parameter {
 
 abstract class ValueType {
 ref Value[1]#valuetype value;
+
 }
 
 abstract class CalculatedValue extends ValueType{
@@ -47,6 +50,10 @@ abstract class CalculatedValue extends ValueType{
 abstract class SingleValue extends CalculatedValue {
  
   ref Parameter[1] parameter;
+}
+
+class StaticRealValue extends SingleValue {
+  attr double staticvalue;
 }
 
 class BoolValue extends SingleValue {
@@ -114,6 +121,7 @@ enum Operation{
 	AND=7;
 	OR=8;
 	XOR=9;
+	MULT=10;
 }
 
 
