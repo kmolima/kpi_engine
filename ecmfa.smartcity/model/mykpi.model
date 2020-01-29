@@ -2,12 +2,12 @@
 <kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kpi="http://cs.gssi.it/kpi" xmi:id="_c-LBQD0GEeqSXfxb0fTk4w">
   <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w">
     <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Environment">
-      <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM" unit="ng/m3">
+      <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM" description="Quality of the Air Index" unit="ng/m3">
         <value xmi:id="_1SMPsD0PEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
         </value>
       </kpi>
-      <kpi xmi:id="_cFI5sEKnEeq2bOokeSHWaw" name="QAI" unit="">
+      <kpi xmi:id="_cFI5sEKnEeq2bOokeSHWaw" name="QAI" description="Quality of the Air index" unit="">
         <value xmi:id="_f257IEKnEeq2bOokeSHWaw">
           <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_gmN4MEKnEeq2bOokeSHWaw" actualizedvalue="Excellent">
             <values xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="" oper="MULT" actualizedvalue="20.0">
@@ -34,7 +34,7 @@
       <parameter xmi:id="_p22NoEEIEeqtQNccB7KKVQ" name="SO2"/>
     </category>
     <category xmi:id="_X4R7ID0qEeqSXfxb0fTk4w" name="Networking">
-      <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC" unit="%">
+      <kpi xmi:id="_UfxuQD0qEeqSXfxb0fTk4w" name="WBC" description="Wireless Broadband Coverage" unit="%">
         <value xmi:id="_b6Gx0D0qEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_qddOoEKdEeq2bOokeSHWaw" oper="MULT" actualizedvalue="83.33333333333334">
             <values xsi:type="kpi:StaticRealValue" xmi:id="_5HmH0EKdEeq2bOokeSHWaw" staticvalue="100.0"/>
@@ -53,7 +53,7 @@
       <parameter xmi:id="_IKCbIEEQEeqtQNccB7KKVQ" name="5GCoverage"/>
     </category>
     <category xmi:id="_Qd7EAEGsEeqtQNccB7KKVQ" name="Urban Development">
-      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w" name="Urban Plan" unit="category">
+      <kpi xmi:id="_rT4pUD1YEeqSXfxb0fTk4w" name="Urban Plan" description="Urban Development and Spatial Planning" unit="category">
         <value xmi:id="_r0YuUD1YEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_cf8zAEHOEeq2bOokeSHWaw" actualizedvalue="smart">
             <values xsi:type="kpi:AggregatedIntegerValue" xmi:id="_9hux4EHOEeq2bOokeSHWaw" oper="SUM" actualizedvalue="5">

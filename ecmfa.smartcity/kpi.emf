@@ -22,6 +22,7 @@ class Category {
 
 class Kpi {
   attr String name;
+  attr String description;
  ref Category[1]#kpi category;
   val Value[1]#kpi value;
     attr String unit;
