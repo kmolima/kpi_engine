@@ -114,7 +114,7 @@ class AggregatedRangedValue extends AggregatedValue {
 enum Operation{
 	GET=0;
 	SUM=1;
-	DIFF=1;
+	DIFF=2;
 	AVG=3;
 	MIN=4;
 	MAX=5;

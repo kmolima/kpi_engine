@@ -6,7 +6,6 @@ operation smartcity!SmartCity get(kpi: kpi!Kpi): Any{
 
 return kpi.value.valuetype.get(self);
 
-
 }
 
 operation kpi!SingleValue get(city: smartcity!SmartCity): Any{
@@ -40,7 +39,6 @@ operation OrderedSet<kpi!ValueType> get(city: smartcity!SmartCity, oper: kpi!EEn
 	return self.collect(s|s.get(city)).getop(oper);
 
 }
-
 
 operation Any getop(op: kpi!EEnumLiteral): Any{
 

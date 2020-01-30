@@ -99,7 +99,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="Operation">
     <eLiterals name="GET"/>
     <eLiterals name="SUM" value="1"/>
-    <eLiterals name="DIFF" value="1"/>
+    <eLiterals name="DIFF" value="2"/>
     <eLiterals name="AVG" value="3"/>
     <eLiterals name="MIN" value="4"/>
     <eLiterals name="MAX" value="5"/>
