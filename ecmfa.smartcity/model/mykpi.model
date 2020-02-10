@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
 <kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kpi="http://cs.gssi.it/kpi" xmi:id="_c-LBQD0GEeqSXfxb0fTk4w">
-  <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w">
-    <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Environment">
-      <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="QAI-PM" description="Quality of the Air Index" unit="ng/m3">
+  <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w" name="Environment">
+    <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Air Quality">
+      <kpi xmi:id="_zkU_sD0PEeqSXfxb0fTk4w" name="AQI-PM" description="Air Pollution Index" unit="ng/m3">
         <value xmi:id="_1SMPsD0PEeqSXfxb0fTk4w">
           <valuetype xsi:type="kpi:RealValue" xmi:id="_18rXID0PEeqSXfxb0fTk4w" calculatedBy="getPolluttant" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="5.0"/>
         </value>
       </kpi>
-      <kpi xmi:id="_cFI5sEKnEeq2bOokeSHWaw" name="QAI" description="Quality of the Air index" unit="">
+      <kpi xmi:id="_cFI5sEKnEeq2bOokeSHWaw" name="AP" description="Air Pollution Index" unit="">
         <value xmi:id="_f257IEKnEeq2bOokeSHWaw">
           <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_gmN4MEKnEeq2bOokeSHWaw" actualizedvalue="Excellent">
             <values xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="" oper="MULT" actualizedvalue="20.0">
@@ -23,14 +23,16 @@
               </values>
             </values>
             <ranges xmi:id="_he-FIEKnEeq2bOokeSHWaw" rangeName="Excellent" max="30.0"/>
-            <ranges xmi:id="_mJ8mgEKnEeq2bOokeSHWaw" rangeName="Discrete" min="30.0" max="99.0"/>
-            <ranges xmi:id="_oCutEEKnEeq2bOokeSHWaw" rangeName="Terrible" min="99.0" max="150.0"/>
+            <ranges xmi:id="_mJ8mgEKnEeq2bOokeSHWaw" rangeName="Good" min="30.0" max="99.0"/>
+            <ranges xmi:id="_oCutEEKnEeq2bOokeSHWaw" rangeName="Discrete" min="99.0" max="150.0"/>
+            <ranges xmi:id="_erdqMEgiEeq2bOokeSHWaw" rangeName="Bad" max="30.0"/>
+            <ranges xmi:id="_e2wUMEgiEeq2bOokeSHWaw" rangeName="Terrible" max="30.0"/>
           </valuetype>
         </value>
       </kpi>
-      <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM10"/>
+      <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM"/>
       <parameter xmi:id="_e_u6IEEIEeqtQNccB7KKVQ" name="NO2"/>
-      <parameter xmi:id="_nSMfkEEIEeqtQNccB7KKVQ" name="O2"/>
+      <parameter xmi:id="_nSMfkEEIEeqtQNccB7KKVQ" name="O3"/>
       <parameter xmi:id="_p22NoEEIEeqtQNccB7KKVQ" name="SO2"/>
     </category>
     <category xmi:id="_X4R7ID0qEeqSXfxb0fTk4w" name="Networking">

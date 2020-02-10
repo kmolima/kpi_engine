@@ -4,8 +4,8 @@
     <stakeholders xmi:id="_UCKdcEHFEeq2bOokeSHWaw" name="CityCouncil" organization="Municipality"/>
     <stakeholders xmi:id="_iAuDAEHFEeq2bOokeSHWaw" name="TIM" organization="Internet and Telcommunication"/>
     <data xmi:id="_UvLw8EHEEeq2bOokeSHWaw" name="AirMonitoring">
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_XpMrAEHEEeq2bOokeSHWaw" name="PM10" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="5.0"/>
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_vlkkkEHEEeq2bOokeSHWaw" name="O2" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="1.0"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_XpMrAEHEEeq2bOokeSHWaw" name="PM" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="5.0"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_vlkkkEHEEeq2bOokeSHWaw" name="O3" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="1.0"/>
       <data xsi:type="DataAnalytics:RealValue" xmi:id="_6ZXeUEHEEeq2bOokeSHWaw" name="NO2" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="3.0"/>
       <data xsi:type="DataAnalytics:RealValue" xmi:id="_AJEzIEHFEeq2bOokeSHWaw" name="SO2" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="6.0"/>
     </data>
@@ -16,7 +16,7 @@
     <data xmi:id="_OtMj4EHFEeq2bOokeSHWaw" name="CityStatistics">
       <data xsi:type="DataAnalytics:RealValue" xmi:id="_QfBG0EHFEeq2bOokeSHWaw" name="CityExt" unit="km2" src="_UCKdcEHFEeq2bOokeSHWaw" value="480.0"/>
     </data>
-    <data xmi:id="_RfRdYEHaEeq2bOokeSHWaw" name="Sustainability">
+    <data xmi:id="_RfRdYEHaEeq2bOokeSHWaw" name="SustainabilityPrinciples">
       <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_Tmr10EHaEeq2bOokeSHWaw" name="sustainabilityprinciple.compact" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
       <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_Wg3H8EHaEeq2bOokeSHWaw" name="sustainabilityprinciple.connectivity" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
       <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_Yu2CcEHaEeq2bOokeSHWaw" name="sustainabilityprinciple.integration" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
