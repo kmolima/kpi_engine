@@ -1,37 +1,26 @@
-<?xml version="1.0" encoding="ASCII"?>
-<smartcity:SmartCityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataAnalytics="http://cs.gssi.it/smartcity/dataanalytics" xmlns:infrastructure="http://cs.gssi.it/smartcity/infrastructure" xmlns:smartcity="http://cs.gssi.it/smartcity" xmi:id="_N7QQ8EHCEeqtQNccB7KKVQ">
-  <smartCities xmi:id="_Orxu8EHCEeqtQNccB7KKVQ" city="l'Aquila">
-    <stakeholders xmi:id="_UCKdcEHFEeq2bOokeSHWaw" name="CityCouncil" organization="Municipality"/>
-    <stakeholders xmi:id="_iAuDAEHFEeq2bOokeSHWaw" name="TIM" organization="Internet and Telcommunication"/>
-    <data xmi:id="_UvLw8EHEEeq2bOokeSHWaw" name="AirMonitoring">
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_XpMrAEHEEeq2bOokeSHWaw" name="PM" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="5.0"/>
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_vlkkkEHEEeq2bOokeSHWaw" name="O3" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="1.0"/>
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_6ZXeUEHEEeq2bOokeSHWaw" name="NO2" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="3.0"/>
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_AJEzIEHFEeq2bOokeSHWaw" name="SO2" unit="ng/m3" src="_hgKbAEHCEeqtQNccB7KKVQ" value="6.0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<smartcity:SmartCityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataAnalytics="http://cs.gssi.it/smartcity/dataanalytics" xmlns:smartcity="http://cs.gssi.it/smartcity" xmlns:stakeholder="http://cs.gssi.it/smartcity/stakeholder" xmi:id="_lAZUYHWzEeqwqr-NlLgWuQ">
+  <smartCities xmi:id="_lAZUYXWzEeqwqr-NlLgWuQ" city="L'Aquila">
+    <stakeholders xsi:type="stakeholder:Stakeholder" xmi:id="_lAZUY3WzEeqwqr-NlLgWuQ" name="CityCouncil" organization="Municipality"/>
+    <stakeholders xsi:type="DataAnalytics:OpenData" xmi:id="_lAZUZHWzEeqwqr-NlLgWuQ" url="https://breezometer.com/" name="BreezoMeter"/>
+    <stakeholders xsi:type="DataAnalytics:OpenData" xmi:id="_lAZUZXWzEeqwqr-NlLgWuQ" url="https://www.piste-ciclabili.com/" name="PisteCiclabili.com"/>
+    <stakeholders xsi:type="DataAnalytics:OpenData" xmi:id="_lAZUZnWzEeqwqr-NlLgWuQ" url="http://asc.istat.it/asc_BL/" name="Atlante Statistico dei Comuni"/>
+    <data xmi:id="_lAZUZ3WzEeqwqr-NlLgWuQ" name="AirMonitoring">
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUaHWzEeqwqr-NlLgWuQ" name="PM2.5" unit="ng/m3" src="_lAZUZHWzEeqwqr-NlLgWuQ" value="11.19"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUaXWzEeqwqr-NlLgWuQ" name="PM10" unit="ng/m3" src="_lAZUZHWzEeqwqr-NlLgWuQ" value="11.38"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUanWzEeqwqr-NlLgWuQ" name="NO2" unit="ng/m3" src="_lAZUZHWzEeqwqr-NlLgWuQ" value="5.57"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUa3WzEeqwqr-NlLgWuQ" name="O3" unit="ng/m3" src="_lAZUZHWzEeqwqr-NlLgWuQ" value="18.28"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUbHWzEeqwqr-NlLgWuQ" name="SO2" unit="ng/m3" src="_lAZUZHWzEeqwqr-NlLgWuQ" value="0.17"/>
     </data>
-    <data xmi:id="_DtTH0EHFEeq2bOokeSHWaw" name="NetworkCoverage">
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_IfCYgEHFEeq2bOokeSHWaw" name="4GCoverage" unit="km2" src="_iAuDAEHFEeq2bOokeSHWaw" value="300.0"/>
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_Lw9cQEHFEeq2bOokeSHWaw" name="5GCoverage" unit="km2" src="_iAuDAEHFEeq2bOokeSHWaw" value="100.0"/>
+    <data xmi:id="_lAZUcXWzEeqwqr-NlLgWuQ" name="CityStatistics">
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUcnWzEeqwqr-NlLgWuQ" name="CityExt" unit="km2" src="_lAZUY3WzEeqwqr-NlLgWuQ" value="480.0"/>
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUc3WzEeqwqr-NlLgWuQ" name="CityPop" unit="inhabitants" src="_lAZUY3WzEeqwqr-NlLgWuQ" value="69605.0"/>
     </data>
-    <data xmi:id="_OtMj4EHFEeq2bOokeSHWaw" name="CityStatistics">
-      <data xsi:type="DataAnalytics:RealValue" xmi:id="_QfBG0EHFEeq2bOokeSHWaw" name="CityExt" unit="km2" src="_UCKdcEHFEeq2bOokeSHWaw" value="480.0"/>
+    <data xmi:id="_lAZUenWzEeqwqr-NlLgWuQ" name="BikePaths">
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUe3WzEeqwqr-NlLgWuQ" name="BykePathLength" unit="km" src="_lAZUZXWzEeqwqr-NlLgWuQ" value="86.0"/>
     </data>
-    <data xmi:id="_RfRdYEHaEeq2bOokeSHWaw" name="SustainabilityPrinciples">
-      <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_Tmr10EHaEeq2bOokeSHWaw" name="sustainabilityprinciple.compact" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
-      <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_Wg3H8EHaEeq2bOokeSHWaw" name="sustainabilityprinciple.connectivity" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
-      <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_Yu2CcEHaEeq2bOokeSHWaw" name="sustainabilityprinciple.integration" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
-      <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_aFwLAEHaEeq2bOokeSHWaw" name="sustainabilityprinciple.sociallyinclusive" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
-      <data xsi:type="DataAnalytics:IntegerValue" xmi:id="_byQJEEHaEeq2bOokeSHWaw" name="sustainabilityprinciple.resilient" unit="Yes/no" src="_UCKdcEHFEeq2bOokeSHWaw" value="1"/>
+    <data xmi:id="_lAZUfHWzEeqwqr-NlLgWuQ" name="Green Areas">
+      <data xsi:type="DataAnalytics:RealValue" xmi:id="_lAZUfXWzEeqwqr-NlLgWuQ" name="TotalGreenArea" unit="hectares" src="_lAZUZnWzEeqwqr-NlLgWuQ" value="48.7235"/>
     </data>
-    <infrastructurelayer xmi:id="_azzQsEHCEeqtQNccB7KKVQ">
-      <components xmi:id="_e3VXkEHCEeqtQNccB7KKVQ" name="WiredNetwork"/>
-      <components xsi:type="infrastructure:MonitoringInfrastructure" xmi:id="_hgKbAEHCEeqtQNccB7KKVQ" name="SmartEnvironment">
-        <devices xsi:type="infrastructure:Sensor" xmi:id="_Hh1l4EHEEeq2bOokeSHWaw" model="AirQualityMonitor"/>
-        <devices xsi:type="infrastructure:Sensor" xmi:id="_StmTsEHEEeq2bOokeSHWaw" model="AirQualityMonitor"/>
-        <devices xsi:type="infrastructure:Sensor" xmi:id="_TG6yoEHEEeq2bOokeSHWaw" model="AirQualityMonitor"/>
-        <devices xsi:type="infrastructure:Sensor" xmi:id="_TXVNMEHEEeq2bOokeSHWaw" model="AirQualityMonitor"/>
-        <devices xsi:type="infrastructure:Sensor" xmi:id="_Th76sEHEEeq2bOokeSHWaw" model="AirQualityMonitor"/>
-      </components>
-    </infrastructurelayer>
   </smartCities>
 </smartcity:SmartCityModel>
