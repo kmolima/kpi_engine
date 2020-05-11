@@ -3,7 +3,7 @@ In a Smart City context, the Smart Governance performs many decision-making proc
 In this work we propose an approach to support KPIs assessment over smart cities. In particular, the proposed approach provides that, given a Smart City Candidate, its corresponding [Smart City Model](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/model/mycity.model) and the [KPI Model](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/model/mykpi.model), conform to the [metamodels](https://github.com/gssi/SmartCityModeling/tree/master/ecmfa.smartcity), will be used as input for an Evaluation Engine that will interpret and calculate the modeled KPIs for the candidate city. The evaluation engine produces a list of KPIs, identified in the KPI Model and reported in the Evaluated KPI Model. 
 
 ## SmartCityModeling Overview
-IMMAGINE OVERVIEW APPROCCIO
+![Proposed Approach](https://github.com/gssi/SmartCityModeling/blob/master/approach.jpg)
 
 ## Contributors
 - Martina De Sanctis - Gran Sasso Science Institute - GSSI, L'Aquila, Italy
