@@ -8,7 +8,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SmartCity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="city" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stakeholders" upperBound="-1"
-        eType="#//stakeholder/Stakeholder" containment="true"/>
+        eType="#//DataAnalytics/Source" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1" eType="#//DataAnalytics/DataPackage"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="infrastructurelayer" eType="#//infrastructure/PublicInfrastructureLayer"
