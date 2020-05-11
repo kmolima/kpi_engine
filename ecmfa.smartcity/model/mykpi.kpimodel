@@ -1,23 +1,51 @@
 KPIModel mykpi;
-Dimension ???{
-	Category Environment{
-		KPI QAI{
-			value: AggregatedRangedValue: GET{
-				values: AggregatedRealValue: MULT{
-					values: StaticRealValue: 100.0,
-							AggregatedRealValue: DIV{
-								values: AggregatedRealValue: MAX{
-									RealValue: PM10,
-									RealValue: NO2,
-									RealValue: O2,
-									RealValue: SO2
-								},
-								StaticRealValue: 30.0
-							}
-				},
-				Range "Excellent" min:0.0 max:30.0,
-				Range "Excellent" min:30.0 max:99.0,
-				Range "Excellent" min:100.00 max:150.0
+...
+Dimension Environment{
+	Category AirQuality{
+		KPI AP{
+			values: AggregatedRangedValue: GET{
+                values: AggregatedRealValue: MAX{
+                	AggregatedRealValue: MULT{
+                		StaticRealValue: 100.0
+                		AggregatedRealValue: DIV{
+                			RealValue: PM2.5,
+                			StaticRealValue: 25.0
+                			}
+                		}
+                	AggregatedRealValue: MULT{
+                		StaticRealValue: 100.0
+                		AggregatedRealValue: DIV{
+                			RealValue: PM10,
+                			StaticRealValue: 25.0
+                			}
+                		}
+                	AggregatedRealValue: MULT{
+                		StaticRealValue: 100.0
+                		AggregatedRealValue: DIV{
+                			RealValue: NO2,
+                			StaticRealValue: 25.0
+                			}
+                		}
+                	AggregatedRealValue: MULT{
+                		StaticRealValue: 100.0
+                		AggregatedRealValue: DIV{
+                			RealValue: O3,
+                			StaticRealValue: 25.0
+                			}
+                		}
+                	AggregatedRealValue: MULT{
+                		StaticRealValue: 100.0
+                		AggregatedRealValue: DIV{
+                			RealValue: SO2
+                			StaticRealValue: 25.0
+                			}
+                		}
+                    }
+                Range "Excellent" min:0.0 max:29.9,
+                Range "Good" min:30.0 max:65.9,
+                Range "Discrete" min:66.0 max:98.9,
+                Range "Bad" min:99.0 max:149.9,
+                Range "Terrible" min:150.00 
 			}
 		}
 	}	
