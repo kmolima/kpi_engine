@@ -108,5 +108,6 @@
     <eLiterals name="OR" value="8"/>
     <eLiterals name="XOR" value="9"/>
     <eLiterals name="MULT" value="10"/>
+    <eLiterals name="CEN" value="11" literal="CEN"/>
   </eClassifiers>
 </ecore:EPackage>
