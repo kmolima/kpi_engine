@@ -9,6 +9,7 @@ In this work we propose an approach to support KPIs assessment over smart cities
 - Martina De Sanctis - Gran Sasso Science Institute - GSSI, L'Aquila, Italy
 - Ludovico Iovino - Gran Sasso Science Institute - GSSI, L'Aquila, Italy
 - Maria Teresa Rossi - Gran Sasso Science Institute - GSSI, L'Aquila, Italy
+- Manuel Wimmer - Johannes Kepler University, Linz, Austria
 
 ## Dependencies
 To run the Evaluation Engine you need to download Eclipse.
