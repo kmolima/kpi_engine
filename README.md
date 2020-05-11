@@ -22,7 +22,7 @@ At this stage, you have to create a new *Run Configuration* following these step
 2. Right-click on *EOL Program* in the list of launch configurations and select *New Configuration*;
 3. In the newly opened window, after giving a name to the new configuration, you have to select the script to run, in this case insert the address of the file named *"main.eol"*;
 4. In the view *Models*, click on *Add* and select *EMF Model*;
-5. Now, in the view *Configure EMF Model* choose a name like *"smart city"* and in the field *Model file* insert the address of the smart city model that you can find in the folder *model* of the project. Meanwhile, in the field *Metamodels*, insert the address of the file .ecore containing the smart city metamodel;
+5. Now, in the view *Configure EMF Model* choose a name like *"smartcity"* and in the field *Model file* insert the address of the smart city model that you can find in the folder *model* of the project. Meanwhile, in the field *Metamodels*, insert the address of the file .ecore containing the smart city metamodel;
 6. After clicking on the *OK* button, repeat the steps from **4 to 5** to add the KPI model;
 7. Finally, click on *Run* and the evaluation results will be displayed in the console.
 
