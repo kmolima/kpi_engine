@@ -14,7 +14,7 @@ In this work we propose an approach to support KPIs assessment over smart cities
 ## Dependencies
 To run the Evaluation Engine you need to download Eclipse.
 The evaluation engine has been implemented with Epsilon, via the Epsilon Object Language (EOL), thus we suggest to download the Eclipse IDE with the necessary Epsilon plugin already installed at this [link](https://www.eclipse.org/epsilon/download/).
-A graphical/textual smart city modeling editor can be integrated in the standalone prototype from this [link](https://github.com/gssi/MoSC2020).
+A graphical/textual smart city modeling editor implemented with [Sirius](https://www.obeodesigner.com/en/product/sirius)/[XText](https://www.eclipse.org/Xtext/), can be integrated in the standalone prototype from this [link](https://github.com/gssi/MoSC2020).
 
 ## How to run
 First, you have to import the [project](https://github.com/gssi/SmartCityModeling/tree/master/ecmfa.smartcity) in an Eclipse workspace. Then, register the [smart city](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/smart_city.ecore) and the [KPI](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/kpi.ecore) metamodels as *Ecore Packages*.
