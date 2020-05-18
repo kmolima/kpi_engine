@@ -1,8 +1,8 @@
-# SmartCityModeling
+# Automatic Key performence indicators assessment in smart cities
 In a Smart City context, the Smart Governance performs many decision-making processes through the management of Key Performance Indicators (KPIs), reflecting the degree of smartness and sustainability of smart cities.
 In this work we propose an approach to support KPIs assessment over smart cities. In particular, the proposed approach provides that, given a Smart City Candidate, its corresponding [Smart City Model](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/model/mycity.model) and the [KPI Model](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/model/mykpi.model), conform to the [metamodels](https://github.com/gssi/SmartCityModeling/tree/master/ecmfa.smartcity), will be used as input for an Evaluation Engine that will interpret and calculate the modeled KPIs for the candidate city. The evaluation engine produces a list of KPIs, identified in the KPI Model and reported in the Evaluated KPI Model. 
 
-## SmartCityModeling Overview
+## Approach Overview
 ![Proposed Approach](https://github.com/gssi/SmartCityModeling/blob/master/approach.jpg)
 
 ## Contributors
@@ -14,6 +14,7 @@ In this work we propose an approach to support KPIs assessment over smart cities
 ## Dependencies
 To run the Evaluation Engine you need to download Eclipse.
 The evaluation engine has been implemented with Epsilon, via the Epsilon Object Language (EOL), thus we suggest to download the Eclipse IDE with the necessary Epsilon plugin already installed at this [link](https://www.eclipse.org/epsilon/download/).
+A graphical/textual smart city modeling editor can be integrated in the standalone prototype from this [link](https://github.com/gssi/MoSC2020).
 
 ## How to run
 First, you have to import the [project](https://github.com/gssi/SmartCityModeling/tree/master/ecmfa.smartcity) in an Eclipse workspace. Then, register the [smart city](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/smart_city.ecore) and the [KPI](https://github.com/gssi/SmartCityModeling/blob/master/ecmfa.smartcity/kpi.ecore) metamodels as *Ecore Packages*.
