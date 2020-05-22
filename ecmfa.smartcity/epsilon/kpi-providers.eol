@@ -49,7 +49,7 @@ case kpi!Operation#SUM: return self.sum();
 case kpi!Operation#AVG: return self.sum()/self.size();
 case kpi!Operation#MIN: return self.min();
 case kpi!Operation#MAX: return self.max();
-case kpi!Operation#DIV: return self.get(0)/self.get(1);
+case kpi!Operation#DIV: return self.get(0).ifUndefined(0)/self.get(1).ifUndefined(0);
 case kpi!Operation#MULT: return self.get(0)*self.get(1);
 case kpi!Operation#CEN: if(self.get(0) >= 100000) return self.get(0) / 100000; else return self.get(0) / self.get(0);
 default : "No operation provided ".println(); }
