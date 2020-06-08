@@ -90,4 +90,57 @@
       </category>
     </dimension>
   </dimension>
+  <dimension xmi:id="_sNWeEJaTEeq0XaWaWNepEA" name="Planet">
+    <category xmi:id="_0Sn8EJaTEeq0XaWaWNepEA" name="Energy &amp; Mitigation">
+      <kpi xmi:id="_CNR5EJaUEeq0XaWaWNepEA" name="CO2 emissions" description="CO2 emissions" unit="tonnes/population">
+        <value xmi:id="_j6EHUJaVEeq0XaWaWNepEA">
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_k4W7kJaVEeq0XaWaWNepEA" oper="DIV">
+            <values xsi:type="kpi:RealValue" xmi:id="_AJDlQJaZEeq0XaWaWNepEA" parameter="_7v7o4JaYEeq0XaWaWNepEA"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_BuTEwJaZEeq0XaWaWNepEA" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
+          </valuetype>
+        </value>
+      </kpi>
+      <parameter xmi:id="_7v7o4JaYEeq0XaWaWNepEA" name="CO2"/>
+    </category>
+    <category xmi:id="_2gb3cJaTEeq0XaWaWNepEA" name="Pollution &amp; Waste">
+      <kpi xmi:id="_Np_0AJaUEeq0XaWaWNepEA" name="NO2 emissions" description="NO2 emissions" unit="ng/m3">
+        <value xmi:id="_GOZy4JaZEeq0XaWaWNepEA">
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_HlDcwJaZEeq0XaWaWNepEA" oper="DIV" actualizedvalue="8.002298685439265E-5">
+            <values xsi:type="kpi:RealValue" xmi:id="_XE8SMJaZEeq0XaWaWNepEA" parameter="_e_u6IEEIEeqtQNccB7KKVQ" actualizedvalue="5.57"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_Y47YUJaZEeq0XaWaWNepEA" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
+          </valuetype>
+        </value>
+      </kpi>
+      <kpi xmi:id="_T4QGAJaUEeq0XaWaWNepEA" name="PM2.5 emissions" description="PM2.5 emissions" unit="ng/m3">
+        <value xmi:id="_aTyz0JaZEeq0XaWaWNepEA">
+          <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_bBj4wJaZEeq0XaWaWNepEA" oper="DIV" actualizedvalue="1.607643129085554E-4">
+            <values xsi:type="kpi:RealValue" xmi:id="_dLtcIJaZEeq0XaWaWNepEA" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="11.19"/>
+            <values xsi:type="kpi:RealValue" xmi:id="_emJZ0JaZEeq0XaWaWNepEA" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
+          </valuetype>
+        </value>
+      </kpi>
+    </category>
+  </dimension>
+  <dimension xmi:id="_g27AMJnnEeqb6_1e3fZsNw" name="Digital Competencies">
+    <category xmi:id="_i9MwMJnnEeqb6_1e3fZsNw" name="Competencies">
+      <kpi xmi:id="_rhdQQJnnEeqb6_1e3fZsNw" name="MA" description="# mobile applications" unit="units">
+        <value xmi:id="_3gWEIJnnEeqb6_1e3fZsNw">
+          <valuetype xsi:type="kpi:AggregatedIntegerValue" xmi:id="_4vO5IJnnEeqb6_1e3fZsNw" oper="SUM" actualizedvalue="13">
+            <values xsi:type="kpi:IntegerValue" xmi:id="__1DFQJnnEeqb6_1e3fZsNw" parameter="_8OeAIJnnEeqb6_1e3fZsNw" actualizedvalue="13"/>
+          </valuetype>
+        </value>
+      </kpi>
+      <parameter xmi:id="_8OeAIJnnEeqb6_1e3fZsNw" name="MobileApplicationsPS"/>
+    </category>
+  </dimension>
+  <dimension xmi:id="_UkskIJnoEeqb6_1e3fZsNw" name="Infrastructure">
+    <category xmi:id="_fHEWsJnoEeqb6_1e3fZsNw" name="Digital Infrastructure">
+      <kpi xmi:id="_sFvMkJnoEeqb6_1e3fZsNw" name="TM" description="Availability of Transport Monitoring" unit="yes/no">
+        <value xmi:id="_zmF_oJnoEeqb6_1e3fZsNw">
+          <valuetype xsi:type="kpi:BoolValue" xmi:id="_1okNsJnoEeqb6_1e3fZsNw" parameter="_3tTFkJnoEeqb6_1e3fZsNw" actualizedvalue="true"/>
+        </value>
+      </kpi>
+      <parameter xmi:id="_3tTFkJnoEeqb6_1e3fZsNw" name="RealtimeTransportMonitoring"/>
+    </category>
+  </dimension>
 </kpi:KpiModel>
