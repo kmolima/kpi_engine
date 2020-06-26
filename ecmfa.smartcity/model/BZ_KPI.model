@@ -2,7 +2,7 @@
 <kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kpi="http://cs.gssi.it/kpi" xmi:id="_c-LBQD0GEeqSXfxb0fTk4w">
   <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w" name="Environment">
     <dimension xmi:id="_H64H4HTQEeqUPfKnSGBMIQ" name="Environment">
-      <category xmi:id="_LKhTsHTQEeqUPfKnSGBMIQ" name="Public Spaces &amp; Nature">
+      <category xmi:id="_LKhTsHTQEeqUPfKnSGBMIQ" name="Public Spaces and Nature">
         <kpi xmi:id="_MauXUHTQEeqUPfKnSGBMIQ" name="GA" description="Green Areas" unit="hectares/100.000inhabitants">
           <value xmi:id="_aKsuUHTQEeqUPfKnSGBMIQ">
             <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_cBge8HTQEeqUPfKnSGBMIQ" oper="DIV" actualizedvalue="176.2620536877769">
@@ -91,7 +91,7 @@
     </dimension>
   </dimension>
   <dimension xmi:id="_sNWeEJaTEeq0XaWaWNepEA" name="Planet">
-    <category xmi:id="_0Sn8EJaTEeq0XaWaWNepEA" name="Energy &amp; Mitigation">
+    <category xmi:id="_0Sn8EJaTEeq0XaWaWNepEA" name="Energy and Mitigation">
       <kpi xmi:id="_CNR5EJaUEeq0XaWaWNepEA" name="CO2 emissions" description="CO2 emissions" unit="tonnes/population">
         <value xmi:id="_j6EHUJaVEeq0XaWaWNepEA">
           <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_k4W7kJaVEeq0XaWaWNepEA" oper="DIV">
@@ -102,7 +102,7 @@
       </kpi>
       <parameter xmi:id="_7v7o4JaYEeq0XaWaWNepEA" name="CO2"/>
     </category>
-    <category xmi:id="_2gb3cJaTEeq0XaWaWNepEA" name="Pollution &amp; Waste">
+    <category xmi:id="_2gb3cJaTEeq0XaWaWNepEA" name="Pollution and Waste">
       <kpi xmi:id="_Np_0AJaUEeq0XaWaWNepEA" name="NO2 emissions" description="NO2 emissions" unit="ng/m3">
         <value xmi:id="_GOZy4JaZEeq0XaWaWNepEA">
           <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_HlDcwJaZEeq0XaWaWNepEA" oper="DIV" actualizedvalue="2.8668230388324213E-5">
