@@ -1,0 +1,60 @@
+
+
+
+
+operation smartcity!SmartCity get(kpi: kpi!Kpi): Any{
+
+return kpi.value.valuetype.get(self);
+
+}
+
+operation kpi!SingleValue get(city: smartcity!SmartCity): Any{
+self.actualizedvalue=city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first;
+
+	return city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first;
+	
+}
+
+operation kpi!StaticRealValue get(city: smartcity!SmartCity): Any{
+
+	return self.staticvalue;
+	
+}
+
+
+operation kpi!AggregatedValue get(city: smartcity!SmartCity): Any{
+	self.actualizedvalue=self.values.get(city, self.oper);
+	return self.values.get(city, self.oper);
+
+}
+
+operation kpi!AggregatedRangedValue get(city: smartcity!SmartCity): Any{
+	self.actualizedvalue=self.ranges.select(r|r.min <= self.values.get(city, self.oper).first and self.values.get(city, self.oper).first <= r.max).rangeName.first;
+	return self.ranges.select(r|r.min <= self.values.get(city, self.oper).first and self.values.get(city, self.oper).first <= r.max).rangeName.first;
+
+}
+
+operation OrderedSet<kpi!ValueType> get(city: smartcity!SmartCity, oper: kpi!EEnumLiteral): Any{
+
+	return self.collect(s|s.get(city)).getop(oper);
+
+}
+
+operation Any getop(op: kpi!EEnumLiteral): Any{
+
+
+switch (op) {
+case kpi!Operation#GET: return self;
+case kpi!Operation#SUM: return self.sum();
+case kpi!Operation#AVG: return self.sum()/self.size();
+case kpi!Operation#MIN: return self.min();
+case kpi!Operation#MAX: return self.max();
+case kpi!Operation#DIV: return self.get(0).ifUndefined(0)/self.get(1).ifUndefined(0);
+case kpi!Operation#MULT: return self.get(0)*self.get(1);
+case kpi!Operation#CEN: if(self.get(0) >= 100000) return self.get(0) / 100000; else return self.get(0) / self.get(0);
+default : "No operation provided ".println(); }
+}
+
+
+
+
