@@ -15,7 +15,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Category">
     <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" upperBound="-1" eType="#//Kpi"
-        containment="true"/>
+        containment="true" eOpposite="#//Kpi/category"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -54,42 +54,52 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BoolValue" eSuperTypes="#//SingleValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//SingleValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//SingleValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//SingleValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RangedValue" eSuperTypes="#//ValueType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
         eType="#//Range" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Range">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedValue" abstract="true" eSuperTypes="#//CalculatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oper" lowerBound="1" eType="#//Operation"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
-        eType="#//ValueType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" lowerBound="1"
+        upperBound="-1" eType="#//ValueType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedBoolValue" eSuperTypes="#//AggregatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedRealValue" eSuperTypes="#//AggregatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedIntegerValue" eSuperTypes="#//AggregatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedStringValue" eSuperTypes="#//AggregatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregatedRangedValue" eSuperTypes="#//AggregatedValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actualizedvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -108,6 +118,6 @@
     <eLiterals name="OR" value="8"/>
     <eLiterals name="XOR" value="9"/>
     <eLiterals name="MULT" value="10"/>
-    <eLiterals name="CEN" value="11" literal="CEN"/>
+    <eLiterals name="CEN" value="11"/>
   </eClassifiers>
 </ecore:EPackage>
