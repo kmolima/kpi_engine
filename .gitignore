@@ -1,1 +1,6 @@
 /bin/
+META-INF/MANIFEST.MF
+lib/json-simple-1.1.1.jar
+ecmfa.smartcity/model/AQ.model
+build.properties
+.classpath

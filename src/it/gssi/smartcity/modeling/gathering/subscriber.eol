@@ -1,0 +1,1 @@
+return smartcitymodel!DataPackage.all.data.flatten();
