@@ -1,1 +1,12 @@
-return smartcitymodel!DataPackage.all.data.flatten();
+var parameters : Map = new Map;
+
+var datapacks : Sequence= smartcitymodel!Data.all.select(d|d.runtime);
+//.select(data|data.src.url=source).flatten();
+//select(d|d.src.isTypeOf(OpenData))
+for (data in datapacks) { 
+
+ 	if(data.isTypeOf(RealValue) or data.isTypeOf(IntegerValue) ) parameters.put(data.name,data.value);
+ 	
+}
+
+return parameters;

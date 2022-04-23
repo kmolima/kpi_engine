@@ -1,4 +1,5 @@
 operation kpi_model::Value getValue(){
+
 	return self.valuetype.getActualizedValue();
 }
 operation kpi_model::Value getTargetValue(){
@@ -7,6 +8,7 @@ operation kpi_model::Value getTargetValue(){
 }
 
 operation kpi_model::AggregatedValue getActualizedValue(){
+if(self.actualizedvalue<1) return self.actualizedvalue+0.1;
 	return self.actualizedvalue;
 }
 operation kpi_model::SingleValue getActualizedValue(){
