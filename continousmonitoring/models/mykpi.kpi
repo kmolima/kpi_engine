@@ -1,462 +1,165 @@
 <?xml version="1.0" encoding="ASCII"?>
-<kpi:KpiModel
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:kpi="http://cs.gssi.it/kpi"
-    xmi:id="_c-LBQD0GEeqSXfxb0fTk4w"
-    subject="L'Aquila">
-  <dimension
-      xmi:id="_eldvMD0GEeqSXfxb0fTk4w"
-      name="Environment">
-    <dimension
-        xmi:id="_H64H4HTQEeqUPfKnSGBMIQ"
-        name="Environment">
-      <category
-          xmi:id="_LKhTsHTQEeqUPfKnSGBMIQ"
-          name="Public Spaces and Nature">
-        <kpi
-            xmi:id="_MauXUHTQEeqUPfKnSGBMIQ"
-            name="GA"
-            description="Green Areas"
-            unit="hectares/100.000inhabitants">
-          <value
-              xmi:id="_aKsuUHTQEeqUPfKnSGBMIQ">
-            <valuetype
-                xsi:type="kpi:AggregatedRealValue"
-                xmi:id="_cBge8HTQEeqUPfKnSGBMIQ"
-                oper="DIV"
-                actualizedvalue="49.0"
-                targetvalue="261.5">
-              <values
-                  xsi:type="kpi:RealValue"
-                  xmi:id="_eUwT8HTQEeqUPfKnSGBMIQ"
-                  parameter="_VwZGMHTQEeqUPfKnSGBMIQ"
-                  actualizedvalue="48.7234992980957"/>
-              <values
-                  xsi:type="kpi:AggregatedRealValue"
-                  xmi:id="_hPY5EHTQEeqUPfKnSGBMIQ"
-                  oper="CEN"
-                  actualizedvalue="1.0">
-                <values
-                    xsi:type="kpi:RealValue"
-                    xmi:id="_kN8U4HTQEeqUPfKnSGBMIQ"
-                    parameter="_txIfMHTMEeqUPfKnSGBMIQ"
-                    actualizedvalue="69605.0"/>
-              </values>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kpi="http://cs.gssi.it/kpi" xmlns:snapshot="http://cs.gssi.it/kpi/snapshot" xsi:schemaLocation="http://cs.gssi.it/kpi file:/home/keila/smartoceanplatform/SmartCityModeling/target/classes/it/gssi/smartcity/modeling/metamodels/kpi.ecore http://cs.gssi.it/kpi/snapshot file:/home/keila/smartoceanplatform/SmartCityModeling/target/classes/it/gssi/smartcity/modeling/metamodels/kpi.ecore#//snapshot">
+  <kpi:KpiModel xmi:id="_c-LBQD0GEeqSXfxb0fTk4w" subject="L'Aquila">
+    <dimension xmi:id="_eldvMD0GEeqSXfxb0fTk4w" name="Environment">
+      <dimension xmi:id="_H64H4HTQEeqUPfKnSGBMIQ" name="Environment">
+        <category xmi:id="_LKhTsHTQEeqUPfKnSGBMIQ" name="Public Spaces and Nature">
+          <kpi xmi:id="_MauXUHTQEeqUPfKnSGBMIQ" name="GA" description="Green Areas" unit="hectares/100.000inhabitants">
+            <value xmi:id="_aKsuUHTQEeqUPfKnSGBMIQ">
+              <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_cBge8HTQEeqUPfKnSGBMIQ" oper="DIV" actualizedvalue="49.0" targetvalue="261.5">
+                <values xsi:type="kpi:RealValue" xmi:id="_eUwT8HTQEeqUPfKnSGBMIQ" parameter="_VwZGMHTQEeqUPfKnSGBMIQ" actualizedvalue="48.7234992980957"/>
+                <values xsi:type="kpi:AggregatedRealValue" xmi:id="_hPY5EHTQEeqUPfKnSGBMIQ" oper="CEN" actualizedvalue="1.0">
+                  <values xsi:type="kpi:RealValue" xmi:id="_kN8U4HTQEeqUPfKnSGBMIQ" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
+                </values>
+              </valuetype>
+            </value>
+          </kpi>
+          <parameter xmi:id="_VwZGMHTQEeqUPfKnSGBMIQ" name="TotalGreenArea"/>
+        </category>
+        <category xmi:id="_fQzyQD0GEeqSXfxb0fTk4w" name="Air Quality">
+          <kpi xmi:id="_cFI5sEKnEeq2bOokeSHWaw" name="AP" description="Air Pollution Index" unit="">
+            <value xmi:id="_f257IEKnEeq2bOokeSHWaw">
+              <valuetype xsi:type="kpi:AggregatedRangedValue" xmi:id="_gmN4MEKnEeq2bOokeSHWaw" actualizedvalue="Bad">
+                <values xsi:type="kpi:AggregatedRealValue" xmi:id="_CzA9ID0gEeqSXfxb0fTk4w" calculatedBy="" oper="MAX" actualizedvalue="100.0">
+                  <values xsi:type="kpi:AggregatedRealValue" xmi:id="_JjyQ8IC5EeqlPqdC5vE00w" oper="MULT" actualizedvalue="100.0">
+                    <values xsi:type="kpi:StaticRealValue" xmi:id="_XUvfYIC5EeqlPqdC5vE00w" staticvalue="100.0"/>
+                    <values xsi:type="kpi:AggregatedRealValue" xmi:id="_Y7HnUIC5EeqlPqdC5vE00w" oper="DIV" actualizedvalue="1.0">
+                      <values xsi:type="kpi:RealValue" xmi:id="_gQ7-UIC5EeqlPqdC5vE00w" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="14.25"/>
+                      <values xsi:type="kpi:StaticRealValue" xmi:id="_bKBu4IC5EeqlPqdC5vE00w" staticvalue="25.0"/>
+                    </values>
+                  </values>
+                  <values xsi:type="kpi:AggregatedRealValue" xmi:id="_kjNEwIC5EeqlPqdC5vE00w" oper="MULT" actualizedvalue="0.0">
+                    <values xsi:type="kpi:StaticRealValue" xmi:id="_kjNEwYC5EeqlPqdC5vE00w" staticvalue="100.0"/>
+                    <values xsi:type="kpi:AggregatedRealValue" xmi:id="_kjNEwoC5EeqlPqdC5vE00w" oper="DIV" actualizedvalue="0.0">
+                      <values xsi:type="kpi:RealValue" xmi:id="_kjNExIC5EeqlPqdC5vE00w" parameter="_B7Qy8HWNEeqwqr-NlLgWuQ" actualizedvalue="19.229999542236328"/>
+                      <values xsi:type="kpi:StaticRealValue" xmi:id="_kjNEw4C5EeqlPqdC5vE00w" staticvalue="50.0"/>
+                    </values>
+                  </values>
+                  <values xsi:type="kpi:AggregatedRealValue" xmi:id="_ovNLIIC5EeqlPqdC5vE00w" oper="MULT" actualizedvalue="0.0">
+                    <values xsi:type="kpi:StaticRealValue" xmi:id="_ovNLIYC5EeqlPqdC5vE00w" staticvalue="100.0"/>
+                    <values xsi:type="kpi:AggregatedRealValue" xmi:id="_ovNLIoC5EeqlPqdC5vE00w" oper="DIV" actualizedvalue="0.0">
+                      <values xsi:type="kpi:RealValue" xmi:id="_ovNLJIC5EeqlPqdC5vE00w" parameter="_nSMfkEEIEeqtQNccB7KKVQ" actualizedvalue="58.599998474121094"/>
+                      <values xsi:type="kpi:StaticRealValue" xmi:id="_ovNLI4C5EeqlPqdC5vE00w" staticvalue="180.0"/>
+                    </values>
+                  </values>
+                  <values xsi:type="kpi:AggregatedRealValue" xmi:id="_pwJDsIC5EeqlPqdC5vE00w" oper="MULT" actualizedvalue="0.0">
+                    <values xsi:type="kpi:StaticRealValue" xmi:id="_pwJDsYC5EeqlPqdC5vE00w" staticvalue="100.0"/>
+                    <values xsi:type="kpi:AggregatedRealValue" xmi:id="_pwJDsoC5EeqlPqdC5vE00w" oper="DIV" actualizedvalue="0.0">
+                      <values xsi:type="kpi:RealValue" xmi:id="_pwJDtIC5EeqlPqdC5vE00w" parameter="_e_u6IEEIEeqtQNccB7KKVQ" actualizedvalue="11.989999771118164"/>
+                      <values xsi:type="kpi:StaticRealValue" xmi:id="_pwJDs4C5EeqlPqdC5vE00w" staticvalue="200.0"/>
+                    </values>
+                  </values>
+                  <values xsi:type="kpi:AggregatedRealValue" xmi:id="_qt33QIC5EeqlPqdC5vE00w" oper="MULT" actualizedvalue="0.0">
+                    <values xsi:type="kpi:StaticRealValue" xmi:id="_qt33QYC5EeqlPqdC5vE00w" staticvalue="100.0"/>
+                    <values xsi:type="kpi:AggregatedRealValue" xmi:id="_qt33QoC5EeqlPqdC5vE00w" oper="DIV" actualizedvalue="0.0">
+                      <values xsi:type="kpi:RealValue" xmi:id="_qt33RIC5EeqlPqdC5vE00w" parameter="_p22NoEEIEeqtQNccB7KKVQ" actualizedvalue="0.3799999952316284"/>
+                      <values xsi:type="kpi:StaticRealValue" xmi:id="_qt33Q4C5EeqlPqdC5vE00w" staticvalue="350.0"/>
+                    </values>
+                  </values>
+                </values>
+                <ranges xmi:id="_he-FIEKnEeq2bOokeSHWaw" rangeName="Excellent" max="29.9"/>
+                <ranges xmi:id="_mJ8mgEKnEeq2bOokeSHWaw" rangeName="Good" min="30.0" max="65.9"/>
+                <ranges xmi:id="_oCutEEKnEeq2bOokeSHWaw" rangeName="Discrete" min="66.0" max="98.9"/>
+                <ranges xmi:id="_erdqMEgiEeq2bOokeSHWaw" rangeName="Bad" min="99.0" max="149.9"/>
+                <ranges xmi:id="_e2wUMEgiEeq2bOokeSHWaw" rangeName="Terrible" min="150.0" max="400.0"/>
+              </valuetype>
+            </value>
+          </kpi>
+          <kpi xmi:id="_mm6GAOrKEeu4A9NysLouEA" name="Humidity" description="Humidity Outdoor" unit="% HU">
+            <value xmi:id="_mm6GAerKEeu4A9NysLouEA">
+              <valuetype xsi:type="kpi:RealValue" xmi:id="_mm6GAurKEeu4A9NysLouEA" parameter="_mm6GA-rKEeu4A9NysLouEA" actualizedvalue="46.790000915527344" targetvalue="100.0"/>
+            </value>
+          </kpi>
+          <parameter xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ" name="PM25"/>
+          <parameter xmi:id="_B7Qy8HWNEeqwqr-NlLgWuQ" name="PM10"/>
+          <parameter xmi:id="_e_u6IEEIEeqtQNccB7KKVQ" name="NO2"/>
+          <parameter xmi:id="_nSMfkEEIEeqtQNccB7KKVQ" name="O3"/>
+          <parameter xmi:id="_p22NoEEIEeqtQNccB7KKVQ" name="SO2"/>
+          <parameter xmi:id="_mm6GA-rKEeu4A9NysLouEA" name="Humidity"/>
+        </category>
+      </dimension>
+    </dimension>
+    <dimension xmi:id="_J8JY4HTMEeqUPfKnSGBMIQ" name="Economy">
+      <dimension xmi:id="_QmmesHTMEeqUPfKnSGBMIQ" name="Infrastructure">
+        <category xmi:id="_WnUD8HTMEeqUPfKnSGBMIQ" name="Transport">
+          <kpi xmi:id="_Z3-jcHTMEeqUPfKnSGBMIQ" name="BN" description="Bicycle Network" unit="km/100.000inhabitants">
+            <value xmi:id="_59hjkHTMEeqUPfKnSGBMIQ">
+              <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_cMH64HTNEeqUPfKnSGBMIQ" oper="DIV" actualizedvalue="86.0" targetvalue="361.5">
+                <values xsi:type="kpi:RealValue" xmi:id="_j-Ur4HTNEeqUPfKnSGBMIQ" parameter="_o929cHTMEeqUPfKnSGBMIQ" actualizedvalue="86.0"/>
+                <values xsi:type="kpi:AggregatedRealValue" xmi:id="_sliZUHTNEeqUPfKnSGBMIQ" oper="CEN" actualizedvalue="1.0">
+                  <values xsi:type="kpi:RealValue" xmi:id="_xQUtcHTNEeqUPfKnSGBMIQ" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
+                </values>
+              </valuetype>
+            </value>
+          </kpi>
+          <parameter xmi:id="_txIfMHTMEeqUPfKnSGBMIQ" name="CityPop"/>
+          <parameter xmi:id="_o929cHTMEeqUPfKnSGBMIQ" name="BykePathLength"/>
+        </category>
+      </dimension>
+    </dimension>
+    <dimension xmi:id="_sNWeEJaTEeq0XaWaWNepEA" name="Planet">
+      <category xmi:id="_2gb3cJaTEeq0XaWaWNepEA" name="Pollution and Waste">
+        <kpi xmi:id="_Np_0AJaUEeq0XaWaWNepEA" name="NO2 emissions" description="NO2 emissions" unit="ng/m3">
+          <value xmi:id="_GOZy4JaZEeq0XaWaWNepEA">
+            <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_HlDcwJaZEeq0XaWaWNepEA" oper="DIV" actualizedvalue="0.0" targetvalue="40.0">
+              <values xsi:type="kpi:RealValue" xmi:id="_XE8SMJaZEeq0XaWaWNepEA" parameter="_e_u6IEEIEeqtQNccB7KKVQ" actualizedvalue="11.989999771118164"/>
+              <values xsi:type="kpi:RealValue" xmi:id="_Y47YUJaZEeq0XaWaWNepEA" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
             </valuetype>
           </value>
         </kpi>
-        <parameter
-            xmi:id="_VwZGMHTQEeqUPfKnSGBMIQ"
-            name="TotalGreenArea"/>
+        <kpi xmi:id="_T4QGAJaUEeq0XaWaWNepEA" name="PM2.5 emissions" description="PM2.5 emissions" unit="ng/m3">
+          <value xmi:id="_aTyz0JaZEeq0XaWaWNepEA">
+            <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_bBj4wJaZEeq0XaWaWNepEA" oper="DIV" actualizedvalue="0.0" targetvalue="5.0">
+              <values xsi:type="kpi:RealValue" xmi:id="_dLtcIJaZEeq0XaWaWNepEA" parameter="_aKaJ8EEIEeqtQNccB7KKVQ" actualizedvalue="14.25"/>
+              <values xsi:type="kpi:RealValue" xmi:id="_emJZ0JaZEeq0XaWaWNepEA" parameter="_txIfMHTMEeqUPfKnSGBMIQ" actualizedvalue="69605.0"/>
+            </valuetype>
+          </value>
+        </kpi>
       </category>
-      <category
-          xmi:id="_fQzyQD0GEeqSXfxb0fTk4w"
-          name="Air Quality">
-        <kpi
-            xmi:id="_cFI5sEKnEeq2bOokeSHWaw"
-            name="AP"
-            description="Air Pollution Index"
-            unit="">
-          <value
-              xmi:id="_f257IEKnEeq2bOokeSHWaw">
-            <valuetype
-                xsi:type="kpi:AggregatedRangedValue"
-                xmi:id="_gmN4MEKnEeq2bOokeSHWaw"
-                actualizedvalue="Excellent">
-              <values
-                  xsi:type="kpi:AggregatedRealValue"
-                  xmi:id="_CzA9ID0gEeqSXfxb0fTk4w"
-                  calculatedBy=""
-                  oper="MAX"
-                  actualizedvalue="100.0">
-                <values
-                    xsi:type="kpi:AggregatedRealValue"
-                    xmi:id="_JjyQ8IC5EeqlPqdC5vE00w"
-                    oper="MULT"
-                    actualizedvalue="100.0">
-                  <values
-                      xsi:type="kpi:StaticRealValue"
-                      xmi:id="_XUvfYIC5EeqlPqdC5vE00w"
-                      staticvalue="100.0"/>
-                  <values
-                      xsi:type="kpi:AggregatedRealValue"
-                      xmi:id="_Y7HnUIC5EeqlPqdC5vE00w"
-                      oper="DIV"
-                      actualizedvalue="1.0">
-                    <values
-                        xsi:type="kpi:RealValue"
-                        xmi:id="_gQ7-UIC5EeqlPqdC5vE00w"
-                        parameter="_aKaJ8EEIEeqtQNccB7KKVQ"
-                        actualizedvalue="14.25"/>
-                    <values
-                        xsi:type="kpi:StaticRealValue"
-                        xmi:id="_bKBu4IC5EeqlPqdC5vE00w"
-                        staticvalue="25.0"/>
-                  </values>
-                </values>
-                <values
-                    xsi:type="kpi:AggregatedRealValue"
-                    xmi:id="_kjNEwIC5EeqlPqdC5vE00w"
-                    oper="MULT"
-                    actualizedvalue="0.0">
-                  <values
-                      xsi:type="kpi:StaticRealValue"
-                      xmi:id="_kjNEwYC5EeqlPqdC5vE00w"
-                      staticvalue="100.0"/>
-                  <values
-                      xsi:type="kpi:AggregatedRealValue"
-                      xmi:id="_kjNEwoC5EeqlPqdC5vE00w"
-                      oper="DIV"
-                      actualizedvalue="0.0">
-                    <values
-                        xsi:type="kpi:RealValue"
-                        xmi:id="_kjNExIC5EeqlPqdC5vE00w"
-                        parameter="_B7Qy8HWNEeqwqr-NlLgWuQ"
-                        actualizedvalue="19.229999542236328"/>
-                    <values
-                        xsi:type="kpi:StaticRealValue"
-                        xmi:id="_kjNEw4C5EeqlPqdC5vE00w"
-                        staticvalue="50.0"/>
-                  </values>
-                </values>
-                <values
-                    xsi:type="kpi:AggregatedRealValue"
-                    xmi:id="_ovNLIIC5EeqlPqdC5vE00w"
-                    oper="MULT"
-                    actualizedvalue="0.0">
-                  <values
-                      xsi:type="kpi:StaticRealValue"
-                      xmi:id="_ovNLIYC5EeqlPqdC5vE00w"
-                      staticvalue="100.0"/>
-                  <values
-                      xsi:type="kpi:AggregatedRealValue"
-                      xmi:id="_ovNLIoC5EeqlPqdC5vE00w"
-                      oper="DIV"
-                      actualizedvalue="0.0">
-                    <values
-                        xsi:type="kpi:RealValue"
-                        xmi:id="_ovNLJIC5EeqlPqdC5vE00w"
-                        parameter="_nSMfkEEIEeqtQNccB7KKVQ"
-                        actualizedvalue="58.599998474121094"/>
-                    <values
-                        xsi:type="kpi:StaticRealValue"
-                        xmi:id="_ovNLI4C5EeqlPqdC5vE00w"
-                        staticvalue="180.0"/>
-                  </values>
-                </values>
-                <values
-                    xsi:type="kpi:AggregatedRealValue"
-                    xmi:id="_pwJDsIC5EeqlPqdC5vE00w"
-                    oper="MULT"
-                    actualizedvalue="0.0">
-                  <values
-                      xsi:type="kpi:StaticRealValue"
-                      xmi:id="_pwJDsYC5EeqlPqdC5vE00w"
-                      staticvalue="100.0"/>
-                  <values
-                      xsi:type="kpi:AggregatedRealValue"
-                      xmi:id="_pwJDsoC5EeqlPqdC5vE00w"
-                      oper="DIV"
-                      actualizedvalue="0.0">
-                    <values
-                        xsi:type="kpi:RealValue"
-                        xmi:id="_pwJDtIC5EeqlPqdC5vE00w"
-                        parameter="_e_u6IEEIEeqtQNccB7KKVQ"
-                        actualizedvalue="11.989999771118164"/>
-                    <values
-                        xsi:type="kpi:StaticRealValue"
-                        xmi:id="_pwJDs4C5EeqlPqdC5vE00w"
-                        staticvalue="200.0"/>
-                  </values>
-                </values>
-                <values
-                    xsi:type="kpi:AggregatedRealValue"
-                    xmi:id="_qt33QIC5EeqlPqdC5vE00w"
-                    oper="MULT"
-                    actualizedvalue="0.0">
-                  <values
-                      xsi:type="kpi:StaticRealValue"
-                      xmi:id="_qt33QYC5EeqlPqdC5vE00w"
-                      staticvalue="100.0"/>
-                  <values
-                      xsi:type="kpi:AggregatedRealValue"
-                      xmi:id="_qt33QoC5EeqlPqdC5vE00w"
-                      oper="DIV"
-                      actualizedvalue="0.0">
-                    <values
-                        xsi:type="kpi:RealValue"
-                        xmi:id="_qt33RIC5EeqlPqdC5vE00w"
-                        parameter="_p22NoEEIEeqtQNccB7KKVQ"
-                        actualizedvalue="0.3799999952316284"/>
-                    <values
-                        xsi:type="kpi:StaticRealValue"
-                        xmi:id="_qt33Q4C5EeqlPqdC5vE00w"
-                        staticvalue="350.0"/>
-                  </values>
-                </values>
-              </values>
-              <ranges
-                  xmi:id="_he-FIEKnEeq2bOokeSHWaw"
-                  rangeName="Excellent"
-                  max="29.9"/>
-              <ranges
-                  xmi:id="_mJ8mgEKnEeq2bOokeSHWaw"
-                  rangeName="Good"
-                  min="30.0"
-                  max="65.9"/>
-              <ranges
-                  xmi:id="_oCutEEKnEeq2bOokeSHWaw"
-                  rangeName="Discrete"
-                  min="66.0"
-                  max="98.9"/>
-              <ranges
-                  xmi:id="_erdqMEgiEeq2bOokeSHWaw"
-                  rangeName="Bad"
-                  min="99.0"
-                  max="149.9"/>
-              <ranges
-                  xmi:id="_e2wUMEgiEeq2bOokeSHWaw"
-                  rangeName="Terrible"
-                  min="150.0"
-                  max="400.0"/>
+      <category xmi:id="_JgIusOrLEeu4A9NysLouEA" name="Climate Resilience">
+        <kpi xmi:id="_MojRIOrLEeu4A9NysLouEA" name="UHI" description="Urban Heat Island" unit="degrees">
+          <value xmi:id="_vRieYOrLEeu4A9NysLouEA">
+            <valuetype xsi:type="kpi:AggregatedRealValue" xmi:id="_wCFKgOrLEeu4A9NysLouEA" oper="DIFF" actualizedvalue="-7.0" targetvalue="15.0">
+              <values xsi:type="kpi:RealValue" xmi:id="_yMOt4OrLEeu4A9NysLouEA" parameter="_nKSDYOrLEeu4A9NysLouEA" actualizedvalue="22.540000915527344"/>
+              <values xsi:type="kpi:RealValue" xmi:id="_1E3H4OrLEeu4A9NysLouEA" parameter="_qDDAQOrLEeu4A9NysLouEA" actualizedvalue="30.020000457763672"/>
             </valuetype>
           </value>
         </kpi>
-        <kpi
-            xmi:id="_mm6GAOrKEeu4A9NysLouEA"
-            name="Humidity"
-            description="Humidity Outdoor"
-            unit="% HU">
-          <value
-              xmi:id="_mm6GAerKEeu4A9NysLouEA">
-            <valuetype
-                xsi:type="kpi:RealValue"
-                xmi:id="_mm6GAurKEeu4A9NysLouEA"
-                parameter="_mm6GA-rKEeu4A9NysLouEA"
-                actualizedvalue="41.5"
-                targetvalue="100.0"/>
-          </value>
-        </kpi>
-        <parameter
-            xmi:id="_aKaJ8EEIEeqtQNccB7KKVQ"
-            name="PM25"/>
-        <parameter
-            xmi:id="_B7Qy8HWNEeqwqr-NlLgWuQ"
-            name="PM10"/>
-        <parameter
-            xmi:id="_e_u6IEEIEeqtQNccB7KKVQ"
-            name="NO2"/>
-        <parameter
-            xmi:id="_nSMfkEEIEeqtQNccB7KKVQ"
-            name="O3"/>
-        <parameter
-            xmi:id="_p22NoEEIEeqtQNccB7KKVQ"
-            name="SO2"/>
-        <parameter
-            xmi:id="_mm6GA-rKEeu4A9NysLouEA"
-            name="Humidity"/>
+        <parameter xmi:id="_qDDAQOrLEeu4A9NysLouEA" name="CountrysideTemperature"/>
+        <parameter xmi:id="_nKSDYOrLEeu4A9NysLouEA" name="CityTemperature"/>
       </category>
     </dimension>
-  </dimension>
-  <dimension
-      xmi:id="_J8JY4HTMEeqUPfKnSGBMIQ"
-      name="Economy">
-    <dimension
-        xmi:id="_QmmesHTMEeqUPfKnSGBMIQ"
-        name="Infrastructure">
-      <category
-          xmi:id="_WnUD8HTMEeqUPfKnSGBMIQ"
-          name="Transport">
-        <kpi
-            xmi:id="_Z3-jcHTMEeqUPfKnSGBMIQ"
-            name="BN"
-            description="Bicycle Network"
-            unit="km/100.000inhabitants">
-          <value
-              xmi:id="_59hjkHTMEeqUPfKnSGBMIQ">
-            <valuetype
-                xsi:type="kpi:AggregatedRealValue"
-                xmi:id="_cMH64HTNEeqUPfKnSGBMIQ"
-                oper="DIV"
-                actualizedvalue="86.0"
-                targetvalue="361.5">
-              <values
-                  xsi:type="kpi:RealValue"
-                  xmi:id="_j-Ur4HTNEeqUPfKnSGBMIQ"
-                  parameter="_o929cHTMEeqUPfKnSGBMIQ"
-                  actualizedvalue="86.0"/>
-              <values
-                  xsi:type="kpi:AggregatedRealValue"
-                  xmi:id="_sliZUHTNEeqUPfKnSGBMIQ"
-                  oper="CEN"
-                  actualizedvalue="1.0">
-                <values
-                    xsi:type="kpi:RealValue"
-                    xmi:id="_xQUtcHTNEeqUPfKnSGBMIQ"
-                    parameter="_txIfMHTMEeqUPfKnSGBMIQ"
-                    actualizedvalue="69605.0"/>
-              </values>
+    <dimension xmi:id="_g27AMJnnEeqb6_1e3fZsNw" name="Digital Competencies">
+      <category xmi:id="_i9MwMJnnEeqb6_1e3fZsNw" name="Competencies">
+        <kpi xmi:id="_rhdQQJnnEeqb6_1e3fZsNw" name="MA" description="# mobile applications" unit="units">
+          <value xmi:id="_3gWEIJnnEeqb6_1e3fZsNw">
+            <valuetype xsi:type="kpi:AggregatedIntegerValue" xmi:id="_4vO5IJnnEeqb6_1e3fZsNw" oper="SUM" actualizedvalue="13" targetvalue="100">
+              <values xsi:type="kpi:IntegerValue" xmi:id="__1DFQJnnEeqb6_1e3fZsNw" parameter="_8OeAIJnnEeqb6_1e3fZsNw" actualizedvalue="13"/>
             </valuetype>
           </value>
         </kpi>
-        <parameter
-            xmi:id="_txIfMHTMEeqUPfKnSGBMIQ"
-            name="CityPop"/>
-        <parameter
-            xmi:id="_o929cHTMEeqUPfKnSGBMIQ"
-            name="BykePathLength"/>
+        <parameter xmi:id="_8OeAIJnnEeqb6_1e3fZsNw" name="MobileApplicationsPS"/>
       </category>
     </dimension>
-  </dimension>
-  <dimension
-      xmi:id="_sNWeEJaTEeq0XaWaWNepEA"
-      name="Planet">
-    <category
-        xmi:id="_2gb3cJaTEeq0XaWaWNepEA"
-        name="Pollution and Waste">
-      <kpi xmi:id="_Np_0AJaUEeq0XaWaWNepEA"
-          name="NO2 emissions"
-          description="NO2 emissions"
-          unit="ng/m3">
-        <value
-            xmi:id="_GOZy4JaZEeq0XaWaWNepEA">
-          <valuetype
-              xsi:type="kpi:AggregatedRealValue"
-              xmi:id="_HlDcwJaZEeq0XaWaWNepEA"
-              oper="DIV"
-              actualizedvalue="0.0"
-              targetvalue="40.0">
-            <values
-                xsi:type="kpi:RealValue"
-                xmi:id="_XE8SMJaZEeq0XaWaWNepEA"
-                parameter="_e_u6IEEIEeqtQNccB7KKVQ"
-                actualizedvalue="11.989999771118164"/>
-            <values
-                xsi:type="kpi:RealValue"
-                xmi:id="_Y47YUJaZEeq0XaWaWNepEA"
-                parameter="_txIfMHTMEeqUPfKnSGBMIQ"
-                actualizedvalue="69605.0"/>
-          </valuetype>
-        </value>
-      </kpi>
-      <kpi xmi:id="_T4QGAJaUEeq0XaWaWNepEA"
-          name="PM2.5 emissions"
-          description="PM2.5 emissions"
-          unit="ng/m3">
-        <value
-            xmi:id="_aTyz0JaZEeq0XaWaWNepEA">
-          <valuetype
-              xsi:type="kpi:AggregatedRealValue"
-              xmi:id="_bBj4wJaZEeq0XaWaWNepEA"
-              oper="DIV"
-              actualizedvalue="0.0"
-              targetvalue="5.0">
-            <values
-                xsi:type="kpi:RealValue"
-                xmi:id="_dLtcIJaZEeq0XaWaWNepEA"
-                parameter="_aKaJ8EEIEeqtQNccB7KKVQ"
-                actualizedvalue="14.25"/>
-            <values
-                xsi:type="kpi:RealValue"
-                xmi:id="_emJZ0JaZEeq0XaWaWNepEA"
-                parameter="_txIfMHTMEeqUPfKnSGBMIQ"
-                actualizedvalue="69605.0"/>
-          </valuetype>
-        </value>
-      </kpi>
-    </category>
-    <category
-        xmi:id="_JgIusOrLEeu4A9NysLouEA"
-        name="Climate Resilience">
-      <kpi xmi:id="_MojRIOrLEeu4A9NysLouEA"
-          name="UHI"
-          description="Urban Heat Island"
-          unit="degrees">
-        <value
-            xmi:id="_vRieYOrLEeu4A9NysLouEA">
-          <valuetype
-              xsi:type="kpi:AggregatedRealValue"
-              xmi:id="_wCFKgOrLEeu4A9NysLouEA"
-              oper="DIFF"
-              actualizedvalue="3.5"
-              targetvalue="15.0">
-            <values
-                xsi:type="kpi:RealValue"
-                xmi:id="_yMOt4OrLEeu4A9NysLouEA"
-                parameter="_nKSDYOrLEeu4A9NysLouEA"
-                actualizedvalue="27.0"/>
-            <values
-                xsi:type="kpi:RealValue"
-                xmi:id="_1E3H4OrLEeu4A9NysLouEA"
-                parameter="_qDDAQOrLEeu4A9NysLouEA"
-                actualizedvalue="30.020000457763672"/>
-          </valuetype>
-        </value>
-      </kpi>
-      <parameter
-          xmi:id="_qDDAQOrLEeu4A9NysLouEA"
-          name="CountrysideTemperature"/>
-      <parameter
-          xmi:id="_nKSDYOrLEeu4A9NysLouEA"
-          name="CityTemperature"/>
-    </category>
-  </dimension>
-  <dimension
-      xmi:id="_g27AMJnnEeqb6_1e3fZsNw"
-      name="Digital Competencies">
-    <category
-        xmi:id="_i9MwMJnnEeqb6_1e3fZsNw"
-        name="Competencies">
-      <kpi xmi:id="_rhdQQJnnEeqb6_1e3fZsNw"
-          name="MA"
-          description="# mobile applications"
-          unit="units">
-        <value
-            xmi:id="_3gWEIJnnEeqb6_1e3fZsNw">
-          <valuetype
-              xsi:type="kpi:AggregatedIntegerValue"
-              xmi:id="_4vO5IJnnEeqb6_1e3fZsNw"
-              oper="SUM"
-              actualizedvalue="13"
-              targetvalue="100">
-            <values
-                xsi:type="kpi:IntegerValue"
-                xmi:id="__1DFQJnnEeqb6_1e3fZsNw"
-                parameter="_8OeAIJnnEeqb6_1e3fZsNw"
-                actualizedvalue="13"/>
-          </valuetype>
-        </value>
-      </kpi>
-      <parameter
-          xmi:id="_8OeAIJnnEeqb6_1e3fZsNw"
-          name="MobileApplicationsPS"/>
-    </category>
-  </dimension>
-  <dimension
-      xmi:id="_UkskIJnoEeqb6_1e3fZsNw"
-      name="Infrastructure">
-    <category
-        xmi:id="_fHEWsJnoEeqb6_1e3fZsNw"
-        name="Digital Infrastructure">
-      <kpi xmi:id="_sFvMkJnoEeqb6_1e3fZsNw"
-          name="TM"
-          description="Availability of Transport Monitoring"
-          unit="yes/no">
-        <value
-            xmi:id="_zmF_oJnoEeqb6_1e3fZsNw">
-          <valuetype
-              xsi:type="kpi:BoolValue"
-              xmi:id="_1okNsJnoEeqb6_1e3fZsNw"
-              parameter="_3tTFkJnoEeqb6_1e3fZsNw"
-              actualizedvalue="true"
-              targetvalue="true"/>
-        </value>
-      </kpi>
-      <parameter
-          xmi:id="_3tTFkJnoEeqb6_1e3fZsNw"
-          name="RealtimeTransportMonitoring"/>
-    </category>
-  </dimension>
-</kpi:KpiModel>
+    <dimension xmi:id="_UkskIJnoEeqb6_1e3fZsNw" name="Infrastructure">
+      <category xmi:id="_fHEWsJnoEeqb6_1e3fZsNw" name="Digital Infrastructure">
+        <kpi xmi:id="_sFvMkJnoEeqb6_1e3fZsNw" name="TM" description="Availability of Transport Monitoring" unit="yes/no">
+          <value xmi:id="_zmF_oJnoEeqb6_1e3fZsNw">
+            <valuetype xsi:type="kpi:BoolValue" xmi:id="_1okNsJnoEeqb6_1e3fZsNw" parameter="_3tTFkJnoEeqb6_1e3fZsNw" actualizedvalue="true" targetvalue="true"/>
+          </value>
+        </kpi>
+        <parameter xmi:id="_3tTFkJnoEeqb6_1e3fZsNw" name="RealtimeTransportMonitoring"/>
+      </category>
+    </dimension>
+  </kpi:KpiModel>
+  <snapshot:State subject="L'Aquila" snapshots="/2 /3 /4 /5 /6 /7 /8 /9 /10"/>
+  <snapshot:Result datetime="1671196764484" dimension="Environment" state="/1"/>
+  <snapshot:Result datetime="1671196764530" dimension="Environment" state="/1"/>
+  <snapshot:Result datetime="1671196765276" dimension="Environment" state="/1"/>
+  <snapshot:Result datetime="1671196765278" dimension="Infrastructure" state="/1"/>
+  <snapshot:Result datetime="1671196765286" dimension="Planet" state="/1"/>
+  <snapshot:Result datetime="1671196765289" dimension="Planet" state="/1"/>
+  <snapshot:Result datetime="1671196765292" dimension="Planet" state="/1"/>
+  <snapshot:Result datetime="1671196765294" dimension="Digital Competencies" state="/1"/>
+  <snapshot:Result datetime="1671196765302" dimension="Infrastructure" state="/1"/>
+</xmi:XMI>

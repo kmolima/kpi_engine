@@ -1,0 +1,103 @@
+
+
+operation smartcity!SmartCity get(kpi: kpi!Kpi): Any{
+
+return kpi.value.valuetype.get(self);
+
+}
+
+operation kpi!RealValue get(city: smartcity!SmartCity): Any{
+if(city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).size()==0) ("Error: Undefined Parameter "+self.parameter.name+" in SC model").println();
+self.actualizedvalue = city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first.asReal();
+
+return city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first.asReal();
+	
+}
+
+operation kpi!IntegerValue get(city: smartcity!SmartCity): Any{
+if(city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).size()==0) ("Error: Undefined Parameter "+self.parameter.name+" in SC model").println();
+self.actualizedvalue=city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first.asInteger();
+
+return city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first.asInteger();
+	
+}
+
+operation kpi!BoolValue get(city: smartcity!SmartCity): Any{
+if(city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).size()==0) ("Error: Undefined Parameter "+self.parameter.name+" in SC model").println();
+self.actualizedvalue=city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first.asBoolean();
+
+return city.data.collect(dat|dat.data).flatten().select(d|d.name==self.parameter.name).value.first.asBoolean();
+	
+}
+
+
+operation kpi!StaticRealValue get(city: smartcity!SmartCity): Any{
+if(not self.staticvalue.isDefined()) "Error: Undefined Parameter in SC model".println();
+	return self.staticvalue.asReal();
+	
+}
+
+/*
+operation kpi!AggregatedValue get(city: smartcity!SmartCity): Any{
+	self.actualizedvalue=self.values.get(city, self.oper).round().asReal();
+	return self.values.get(city, self.oper);
+
+}*/
+
+operation kpi!AggregatedRealValue get(city: smartcity!SmartCity): Any{
+	self.actualizedvalue=self.values.get(city, self.oper).round().asReal();
+	return self.values.get(city, self.oper).round().asReal();
+
+}
+
+operation kpi!AggregatedIntegerValue get(city: smartcity!SmartCity): Any{
+	self.actualizedvalue=self.values.get(city, self.oper).asInteger();
+	return self.values.get(city, self.oper).asInteger();
+
+}
+
+operation kpi!AggregatedBoolValue get(city: smartcity!SmartCity): Any{
+	self.actualizedvalue=self.values.get(city, self.oper).asBoolean();
+	return self.values.get(city, self.oper).asBoolean();
+
+}
+
+
+operation kpi!AggregatedRangedValue get(city: smartcity!SmartCity): Any{
+if(self.ranges.size()==0)"Error: Undefined Ranges in SC model".println();
+	self.actualizedvalue = self.ranges.select(r|r.min <= self.values.get(city, self.oper).first and self.values.get(city, self.oper).first <= r.max).rangeName.first;
+	return self.ranges.select(r|r.min <= self.values.get(city, self.oper).first and self.values.get(city, self.oper).first <= r.max).rangeName.first;
+
+}
+
+operation OrderedSet<kpi!ValueType> get(city: smartcity!SmartCity, oper: kpi!EEnumLiteral): Any{
+
+	return self.collect(s|s.get(city)).getop(oper);
+
+}
+
+operation Any getop(op: kpi!EEnumLiteral): Any{
+
+
+switch (op) {
+case kpi!Operation#GET: return self;
+case kpi!Operation#SUM: return self.sum();
+case kpi!Operation#DIFF: return self.diff();
+case kpi!Operation#AVG: return self.sum()/self.size();
+case kpi!Operation#MIN: return self.min();
+case kpi!Operation#MAX: return self.max();
+case kpi!Operation#DIV: return self.get(0).ifUndefined(0)/self.get(1).ifUndefined(0);
+case kpi!Operation#MULT: return self.get(0)*self.get(1);
+case kpi!Operation#CEN: if(self.get(0) >= 100000) return self.get(0) / 100000; else return self.get(0) / self.get(0);
+default : "No operation provided ".println(); }
+}
+
+operation Sequence diff(): Real{
+
+return (self.first()-self.second()).asReal();
+
+}
+
+
+
+

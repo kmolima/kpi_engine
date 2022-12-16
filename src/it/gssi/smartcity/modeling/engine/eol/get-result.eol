@@ -1,0 +1,55 @@
+// Replaced kpi_model:: to kpi! (input model)
+
+operation kpi!Value getValue(){
+
+	return self.valuetype.getActualizedValue();
+}
+operation kpi!Value getTargetValue(){
+	return self.valuetype.getTargetValue();
+
+}
+
+operation kpi!AggregatedValue getActualizedValue(){
+	if(self.actualizedvalue<1)
+	("Got value below 1: "+self.actualizedvalue).println(); 
+	//return self.actualizedvalue+0.1;//Why ??
+	return self.actualizedvalue;
+}
+operation kpi!SingleValue getActualizedValue(){
+	return self.actualizedvalue;
+}
+
+operation kpi!AggregatedRangedValue getTargetValue(){
+	return self.ranges.rangeName;
+}
+
+operation kpi!AggregatedIntegerValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!AggregatedRealValue getTargetValue(){
+	return self.targetvalue;
+}
+operation kpi!SingleValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!Category getSubject(): String{
+	return self.eContainer.getKPIModel().subject;
+}
+operation kpi!Dimension getSubject(): Any{
+	return self.getKPIModel().subject;
+}
+
+operation kpi!Dimension getKPIModel() {
+
+	if(self.eContainer.isTypeOf(kpi!KpiModel)){
+	
+		return self.eContainer;
+	
+	}else if(self.eContainer.isTypeOf(kpi!Dimension)){
+	
+		return self.eContainer.getKPIModel();
+	
+	}
+}

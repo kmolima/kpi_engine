@@ -1,0 +1,54 @@
+
+//Compares a state instance subject, dimension, categories and its KPI (name and units)
+operation kpi!State comparable(another_state: kpi!State): Boolean {
+
+	if(self.subject == another_state.subject){
+		for(result in self.snapshots){
+		
+		}
+	}
+		
+	return false;
+}
+
+//
+operation kpi!State getTrend(another_state: kpi!State): Any {
+	var trend: kpi!Trend;
+	
+	
+	return trend;
+}
+
+operation kpi!Kpi compare(another_kpi: kpi!Kpi): Integer {
+
+return 0;
+}
+
+
+// Build recursirvely name with dimension.dimension... 
+operation kpi!Kpi getDimStr(): String {
+
+	var dimension = new String();
+	var grandpa = self.eContainer.eContainer;
+	
+	if(grandpa.isTypeOf(kpi!Dimension))
+		dimension =  grandpa.name;
+		
+	if(self.eContainer.isTypeOf(kpi!Dimension))
+		return self.eContainer.buildDimStr(dimension);
+
+	return dimension;
+
+}
+
+//Is called by Dimension elements
+operation kpi!Dimension buildDimStr(prefix: String): String {
+
+	var dimension = prefix.concat(self.name);
+	
+	if(self.eContainer.isTypeOf(kpi!Dimension))
+		return self.eContainer.buildDimStr(dimension);		
+
+	return dimesion;
+
+}

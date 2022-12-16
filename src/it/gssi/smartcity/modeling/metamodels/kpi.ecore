@@ -119,4 +119,34 @@
     <eLiterals name="MULT" value="10"/>
     <eLiterals name="CEN" value="11"/>
   </eClassifiers>
+  <eSubpackages name="snapshot" nsURI="http://cs.gssi.it/kpi/snapshot" nsPrefix="snapshot">
+    <eClassifiers xsi:type="ecore:EClass" name="State">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="subject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="snapshots" lowerBound="1"
+          upperBound="-1" eType="#//snapshot/Result" eOpposite="#//snapshot/Result/state"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Result">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
+          eType="#//Kpi"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="datetime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimension" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//trend/Tendency"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1"
+          eType="#//snapshot/State" eOpposite="#//snapshot/State/snapshots"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="trend" nsURI="http://cs.gssi.it/kpi/trend" nsPrefix="trend">
+    <eClassifiers xsi:type="ecore:EEnum" name="TendencyType">
+      <eLiterals name="Increasing" value="1"/>
+      <eLiterals name="Decreasing" value="-1"/>
+      <eLiterals name="Constant"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Tendency">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//trend/TendencyType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateOfChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

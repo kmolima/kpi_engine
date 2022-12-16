@@ -9,28 +9,11 @@
  ******************************************************************************/
 package it.gssi.smartcity.modeling.engine;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.logging.Logger;
 
-import javax.swing.text.html.HTMLDocument.RunElement;
-
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.epsilon.common.util.StringProperties;
-import org.eclipse.epsilon.eol.EolModule;
-import org.eclipse.epsilon.eol.launch.EolRunConfiguration;
 import org.eclipse.epsilon.emc.emf.EmfModel;
-import org.apache.commons.io.FileUtils;
+import org.eclipse.epsilon.eol.EolModule;
 
 /**
  * This class is responsible for launching the evaluation of a given smart city model on top a given kpi model
@@ -82,10 +65,10 @@ public class EvaluationEngine {
 		scmodel.load();
 				
 		EolModule module = new EolModule();
-				module.parse(EvaluationEngine.class.getResource("eol/main.eol").toURI());
+				module.parse(EvaluationEngine.class.getResource("eol/get-state.eol").toURI());
 				module.getContext().getModelRepository().addModel(kpimodel);
 				module.getContext().getModelRepository().addModel(scmodel);
-				module.execute();
+		Object result =	module.execute();
 				
 				kpimodel.dispose();
 				
