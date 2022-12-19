@@ -12,11 +12,11 @@ for (smartc in smartcity!SmartCity.all) {
 	for (mykpi in kpi!Kpi.all) { 
 	
 		mykpi.description.println();
-		("KPI Before Evaluation: "+mykpi.value.getValue()+" unit: "+mykpi.unit+" Target: "+mykpi.value.getTargetValue()).println();
 		
 		var result = new kpi!Result;
 		var timestamp = Native("java.time.Instant"); //TODO replace by timestamp in data?
 		result.datetime = timestamp.now().toEpochMilli();
+		result.eval_result = mykpi;
 		result.dimension = mykpi.getDimStr();
 		result.state = state;
 		("Subject:"+result.state.subject+" | Category: "+mykpi.category.name+" | Dimension: "+result.dimension).println();

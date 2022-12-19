@@ -31,24 +31,27 @@ operation kpi!Kpi getDimStr(): String {
 	var dimension = new String();
 	var grandpa = self.eContainer.eContainer;
 	
+	
 	if(grandpa.isTypeOf(kpi!Dimension))
 		dimension =  grandpa.name;
-		
-	if(self.eContainer.isTypeOf(kpi!Dimension))
-		return self.eContainer.buildDimStr(dimension);
+				
+	if(grandpa.eContainer.isTypeOf(kpi!Dimension))
+		return grandpa.eContainer.buildDimStr(dimension);
 
 	return dimension;
 
 }
 
 //Is called by Dimension elements
-operation kpi!Dimension buildDimStr(prefix: String): String {
+operation kpi!Dimension buildDimStr(suffix: String): String {
 
-	var dimension = prefix.concat(self.name);
+	var dimension = new String();
+	dimension = self.name.concat(".");
+	dimension = dimension.concat(suffix);
 	
 	if(self.eContainer.isTypeOf(kpi!Dimension))
 		return self.eContainer.buildDimStr(dimension);		
 
-	return dimesion;
+	return dimension;
 
 }
