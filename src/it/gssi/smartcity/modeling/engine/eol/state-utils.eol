@@ -1,29 +1,27 @@
 
-//Compares a state instance subject, dimension, categories and its KPI (name and units)
-operation kpi!State comparable(another_state: kpi!State): Boolean {
+import "compare.eol";
 
-	if(self.subject == another_state.subject){
-		for(result in self.snapshots){
-		
-		}
-	}
-		
-	return false;
-}
 
-//
-operation kpi!State getTrend(another_state: kpi!State): Any {
-	var trend: kpi!Trend;
+operation kpi!Result getTrend(baseline: kpi!Result): Any {
+	var trend: kpi!Tendency;
 	
+	if(not self.comparable(baseline))
+		return trend;
+		
+	trend.period = (self.datetime - baseline.datetime).abs();
+	
+	
+	trend.rateOfChange = self.eval_result.compare(baseline.eval_result);
+	
+	if(trend.rateOfChange < 1.0)
+		trend.trend = kpi!TendencyType#Decreasing;
+	else if (trend.rateOfChange == 1.0)
+		trend.trend = kpi!TendencyType#Constant;
+	else if (trend.rateOfChange > 1.0)
+		trend.trend = kpi!TendencyType#Increasing;	
 	
 	return trend;
 }
-
-operation kpi!Kpi compare(another_kpi: kpi!Kpi): Integer {
-
-return 0;
-}
-
 
 // Build recursirvely name with dimension.dimension... 
 operation kpi!Kpi getDimStr(): String {

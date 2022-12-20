@@ -1,0 +1,81 @@
+//Compares a state instance subject, dimension, categories and its KPI (name and units)
+operation kpi!State comparable(baseline: kpi!State): Boolean {
+
+	if(self.subject == baseline.subject){
+		for(result in self.snapshots){
+			//TODO optimize search of result in one state to the other
+		}
+	}
+		
+	return false;
+}
+
+//Compares a result instance dimensions and delegates to kpis
+operation kpi!Result comparable(baseline: kpi!Result): Boolean {
+
+	if(self.dimension != baseline.dimension)	
+		return false;
+		
+	return self.eval_result.comparable(baseline.eval_result);
+}
+
+//Compares a kpi instance categories and its KPI (name, category, and units)
+operation kpi!Kpi comparable(baseline: kpi!Kpi): Boolean {
+
+	if((self.name != baseline.name))
+		return false;
+	
+	//ensure valuetypes match
+	if(self.valuetype.type() != baseline.valuetype.type())	
+		return false;
+		
+	if(self.category != baseline.category)
+		return false;
+		
+	if((self.unit != "" and baseline.unit != "") and (self.unit != baseline.unit))
+		return false;
+		
+	return true;
+}
+
+//Comparative trend analysis in percentage
+operation kpi!Kpi compare(baseline: kpi!Kpi): Real {
+
+	if(not self.comparable(baseline)) //TODO assumption?
+		return 0.0;
+		
+		return self.value.valuetype.compare(self.value.getValue(),baseline.value.getValue());
+} 
+
+operation kpi!BoolValue compare(snapshot: Boolean, baseline:Boolean): Integer{
+	
+	return self.actualizedvalue;
+}
+
+operation kpi!RealValue getTargetValue(snapshot: Real, baseline:Real){
+	return self.ranges.rangeName;
+}
+
+operation kpi!IntegerValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!AggregatedRealValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!AggregatedIntegerValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!AggregatedStringValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!AggregatedBoolValue getTargetValue(){
+	return self.targetvalue;
+}
+
+operation kpi!AggregatedRangedValue getTargetValue(){
+	return self.targetvalue;
+}

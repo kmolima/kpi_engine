@@ -20,8 +20,8 @@ for (smartc in smartcity!SmartCity.all) {
 		result.dimension = mykpi.getDimStr();
 		result.state = state;
 		("Subject:"+result.state.subject+" | Category: "+mykpi.category.name+" | Dimension: "+result.dimension).println();
-		("KPI Evaluation: "+mykpi.value.getValue()+" unit: "+mykpi.unit+" Target: "+mykpi.value.getTargetValue()).println();
-		(smartc.collect(sc|sc.get(mykpi)).first+" "+mykpi.unit).println();
+		(smartc.collect(sc|sc.get(mykpi))+" "+mykpi.unit).println();
+		("KPI Evaluation: "+mykpi.value.getValue()+" unit: "+mykpi.unit).println();
 	}
 		states.add(state);
 }
