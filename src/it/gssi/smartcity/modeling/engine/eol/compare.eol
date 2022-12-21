@@ -38,44 +38,43 @@ operation kpi!Kpi comparable(baseline: kpi!Kpi): Boolean {
 	return true;
 }
 
-//Comparative trend analysis in percentage
+//Comparative trend analysis in percentage - the rateOfChange
 operation kpi!Kpi compare(baseline: kpi!Kpi): Real {
 
-	if(not self.comparable(baseline)) //TODO assumption?
-		return 0.0;
-		
+	//Assumption: self.comparable(baseline) = true
 		return self.value.valuetype.compare(self.value.getValue(),baseline.value.getValue());
-} 
-
-operation kpi!BoolValue compare(snapshot: Boolean, baseline:Boolean): Integer{
-	
-	return self.actualizedvalue;
 }
 
-operation kpi!RealValue getTargetValue(snapshot: Real, baseline:Real){
-	return self.ranges.rangeName;
+operation kpi!RealValue compare(snapshot: Real, baseline:Real): Real{
+//TODO
+	return 0;
 }
 
-operation kpi!IntegerValue getTargetValue(){
-	return self.targetvalue;
+operation kpi!IntegerValue compare(snapshot: Integer, baseline:Integer): Real{
+//TODO
+	return 0;
 }
 
-operation kpi!AggregatedRealValue getTargetValue(){
-	return self.targetvalue;
+operation kpi!AggregatedRealValue compare(snapshot: Any, baseline:Any): Real{
+//TODO
+	return 0;
 }
 
-operation kpi!AggregatedIntegerValue getTargetValue(){
-	return self.targetvalue;
+operation kpi!AggregatedIntegerValue compare(snapshot: Any, baseline:Any): Real{
+//TODO
+	return 0;
 }
 
-operation kpi!AggregatedStringValue getTargetValue(){
-	return self.targetvalue;
+operation kpi!AggregatedStringValue compare(snapshot: String, baseline:String): Real{
+//TODO
+	return 0;
 }
 
-operation kpi!AggregatedBoolValue getTargetValue(){
-	return self.targetvalue;
+operation kpi!AggregatedBoolValue compare(){
+//TODO
+	return 0;
 }
 
-operation kpi!AggregatedRangedValue getTargetValue(){
-	return self.targetvalue;
+operation kpi!AggregatedRangedValue compare(){
+	return 0;
 }
