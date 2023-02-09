@@ -1,0 +1,59 @@
+CMEMS Product Quality Dashboard
+
+source: https://pqd.mercator-ocean.fr/
+
+Dimension: Blue Ocean
+
+  Category: Copernicus Marine Monitoring and Forecasting Capacity: Global [the region is a parameter, as well as the measurement parameter (ex: temperature)]
+
+  KP1: Daily number of incoming satellite observations
+
+  KP2: Daily number of incoming in situ observations
+
+  KP3: Forecast quality for sea surface temperature vs drifting buoys
+  
+  
+  Category: Validation Expert Metrics - Quality information for product [the product is a parameter, as well as the region, depth, and type of dataset]
+  
+  KP1: Estimated Accuracy Numbers Cartography
+
+  KP2: Estimated Accuracy Numbers time series
+
+  
+
+
+Dimension: Green Ocean
+
+Category: Copernicus Marine Monitoring and Forecasting Capacity: Global [the region is a parameter, as well as the measurement parameter (ex: temperature)]
+
+  KP1: Daily number of incoming satellite observations
+
+  KP2: Daily number of incoming in situ observations
+
+  KP3: Forecast uncertainty for chlorophyll concentrations vs satellite observations
+  
+  
+  Category: Validation Expert Metrics - Quality information for product [the product is a parameter, as well as the region, depth, and type of dataset]
+  
+  KP1: Estimated Accuracy Numbers Cartography
+
+  KP2: Estimated Accuracy Numbers time series
+
+
+Dimension: White Ocean
+
+Category: Copernicus Marine Monitoring and Forecasting Capacity: Global [the region is a parameter, as well as the measurement parameter (ex: temperature)]
+
+  KP1: Daily number of incoming satellite observations
+
+  KP2: Daily number of incoming in situ observations
+
+  KP3: Forecast uncertainty for sea ice concentration vs satellite observations
+  
+  
+  Category: Validation Expert Metrics - Quality information for product [the product is a parameter, as well as the region, depth, and type of dataset]
+  
+  KP1: Estimated Accuracy Numbers Cartography
+
+  KP2: Estimated Accuracy Numbers time series
+
