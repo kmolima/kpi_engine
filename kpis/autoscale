@@ -1,0 +1,10 @@
+Autoscale best practices 
+source: Azure (https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-best-practices)
+
+KP1:
+
+    If CPU > 90%, scale-out by 1
+    If Memory > 90%, scale-out by 1
+    If CPU < 45%, scale-in by 1
+    
+    (alternative: check rate of change)
