@@ -26,7 +26,7 @@ operation kpi!Kpi comparable(baseline: kpi!Kpi): Boolean {
 		return false;
 	
 	//ensure valuetypes match
-	if(self.valuetype.type() != baseline.valuetype.type())	
+	if(self.value.valuetype.type() != baseline.value.valuetype.type())	
 		return false;
 		
 	if(self.category != baseline.category)
@@ -41,18 +41,26 @@ operation kpi!Kpi comparable(baseline: kpi!Kpi): Boolean {
 //Comparative trend analysis in percentage - the rateOfChange
 operation kpi!Kpi compare(baseline: kpi!Kpi): Real {
 
+
+	// If values are form type string or boolean, use their weight in the range of values
+	if((self.value.valuetype().type() == kpi!StringValue) or (self.value.valuetype().type() == kpi!BoolValue))
+		return self.value.valuetype.compare(self.value.valuetype.weight,baseline.value.valuetype.weight);
+
 	//Assumption: self.comparable(baseline) = true
 		return self.value.valuetype.compare(self.value.getValue(),baseline.value.getValue());
 }
 
+// Using this formula for trend calculation:
+// Trend Percentage = ((Current Period Value - Base Period Value) / Base Period Value) * 100
 operation kpi!RealValue compare(snapshot: Real, baseline:Real): Real{
-//TODO
-	return 0;
+
+	var result = ((snapshot - baseline) / baseline) * 100.0;
+	return result;
 }
 
 operation kpi!IntegerValue compare(snapshot: Integer, baseline:Integer): Real{
-//TODO
-	return 0;
+    var result = ((snapshot - baseline) / baseline) * 100.0;
+	return result;
 }
 
 operation kpi!AggregatedRealValue compare(snapshot: Any, baseline:Any): Real{
@@ -61,16 +69,6 @@ operation kpi!AggregatedRealValue compare(snapshot: Any, baseline:Any): Real{
 }
 
 operation kpi!AggregatedIntegerValue compare(snapshot: Any, baseline:Any): Real{
-//TODO
-	return 0;
-}
-
-operation kpi!AggregatedStringValue compare(snapshot: String, baseline:String): Real{
-//TODO
-	return 0;
-}
-
-operation kpi!AggregatedBoolValue compare(){
 //TODO
 	return 0;
 }

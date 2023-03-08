@@ -11,7 +11,7 @@ operation kpi!Value getTargetValue(){
 
 operation kpi!AggregatedValue getActualizedValue(){
 	//if(self.actualizedvalue<1)
-	//return self.actualizedvalue+0.1; //Why??
+	//return self.actualizedvalue+0.1; //Why?? - legacy code
 	return self.actualizedvalue;
 }
 

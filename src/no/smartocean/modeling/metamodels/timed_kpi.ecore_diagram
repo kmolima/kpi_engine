@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmi:id="_E0ik4KknEe2ITKyPGcIEwg" type="Ecore" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_E09boKknEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0-CsKknEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-CsaknEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-CsqknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-Cs6knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-CtKknEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-CtaknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-CtqknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-Ct6knEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-CuKknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-CuaknEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//KpiModel"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E09boaknEe2ITKyPGcIEwg" y="96"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0-CuqknEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0-CvKknEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-CvaknEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-CvqknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-Cv6knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-CwKknEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-CwaknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-CwqknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-Cw6knEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-CxKknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-CxaknEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//Dimension"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0-Cu6knEe2ITKyPGcIEwg" x="5" y="283"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0-C0qknEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0-C1KknEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-C1aknEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-C1qknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-C16knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-C2KknEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-C2aknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-C2qknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-C26knEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-C3KknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-C3aknEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//Kpi"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0-C06knEe2ITKyPGcIEwg" x="-12" y="492"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0-qAqknEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0-qBKknEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-qBaknEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-qBqknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-qB6knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-qCKknEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-qCaknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-qCqknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0-qC6knEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0-qDKknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0-qDaknEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//RealValue"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0-qA6knEe2ITKyPGcIEwg" x="780" y="324"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0-qDqknEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0_Q0KknEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_Q0aknEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_Q0qknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_Q06knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_Q1KknEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_Q1aknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_Q1qknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_Q16knEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_Q2KknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_Q2aknEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//IntegerValue"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0-qD6knEe2ITKyPGcIEwg" x="960" y="324"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0_Q5qknEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0_Q6KknEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_Q6aknEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_Q6qknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_Q66knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_Q7KknEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_Q7aknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_Q7qknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_Q76knEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_Q8KknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_Q8aknEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//Range"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0_Q56knEe2ITKyPGcIEwg" x="672" y="636"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0_376knEe2ITKyPGcIEwg" type="2002" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0_38qknEe2ITKyPGcIEwg" type="5002"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_386knEe2ITKyPGcIEwg" type="7004">
+      <children xmi:type="notation:Node" xmi:id="_E1UoAKknEe2ITKyPGcIEwg" type="3004">
+        <element xmi:type="ecore:EClass" href="kpi.ecore#//snapshot_model/State"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_E1UoAaknEe2ITKyPGcIEwg"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_39KknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_39aknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_39qknEe2ITKyPGcIEwg" type="7005">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_396knEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_3-KknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_3-aknEe2ITKyPGcIEwg" type="7006">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_3-qknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_3-6knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_3_KknEe2ITKyPGcIEwg" type="7007">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_3_aknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_3_qknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_3_6knEe2ITKyPGcIEwg" type="7008">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4AKknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4AaknEe2ITKyPGcIEwg"/>
+    </children>
+    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_E0_38KknEe2ITKyPGcIEwg"/>
+    <element xmi:type="ecore:EPackage" href="kpi.ecore#//snapshot_model"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0_38aknEe2ITKyPGcIEwg" x="336" y="72"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_E0_4AqknEe2ITKyPGcIEwg" type="2002" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E0_4BaknEe2ITKyPGcIEwg" type="5002"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4BqknEe2ITKyPGcIEwg" type="7004">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4B6knEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4CKknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4CaknEe2ITKyPGcIEwg" type="7005" collapsed="true">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4CqknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4C6knEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4DKknEe2ITKyPGcIEwg" type="7006" collapsed="true">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4DaknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4DqknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4D6knEe2ITKyPGcIEwg" type="7007">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4EKknEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4EaknEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4EqknEe2ITKyPGcIEwg" type="7008">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4E6knEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4FKknEe2ITKyPGcIEwg"/>
+    </children>
+    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_E0_4A6knEe2ITKyPGcIEwg"/>
+    <element xmi:type="ecore:EPackage" href="kpi.ecore#//trend_model"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0_4BKknEe2ITKyPGcIEwg" x="456" y="72"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_mr9vUKlIEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_mr9vUqlIEe2ITKyPGcIEwg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_mr9vU6lIEe2ITKyPGcIEwg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_mr9vVKlIEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_mr9vValIEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_mr9vVqlIEe2ITKyPGcIEwg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_mr9vV6lIEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_mr9vWKlIEe2ITKyPGcIEwg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_mr9vWalIEe2ITKyPGcIEwg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_mr9vWqlIEe2ITKyPGcIEwg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_mr9vW6lIEe2ITKyPGcIEwg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//Parameter"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mr9vUalIEe2ITKyPGcIEwg" x="360" y="408"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_QnZ5gK4KEe2Gi5hpFQZW0g" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QnZ5gq4KEe2Gi5hpFQZW0g" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_QnZ5g64KEe2Gi5hpFQZW0g" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_QnZ5hK4KEe2Gi5hpFQZW0g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_QnZ5ha4KEe2Gi5hpFQZW0g"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_QnZ5hq4KEe2Gi5hpFQZW0g" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_QnZ5h64KEe2Gi5hpFQZW0g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_QnZ5iK4KEe2Gi5hpFQZW0g"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_QnZ5ia4KEe2Gi5hpFQZW0g" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_QnZ5iq4KEe2Gi5hpFQZW0g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_QnZ5i64KEe2Gi5hpFQZW0g"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//TargetType"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QnZ5ga4KEe2Gi5hpFQZW0g" x="340" y="634"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_TJsswK4uEe2YV5TshAj20g" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_TJsswq4uEe2YV5TshAj20g" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_TJssw64uEe2YV5TshAj20g" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_TJssxK4uEe2YV5TshAj20g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_TJssxa4uEe2YV5TshAj20g"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_TJssxq4uEe2YV5TshAj20g" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_TJssx64uEe2YV5TshAj20g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_TJssyK4uEe2YV5TshAj20g"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_TJssya4uEe2YV5TshAj20g" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_TJssyq4uEe2YV5TshAj20g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_TJssy64uEe2YV5TshAj20g"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//StringValue"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TJsswa4uEe2YV5TshAj20g" x="564" y="312"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_iKlV8LE3Ee2C768713kadw" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_iKlV8rE3Ee2C768713kadw" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_iKlV87E3Ee2C768713kadw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_iKlV9LE3Ee2C768713kadw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_iKlV9bE3Ee2C768713kadw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_iKlV9rE3Ee2C768713kadw" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_iKlV97E3Ee2C768713kadw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_iKlV-LE3Ee2C768713kadw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_iKlV-bE3Ee2C768713kadw" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_iKlV-rE3Ee2C768713kadw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_iKlV-7E3Ee2C768713kadw"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//TimeRange"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iKlV8bE3Ee2C768713kadw" x="-36" y="660"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_jbeV0LHWEe2XMoKubQOexA" type="2005" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jbeV0rHWEe2XMoKubQOexA" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_jbeV07HWEe2XMoKubQOexA" type="7011">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_jbeV1LHWEe2XMoKubQOexA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_jbeV1bHWEe2XMoKubQOexA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_jbeV1rHWEe2XMoKubQOexA" type="7012">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_jbeV17HWEe2XMoKubQOexA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_jbeV2LHWEe2XMoKubQOexA"/>
+    </children>
+    <element xmi:type="ecore:EEnum" href="kpi.ecore#//Operation"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jbeV0bHWEe2XMoKubQOexA" x="216" y="48"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_u-yqMLHlEe2XMoKubQOexA" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_u-yqMrHlEe2XMoKubQOexA" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_u-zRQLHlEe2XMoKubQOexA" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_u-zRQbHlEe2XMoKubQOexA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_u-zRQrHlEe2XMoKubQOexA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_u-zRQ7HlEe2XMoKubQOexA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_u-zRRLHlEe2XMoKubQOexA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_u-zRRbHlEe2XMoKubQOexA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_u-zRRrHlEe2XMoKubQOexA" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_u-zRR7HlEe2XMoKubQOexA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_u-zRSLHlEe2XMoKubQOexA"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//Expression"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u-yqMbHlEe2XMoKubQOexA" x="324" y="516"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Q3H0DL3CEe2ZcMmdzUvOAw" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Q3H0Dr3CEe2ZcMmdzUvOAw" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Q3H0D73CEe2ZcMmdzUvOAw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Q3H0EL3CEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Q3H0Eb3CEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Q3H0Er3CEe2ZcMmdzUvOAw" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Q3H0E73CEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Q3H0FL3CEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Q3H0Fb3CEe2ZcMmdzUvOAw" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Q3H0Fr3CEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Q3H0F73CEe2ZcMmdzUvOAw"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//ValueType"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Q3H0Db3CEe2ZcMmdzUvOAw" x="684" y="540"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Q3j44L3CEe2ZcMmdzUvOAw" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Q3j44r3CEe2ZcMmdzUvOAw" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Q3j4473CEe2ZcMmdzUvOAw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Q3j45L3CEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Q3j45b3CEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Q3j45r3CEe2ZcMmdzUvOAw" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Q3j4573CEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Q3j46L3CEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Q3j46b3CEe2ZcMmdzUvOAw" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Q3j46r3CEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Q3j4673CEe2ZcMmdzUvOAw"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//SingleValue"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Q3j44b3CEe2ZcMmdzUvOAw" x="900" y="444"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Vt_KYL3EEe2ZcMmdzUvOAw" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Vt_KYr3EEe2ZcMmdzUvOAw" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Vt_KY73EEe2ZcMmdzUvOAw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Vt_KZL3EEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Vt_KZb3EEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Vt_xcL3EEe2ZcMmdzUvOAw" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Vt_xcb3EEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Vt_xcr3EEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Vt_xc73EEe2ZcMmdzUvOAw" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Vt_xdL3EEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Vt_xdb3EEe2ZcMmdzUvOAw"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//EvaluationResult"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vt_KYb3EEe2ZcMmdzUvOAw" x="72" y="756"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_SbcewL3IEe2ZcMmdzUvOAw" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_SbdF0L3IEe2ZcMmdzUvOAw" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_SbdF0b3IEe2ZcMmdzUvOAw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_SbdF0r3IEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_SbdF073IEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_SbdF1L3IEe2ZcMmdzUvOAw" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_SbdF1b3IEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_SbdF1r3IEe2ZcMmdzUvOAw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_SbdF173IEe2ZcMmdzUvOAw" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_SbdF2L3IEe2ZcMmdzUvOAw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_SbdF2b3IEe2ZcMmdzUvOAw"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//ParameterValue"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Sbcewb3IEe2ZcMmdzUvOAw" x="564" y="408"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_JNg9gL3yEe2628QRQ89Qcg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_JNg9gr3yEe2628QRQ89Qcg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_JNg9g73yEe2628QRQ89Qcg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_JNg9hL3yEe2628QRQ89Qcg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_JNg9hb3yEe2628QRQ89Qcg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_JNg9hr3yEe2628QRQ89Qcg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_JNg9h73yEe2628QRQ89Qcg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_JNg9iL3yEe2628QRQ89Qcg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_JNg9ib3yEe2628QRQ89Qcg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_JNg9ir3yEe2628QRQ89Qcg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_JNg9i73yEe2628QRQ89Qcg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="kpi.ecore#//SingleTarget"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JNg9gb3yEe2628QRQ89Qcg" x="684" y="720"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_E0ik4aknEe2ITKyPGcIEwg"/>
+  <element xmi:type="ecore:EPackage" href="kpi.ecore#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_E1fnIKknEe2ITKyPGcIEwg" type="4003" source="_E09boKknEe2ITKyPGcIEwg" target="_E0-CuqknEe2ITKyPGcIEwg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_E1fnI6knEe2ITKyPGcIEwg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E1fnJKknEe2ITKyPGcIEwg" x="3" y="43"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_E1fnJaknEe2ITKyPGcIEwg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_E1fnJqknEe2ITKyPGcIEwg" x="-17" y="38"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_E1fnIaknEe2ITKyPGcIEwg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//KpiModel/dimension"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E1fnIqknEe2ITKyPGcIEwg" points="[0, 0, 0, -224]$[0, 224, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E2FdAqknEe2ITKyPGcIEwg" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E2FdA6knEe2ITKyPGcIEwg" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_FqXHsq4LEe2Gi5hpFQZW0g" type="4004" source="_E0_Q5qknEe2ITKyPGcIEwg" target="_QnZ5gK4KEe2Gi5hpFQZW0g">
+    <styles xmi:type="notation:FontStyle" xmi:id="_FqXHs64LEe2Gi5hpFQZW0g" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FqXHtK4LEe2Gi5hpFQZW0g" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_t95b8Ly8Ee2eQdrfoWhYTg" type="4003" source="_E0-C0qknEe2ITKyPGcIEwg" target="_QnZ5gK4KEe2Gi5hpFQZW0g">
+    <children xmi:type="notation:DecorationNode" xmi:id="_t96DALy8Ee2eQdrfoWhYTg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_t96DAby8Ee2eQdrfoWhYTg" x="-2" y="28"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_t96DAry8Ee2eQdrfoWhYTg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_t96DA7y8Ee2eQdrfoWhYTg" x="-13" y="21"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_t95b8by8Ee2eQdrfoWhYTg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Kpi/target_value"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_t95b8ry8Ee2eQdrfoWhYTg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QOfCgL3JEe2ZcMmdzUvOAw" id="(0.036585365853658534,0.4807692307692308)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_T8J34LzpEe2k3sajFaW3KA" type="4002" source="_E0-C0qknEe2ITKyPGcIEwg" target="_QnZ5gK4KEe2Gi5hpFQZW0g">
+    <children xmi:type="notation:DecorationNode" xmi:id="_T8J347zpEe2k3sajFaW3KA" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_T8J35LzpEe2k3sajFaW3KA" x="50" y="-14"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_T8J35bzpEe2k3sajFaW3KA" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_T8J35rzpEe2k3sajFaW3KA" x="-4" y="-15"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_T8J34bzpEe2k3sajFaW3KA" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Kpi/ranges"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T8J34rzpEe2k3sajFaW3KA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RpqAAL3JEe2ZcMmdzUvOAw" id="(0.9857142857142858,0.6923076923076923)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_XtDVoLz0Ee2k3sajFaW3KA" type="4003" source="_E0-CuqknEe2ITKyPGcIEwg" target="_E0-C0qknEe2ITKyPGcIEwg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_XtDVo7z0Ee2k3sajFaW3KA" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XtDVpLz0Ee2k3sajFaW3KA" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XtDVpbz0Ee2k3sajFaW3KA" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XtDVprz0Ee2k3sajFaW3KA" x="-7" y="37"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_XtDVobz0Ee2k3sajFaW3KA" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Dimension/kpis"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_XtDVorz0Ee2k3sajFaW3KA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_XtEjwLz0Ee2k3sajFaW3KA" type="4003" source="_E0-C0qknEe2ITKyPGcIEwg" target="_u-yqMLHlEe2XMoKubQOexA">
+    <children xmi:type="notation:DecorationNode" xmi:id="_XtEjw7z0Ee2k3sajFaW3KA" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XtEjxLz0Ee2k3sajFaW3KA" x="11" y="-17"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XtEjxbz0Ee2k3sajFaW3KA" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XtEjxrz0Ee2k3sajFaW3KA" x="-8" y="-17"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_XtEjwbz0Ee2k3sajFaW3KA" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Kpi/formula"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_XtEjwrz0Ee2k3sajFaW3KA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Q3njQL3CEe2ZcMmdzUvOAw" type="4004" source="_E0-qAqknEe2ITKyPGcIEwg" target="_Q3j44L3CEe2ZcMmdzUvOAw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Q3njQb3CEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q3njQr3CEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Q3oKUL3CEe2ZcMmdzUvOAw" type="4004" source="_E0-qDqknEe2ITKyPGcIEwg" target="_Q3j44L3CEe2ZcMmdzUvOAw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Q3oKUb3CEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q3oKUr3CEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Q3oxYL3CEe2ZcMmdzUvOAw" type="4003" source="_E0_Q5qknEe2ITKyPGcIEwg" target="_Q3j44L3CEe2ZcMmdzUvOAw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Q3oxY73CEe2ZcMmdzUvOAw" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Q3oxZL3CEe2ZcMmdzUvOAw" x="-27" y="-16"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_Q3oxZb3CEe2ZcMmdzUvOAw" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Q3oxZr3CEe2ZcMmdzUvOAw" x="-58" y="-9"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Q3oxYb3CEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Range/min"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q3oxYr3CEe2ZcMmdzUvOAw" points="[59, -29, -148, 151]$[133, -65, -74, 115]$[187, -150, -20, 30]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Q3pYcL3CEe2ZcMmdzUvOAw" type="4003" source="_E0_Q5qknEe2ITKyPGcIEwg" target="_Q3j44L3CEe2ZcMmdzUvOAw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Q3pYc73CEe2ZcMmdzUvOAw" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Q3pYdL3CEe2ZcMmdzUvOAw" x="-25" y="-5"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_Q3pYdb3CEe2ZcMmdzUvOAw" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Q3pYdr3CEe2ZcMmdzUvOAw" x="-60" y="-1"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Q3pYcb3CEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Range/max"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q3pYcr3CEe2ZcMmdzUvOAw" points="[0, 0, -159, 151]$[49, -84, -110, 67]$[110, -121, -49, 30]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1seDwL3FEe2ZcMmdzUvOAw" id="(0.8380281690140845,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Q3r0sL3CEe2ZcMmdzUvOAw" type="4004" source="_Q3j44L3CEe2ZcMmdzUvOAw" target="_Q3H0DL3CEe2ZcMmdzUvOAw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Q3r0sb3CEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Q3r0sr3CEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_uyT_8L3DEe2ZcMmdzUvOAw" type="4003" source="_E0-C0qknEe2ITKyPGcIEwg" target="_mr9vUKlIEe2ITKyPGcIEwg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_uyT_873DEe2ZcMmdzUvOAw" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uyT_9L3DEe2ZcMmdzUvOAw" x="-15" y="-13"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_uyT_9b3DEe2ZcMmdzUvOAw" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uyT_9r3DEe2ZcMmdzUvOAw" x="3" y="-13"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_uyT_8b3DEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Kpi/parameters"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uyT_8r3DEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_-iISUL3EEe2ZcMmdzUvOAw" type="4002" source="_Vt_KYL3EEe2ZcMmdzUvOAw" target="_E0-C0qknEe2ITKyPGcIEwg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_-iISU73EEe2ZcMmdzUvOAw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_-iISVL3EEe2ZcMmdzUvOAw" x="-8" y="-16"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_-iISVb3EEe2ZcMmdzUvOAw" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_-iISVr3EEe2ZcMmdzUvOAw" x="-45" y="-14"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_-iISUb3EEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//EvaluationResult/kpi"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-iISUr3EEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6bM_wL3xEe2628QRQ89Qcg" id="(0.9428571428571428,0.978021978021978)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ZFzlUL3FEe2ZcMmdzUvOAw" type="4003" source="_Vt_KYL3EEe2ZcMmdzUvOAw" target="_Q3j44L3CEe2ZcMmdzUvOAw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_ZFzlU73FEe2ZcMmdzUvOAw" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ZFzlVL3FEe2ZcMmdzUvOAw" x="181" y="17"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_ZFzlVb3FEe2ZcMmdzUvOAw" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ZFzlVr3FEe2ZcMmdzUvOAw" x="-133" y="-31"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ZFzlUb3FEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//EvaluationResult/eval_result"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ZFzlUr3FEe2ZcMmdzUvOAw" points="[6, 0, -882, 295]$[879, 0, -9, 295]$[887, -289, -1, 6]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qOKNYL3FEe2ZcMmdzUvOAw" id="(0.9459459459459459,0.9230769230769231)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rTHDQL3FEe2ZcMmdzUvOAw" id="(0.8,0.9491525423728814)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_d9EH073IEe2ZcMmdzUvOAw" type="4004" source="_TJsswK4uEe2YV5TshAj20g" target="_SbcewL3IEe2ZcMmdzUvOAw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_d9EH1L3IEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_d9EH1b3IEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_jNCzsL3IEe2ZcMmdzUvOAw" type="4003" source="_mr9vUKlIEe2ITKyPGcIEwg" target="_SbcewL3IEe2ZcMmdzUvOAw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jNCzs73IEe2ZcMmdzUvOAw" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jNCztL3IEe2ZcMmdzUvOAw" x="26" y="12"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jNCztb3IEe2ZcMmdzUvOAw" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jNCztr3IEe2ZcMmdzUvOAw" x="-34" y="12"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_jNCzsb3IEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Parameter/value"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jNCzsr3IEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_22JhQL3IEe2ZcMmdzUvOAw" type="4003" source="_E0-CuqknEe2ITKyPGcIEwg" target="_E0-CuqknEe2ITKyPGcIEwg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_22JhQ73IEe2ZcMmdzUvOAw" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_22JhRL3IEe2ZcMmdzUvOAw" x="32" y="-9"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_22JhRb3IEe2ZcMmdzUvOAw" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_22JhRr3IEe2ZcMmdzUvOAw" x="-4" y="18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_22JhQb3IEe2ZcMmdzUvOAw" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Dimension/sub_dimensions"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_22JhQr3IEe2ZcMmdzUvOAw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4VhXYL3KEe2ZcMmdzUvOAw" id="(0.9722222222222222,0.7796610169491526)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z6QtAL3KEe2ZcMmdzUvOAw" id="(0.8055555555555556,0.9491525423728814)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_2olpwL3xEe2628QRQ89Qcg" type="4003" source="_E0-C0qknEe2ITKyPGcIEwg" target="_iKlV8LE3Ee2C768713kadw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2olpw73xEe2628QRQ89Qcg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_2olpxL3xEe2628QRQ89Qcg" x="-3" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2olpxb3xEe2628QRQ89Qcg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_2olpxr3xEe2628QRQ89Qcg" x="-6" y="27"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_2olpwb3xEe2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Kpi/period"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2olpwr3xEe2628QRQ89Qcg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8G7hwL3xEe2628QRQ89Qcg" id="(0.20714285714285716,0.967032967032967)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_JNjZwL3yEe2628QRQ89Qcg" type="4003" source="_JNg9gL3yEe2628QRQ89Qcg" target="_Q3j44L3CEe2ZcMmdzUvOAw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_JNjZw73yEe2628QRQ89Qcg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_JNjZxL3yEe2628QRQ89Qcg" x="-18" y="-21"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_JNjZxb3yEe2628QRQ89Qcg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_JNjZxr3yEe2628QRQ89Qcg" x="-77" y="-16"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_JNjZwb3yEe2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//SingleTarget/target"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JNjZwr3yEe2628QRQ89Qcg" points="[44, 0, -178, 261]$[222, 0, 0, 261]$[222, -231, 0, 30]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_JNkn4L3yEe2628QRQ89Qcg" type="4004" source="_JNg9gL3yEe2628QRQ89Qcg" target="_QnZ5gK4KEe2Gi5hpFQZW0g">
+    <styles xmi:type="notation:FontStyle" xmi:id="_JNkn4b3yEe2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JNkn4r3yEe2628QRQ89Qcg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_pw3pEL30Ee2628QRQ89Qcg" type="4004" source="_Q3j44L3CEe2ZcMmdzUvOAw" target="_SbcewL3IEe2ZcMmdzUvOAw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_pw3pEb30Ee2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_pw3pEr30Ee2628QRQ89Qcg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Xfks4L39Ee2628QRQ89Qcg" id="(0.0,0.23728813559322035)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sDvDkL30Ee2628QRQ89Qcg" id="(0.9907407407407407,0.9038461538461539)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_haJuYL33Ee2628QRQ89Qcg" type="4002" source="_u-yqMLHlEe2XMoKubQOexA" target="_Q3H0DL3CEe2ZcMmdzUvOAw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_haJuY733Ee2628QRQ89Qcg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_haJuZL33Ee2628QRQ89Qcg" x="-4" y="6"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_haJuZb33Ee2628QRQ89Qcg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_haJuZr33Ee2628QRQ89Qcg" x="-66" y="6"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_haJuYb33Ee2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Expression/arguments"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_haJuYr33Ee2628QRQ89Qcg" points="[0, -6, -296, -29]$[0, -18, -296, -41]$[296, -18, 0, -41]$[296, 18, 0, -5]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kO-mcL33Ee2628QRQ89Qcg" id="(0.5135135135135135,0.1016949152542373)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FgxP4L37Ee2628QRQ89Qcg" id="(0.15584415584415584,0.09615384615384616)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_haKVcL33Ee2628QRQ89Qcg" type="4003" source="_u-yqMLHlEe2XMoKubQOexA" target="_u-yqMLHlEe2XMoKubQOexA">
+    <children xmi:type="notation:DecorationNode" xmi:id="_haKVc733Ee2628QRQ89Qcg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_haKVdL33Ee2628QRQ89Qcg" x="35" y="8"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_haKVdb33Ee2628QRQ89Qcg" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_haKVdr33Ee2628QRQ89Qcg" x="27" y="18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_haKVcb33Ee2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Expression/sub_expressions"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_haKVcr33Ee2628QRQ89Qcg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pYT3wL33Ee2628QRQ89Qcg" id="(0.9797297297297297,0.7966101694915254)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_okq0UL33Ee2628QRQ89Qcg" id="(0.7567567567567568,0.9830508474576272)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_jCDRkL39Ee2628QRQ89Qcg" type="4004" source="_mr9vUKlIEe2ITKyPGcIEwg" target="_Q3H0DL3CEe2ZcMmdzUvOAw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_jCDRkb39Ee2628QRQ89Qcg" fontName="Ubuntu"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jCDRkr39Ee2628QRQ89Qcg" points="[6, 0, -254, -106]$[260, 20, 0, -86]$[260, 80, 0, -26]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_la_e4L39Ee2628QRQ89Qcg" id="(0.9444444444444444,0.8813559322033898)"/>
+  </edges>
+</notation:Diagram>

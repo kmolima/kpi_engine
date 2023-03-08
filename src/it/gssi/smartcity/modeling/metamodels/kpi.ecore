@@ -28,6 +28,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
         containment="true" eOpposite="#//Value/kpi"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="result" lowerBound="1"
+        eType="#//snapshot/Result" eOpposite="#//snapshot/Result/eval_result"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
     <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" lowerBound="1" eType="#//Kpi"
@@ -127,13 +129,15 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Result">
       <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
-          eType="#//Kpi"/>
+          eType="#//Kpi" eOpposite="#//Kpi/result"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="datetime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimension" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//trend/Tendency"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1"
           eType="#//snapshot/State" eOpposite="#//snapshot/State/snapshots"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="result" lowerBound="1"
+          eType="#//Value"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="trend" nsURI="http://cs.gssi.it/kpi/trend" nsPrefix="trend">
