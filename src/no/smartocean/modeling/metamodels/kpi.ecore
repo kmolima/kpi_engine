@@ -96,6 +96,8 @@
         eOpposite="#//snapshot_model/State/kpi_result"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
         eType="#//SingleValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true"/>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
@@ -107,23 +109,21 @@
     <eClassifiers xsi:type="ecore:EClass" name="State">
       <eStructuralFeatures xsi:type="ecore:EReference" name="kpi_result" lowerBound="1"
           eType="#//EvaluationResult" containment="true" eOpposite="#//EvaluationResult/state"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//trend_model/Tendency"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//snapshot_model/Tendency"
           containment="true"/>
     </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="trend_model" nsURI="https://ict.hvl.no/ocean_monitoring/trend"
-      nsPrefix="trend">
+    <eClassifiers xsi:type="ecore:EClass" name="Tendency">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//snapshot_model/TendencyType"
+          defaultValueLiteral="2"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateOfChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="TendencyType">
       <eLiterals name="IMPROVING" value="1"/>
       <eLiterals name="DETEORATING" value="-1"/>
       <eLiterals name="MAINTAINIG"/>
       <eLiterals name="NA" value="2"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Tendency">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//trend_model/TendencyType"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateOfChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

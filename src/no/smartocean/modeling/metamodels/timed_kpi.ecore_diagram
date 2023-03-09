@@ -132,32 +132,6 @@
     <element xmi:type="ecore:EPackage" href="kpi.ecore#//snapshot_model"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0_38aknEe2ITKyPGcIEwg" x="336" y="72"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_E0_4AqknEe2ITKyPGcIEwg" type="2002" fontName="Ubuntu">
-    <children xmi:type="notation:DecorationNode" xmi:id="_E0_4BaknEe2ITKyPGcIEwg" type="5002"/>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4BqknEe2ITKyPGcIEwg" type="7004">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4B6knEe2ITKyPGcIEwg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4CKknEe2ITKyPGcIEwg"/>
-    </children>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4CaknEe2ITKyPGcIEwg" type="7005" collapsed="true">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4CqknEe2ITKyPGcIEwg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4C6knEe2ITKyPGcIEwg"/>
-    </children>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4DKknEe2ITKyPGcIEwg" type="7006" collapsed="true">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4DaknEe2ITKyPGcIEwg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4DqknEe2ITKyPGcIEwg"/>
-    </children>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4D6knEe2ITKyPGcIEwg" type="7007">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4EKknEe2ITKyPGcIEwg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4EaknEe2ITKyPGcIEwg"/>
-    </children>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_E0_4EqknEe2ITKyPGcIEwg" type="7008">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_E0_4E6knEe2ITKyPGcIEwg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_E0_4FKknEe2ITKyPGcIEwg"/>
-    </children>
-    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_E0_4A6knEe2ITKyPGcIEwg"/>
-    <element xmi:type="ecore:EPackage" href="kpi.ecore#//trend_model"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E0_4BKknEe2ITKyPGcIEwg" x="456" y="72"/>
-  </children>
   <children xmi:type="notation:Shape" xmi:id="_mr9vUKlIEe2ITKyPGcIEwg" type="2001" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_mr9vUqlIEe2ITKyPGcIEwg" type="5001"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_mr9vU6lIEe2ITKyPGcIEwg" type="7001">

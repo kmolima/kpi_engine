@@ -1,0 +1,44 @@
+import "kpi-providers.eol";
+
+var result = new kpi!EvaluationResult;
+
+operation kpi!Kpi getTargetValue(): Any{
+	return self.target.getValue();
+}
+
+operation kpi!ValueType getValue(): Any{ //Covers ParameterValue and SingleValue
+	return self.value;
+}
+
+operation kpi!RangeValue getValue(): Any {
+	return new Tuple("max"=self.getMaxValue(), "min"=self.getMinValue());
+}
+
+operation kpi!Range getMaxValue(): Any {
+	return self.max.getValue(); 
+}
+
+operation kpi!Range getMinValue(): Any {
+	return self.min.getValue(); 
+}
+
+operation kpi!Kpi getValue(): Any {
+	var query  = new String();
+	
+	return query;
+}
+
+operation kpi!Kpi getParameters(): Tuple{
+
+	
+}
+
+// Returns the resulting kpi!Expression - in this case a query for the metrics DB
+operation kpi!Kpi evaluate(): String {
+	var query  = new String();
+	
+	//TODO build query
+	
+	return query;
+}
+

@@ -27,13 +27,13 @@ operation kpi!Result getTrend(baseline: kpi!Result): Any {
 operation kpi!Kpi getDimStr(): String {
 
 	var dimension = new String();
-	var mother = self.eContainer;
+	var grandpa = self.eContainer.eContainer;
 	
 	
-	if(mother.isTypeOf(kpi!Dimension))
-		dimension =  mother.name;
+	if(grandpa.isTypeOf(kpi!Dimension))
+		dimension =  grandpa.name;
 				
-	if(mother.eContainer.isTypeOf(kpi!Dimension))
+	if(grandpa.eContainer.isTypeOf(kpi!Dimension))
 		return grandpa.eContainer.buildDimStr(dimension);
 
 	return dimension;

@@ -1,0 +1,6 @@
+// known units in PromQL - useful for query readability
+
+operation kpi!Kpi getPromQLUnitStr(): String {
+// check for units property in elements
+
+} 

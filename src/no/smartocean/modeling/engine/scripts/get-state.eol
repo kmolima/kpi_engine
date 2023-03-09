@@ -1,0 +1,32 @@
+import "kpi-providers.eol";
+import "state-utils.eol";
+import "evaluate.eol";
+
+// Input Model name: smartocean for DigitalDataEcosystem and kpi for KpiModel
+// Parameters needed: start of each metrics query (k:v) argument when calling this script
+// Parameters needed: rateOfChange
+
+var states: new Sequence();
+
+for (system in smartocean!System.all) { 
+	("==========KPI model calculation applied on "+system.system_name+"==========").println();
+	var state: new kpi!State;
+		//state.subject=system.system_name;
+		
+	for (mykpi in kpi!Kpi.all) { 
+	
+		mykpi.description.println();
+		var query  = kpi.evaluate();
+		var result = kpi.getValue();
+		var timestamp = Native("java.time.Instant"); //TODO replace by timestamp in data?
+		var end = mykpi.end.isDefined() ?  mykpi.end: timestamp.now().toEpochMilli(); // current model does not allow the exec of the 2nd clause 
+		result.kpi = mykpi;
+		var start = mykpi.start.isDefined() ?  mykpi.start: 0; //TODO replace by start() call in promQL
+		result.period = mykpi.period.end - start;
+		result.state = state;
+		("Subject:"+system.system_name+" | Dimension: "+mykpi.getDimStr()+" "+mykpi.unit).println();
+		//(system.collect(sc|sc.get(mykpi))+" "+mykpi.unit).println();
+		//("KPI Evaluation: "+mykpi.value.getValue()+" unit: "+mykpi.unit).println();
+	}
+		states.add(state);
+}
