@@ -20,8 +20,6 @@
         eType="#//TargetType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="formula" lowerBound="1"
-        eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
         eType="#//TargetType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
@@ -55,16 +53,23 @@
     <eLiterals name="GT" value="15"/>
     <eLiterals name="RATE" value="16"/>
     <eLiterals name="GROUP" value="17" literal="GROUP_BY"/>
+    <eLiterals name="COUNT" value="18" literal="COUNT"/>
+    <eLiterals name="STDDEV" value="19"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//ValueType">
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//ParameterValue"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TargetType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetType" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aggregation" lowerBound="1"
+        eType="#//Aggregation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calculated_by" lowerBound="1"
+        eType="#//Expression"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleTarget" eSuperTypes="#//TargetType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//SingleValue" containment="true"/>
@@ -98,8 +103,18 @@
         eType="#//SingleValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true" eSuperTypes="#//ValueType"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Aggregation">
+    <eLiterals name="COUNT" literal="COUNT"/>
+    <eLiterals name="SUM" value="1"/>
+    <eLiterals name="CEN" value="2"/>
+    <eLiterals name="AVG" value="3"/>
+    <eLiterals name="MIN" value="4"/>
+    <eLiterals name="MAX" value="5"/>
+    <eLiterals name="STDDEV" value="6"/>
+  </eClassifiers>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
       nsPrefix="snapshot">
     <eClassifiers xsi:type="ecore:EClass" name="Snapshot">

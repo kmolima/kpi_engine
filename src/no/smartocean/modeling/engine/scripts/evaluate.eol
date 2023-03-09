@@ -33,6 +33,22 @@ operation kpi!Kpi getParameters(): Tuple{
 	
 }
 
+operation String wrap(query: String): String {
+// add "(" ")"
+}
+
+operation String addConstraint(parameter: String): String {
+
+}
+
+operation String addConstraint(parameter: Real): String {
+
+}
+
+operation String addConstraint(parameter: Integer): String {
+
+}
+
 // Returns the resulting kpi!Expression - in this case a query for the metrics DB
 operation kpi!Kpi evaluate(): String {
 	var query  = new String();

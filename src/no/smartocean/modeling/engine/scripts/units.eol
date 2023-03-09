@@ -1,6 +1,40 @@
 // known units in PromQL - useful for query readability
 
-operation kpi!Kpi getPromQLUnitStr(): String {
+operation String getPromQLUnitStr(mykpi: kpi!Kpi): String {
 // check for units property in elements
+
+
+switch(mykpi.unit){
+
+	case "sec":
+	case "seconds":
+	case "secs":
+	return; //default unit in Prometheus
+	
+	case "minutes":
+	case "min":
+	case "mins":
+	return self.wrap("minute");
+	
+	case "hour":
+	case "hours":
+	case "hrs":
+	case "hr":
+	return self.wrap("hour");
+	
+	case "year":
+	case "yr":
+	case "yrs":
+	return self.wrap("year");
+	
+	case "month":
+	case "months":
+	return self.wrap("month");
+	
+	case "week":
+	case "weeks":
+	return self.wrap("week");
+	
+	}
 
 } 
