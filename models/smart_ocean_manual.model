@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<no.smartocean.model:DigitalDataEcosystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:no.smartocean.model="https://ict.hvl.no/ocean_monitoring" xmi:id="_IUKucK3-Ee2Gi5hpFQZW0g" name="Smart Ocean Data Ecosystem">
+  <ecosystem_systems xmi:id="_tB1JMK3-Ee2Gi5hpFQZW0g" system_name="Smart Ocean Platform">
+    <sources xmi:id="_w187EK3-Ee2Gi5hpFQZW0g" name="Messaging Service" instance_id="uid1" operated_by="_T4G5cK4DEe2Gi5hpFQZW0g">
+      <producers xmi:id="_0FpxQK3-Ee2Gi5hpFQZW0g" id="Broker"/>
+    </sources>
+    <sources xmi:id="_ail_EL5XEe2hoadbheMChg" name="Data Validation Service" instance_id="uid2" operated_by="_T4G5cK4DEe2Gi5hpFQZW0g">
+      <producers xmi:id="_1hJe4K3-Ee2Gi5hpFQZW0g" id="Data Validator"/>
+    </sources>
+    <runtime_data xmi:id="_u-K6EK3-Ee2Gi5hpFQZW0g" name="Prometheus">
+      <data xmi:id="_OgOLkK3_Ee2Gi5hpFQZW0g" timestamp="1652701243000" metric_id="com.hivemq.messages.incoming.puback.count" name="ack_published" source="_0FpxQK3-Ee2Gi5hpFQZW0g">
+        <data xsi:type="no.smartocean.model:IntegerValue" xmi:id="_vKGAwK3_Ee2Gi5hpFQZW0g" unit="counter" value="2"/>
+      </data>
+      <data xmi:id="_Pf78IK3_Ee2Gi5hpFQZW0g" timestamp="1652701239000" metric_id="com.hivemq.messages.incoming.publish.count" name="published" source="_0FpxQK3-Ee2Gi5hpFQZW0g">
+        <data xsi:type="no.smartocean.model:IntegerValue" xmi:id="_7EUXEK3_Ee2Gi5hpFQZW0g" unit="counter" value="5"/>
+      </data>
+      <data xmi:id="_DFTK8K4AEe2Gi5hpFQZW0g" timestamp="1652701247000" metric_id="no_smartocean_data_ingestion_arrival_delay" name="rTdelay" source="_1hJe4K3-Ee2Gi5hpFQZW0g">
+        <data xsi:type="no.smartocean.model:RealValue" xmi:id="_vJaO0K4AEe2Gi5hpFQZW0g" unit="seconds" value="3685.4"/>
+      </data>
+      <data xmi:id="_OizJAK4AEe2Gi5hpFQZW0g" timestamp="1652701247250" metric_id="no_smartocean_faas_invoke_duration" name="tdelay" source="_1hJe4K3-Ee2Gi5hpFQZW0g">
+        <data xsi:type="no.smartocean.model:RealValue" xmi:id="_1V60YK4AEe2Gi5hpFQZW0g" unit="seconds" value="1852.8"/>
+      </data>
+      <data xmi:id="__6YqAL5ZEe2hoadbheMChg" timestamp="1652701249500" metric_id="no_smart_ocean_data_ingestion_quality_controlled_count" name="qualityFlags" source="_1hJe4K3-Ee2Gi5hpFQZW0g">
+        <data xsi:type="no.smartocean.model:IntegerValue" xmi:id="_ht19cL5aEe2hoadbheMChg" unit="counter"/>
+      </data>
+    </runtime_data>
+  </ecosystem_systems>
+  <stakeholders xmi:id="_T4G5cK4DEe2Gi5hpFQZW0g" organization="HVL"/>
+  <stakeholders xmi:id="_Z7k3wK4DEe2Gi5hpFQZW0g" organization="Bouvet"/>
+  <stakeholders xmi:id="_a9PwIK4DEe2Gi5hpFQZW0g" organization="Aanderaa"/>
+  <stakeholders xmi:id="_cX9aoK4DEe2Gi5hpFQZW0g" organization="NORCE"/>
+  <stakeholders xmi:id="_dpAy0K4DEe2Gi5hpFQZW0g" organization="WSense"/>
+  <stakeholders xmi:id="_eojkQK4DEe2Gi5hpFQZW0g" organization="AkerBP"/>
+  <stakeholders xmi:id="_f7J0kK4DEe2Gi5hpFQZW0g" organization="IMR"/>
+</no.smartocean.model:DigitalDataEcosystem>
