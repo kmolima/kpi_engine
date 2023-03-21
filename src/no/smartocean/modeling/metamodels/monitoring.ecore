@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="monitoring" nsURI="https://ict.hvl.no/ocean_monitoring" nsPrefix="no.smartocean.model">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="monitoring" nsURI="https://ict.hvl.no/monitoring" nsPrefix="subject">
   <eClassifiers xsi:type="ecore:EClass" name="DigitalDataEcosystem">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ecosystem_systems" upperBound="-1"
         eType="#//System" containment="true"/>
@@ -17,13 +17,11 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
         eType="#//Service" containment="true" eOpposite="#//Service/system"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="runtime_data" upperBound="-1"
-        eType="#//MetricsDB" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoring_data" upperBound="-1"
+        eType="#//RuntimeMetric" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Service">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="producers" upperBound="-1"
-        eType="#//MetricProducerComponent" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="instance_id" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operated_by" lowerBound="1"
@@ -31,44 +29,35 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
         eType="#//System" eOpposite="#//System/sources"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MetricProducerComponent">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RuntimeMetric">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" eType="#//Measurement"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Timeseries">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric_id" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
-        eType="#//MetricProducerComponent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" upperBound="-1"
-        eType="#//Label" containment="true"/>
+        eType="#//Service"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Measurement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//Measurement #//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//Timeseries">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0.0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//Measurement #//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//Timeseries">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MetricsDB">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1" eType="#//RuntimeMetric"
+  <eClassifiers xsi:type="ecore:EClass" name="RuntimeMetric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1" eType="#//Timeseries"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric_id" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
+        eType="#//Label" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//MetricType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Label">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="MetricType">
+    <eLiterals name="COUNTER"/>
+    <eLiterals name="GAUGE" value="1"/>
+    <eLiterals name="HIST" value="2" literal="HISTOGRAM"/>
   </eClassifiers>
 </ecore:EPackage>

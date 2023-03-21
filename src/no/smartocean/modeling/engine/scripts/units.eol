@@ -1,39 +1,124 @@
 // known units in PromQL - useful for query readability
 
+
 operation String getPromQLUnitStr(mykpi: kpi!Kpi): String {
 // check for units property in elements
 
-
 switch(mykpi.unit){
 
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+	return self.wrap("second").concat("*1000");
+
+	case "s":
 	case "sec":
 	case "seconds":
 	case "secs":
 	return; //default unit in Prometheus
 	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#minute
 	case "minutes":
 	case "min":
 	case "mins":
 	return self.wrap("minute");
 	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#hour
 	case "hour":
 	case "hours":
 	case "hrs":
 	case "hr":
 	return self.wrap("hour");
 	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#year
+	case "y":
 	case "year":
 	case "yr":
 	case "yrs":
 	return self.wrap("year");
 	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#month
 	case "month":
 	case "months":
 	return self.wrap("month");
 	
+	default:
+		return "";
+	
+	}
+
+}
+
+operation getPromQLDurationStr(unit: kpi!EEnumLiteral): String{
+	
+	switch(unit){
+		case kpi!TimeUnit#MS:
+			return getPromQLDurationStr("ms");
+		case kpi!TimeUnit#SEC:
+			return getPromQLDurationStr("sec");
+	 	case kpi!TimeUnit#MIN:
+			return getPromQLDurationStr("min");
+		case kpi!TimeUnit#HR:
+			return getPromQLDurationStr("hour");
+		case kpi!TimeUnit#DAY:
+			return getPromQLDurationStr("day");
+		case kpi!TimeUnit#WEEK:
+			return getPromQLDurationStr("week");
+		case kpi!TimeUnit#YEAR:
+			return getPromQLDurationStr("year");	
+		
+	}
+
+
+} 
+
+// https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations
+operation getPromQLDurationStr(unit: String): String {
+// check for units property in elements
+
+switch(unit){
+
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+	return "ms";
+
+	case "s":
+	case "sec":
+	case "seconds":
+	case "secs":
+	return "s"; //default unit in Prometheus
+	
+	case "m":
+	case "min":
+	case "mins":
+	case "minutes":
+	return "m";
+	
+	case "h":
+	case "hr":
+	case "hrs":
+	case "hour":
+	case "hours":
+	return "h";
+	
+	case "d":
+	case "day":
+	case "days":
+	return "d";
+	
+	case "y":
+	case "yr":
+	case "yrs":
+	case "year":
+	return "y";
+	
+	case "w":
 	case "week":
 	case "weeks":
-	return self.wrap("week");
+	return "w";
 	
 	}
 

@@ -1,60 +1,42 @@
 import "kpi-providers.eol";
 
-var result = new kpi!EvaluationResult;
-
-operation kpi!Kpi getTargetValue(): Any{
-	return self.target.getValue();
-}
-
-operation kpi!ValueType getValue(): Any{ //Covers ParameterValue and SingleValue
-	return self.value;
-}
-
-operation kpi!RangeValue getValue(): Any {
-	return new Tuple("max"=self.getMaxValue(), "min"=self.getMinValue());
-}
-
-operation kpi!Range getMaxValue(): Any {
-	return self.max.getValue(); 
-}
-
-operation kpi!Range getMinValue(): Any {
-	return self.min.getValue(); 
-}
-
 operation kpi!Kpi getValue(): Any {
 	var query  = new String();
 	
 	return query;
 }
 
-operation kpi!Kpi getParameters(): Tuple{
+operation kpi!Kpi getParameters(): Set{
 
+	var tuples = new Set();
+
+	//FIX - look into Dimension Element
+	for(parameter in kpi!parameters) {
+		tupples.add(parameter.getValue());
+	}
 	
+	return tuples;
 }
 
-operation String wrap(query: String): String {
-// add "(" ")"
+// adds operation and  "(" ")" around the calling string
+operation String wrap(op: String) {
+
+	var result = new String();
+	result = op.concat("(").concat(self).concat(")");
+	self = result;
 }
 
-operation String addConstraint(parameter: String): String {
+operation kpi!Parameter asString(): String {
+
+	var str = new String();
+	str.concat(self.name).concat("=").concat(self.getValue()); // = can be other operation
+		
+	return str;
 
 }
 
-operation String addConstraint(parameter: Real): String {
-
-}
-
-operation String addConstraint(parameter: Integer): String {
-
-}
-
-// Returns the resulting kpi!Expression - in this case a query for the metrics DB
-operation kpi!Kpi evaluate(): String {
-	var query  = new String();
+operation kpi!Parameter getValue(): Tuple {
 	
-	//TODO build query
-	
-	return query;
-}
+	return new Tuple(name=self.name, value=self.getValue());
 
+}

@@ -3,11 +3,13 @@ import "state-utils.eol";
 import "evaluate.eol";
 
 // Input Model name: smartocean for DigitalDataEcosystem and kpi for KpiModel
-// Parameters needed: start of each metrics query (k:v) argument when calling this script
 // Parameters needed: rateOfChange
 
+operation kpi!Kpi setResult(result: kpi!EvaluationResult): Any {
+	result.kpi = self;
+}
 
-operation Any setState(system: smartocean!System, mykpi: kpi!Kpi): Any{
+operation getState(system: smartocean!System, mykpi: kpi!Kpi): kpi!State{
 		
 	("==========KPI model calculation applied on "+system.system_name+"==========").println();
 	var state: new kpi!State;

@@ -1,0 +1,49 @@
+
+
+operation kpi!ParameterValue getParameter(){
+	var mother = self.eContainer;
+	
+	if(mother.isTypeOf(kpi!Parameter))
+		return mother;
+		
+	return null;
+
+}
+
+
+operation kpi!ParameterValue getMetric(){
+	var mother = self.eContainer;
+	
+	if(mother.isTypeOf(kpi!Expression))
+		return mother.getMetric();
+		
+		//TODO
+		
+	return null;
+
+}
+
+
+operation kpi!Expression getMetric(){
+	var mother = self.eContainer;
+	
+	//TODO
+	
+	if(mother.isTypeOf(kpi!Expression))
+		return mother.getMetric();
+		
+	return null;
+
+}
+
+// Find KPI element recursirvely
+operation kpi!Expression getKPI(){
+
+	var mother = self.eContainer;
+			
+	if(mother.isTypeOf(kpi!Kpi))
+		return mother;
+		
+	if(mother.isTypeOf(kpi!Expression)) //sub-expression
+		return mother.getKPI();
+}
