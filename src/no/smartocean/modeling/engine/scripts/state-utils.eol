@@ -33,7 +33,7 @@ operation kpi!Kpi getDimStr(): String {
 		dimension =  mother.name;
 				
 	if(mother.eContainer.isTypeOf(kpi!Dimension))
-		return grandpa.eContainer.buildDimStr(dimension);
+		return mother.eContainer.buildDimStr(dimension);
 
 	return dimension;
 

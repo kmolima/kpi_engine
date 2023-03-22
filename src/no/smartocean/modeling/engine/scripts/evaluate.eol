@@ -1,10 +1,5 @@
 import "kpi-providers.eol";
 
-operation kpi!Kpi getValue(): Any {
-	var query  = new String();
-	
-	return query;
-}
 
 operation kpi!Kpi getParameters(): Set{
 
@@ -18,25 +13,5 @@ operation kpi!Kpi getParameters(): Set{
 	return tuples;
 }
 
-// adds operation and  "(" ")" around the calling string
-operation String wrap(op: String) {
 
-	var result = new String();
-	result = op.concat("(").concat(self).concat(")");
-	self = result;
-}
 
-operation kpi!Parameter asString(): String {
-
-	var str = new String();
-	str.concat(self.name).concat("=").concat(self.getValue()); // = can be other operation
-		
-	return str;
-
-}
-
-operation kpi!Parameter getValue(): Tuple {
-	
-	return new Tuple(name=self.name, value=self.getValue());
-
-}

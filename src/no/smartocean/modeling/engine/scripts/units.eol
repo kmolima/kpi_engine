@@ -1,7 +1,7 @@
 // known units in PromQL - useful for query readability
 
 
-operation String getPromQLUnitStr(mykpi: kpi!Kpi): String {
+operation String getPromQLUnitStr(unit: kpi!EEnumLiteral) {
 // check for units property in elements
 
 switch(mykpi.unit){

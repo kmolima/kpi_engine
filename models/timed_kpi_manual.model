@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="ASCII"?>
-<timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" xmi:id="_RGZSML3aEe2ZcMmdzUvOAw" system="Smart Ocean Platform">
-  <dimension xmi:id="_eGtr4L3wEe2628QRQ89Qcg" name="Data">
-    <sub_dimensions xmi:id="_jAUfIL3wEe2628QRQ89Qcg" name="Timeliness">
-      <kpis xmi:id="_leWAwL3wEe2628QRQ89Qcg" name="delay" description="Time difference between data acquistion and arrival on the system (the near factor in near real-time)" unit="minutes">
-        <target_value xsi:type="timed_kpi:SingleTarget" xmi:id="_AcpdcL31Ee2628QRQ89Qcg">
-          <target xsi:type="timed_kpi:RealValue" xmi:id="_C8dHwL31Ee2628QRQ89Qcg" unit="minutes" value="30.0"/>
+<timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" xmi:id="_Fn_HYMN7Ee2qzK0mq0P3iQ" system="Smart Ocean Platform">
+  <dimension xmi:id="_SUi5kMN7Ee2qzK0mq0P3iQ" name="Data Flow">
+    <sub_dimensions xmi:id="_To75oMN7Ee2qzK0mq0P3iQ" name="Timeliness">
+      <kpis xmi:id="_W7cWwMN8Ee2qzK0mq0P3iQ" name="near_factor" description="Time difference between data acquistion and arrival on the system (the near factor in near real-time)" unit="minutes">
+        <target_value xsi:type="timed_kpi:SingleTarget" xmi:id="_BGm8AMN9Ee2qzK0mq0P3iQ" assessment="LE">
+          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_GAPiEMgrEe2Ajb9NR0ILcQ" arguments="_SxELkMN9Ee2qzK0mq0P3iQ _ogY1AMguEe2Ajb9NR0ILcQ">
+            <sub_expression xmi:id="_rvtl0MgwEe2Ajb9NR0ILcQ" operation="ADD" arguments="_xlwMIMgwEe2Ajb9NR0ILcQ">
+              <sub_expression xmi:id="_xlwMIMgwEe2Ajb9NR0ILcQ" arguments="_v7JDoMN-Ee2qzK0mq0P3iQ _ogY1AMguEe2Ajb9NR0ILcQ"/>
+            </sub_expression>
+          </valuetype>
+          <target xsi:type="timed_kpi:IntegerValue" xmi:id="_Cdi5wMN9Ee2qzK0mq0P3iQ" unit="minutes" value="30"/>
         </target_value>
-        <formula xmi:id="_q-fjsL39Ee2628QRQ89Qcg" arguments="_p3FwYL31Ee2628QRQ89Qcg">
-          <sub_expressions xmi:id="_tUr_AL39Ee2628QRQ89Qcg" operation="GROUP_BY" arguments="_2HfyEL31Ee2628QRQ89Qcg">
-            <sub_expressions xmi:id="_y5SQAL39Ee2628QRQ89Qcg" operation="LE" arguments="_C8dHwL31Ee2628QRQ89Qcg"/>
-          </sub_expressions>
-        </formula>
-        <parameters xmi:id="_p3FwYL31Ee2628QRQ89Qcg" name="metric">
-          <value xsi:type="timed_kpi:StringValue" xmi:id="_skiOEL31Ee2628QRQ89Qcg" value="rtdelay"/>
-        </parameters>
-        <parameters xmi:id="_2HfyEL31Ee2628QRQ89Qcg" name="provider">
-          <value xsi:type="timed_kpi:StringValue" xmi:id="_3MgSUL31Ee2628QRQ89Qcg" value="AADI"/>
-        </parameters>
-        <period xmi:id="_PVh9QL31Ee2628QRQ89Qcg" start="1676993162000" end="1676993162900"/>
+        <time_bound xsi:type="timed_kpi:Period" xmi:id="_1ycgIMN8Ee2qzK0mq0P3iQ" unit="HOUR" period="2"/>
       </kpis>
+      <parameters xmi:id="_N3AsYMN9Ee2qzK0mq0P3iQ" name="metric">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_SxELkMN9Ee2qzK0mq0P3iQ" value="near_factor"/>
+      </parameters>
+      <parameters xmi:id="_uj3HoMN-Ee2qzK0mq0P3iQ" name="metric">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_v7JDoMN-Ee2qzK0mq0P3iQ" value="overhead"/>
+      </parameters>
     </sub_dimensions>
+    <parameters xmi:id="_muARYMguEe2Ajb9NR0ILcQ" name="producer">
+      <value xsi:type="timed_kpi:StringValue" xmi:id="_ogY1AMguEe2Ajb9NR0ILcQ" value="AADI"/>
+    </parameters>
   </dimension>
 </timed_kpi:KpiModel>

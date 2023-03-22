@@ -62,17 +62,3 @@ operation kpi!IntegerValue compare(snapshot: Integer, baseline:Integer): Real{
     var result = ((snapshot - baseline) / baseline) * 100.0;
 	return result;
 }
-
-operation kpi!AggregatedRealValue compare(snapshot: Any, baseline:Any): Real{
-//TODO
-	return 0;
-}
-
-operation kpi!AggregatedIntegerValue compare(snapshot: Any, baseline:Any): Real{
-//TODO
-	return 0;
-}
-
-operation kpi!AggregatedRangedValue compare(){
-	return 0;
-}

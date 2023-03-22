@@ -3,23 +3,30 @@ import "units.eol";
 
 operation smartocean!System get(kpi: kpi!Kpi): Any{
 
-	var expr    = kpi.target_value.valuetype.getValue(self); 
-	var target  = kpi.target_value.getValue();
+	var expr    = kpi.target_value.valuetype.getValue(self);
+	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
+	var target  = kpi.target_value.getValue(self);
 	
 	var query;
 	
-	query = kpi.time_bound.getValue() == "" ? expr + target.op + " " + target.target :
-	 	"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValue();
+	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
+		query = kpi.time_bound.getValue() == "" ? expr + target.op + " " + target.target :
+	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValue();
+	 	}
+	else if(kpi.target_value.isTypeOf(kpi!Range)){
+		query = kpi.time_bound.getValue() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" :
+	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValue();
+	}
 	
 	return query;
 }
 
 operation kpi!Period getValue() {
-	if (self.timestamp <= 0){
+	if (self.period <= 0){
 	 return ""; //NOW - instant when the query is evaluated //Assumption
 	}
 	var result = new String("[");
-	result.concat(self.timestamp).concat(getPromQLDurationStr(self.unit)).concat("]");
+	result.concat(self.period.asString()).concat(getPromQLDurationStr(self.unit)).concat("]");
 	return result;
 
 }
@@ -43,43 +50,31 @@ operation kpi!Instant getValue() {
 }
 
 
-operation kpi!RealValue get(system: smartocean!System): Real{
+operation kpi!RealValue getValue(system: smartocean!System): Real{
 	return self.value.asReal();
 }
 
-operation kpi!IntegerValue get(system: smartocean!System): Integer{
+operation kpi!IntegerValue getValue(system: smartocean!System): Integer{
 	return self.value.asInteger();
 }
 
-operation kpi!StringValue get(system: smartocean!System): String{
+@cache
+operation kpi!StringValue getValue(system: smartocean!System): String{
 	var parameter = self.getParameter();
 	
 	if(parameter != null){
 		if(parameter.name.toLowerCase() == "metric"){
-			var metrics = system.monitoring_data.collect(name | name == parameter.value);
+			var metrics = system.monitoring_data.select(metric | metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase());
 			if(metrics.size == 0)
 				("Error: Undefined metric "+parameter.name+" in "+system.system_name+" system subject model").println();
 			else if(metrics.size == 1){
 				var metric = metrics.flatten();
-				return metric.metric_id;
+				return metric.metric_id.asString();
 			}
 			else if(metrics.size > 1)
 			 ("Error: Multiple metric "+parameter.name+" in "+system.system_name+" system subject model").println();
 		}
 		
-		else if(parameter.name.toLowerCase() == "label"){
-		  var metric = self.getMetric(); // must be used in arguments in expression //assumption
-		  var labels = system.monitoring_data.labels.collect(name | name == parameter.value).flatten();
-		  //Check if label is in the list of labels of the metric in the subject model
-		  if(labels.size == 0)
-				("Error: Undefined metric "+parameter.name+" in "+system.system_name+" system subject model").println();
-			else if(labels.size == 1){
-				var label = metrics.flatten();
-				return metric.metric_id;
-			}
-			else if(labels.size > 1)
-			 ("Error: Multiple metric "+parameter.name+" in "+system.system_name+" system subject model").println();
-		}
 		else
 			return self.value.asString();
 	}
@@ -88,48 +83,72 @@ operation kpi!StringValue get(system: smartocean!System): String{
 
 }
 
-
 //PROMQL Query Operators: https://prometheus.io/docs/prometheus/latest/querying/operators/#operators
 //PROMQL Query Funcitons: https://prometheus.io/docs/prometheus/latest/querying/functions/
 operation kpi!Expression getValue(system: smartocean!System): String{
 
 var kpi = self.getKPI();
-var target = kpi.target_value.getValue();
+
+if(kpi == null){
+	("Error could not find associated KPI").println();
+	return "";
+}
+
+var is_sub = self.eContainer().isTypeOf(kpi!Expression);
 
 var instant = kpi.time_bound.type().equals("kpi!Instant") ? true : false;
 
-var args  = self.arguments; //list //getParameters().get(self);
+var args  = self.arguments.collect(arg| arg.getValue(system)); //OrderedSet
+var sub_expr = self.sub_expression.isDefined() ? self.sub_expression.getValue(system) : "";
+
 var nargs = args.size();
 
 var op = self.`operation`; //https://www.eclipse.org/epsilon/doc/eol/#escaping-reserved-keywords
 
+var expr = new String();
+
+//Precedence: Args -> Sub_Expression //Assumption
+//The first argument of sub_expressions are the parent Expression Element //Assumption
+
 //op: kpi!EEnumLiteral
 switch (op) {
-	case kpi!Operation#SUM: return instant? self.wrap("sum"): "+" ; //Get arguments
-	case kpi!Operation#ADD: return "+" ; //Get arguments
-	case kpi!Operation#DIFF: return "-";
-	case kpi!Operation#AVG: return instant? self.wrap("avg") : self.wrap("avg_over_time");
-	case kpi!Operation#MIN: return self.wrap("min");
-	case kpi!Operation#MAX: return self.wrap("max");
-	case kpi!Operation#DIV: return "/";
-	case kpi!Operation#MULT: return "*";
-	case kpi!Operation#LE:  return "<=";
-	case kpi!Operation#GE: return ">=";
-	case kpi!Operation#LT: return "<";
-	case kpi!Operation#GT: return ">";
-	case kpi!Operation#RATE: return self.wrap("rate");
-	case kpi!Operation#GROUP: return "";
-	case kpi!Operation#MATCH: return ""; //regex
-	case kpi!Operation#FILTER: return "";
-	case kpi!Operation#AND: return "and";
-	case kpi!Operation#OR: return "or";
-	case kpi!Operation#UNLESS: return "unless";
-	case kpi!Operation#COUNT: return "count";
-	default : "Operation not supported".println(); return ""; 
+	case kpi!Operation#SUM: 
+		expr.concat(args).concat(sub_expr).wrap("sum");
+	case kpi!Operation#ADD:
+		is_sub ?  expr.concat("+").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args)).concat(sub_expr);
+		//is_sub ?  expr.concat("+").concat(self.applyOp("+",args)).concat(sub_expr) : expr.concat(self.applyOp("+",args)).concat(sub_expr);
+		//sub_expr == "" ?
+	case kpi!Operation#DIFF: 
+		is_sub ?  expr.concat("-").concat(self.applyOp("-",args)).concat(sub_expr) : expr.concat(self.applyOp("-",args)).concat(sub_expr);
+	case kpi!Operation#AVG: 
+		instant? expr.concat(args).concat(sub_expr).wrap("avg") : expr.concat(args).concat(sub_expr).wrap("avg_over_time");
+	case kpi!Operation#MIN: 
+		expr.concat(args).concat(sub_expr).wrap("min");
+	case kpi!Operation#MAX: 
+		expr.concat(args).concat(sub_expr).wrap("max");
+	case kpi!Operation#DIV: 
+		is_sub ?  expr.concat("/").concat(self.applyOp("/",args)).concat(sub_expr) : expr.concat(self.applyOp("/",args)).concat(sub_expr);
+	case kpi!Operation#MULT: 
+		is_sub ?  expr.concat("*").concat(self.applyOp("*",args)).concat(sub_expr) : expr.concat(self.applyOp("*",args)).concat(sub_expr);
+	
+	case kpi!Operation#LE:  "<="; //TODO
+	case kpi!Operation#GE: ">=";
+	case kpi!Operation#LT: "<";
+	case kpi!Operation#GT: ">";
+	case kpi!Operation#RATE: expr.concat(args).concat(sub_expr).wrap("rate");
+	//TODO 1st arg must be metric!! //Assumption
+	case kpi!Operation#FILTER:
+		var result =  self.filter(system,args);
+		sub_expr == "" ? expr.concat(result): expr.concat(result).concat(sub_expr);
+	case kpi!Operation#AND: "and";
+	case kpi!Operation#OR: "or";
+	case kpi!Operation#UNLESS: "unless";
+	case kpi!Operation#COUNT: "count";
+	default : "Operation not supported".println(); 
 	}
 }
 
-operation kpi!RangeValue getValue(): Any {
+operation kpi!Range getValue(system: smartocean!System): Any {
 	return new Tuple(max=self.getMaxValue(), min=self.getMinValue());
 }
 
@@ -145,7 +164,7 @@ operation kpi!Range getMinValue(): Any {
 	return self.min.getValue(); 
 }
 
-operation kpi!SingleTarget getValue(): Tuple{
+operation kpi!SingleTarget getValue(system: smartocean!System): Tuple{
 
 var op = self.assessment;
 
@@ -171,7 +190,7 @@ switch (op) {
 		opStr =  "";
 	}
 	
-	var result = new Tuple(op=opStr, target=self.target.getValue());
+	var result = new Tuple(op=opStr, target=self.target.getValue(system));
 	
 	return result;
 	

@@ -344,17 +344,9 @@
         <element xmi:type="ecore:EEnumLiteral" href="kpi.ecore#//Operation/RATE"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_lusW08MHEe2Aya7U7kg7wA"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_lusW1MMHEe2Aya7U7kg7wA" type="3009">
-        <element xmi:type="ecore:EEnumLiteral" href="kpi.ecore#//Operation/GROUP"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_lusW1cMHEe2Aya7U7kg7wA"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_lusW1sMHEe2Aya7U7kg7wA" type="3009">
         <element xmi:type="ecore:EEnumLiteral" href="kpi.ecore#//Operation/COUNT"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_lusW18MHEe2Aya7U7kg7wA"/>
-      </children>
-      <children xmi:type="notation:Node" xmi:id="_lusW2MMHEe2Aya7U7kg7wA" type="3009">
-        <element xmi:type="ecore:EEnumLiteral" href="kpi.ecore#//Operation/STDDEV"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_lusW2cMHEe2Aya7U7kg7wA"/>
       </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_Pbf9JL7LEe22wMU0SwFsaQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_Pbf9Jb7LEe22wMU0SwFsaQ"/>
@@ -630,7 +622,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_haKVdr33Ee2628QRQ89Qcg" x="1" y="-6"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_haKVcb33Ee2628QRQ89Qcg" fontName="Ubuntu"/>
-    <element xmi:type="ecore:EReference" href="kpi.ecore#//Expression/sub_expressions"/>
+    <element xmi:type="ecore:EReference" href="kpi.ecore#//Expression/sub_expression"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_haKVcr33Ee2628QRQ89Qcg" points="[0, 0, -38, -22]$[-85, 0, -123, -22]$[-85, 48, -123, 26]$[38, 48, 0, 26]$[38, 23, 0, 1]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pYT3wL33Ee2628QRQ89Qcg" id="(0.0,0.6101694915254238)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_okq0UL33Ee2628QRQ89Qcg" id="(0.25675675675675674,0.9830508474576272)"/>

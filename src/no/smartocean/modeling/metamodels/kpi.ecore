@@ -46,15 +46,13 @@
     <eLiterals name="OR" value="8"/>
     <eLiterals name="UNLESS" value="9"/>
     <eLiterals name="MULT" value="10"/>
-    <eLiterals name="MATCH" value="11" literal="MATCH"/>
     <eLiterals name="LE" value="12"/>
     <eLiterals name="GE" value="13"/>
     <eLiterals name="LT" value="14"/>
     <eLiterals name="GT" value="15"/>
     <eLiterals name="RATE" value="16"/>
-    <eLiterals name="GROUP" value="17" literal="GROUP_BY"/>
-    <eLiterals name="COUNT" value="18" literal="COUNT"/>
-    <eLiterals name="STDDEV" value="19"/>
+    <eLiterals name="COUNT" value="11" literal="COUNT"/>
+    <eLiterals name="ADD" value="17" literal="ADD"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumericalValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -77,8 +75,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" lowerBound="1"
         upperBound="-1" eType="#//ValueType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_expressions" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_expression" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//NumericalValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
