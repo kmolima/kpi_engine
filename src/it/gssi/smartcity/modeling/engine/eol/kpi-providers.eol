@@ -76,20 +76,20 @@ operation OrderedSet<kpi!ValueType> get(city: smartcity!SmartCity, oper: kpi!EEn
 
 }
 
-operation Any getop(op: kpi!EEnumLiteral): Any{
+operation Any getop(op: kpi!EEnumLiteral): String {
 
 
 switch (op) {
-case kpi!Operation#GET: return self;
-case kpi!Operation#SUM: return self.sum();
-case kpi!Operation#DIFF: return self.diff();
-case kpi!Operation#AVG: return self.sum()/self.size();
-case kpi!Operation#MIN: return self.min();
-case kpi!Operation#MAX: return self.max();
-case kpi!Operation#DIV: return self.get(0).ifUndefined(0)/self.get(1).ifUndefined(0);
-case kpi!Operation#MULT: return self.get(0)*self.get(1);
-case kpi!Operation#CEN: if(self.get(0) >= 100000) return self.get(0) / 100000; else return self.get(0) / self.get(0);
-default : "No operation provided ".println(); }
+	case kpi!Operation#GET: return self;
+	case kpi!Operation#SUM: return self.sum();
+	case kpi!Operation#DIFF: return self.diff();
+	case kpi!Operation#AVG: return self.sum()/self.size();
+	case kpi!Operation#MIN: return self.min();
+	case kpi!Operation#MAX: return self.wrap("max");
+	case kpi!Operation#DIV: return "/";
+	case kpi!Operation#MULT: return "*";
+	//case kpi!Operation#CEN: if(self.get(0) >= 100000) return self.get(0) / 100000; else return self.get(0) / self.get(0);
+	default : "Operation undefined ".println(); }
 }
 
 operation Sequence diff(): Real{
