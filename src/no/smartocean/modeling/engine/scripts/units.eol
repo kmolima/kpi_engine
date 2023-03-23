@@ -1,10 +1,10 @@
 // known units in PromQL - useful for query readability
 
 
-operation String getPromQLUnitStr(unit: kpi!EEnumLiteral) {
+operation String getPromQLUnitStr(): String {
 // check for units property in elements
 
-switch(mykpi.unit){
+switch(self){
 
 	case "ms":
 	case "milliseconds":
@@ -50,59 +50,68 @@ switch(mykpi.unit){
 
 }
 
-operation getPromQLDurationStr(unit: kpi!EEnumLiteral): String{
+operation getPeriodStr(unit: kpi!EEnumLiteral): String{
+
+	var result = new String();
 	
 	switch(unit){
 		case kpi!TimeUnit#MS:
-			return getPromQLDurationStr("ms");
+			result = "ms";//getPromQLDurationStr("ms");
+			break;
 		case kpi!TimeUnit#SEC:
-			return getPromQLDurationStr("sec");
+			result = "s";//getPromQLDurationStr("sec");
+			break;
 	 	case kpi!TimeUnit#MIN:
-			return getPromQLDurationStr("min");
+			result = "m";//getPromQLDurationStr("min");
+			break;
 		case kpi!TimeUnit#HR:
-			return getPromQLDurationStr("hour");
+			result = "h";//getPromQLDurationStr("hour");
+			break;
 		case kpi!TimeUnit#DAY:
-			return getPromQLDurationStr("day");
+			result = "d";//getPromQLDurationStr("day");
+			break;
 		case kpi!TimeUnit#WEEK:
-			return getPromQLDurationStr("week");
+			result = "w";//getPromQLDurationStr("week");
+			break;
 		case kpi!TimeUnit#YEAR:
-			return getPromQLDurationStr("year");	
-		
+			result = "w";//getPromQLDurationStr("year");
+			break;
+		default:
+			result = "";	
 	}
-
+	return result;
 
 } 
 
 // https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations
 operation getPromQLDurationStr(unit: String): String {
-// check for units property in elements
 
-switch(unit){
+switch(unit.toLowerCase()){
 
 	case "ms":
 	case "milliseconds":
 	case "millisecond":
 	case "millis":
-	return "ms";
+		return "ms";
 
 	case "s":
 	case "sec":
 	case "seconds":
 	case "secs":
-	return "s"; //default unit in Prometheus
+		return "s"; //default unit in Prometheus
 	
 	case "m":
 	case "min":
 	case "mins":
 	case "minutes":
-	return "m";
+		return "m";
 	
 	case "h":
 	case "hr":
 	case "hrs":
 	case "hour":
 	case "hours":
-	return "h";
+		return "h";
 	
 	case "d":
 	case "day":
@@ -113,12 +122,15 @@ switch(unit){
 	case "yr":
 	case "yrs":
 	case "year":
-	return "y";
+		return "y";
 	
 	case "w":
 	case "week":
 	case "weeks":
-	return "w";
+		return "w";
+	
+	default:
+		return "";	
 	
 	}
 

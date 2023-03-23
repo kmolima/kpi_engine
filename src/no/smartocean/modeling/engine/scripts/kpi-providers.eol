@@ -3,11 +3,13 @@ import "units.eol";
 
 operation smartocean!System get(kpi: kpi!Kpi): Any{
 
-	var expr    = kpi.target_value.valuetype.getValue(self);
+	
 	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
 	var target  = kpi.target_value.getValue(self);
 	
-	var query;
+	var expr    = kpi.target_value.valuetype.getValue(self);
+	
+	var query = new String();
 	
 	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
 		query = kpi.time_bound.getValue() == "" ? expr + target.op + " " + target.target :
@@ -21,41 +23,46 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 	return query;
 }
 
-operation kpi!Period getValue() {
+operation kpi!Period getValue(): String {
 	if (self.period <= 0){
 	 return ""; //NOW - instant when the query is evaluated //Assumption
 	}
-	var result = new String("[");
-	result.concat(self.period.asString()).concat(getPromQLDurationStr(self.unit)).concat("]");
+	var result = new String();
+	result = result.concat("[");
+	result = result.concat(self.period.asString()).concat(getPeriodStr(self.unit)).concat("]");
 	return result;
 
 }
 
-operation kpi!Instant getValue() {
+operation kpi!Instant getValue(): String {
 
 	if (self.timestamp <= 0){
 	 return ""; //NOW - instant when the query is evaluated //Assumption
 	}
 	else if(self.unit == kpi!TimeUnit#SEC){
 		var result = new String("@ "); //UNIX TIMESTAMP
-		result.concat(self.timestamp);
+		result = result.concat(self.timestamp);
 		return result;
 	}
 	else {
 		var result = new String("offset ");
-		result.concat(self.timestamp).concat(getPromQLDurationStr(self.unit));
+		result = result.concat(self.timestamp).concat(getPeriodStr(self.unit));
 		return result;
 	}
 	
 }
 
 
-operation kpi!RealValue getValue(system: smartocean!System): Real{
-	return self.value.asReal();
+operation kpi!RealValue getValue(system: smartocean!System): String{
+	var unit = getPromQLDurationStr(self.unit);
+	var result = self.value + unit;
+	return result;//self.value.asReal();
 }
 
-operation kpi!IntegerValue getValue(system: smartocean!System): Integer{
-	return self.value.asInteger();
+operation kpi!IntegerValue getValue(system: smartocean!System): String{
+	var unit = getPromQLDurationStr(self.unit);
+	var result = self.value + unit;
+	return result;//self.value.asInteger();
 }
 
 @cache
@@ -74,9 +81,8 @@ operation kpi!StringValue getValue(system: smartocean!System): String{
 			else if(metrics.size > 1)
 			 ("Error: Multiple metric "+parameter.name+" in "+system.system_name+" system subject model").println();
 		}
-		
 		else
-			return self.value.asString();
+			return parameter.asString();//self.value.asString();
 	}
 	
 	return "";
@@ -98,8 +104,13 @@ var is_sub = self.eContainer().isTypeOf(kpi!Expression);
 
 var instant = kpi.time_bound.type().equals("kpi!Instant") ? true : false;
 
-var args  = self.arguments.collect(arg| arg.getValue(system)); //OrderedSet
+var args  = Sequence<String>; //Sequence
+args  = self.arguments.collect(arg | arg.getValue(system));
+
 var sub_expr = self.sub_expression.isDefined() ? self.sub_expression.getValue(system) : "";
+
+if((self.arguments.first() == self.sub_expression)) //End of resursion for intermediate operation //assumption
+	sub_expr = "";
 
 var nargs = args.size();
 
@@ -114,56 +125,75 @@ var expr = new String();
 switch (op) {
 	case kpi!Operation#SUM: 
 		expr.concat(args).concat(sub_expr).wrap("sum");
+		break;
 	case kpi!Operation#ADD:
-		is_sub ?  expr.concat("+").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat("+").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#DIFF: 
-		is_sub ?  expr.concat("-").concat(self.applyOp("-",args)) : expr.concat(self.applyOp("-",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat("-").concat(self.applyOp("-",args)) : expr.concat(self.applyOp("-",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#AVG:
-		sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr); 
-		instant? expr.wrap("avg") : expr.wrap("avg_over_time");
+		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr); 
+		expr = instant? expr.wrap("avg") : expr.wrap("avg_over_time");
+		break;
 	case kpi!Operation#MIN: 
-		sub_expr == "" ? expr.concat(args).wrap("min") : expr.concat(args).concat(sub_expr).wrap("min");
+		expr = sub_expr == "" ? expr.concat(args).wrap("min") : expr.concat(args).concat(sub_expr).wrap("min");
+		break;
 	case kpi!Operation#MAX: 
 		sub_expr == "" ? expr.concat(args).wrap("max") : expr.concat(args).concat(sub_expr).wrap("max");
+		break;
 	case kpi!Operation#DIV: 
-		is_sub ?  expr.concat("/").concat(self.applyOp("/",args)) : expr.concat(self.applyOp("/",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat("/").concat(self.applyOp("/",args)) : expr.concat(self.applyOp("/",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#MULT: 
-		is_sub ?  expr.concat("*").concat(self.applyOp("*",args)) : expr.concat(self.applyOp("*",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
-	
+		expr = is_sub ?  expr.concat("*").concat(self.applyOp("*",args)) : expr.concat(self.applyOp("*",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;	
 	case kpi!Operation#LE:  
 		is_sub ?  expr.concat("<=").concat(self.applyOp("<=",args)) : expr.concat(self.applyOp("<=",args));
 		sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#GE: 
-		is_sub ?  expr.concat(">=").concat(self.applyOp(">=",args)) : expr.concat(self.applyOp(">=",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat(">=").concat(self.applyOp(">=",args)) : expr.concat(self.applyOp(">=",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#LT: 
 		is_sub ?  expr.concat("<").concat(self.applyOp("<",args)) : expr.concat(self.applyOp("<",args));
 		sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#GT:
-		is_sub ?  expr.concat(">").concat(self.applyOp(">",args)) : expr.concat(self.applyOp(">",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat(">").concat(self.applyOp(">",args)) : expr.concat(self.applyOp(">",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#RATE: 
-		sub_expr == "" ? expr.concat(args).wrap("rate") : expr.concat(args).concat(sub_expr).wrap("rate");
+		expr = sub_expr == "" ? expr.concat(args).wrap("rate") : expr.concat(args).concat(sub_expr).wrap("rate");
+		break;
 	case kpi!Operation#FILTER: // 1st arg must be metric!! //Assumption
 		var result =  self.filter(system,args);
-		sub_expr == "" ? expr.concat(result): expr.concat(result).concat(sub_expr);
+		expr = sub_expr == "" ? expr.concat(result): expr.concat(result).concat(sub_expr);
+		break;
 	case kpi!Operation#AND:
-		is_sub ?  expr.concat("and").concat(self.applyOp("and",args)) : expr.concat(self.applyOp("and",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat("and").concat(self.applyOp("and",args)) : expr.concat(self.applyOp("and",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#OR: 
-		is_sub ?  expr.concat("or").concat(self.applyOp("or",args)) : expr.concat(self.applyOp("or",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat("or").concat(self.applyOp("or",args)) : expr.concat(self.applyOp("or",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#UNLESS:
-		is_sub ?  expr.concat("unless").concat(self.applyOp("unless",args)) : expr.concat(self.applyOp("unless",args));
-		sub_expr == "" ? expr : expr.concat(sub_expr);
+		expr = is_sub ?  expr.concat("unless").concat(self.applyOp("unless",args)) : expr.concat(self.applyOp("unless",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+		break;
 	case kpi!Operation#COUNT: 
-		sub_expr == "" ? expr.concat(args).wrap("count") : expr.concat(args).concat(sub_expr).wrap("count");
+		expr = sub_expr == "" ? expr.concat(args).wrap("count") : expr.concat(args).concat(sub_expr).wrap("count");
+		break;
 	default : "Operation not supported".println(); 
 	}
+
+	return expr;
 }
 
 operation kpi!Range getValue(system: smartocean!System): Any {

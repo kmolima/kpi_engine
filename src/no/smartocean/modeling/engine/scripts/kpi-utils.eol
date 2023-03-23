@@ -44,9 +44,9 @@ operation kpi!Expression applyOp(op: String, set: Sequence<String>): String{
 
 	var result = new String();
 	for(arg in set){
-		result.concat(arg.asString());
+		result = result.concat(arg.asString());
 		if(hasMore)
-			result.concat(op);
+			result = result.concat(op);
 	}
 	return result;
 }
@@ -92,11 +92,12 @@ operation String wrap(op: String) {
 	self = result;
 }
 
-operation kpi!Expression filter(system: smartocean!System, values: Sequence<kpi!ValueType>): String {
+operation kpi!Expression filter(system: smartocean!System, values: Sequence<String>): String {
 
 assert(self.arguments.size() == values.size());
 
-var metric_id = values.get(0); //FILTER OP must be applied to a Metric
+var metric_id = new String();
+metric_id = values.first().asString(); //FILTER OP must be applied to a Metric
 var metric    = self.arguments.get(0);
 var parameter = metric.getParameter();
 var result = new String();
@@ -111,7 +112,7 @@ var filters =  new Sequence<String>();
 		var metric_check = system.monitoring_data.exists(metric | metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase());
 		if(not metric_check)
 			return "";
-		result.concat(metric_id);
+		result = result.concat(metric_id);
 		for(filter in self.arguments.excluding(metric)){
 			var param = filter.getParameter();
 			if(param == null)
@@ -129,13 +130,13 @@ var filters =  new Sequence<String>();
 	}
 	
 	if(filters.size() > 0){
-		result.concat("{");
+		result = result.concat("{");
 		for(filter in filters){
 			result.concat(filter);
 			if(hasMore)
-				result.concat(",");
+				result = result.concat(",");
 		}
-		result.concat("}");
+		result = result.concat("}");
 		return result;
 	}
 	return "";
@@ -150,8 +151,7 @@ operation kpi!Parameter getValue(): Tuple {
 operation kpi!Parameter asString(): String {
 
 	var str = new String();
-	str.concat(self.name).concat("=").concat("\"").concat(self.value.value).concat("\"");
-		
+	str = str.concat(self.name).concat("=").concat("\"").concat(self.value.value).concat("\"");
 	return str;
 }
 
