@@ -65,7 +65,7 @@ operation kpi!IntegerValue getValue(system: smartocean!System): String{
 	return result;//self.value.asInteger();
 }
 
-@cache
+//@cache
 operation kpi!StringValue getValue(system: smartocean!System): String{
 	var parameter = self.getParameter();
 	
@@ -76,13 +76,13 @@ operation kpi!StringValue getValue(system: smartocean!System): String{
 				("Error: Undefined metric "+parameter.name+" in "+system.system_name+" system subject model").println();
 			else if(metrics.size == 1){
 				var metric = metrics.flatten();
-				return metric.metric_id.asString();
+				return metric.metric_id.first();
 			}
 			else if(metrics.size > 1)
 			 ("Error: Multiple metric "+parameter.name+" in "+system.system_name+" system subject model").println();
 		}
 		else
-			return parameter.asString();//self.value.asString();
+			return parameter.str();//self.value.asString();
 	}
 	
 	return "";
@@ -104,7 +104,8 @@ var is_sub = self.eContainer().isTypeOf(kpi!Expression);
 
 var instant = kpi.time_bound.type().equals("kpi!Instant") ? true : false;
 
-var args  = Sequence<String>; //Sequence
+var args = Sequence<String>; 
+
 args  = self.arguments.collect(arg | arg.getValue(system));
 
 var sub_expr = self.sub_expression.isDefined() ? self.sub_expression.getValue(system) : "";

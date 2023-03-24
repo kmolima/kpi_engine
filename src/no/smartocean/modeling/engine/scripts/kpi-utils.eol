@@ -28,7 +28,7 @@ operation kpi!Expression getMetrics(): OrderedSet{
 	return metrics;
 }
 
-@cache
+//@cache
 operation kpi!ParameterValue getParameter(): kpi!Parameter{
 	var mother = self.eContainer;
 	
@@ -97,7 +97,7 @@ operation kpi!Expression filter(system: smartocean!System, values: Sequence<Stri
 assert(self.arguments.size() == values.size());
 
 var metric_id = new String();
-metric_id = values.first().asString(); //FILTER OP must be applied to a Metric
+metric_id = values.first(); //FILTER OP must be applied to a Metric
 var metric    = self.arguments.get(0);
 var parameter = metric.getParameter();
 var result = new String();
@@ -120,7 +120,7 @@ var filters =  new Sequence<String>();
 			var label_check = system.monitoring_data.exists(metric | (metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase()
 				and metric.checkLabel(param.name)));
 			if(label_check){
-				filters.add(filter.asString());
+				filters.add(param.str());
 			}
 		 }
 	}
@@ -132,7 +132,7 @@ var filters =  new Sequence<String>();
 	if(filters.size() > 0){
 		result = result.concat("{");
 		for(filter in filters){
-			result.concat(filter);
+			result = result.concat(filter);
 			if(hasMore)
 				result = result.concat(",");
 		}
@@ -148,7 +148,7 @@ operation kpi!Parameter getValue(): Tuple {
 
 }
 
-operation kpi!Parameter asString(): String {
+operation kpi!Parameter str(): String {
 
 	var str = new String();
 	str = str.concat(self.name).concat("=").concat("\"").concat(self.value.value).concat("\"");
