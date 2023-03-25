@@ -6,7 +6,7 @@
         <target_value xsi:type="timed_kpi:SingleTarget" xmi:id="_BGm8AMN9Ee2qzK0mq0P3iQ" assessment="LE">
           <valuetype xsi:type="timed_kpi:Expression" xmi:id="_GAPiEMgrEe2Ajb9NR0ILcQ" arguments="_SxELkMN9Ee2qzK0mq0P3iQ _ogY1AMguEe2Ajb9NR0ILcQ">
             <sub_expression xmi:id="_rvtl0MgwEe2Ajb9NR0ILcQ" operation="ADD" arguments="_xlwMIMgwEe2Ajb9NR0ILcQ">
-              <sub_expression xmi:id="_xlwMIMgwEe2Ajb9NR0ILcQ" arguments="_v7JDoMN-Ee2qzK0mq0P3iQ _ogY1AMguEe2Ajb9NR0ILcQ"/>
+              <sub_expression xmi:id="_xlwMIMgwEe2Ajb9NR0ILcQ" arguments="_v7JDoMN-Ee2qzK0mq0P3iQ _zj6r8MozEe2mBsuE5_6gbg"/>
             </sub_expression>
           </valuetype>
           <target xsi:type="timed_kpi:IntegerValue" xmi:id="_Cdi5wMN9Ee2qzK0mq0P3iQ" unit="minutes" value="30"/>
@@ -22,6 +22,9 @@
     </sub_dimensions>
     <parameters xmi:id="_muARYMguEe2Ajb9NR0ILcQ" name="producer">
       <value xsi:type="timed_kpi:StringValue" xmi:id="_ogY1AMguEe2Ajb9NR0ILcQ" value="AADI"/>
+    </parameters>
+    <parameters xmi:id="_x_RpYMozEe2mBsuE5_6gbg" name="service">
+      <value xsi:type="timed_kpi:StringValue" xmi:id="_zj6r8MozEe2mBsuE5_6gbg" value="DataService"/>
     </parameters>
   </dimension>
 </timed_kpi:KpiModel>
