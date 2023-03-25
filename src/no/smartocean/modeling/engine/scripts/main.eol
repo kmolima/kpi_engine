@@ -2,9 +2,9 @@ import "kpi-providers.eol";
 import "state-utils.eol";
 
 for (system in smartocean!System.all) { 
-	("==========KPI model calculation applied on "+system.system_name+"==========").println();
+	("========== KPI model calculation applied on "+system.system_name+" ==========").println();
 	for (mykpi in kpi!Kpi.all) {
-	 ("KPI:"+mykpi.name+" | Dimension: "+mykpi.getDimStr()+" | Unit: "+mykpi.unit).println();
+	 ("KPI:"+mykpi.name+" | Dimension(s): "+mykpi.getDimStr()+" | Unit: "+mykpi.unit).println();
 	 ("KPI Description: "+mykpi.description).println();
 	 ("PromQL Query:").println();
 		var queries = system.collect(sc|sc.get(mykpi));

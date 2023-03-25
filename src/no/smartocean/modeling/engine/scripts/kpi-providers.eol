@@ -54,15 +54,13 @@ operation kpi!Instant getValue(): String {
 
 
 operation kpi!RealValue getValue(system: smartocean!System): String{
-	var unit = getPromQLDurationStr(self.unit);
-	var result = self.value + unit;
-	return result;//self.value.asReal();
+	var result = getPromQLUnit(self.unit,self.value);
+	return result.asString();//self.value.asReal(); self.value + unit;
 }
 
 operation kpi!IntegerValue getValue(system: smartocean!System): String{
-	var unit = getPromQLDurationStr(self.unit);
-	var result = self.value + unit;
-	return result;//self.value.asInteger();
+	var result = getPromQLUnit(self.unit,self.value.asReal());
+	return result.asString();//self.value.asInteger();
 }
 
 //@cache
@@ -128,7 +126,7 @@ switch (op) {
 		expr.concat(args).concat(sub_expr).wrap("sum");
 		break;
 	case kpi!Operation#ADD:
-		expr = is_sub ?  expr.concat("+").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
+		expr = is_sub ?  expr.concat(" + ").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
 		break;
 	case kpi!Operation#DIFF: 

@@ -133,5 +133,67 @@ switch(unit.toLowerCase()){
 		return "";	
 	
 	}
-
 } 
+
+//https://prometheus.io/docs/practices/naming/#base-units
+operation getPromQLUnit(unit: String, value: Real): Real {
+var result = value;
+
+switch(unit.toLowerCase()){
+//Converting to seconds
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+	result = result / 1000.0;
+		return result;
+
+	case "s":
+	case "sec":
+	case "seconds":
+	case "secs":
+		return result; //default unit in Prometheus
+	
+	case "m":
+	case "min":
+	case "mins":
+	case "minutes":
+	result = result * 60.0;
+		return result;
+	
+	case "h":
+	case "hr":
+	case "hrs":
+	case "hour":
+	case "hours":
+	result = result * 60.0 * 60.0;
+		return result;
+	
+	case "d":
+	case "day":
+	case "days":
+	result = result * 60.0 * 60.0 * 24.0;
+		return result;
+	
+	case "y":
+	case "yr":
+	case "yrs":
+	case "year":
+	result = result * 60.0 * 60.0 * 24.0 * 365.0;
+		return result;
+	
+	case "w":
+	case "week":
+	case "weeks":
+	result = result * 60.0 * 60.0 * 24.0 * 7.0;
+		return result;
+		
+	//TODO check bytes
+	
+	//TODO check Percentage (ratio)
+	
+	default:
+		return result;	
+	}
+
+}
