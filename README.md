@@ -9,12 +9,15 @@ In particular, this work extends previous implementations of the refered framewo
 
 For more details please check: [Rossi, Maria Teresa, et al. "Leveraging Multi-Level Modeling for Multi-Domain Quality Assessment." 2021 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C). IEEE, 2021.](https://ieeexplore.ieee.org/abstract/document/9643700)
 
+## Ocean Data Platform Metamodel (The subject in the framework)
 
-![Ocean Data Platform Metamodel](/src/no/smartocean/metamodels/monitoring.png "Ecore Diagram")
+![Ocean Data Platform Metamodel](/src/no/smartocean/modeling/metamodels/monitoring.png "Ecore Diagram")
 
 ### Rationale
 To DO
 
-### KPIs
+## Time-bounded KPI Metamodel
 Key Performance Indicators (KPI) for the platform with a focus on monitoring data quality.
+
+![KPI Metamodel](/src/no/smartocean/modeling/metamodels/timed_kpi.png "Ecore Diagram")
 
