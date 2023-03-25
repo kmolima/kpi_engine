@@ -1,0 +1,166 @@
+
+//Looks for metrics in Expression arguments
+operation kpi!Expression getMetric(): String{
+	for(valuetype in self.arguments){
+		if(valuetype.isTypeOf(kpi!StringValue)){
+			var parameter = valuetype.eContainer();
+			if(parameter.name.toLowerCase() == "metric"){
+				return parameter.value.value.asString();
+			}
+		}
+	}
+		
+	return "";
+}
+
+//Looks for metrics in Expression arguments
+operation kpi!Expression getMetrics(): OrderedSet{
+	var metrics = new OrderedSet();
+	for(valuetype in self.arguments){
+		if(valuetype.isTypeOf(kpi!StringValue)){
+			var parameter = valuetype.eContainer();
+			if(parameter.name.toLowerCase() == "metric"){
+				metrics.add(parameter.value.value.asString());
+			}
+		}
+	}
+		
+	return metrics;
+}
+
+//@cache
+operation kpi!ParameterValue getParameter(): kpi!Parameter{
+	var mother = self.eContainer;
+	
+	if(mother.isTypeOf(kpi!Parameter))
+		return mother;
+		
+	("Error: StringValue used outside Parameter Element scope?").println();
+	
+	return null;
+}
+
+operation kpi!Expression applyOp(op: String, set: Sequence<String>): String{
+
+	var result = new String();
+	for(arg in set){
+		result = result.concat(arg.asString());
+		if(hasMore)
+			result = result.concat(op);
+	}
+	return result;
+}
+
+// Find KPI element recursirvely
+operation kpi!Expression getKPI(): Any{
+
+	var mother = self.eContainer;
+
+	if(mother.isTypeOf(kpi!SingleTarget) or mother.isTypeOf(kpi!Range) or mother.isTypeOf(kpi!Expression)) //sub-expression
+		return mother.getKPI();
+		
+	return null;
+}
+
+// Find KPI element recursirvely
+operation kpi!TargetType getKPI(): kpi!Kpi{
+
+	var mother = self.eContainer;
+	
+	if(mother.isTypeOf(kpi!Kpi))
+		return mother;
+		
+	return null;
+}
+
+operation kpi!Range getKPI(): kpi!Kpi{
+
+	var mother = self.eContainer;
+		
+	if(mother.isTypeOf(kpi!Kpi))
+		return mother;
+		
+	return null;
+}
+
+
+// adds operation and  "(" ")" around the calling string
+operation String wrap(op: String) {
+
+	var result = new String();
+	result = op.concat("(").concat(self).concat(")");
+	self = result;
+}
+
+operation kpi!Expression filter(system: smartocean!System, values: Sequence<String>): String {
+
+assert(self.arguments.size() == values.size());
+
+var metric_id = new String();
+metric_id = values.first(); //FILTER OP must be applied to a Metric
+var metric    = self.arguments.get(0);
+var parameter = metric.getParameter();
+var result = new String();
+var filters =  new Sequence<String>();
+
+	if(metric_id=="" or parameter == null){
+		("Error First argument of filter operation should be a metric").println();
+		return "";
+	}
+
+	if(parameter.name.toLowerCase() == "metric"){
+		var metric_check = system.monitoring_data.exists(metric | metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase());
+		if(not metric_check)
+			return "";
+		result = result.concat(metric_id);
+		for(filter in self.arguments.excluding(metric)){
+			var param = filter.getParameter();
+			if(param == null)
+				continue; //Key,Value used in labels filtering only ParameterValue Element allowed \\Assumption
+			var label_check = system.monitoring_data.exists(metric | (metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase()
+				and metric.checkLabel(param.name)));
+			if(label_check){
+				filters.add(param.str());
+			}
+		 }
+	}
+	else{
+		("Error First argument of filter operation should be a metric").println();
+		return "";
+	}
+	
+	if(filters.size() > 0){
+		result = result.concat("{");
+		for(filter in filters){
+			result = result.concat(filter);
+			if(hasMore)
+				result = result.concat(",");
+		}
+		result = result.concat("}");
+		return result;
+	}
+	return "";
+}
+
+operation kpi!Parameter getValue(): Tuple {
+	
+	return new Tuple(name=self.name, value=self.value.value);
+
+}
+
+operation kpi!Parameter str(): String {
+
+	var str = new String();
+	str = str.concat(self.name).concat("=").concat("\"").concat(self.value.value).concat("\"");
+	return str;
+}
+
+operation smartocean!RuntimeMetric checkLabel(name: String): Boolean{
+	var labels = self.labels.collect(label | label.name.toLowerCase() == name.toLowerCase());
+	
+	if(labels.size() == 1){
+		return true;
+	}
+	
+	return false;
+}

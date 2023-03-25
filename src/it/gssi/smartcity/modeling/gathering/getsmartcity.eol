@@ -1,0 +1,7 @@
+var city=  smartcitymodel!SmartCity.all.first;
+
+var  latlong = new Map();
+
+latlong.put("latitude",city.latitude);
+latlong.put("longitude",city.longitude);
+return latlong;

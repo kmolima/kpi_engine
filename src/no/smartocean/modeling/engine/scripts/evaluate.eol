@@ -1,0 +1,17 @@
+import "kpi-providers.eol";
+
+
+operation kpi!Kpi getParameters(): Set{
+
+	var tuples = new Set();
+
+	//FIX - look into Dimension Element
+	for(parameter in kpi!parameters) {
+		tupples.add(parameter.getValue());
+	}
+	
+	return tuples;
+}
+
+
+

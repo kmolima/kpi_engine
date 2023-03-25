@@ -1,0 +1,4 @@
+/* disable link removal controls */
+.marker-arrowhead, .link-tools {
+    display: none;
+}

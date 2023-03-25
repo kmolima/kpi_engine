@@ -1,0 +1,61 @@
+pre{
+var containerDimensions=Dimension.all.select(d|d.dimension.size()>0);
+var notcontainerDimensions=Dimension.all.select(d|d.dimension.size()==0 and d.eContainer.isTypeOf(Dimension));
+}
+
+rule Graphical 
+	transform kpimodel : kpi_model::KpiModel  {
+	parameters : Map {
+		
+		"format" = "html",
+		"path" = List{"KPIModel", "Evaluation"},
+		"icon" = "barchart"
+	}
+	
+	template: "kpimodel2picto.egl"
+	 
+}
+
+
+
+
+rule Dimensions
+transform dimension: kpi_model::Dimension in: notcontainerDimensions{
+
+parameters {
+		
+		return Map{
+			"mainDimension" = dimension.name,
+			"format" = "html",
+			"path" = Sequence{"KPIModel", (dimension.eContainer.isTypeOf(Dimension))? dimension.eContainer.name+' - '+ dimension.name: dimension.name},
+			"icon" = "diagram-fffbd7",
+			"layers" = Sequence {
+				Map {"id"=dimension.name, "title"="Dimension"}
+			}
+		};
+	}
+	
+	template: "dimension2picto.egl"
+
+}
+
+
+rule Categories
+transform category: kpi_model::Category {
+
+parameters {
+		
+		return Map{
+			"mainDimension" = category.name,
+			"format" = "html",
+			"path" = Sequence{"KPIModel", (category.eContainer.eContainer.isTypeOf(Dimension))? category.eContainer.eContainer.name+' - '+ category.eContainer.name: category.eContainer.name, category.name},
+			"icon" = "diagram-fffbd7",
+			"layers" = Sequence {
+				Map {"id"="documentation", "title"="Documentation"}
+			}
+		};
+	}
+	
+	template: "category2picto.egl"
+
+}

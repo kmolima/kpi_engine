@@ -1,0 +1,11 @@
+import "kpi-providers.eol";
+
+for (smartc in smartcity!SmartCity.all) { 
+//("==========KPI model calculation applied on "+smartc.city+"==========").println();
+for (mykpi in kpi!Kpi.all) { 
+//mykpi.description.println();
+(smartc.collect(sc|sc.get(mykpi)).first+" "+mykpi.unit);
+//.println();
+//"=================================================================".println();
+}
+}

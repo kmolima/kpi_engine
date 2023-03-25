@@ -1,0 +1,27 @@
+import "kpi-providers.eol";
+import "state-utils.eol";
+import "get-result.eol";
+
+var states: new Sequence();
+
+for (smartc in smartcity!SmartCity.all) { 
+	("==========KPI model calculation applied on "+smartc.city+"==========").println();
+	var state: new kpi!State;
+		state.subject=smartc.city;
+		
+	for (mykpi in kpi!Kpi.all) { 
+	
+		mykpi.description.println();
+		
+		var result = new kpi!Result;
+		var timestamp = Native("java.time.Instant"); //TODO replace by timestamp in data?
+		result.datetime = timestamp.now().toEpochMilli();
+		result.eval_result = mykpi;
+		result.dimension = mykpi.getDimStr();
+		result.state = state;
+		("Subject:"+result.state.subject+" | Category: "+mykpi.category.name+" | Dimension: "+result.dimension).println();
+		(smartc.collect(sc|sc.get(mykpi))+" "+mykpi.unit).println();
+		("KPI Evaluation: "+mykpi.value.getValue()+" unit: "+mykpi.unit).println();
+	}
+		states.add(state);
+}

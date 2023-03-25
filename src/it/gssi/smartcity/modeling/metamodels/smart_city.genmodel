@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/SmartCityEvaluationEngine/src" modelPluginID="SmartCityEvaluationEngine"
+    modelName="Smart_city" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>smart_city.ecore</foreignModel>
+  <genPackages prefix="Smartcity" disposableProviderFactory="true" ecorePackage="smart_city.ecore#/">
+    <genClasses ecoreClass="smart_city.ecore#//SmartCityModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//SmartCityModel/smartCities"/>
+    </genClasses>
+    <genClasses ecoreClass="smart_city.ecore#//SmartCity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//SmartCity/city"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//SmartCity/stakeholders"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//SmartCity/data"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//SmartCity/infrastructurelayer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//SmartCity/latitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//SmartCity/longitude"/>
+    </genClasses>
+    <nestedGenPackages prefix="DataAnalytics" disposableProviderFactory="true" ecorePackage="smart_city.ecore#//DataAnalytics">
+      <genClasses image="false" ecoreClass="smart_city.ecore#//DataAnalytics/Data">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/Data/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/Data/unit"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference smart_city.ecore#//DataAnalytics/Data/src"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/RealValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/RealValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/BoolValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/BoolValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/IntegerValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/IntegerValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/DataPackage">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/DataPackage/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//DataAnalytics/DataPackage/data"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="smart_city.ecore#//DataAnalytics/Source"/>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/SocialMedia">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/SocialMedia/url"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/SocialMedia/name"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/OpenData">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/OpenData/url"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//DataAnalytics/OpenData/name"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//DataAnalytics/ProvidedData">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference smart_city.ecore#//DataAnalytics/ProvidedData/provider"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Infrastructure" disposableProviderFactory="true" ecorePackage="smart_city.ecore#//infrastructure">
+      <genClasses ecoreClass="smart_city.ecore#//infrastructure/MonitoringInfrastructure">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//infrastructure/MonitoringInfrastructure/devices"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//infrastructure/Sensor"/>
+      <genClasses ecoreClass="smart_city.ecore#//infrastructure/Actuator"/>
+      <genClasses image="false" ecoreClass="smart_city.ecore#//infrastructure/IoTDev">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//infrastructure/IoTDev/model"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//infrastructure/IoTDev/location"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//infrastructure/PublicInfrastructureLayer">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//infrastructure/PublicInfrastructureLayer/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smart_city.ecore#//infrastructure/PublicInfrastructureLayer/components"/>
+      </genClasses>
+      <genClasses ecoreClass="smart_city.ecore#//infrastructure/InfrastructureComponent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//infrastructure/InfrastructureComponent/name"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Stakeholder" disposableProviderFactory="true" ecorePackage="smart_city.ecore#//stakeholder">
+      <genClasses ecoreClass="smart_city.ecore#//stakeholder/Stakeholder">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//stakeholder/Stakeholder/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smart_city.ecore#//stakeholder/Stakeholder/organization"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

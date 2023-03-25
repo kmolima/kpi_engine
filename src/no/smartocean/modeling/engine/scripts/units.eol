@@ -1,0 +1,199 @@
+// known units in PromQL - useful for query readability
+
+
+operation String getPromQLUnitStr(): String {
+// check for units property in elements
+
+switch(self){
+
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+	return self.wrap("second").concat("*1000");
+
+	case "s":
+	case "sec":
+	case "seconds":
+	case "secs":
+	return; //default unit in Prometheus
+	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#minute
+	case "minutes":
+	case "min":
+	case "mins":
+	return self.wrap("minute");
+	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#hour
+	case "hour":
+	case "hours":
+	case "hrs":
+	case "hr":
+	return self.wrap("hour");
+	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#year
+	case "y":
+	case "year":
+	case "yr":
+	case "yrs":
+	return self.wrap("year");
+	
+	//https://prometheus.io/docs/prometheus/latest/querying/functions/#month
+	case "month":
+	case "months":
+	return self.wrap("month");
+	
+	default:
+		return "";
+	
+	}
+
+}
+
+operation getPeriodStr(unit: kpi!EEnumLiteral): String{
+
+	var result = new String();
+	
+	switch(unit){
+		case kpi!TimeUnit#MS:
+			result = "ms";//getPromQLDurationStr("ms");
+			break;
+		case kpi!TimeUnit#SEC:
+			result = "s";//getPromQLDurationStr("sec");
+			break;
+	 	case kpi!TimeUnit#MIN:
+			result = "m";//getPromQLDurationStr("min");
+			break;
+		case kpi!TimeUnit#HR:
+			result = "h";//getPromQLDurationStr("hour");
+			break;
+		case kpi!TimeUnit#DAY:
+			result = "d";//getPromQLDurationStr("day");
+			break;
+		case kpi!TimeUnit#WEEK:
+			result = "w";//getPromQLDurationStr("week");
+			break;
+		case kpi!TimeUnit#YEAR:
+			result = "w";//getPromQLDurationStr("year");
+			break;
+		default:
+			result = "";	
+	}
+	return result;
+
+} 
+
+// https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations
+operation getPromQLDurationStr(unit: String): String {
+
+switch(unit.toLowerCase()){
+
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+		return "ms";
+
+	case "s":
+	case "sec":
+	case "seconds":
+	case "secs":
+		return "s"; //default unit in Prometheus
+	
+	case "m":
+	case "min":
+	case "mins":
+	case "minutes":
+		return "m";
+	
+	case "h":
+	case "hr":
+	case "hrs":
+	case "hour":
+	case "hours":
+		return "h";
+	
+	case "d":
+	case "day":
+	case "days":
+	return "d";
+	
+	case "y":
+	case "yr":
+	case "yrs":
+	case "year":
+		return "y";
+	
+	case "w":
+	case "week":
+	case "weeks":
+		return "w";
+	
+	default:
+		return "";	
+	
+	}
+} 
+
+//https://prometheus.io/docs/practices/naming/#base-units
+operation getPromQLUnit(unit: String, value: Real): Real {
+var result = value;
+
+switch(unit.toLowerCase()){
+//Converting to seconds
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+	result = result / 1000.0;
+		return result;
+
+	case "s":
+	case "sec":
+	case "seconds":
+	case "secs":
+		return result; //default unit in Prometheus
+	
+	case "m":
+	case "min":
+	case "mins":
+	case "minutes":
+	result = result * 60.0;
+		return result;
+	
+	case "h":
+	case "hr":
+	case "hrs":
+	case "hour":
+	case "hours":
+	result = result * 60.0 * 60.0;
+		return result;
+	
+	case "d":
+	case "day":
+	case "days":
+	result = result * 60.0 * 60.0 * 24.0;
+		return result;
+	
+	case "y":
+	case "yr":
+	case "yrs":
+	case "year":
+	result = result * 60.0 * 60.0 * 24.0 * 365.0;
+		return result;
+	
+	case "w":
+	case "week":
+	case "weeks":
+	result = result * 60.0 * 60.0 * 24.0 * 7.0;
+		return result;
+		
+	//TODO check bytes
+	
+	//TODO check Percentage (ratio)
+	
+	default:
+		return result;	
+	}
+
+}

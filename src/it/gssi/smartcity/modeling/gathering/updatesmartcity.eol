@@ -1,0 +1,23 @@
+//("...Evaluating parameters for:" +smartcitymodel!SmartCity.all.first.city).println();
+var datapacks : Sequence = smartcitymodel!Data.all.select(d|d.runtime).flatten();
+
+for (data in datapacks) { 
+
+ 	if((data.isTypeOf(RealValue) or data.isTypeOf(IntegerValue))  ) {
+ 	
+ 	if( data.name.toLowerCase() = param.toLowerCase()  and data.value.asReal() <> value.asReal()){
+ 	
+ 		//("	--> updating smart city parameter: "+param+" from value "+data.value+" with value: "+value).println();
+ 		data.value = value.asDouble();
+ 		return true;
+ 		}
+ 		
+ 	}
+ 	
+}
+
+return false;
+
+
+
+

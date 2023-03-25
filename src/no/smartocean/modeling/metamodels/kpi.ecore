@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="timed_kpi_model" nsURI="https://ict.hvl.no/timed_kpi" nsPrefix="timed_kpi">
+  <eClassifiers xsi:type="ecore:EClass" name="KpiModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dimension" upperBound="-1"
+        eType="#//Dimension" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="system" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Dimension">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_dimensions" upperBound="-1"
+        eType="#//Dimension" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kpis" upperBound="-1" eType="#//Kpi"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Kpi">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target_value" lowerBound="1"
+        eType="#//TargetType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
+        eType="#//Range" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time_bound" lowerBound="1"
+        eType="#//Time" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Range" eSuperTypes="#//TargetType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min" lowerBound="1" eType="#//NumericalValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max" lowerBound="1" eType="#//NumericalValue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Operation">
+    <eLiterals name="FILTER"/>
+    <eLiterals name="SUM" value="1"/>
+    <eLiterals name="DIFF" value="2"/>
+    <eLiterals name="AVG" value="3"/>
+    <eLiterals name="MIN" value="4"/>
+    <eLiterals name="MAX" value="5"/>
+    <eLiterals name="DIV" value="6"/>
+    <eLiterals name="AND" value="7"/>
+    <eLiterals name="OR" value="8"/>
+    <eLiterals name="UNLESS" value="9"/>
+    <eLiterals name="MULT" value="10"/>
+    <eLiterals name="LE" value="12"/>
+    <eLiterals name="GE" value="13"/>
+    <eLiterals name="LT" value="14"/>
+    <eLiterals name="GT" value="15"/>
+    <eLiterals name="RATE" value="16"/>
+    <eLiterals name="COUNT" value="11" literal="COUNT"/>
+    <eLiterals name="ADD" value="17" literal="ADD"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NumericalValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//ParameterValue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetType" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuetype" lowerBound="1"
+        eType="#//ValueType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleTarget" eSuperTypes="#//TargetType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//NumericalValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assessment" eType="#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//ValueType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" lowerBound="1"
+        upperBound="-1" eType="#//ValueType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//NumericalValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//NumericalValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//ParameterValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="#//Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EvaluationResult">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" lowerBound="1" eType="#//Kpi"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//snapshot_model/State"
+        eOpposite="#//snapshot_model/State/kpi_result"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
+        eType="#//NumericalValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="within_target" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true" eSuperTypes="#//ValueType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Time" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="#//TimeUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instant" eSuperTypes="#//Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit">
+    <eLiterals name="MS" literal="MILLISECOND"/>
+    <eLiterals name="SEC" value="1" literal="SECOND"/>
+    <eLiterals name="MIN" value="2" literal="MINUTES"/>
+    <eLiterals name="HR" value="3" literal="HOUR"/>
+    <eLiterals name="DAY" value="4"/>
+    <eLiterals name="WEEK" value="5"/>
+    <eLiterals name="YEAR" value="6"/>
+  </eClassifiers>
+  <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
+      nsPrefix="snapshot">
+    <eClassifiers xsi:type="ecore:EClass" name="Snapshot">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+          eType="#//snapshot_model/State" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="State">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="kpi_result" lowerBound="1"
+          eType="#//EvaluationResult" containment="true" eOpposite="#//EvaluationResult/state"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//snapshot_model/Tendency"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Tendency">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//snapshot_model/TendencyType"
+          defaultValueLiteral="2"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateOfChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="TendencyType">
+      <eLiterals name="IMPROVING" value="1"/>
+      <eLiterals name="DETEORATING" value="-1"/>
+      <eLiterals name="MAINTAINIG"/>
+      <eLiterals name="NA" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Aggregation">
+      <eLiterals name="COUNT" literal="COUNT"/>
+      <eLiterals name="SUM" value="1"/>
+      <eLiterals name="CEN" value="2"/>
+      <eLiterals name="AVG" value="3"/>
+      <eLiterals name="MIN" value="4"/>
+      <eLiterals name="MAX" value="5"/>
+      <eLiterals name="STDDEV" value="6"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

@@ -1,0 +1,21 @@
+// Rewrote the util.eol, replacing kpi_model:: to kpi! (input model)
+
+operation kpi!Value getValue(){
+
+	return self.valuetype.getActualizedValue();
+}
+operation kpi!Value getTargetValue(){
+	return self.valuetype.getTargetValue();
+
+}
+
+operation kpi!AggregatedValue getActualizedValue(){
+	//if(self.actualizedvalue<1)
+	//return self.actualizedvalue+0.1; //Why?? - legacy code
+	return self.actualizedvalue;
+}
+
+operation kpi!SingleValue getActualizedValue(){
+	return self.actualizedvalue;
+}
+

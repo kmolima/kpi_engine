@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="smartcity" nsURI="http://cs.gssi.it/smartcity" nsPrefix="smartcity">
+  <eClassifiers xsi:type="ecore:EClass" name="SmartCityModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smartCities" upperBound="-1"
+        eType="#//SmartCity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartCity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="city" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stakeholders" upperBound="-1"
+        eType="#//DataAnalytics/Source" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1" eType="#//DataAnalytics/DataPackage"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="infrastructurelayer" eType="#//infrastructure/PublicInfrastructureLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longitude" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eSubpackages name="DataAnalytics" nsURI="http://cs.gssi.it/smartcity/dataanalytics"
+      nsPrefix="DataAnalytics">
+    <eClassifiers xsi:type="ecore:EClass" name="Data" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="src" eType="#//DataAnalytics/Source"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="runtime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//DataAnalytics/Data">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BoolValue" eSuperTypes="#//DataAnalytics/Data">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//DataAnalytics/Data">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataPackage">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1"
+          eType="#//DataAnalytics/Data" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Source" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SocialMedia" eSuperTypes="#//DataAnalytics/Source">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OpenData" eSuperTypes="#//DataAnalytics/Source">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ProvidedData" eSuperTypes="#//DataAnalytics/Source">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="provider" upperBound="-1"
+          eType="#//stakeholder/Stakeholder"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="infrastructure" nsURI="http://cs.gssi.it/smartcity/infrastructure"
+      nsPrefix="infrastructure">
+    <eClassifiers xsi:type="ecore:EClass" name="MonitoringInfrastructure" eSuperTypes="#//DataAnalytics/Source #//infrastructure/InfrastructureComponent">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="devices" upperBound="-1"
+          eType="#//infrastructure/IoTDev" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//infrastructure/IoTDev"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//infrastructure/IoTDev"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IoTDev" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PublicInfrastructureLayer">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+          eType="#//infrastructure/InfrastructureComponent" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InfrastructureComponent">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="stakeholder" nsURI="http://cs.gssi.it/smartcity/stakeholder"
+      nsPrefix="stakeholder">
+    <eClassifiers xsi:type="ecore:EClass" name="Stakeholder" eSuperTypes="#//DataAnalytics/Source">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="organization" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

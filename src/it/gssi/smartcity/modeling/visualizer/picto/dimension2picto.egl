@@ -1,0 +1,187 @@
+[% import "../trafo/util.eol";%]
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<title>Modeling view </title>
+ 
+<link rel="stylesheet" type="text/css" href="[%=getFile("css/joint.css")%]" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<link href="[%=getFile("css/bootstrap.min.css")%]" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="[%=getFile("css/font-awesome.min.css")%]" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="[%=getFile("css/nprogress.css")%]" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="[%=getFile("css/bootstrap-progressbar-3.3.4.min.css")%]" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="[%=getFile("css/daterangepicker.css")%]" rel="stylesheet">
+    
+    <!-- Custom Theme Style -->
+    <link href="[%=getFile("css/custom.min.css")%]" rel="stylesheet">
+</head>
+<body>
+
+<div class="x_panel fixed_height_320">
+                  <div class="x_title">
+                    <h2>Smart city Dashboard -  [%=dimension.name%]<small> [%=dimension.getSubject()%]</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                                          <div class="dashboard-widget-content">
+                  
+                        [%for (kpi in dimension.category.kpi.flatten()) {  %]
+                  <div class="col-md-4">
+                   
+                    <div class="sidebar-widget" style="width:100%">
+                    <center>
+                      
+                        <h4><i class="fa fa-area-chart"></i>[%=kpi.name%] ([%=kpi.description%])</a></h4>
+                        [%if(kpi.value.getValue().isTypeOf(Real)){%]
+                        <canvas width="150" height="80" id="chart_gauge_[%=kpi.name%]" class="" style="width: 180px; height: 100px;"></canvas>
+                        <div class="goal-wrapper">
+                          <span id="gauge-text-[%=kpi.name%]" class="gauge-value gauge-chart pull-left">[%=kpi.value.getTargetValue()%]</span>
+                          <span class="gauge-value pull-left">%</span>
+                          <span id="goal-text" class="goal-value pull-right">100%</span>
+                        </div>
+                        <hr/> <p><i class="fa fa-bar-chart"></i> Actualized value: [%=kpi.value.getValue().round()%] [%=kpi.unit%]</p>  
+               			[%}else if(kpi.value.valuetype.isTypeOf(AggregatedRangedValue)){%]
+               			
+                        <div class="goal-wrapper">
+                         [%for (range in kpi.value.getTargetValue()) { %]
+						<div class="[%=(kpi.value.getValue()==range)?'btn btn-secondary alert-success':'btn btn-secondary'%]" style="width:150px">[%=range%]</div>
+							[%}%]
+                        </div>
+                        <hr/> <p><i class="fa fa-bar-chart"></i> Actualized value: [%=kpi.value.getValue()%] [%=kpi.unit%]</p>  
+               			[%}else if(kpi.value.valuetype.isTypeOf(kpi_model::BoolValue)){%]
+               			
+                        <div class="goal-wrapper">
+                         
+						<div class="[%=(kpi.value.getValue()==true)?'btn btn-secondary alert-success':'btn btn-secondary'%]" style="width:150px">Yes</div>
+						<div class="[%=(kpi.value.getValue()==false)?'btn btn-secondary alert-success':'btn btn-secondary'%]" style="width:150px">No</div>
+							
+                        </div>
+                        <hr/> <p><i class="fa fa-bar-chart"></i> Actualized value: [%=kpi.value.getValue()%] [%=kpi.unit%]</p>  
+               			[%}%]
+                    </center>
+                    </div>
+                
+                </div>
+            
+                      [%}%]
+                  </div></div>
+                </div>
+                <!-- gauge.js -->
+   
+    
+   <!-- jQuery -->
+    <script src="[%=getFile("js/jquery.min.js")%]"></script>
+    <!-- Bootstrap -->
+   <script src="[%=getFile("js/bootstrap.bundle.min.js")%]"></script>
+    <!-- FastClick -->
+    <script src="[%=getFile("js/fastclick.js")%]"></script>
+    <!-- NProgress -->
+    <script src="[%=getFile("js/nprogress.js")%]"></script>
+    <!-- Chart.js -->
+    <script src="[%=getFile("js/Chart.min.js")%]"></script>
+    <!-- jQuery Sparklines -->
+    <script src="[%=getFile("js/jquery.sparkline.min.js")%]"></script>
+    <!-- morris.js -->
+    <script src="[%=getFile("js/raphael.min.js")%]"></script>
+    <script src="[%=getFile("js/morris.min.js")%]"></script>
+    <!-- gauge.js -->
+    <script src="[%=getFile("js/gauge.min.js")%]"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="[%=getFile("js/bootstrap-progressbar.min.js")%]"></script>
+    <!-- Skycons -->
+    <script src="[%=getFile("js/skycons.js")%]"></script>
+    <!-- Flot -->
+    <script src="[%=getFile("js/jquery.flot.js")%]"></script>
+    <script src="[%=getFile("js/jquery.flot.pie.js")%]"></script>
+    <script src="[%=getFile("js/jquery.flot.time.js")%]"></script>
+    <script src="[%=getFile("js/jquery.flot.stack.js")%]"></script>
+    <script src="[%=getFile("js/jquery.flot.resize.js")%]"></script>
+    <!-- Flot plugins -->
+    <script src="[%=getFile("js/jquery.flot.orderBars.js")%]"></script>
+    <script src="[%=getFile("js/jquery.flot.spline.min.js")%]"></script>
+    <script src="[%=getFile("js/curvedLines.js")%]"></script>
+    <!-- DateJS -->
+    <script src="[%=getFile("js/date.js")%]"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="[%=getFile("js/moment.min.js")%]"></script>
+    <script src="[%=getFile("js/daterangepicker.js")%]"></script>
+
+
+   
+        <script >
+        function init_gauge() {
+
+    if (typeof (Gauge) === 'undefined') { return; }
+
+   
+
+
+    var chart_gauge_settings = {
+        lines: 12,
+        angle: 0,
+        lineWidth: 0.4,
+        pointer: {
+            length: 0.75,
+            strokeWidth: 0.042,
+            color: '#1D212A'
+        },
+        limitMax: 'false',
+        colorStart: '#1ABC9C',
+        colorStop: '#1ABC9C',
+        strokeColor: '#F0F3F3',
+        generateGradient: true
+    };
+
+ [%for (kpi in dimension.category.kpi.flatten()) {  %]
+ [%if(kpi.value.getValue().isTypeOf(Real)){%]
+    if ($('#chart_gauge_[%=kpi.name%]').length) {
+
+        var chart_gauge_[%=kpi.name%]_elem = document.getElementById('chart_gauge_[%=kpi.name%]');
+        var chart_gauge_[%=kpi.name%] = new Gauge(chart_gauge_[%=kpi.name%]_elem).setOptions(chart_gauge_settings);
+
+    }
+    
+    if ($('#gauge-text-[%=kpi.name%]').length) {
+
+        chart_gauge_[%=kpi.name%].maxValue =  100;
+        chart_gauge_[%=kpi.name%].animationSpeed = 32;
+        chart_gauge_[%=kpi.name%].set([%=kpi.value.getValue()*100/kpi.value.getTargetValue()%]);
+        chart_gauge_[%=kpi.name%].setTextField(document.getElementById("gauge-text-[%=kpi.name%]"));
+
+    }
+    [%
+    	}
+    }
+    %]
+   } 
+    init_gauge();
+ </script>
+    
+</body>
+</html>
+[%
+operation getFile(file : String) {
+	return getImage(file);
+}
+%]

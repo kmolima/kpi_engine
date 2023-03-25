@@ -1,0 +1,55 @@
+
+import "compare.eol";
+
+
+operation kpi!Result getTrend(baseline: kpi!Result): Any {
+	var trend: kpi!Tendency;
+	
+	if(not self.comparable(baseline))
+		return trend;
+		
+	trend.period = (self.datetime - baseline.datetime).abs();
+	
+	
+	trend.rateOfChange = self.eval_result.compare(baseline.eval_result);
+	
+	if(trend.rateOfChange < 1.0)
+		trend.trend = kpi!TendencyType#Decreasing;
+	else if (trend.rateOfChange == 1.0)
+		trend.trend = kpi!TendencyType#Constant;
+	else if (trend.rateOfChange > 1.0)
+		trend.trend = kpi!TendencyType#Increasing;	
+	
+	return trend;
+}
+
+// Build recursirvely name with dimension.dimension... 
+operation kpi!Kpi getDimStr(): String {
+
+	var dimension = new String();
+	var mother = self.eContainer;
+	
+	
+	if(mother.isTypeOf(kpi!Dimension))
+		dimension =  mother.name;
+				
+	if(mother.eContainer.isTypeOf(kpi!Dimension))
+		return grandpa.eContainer.buildDimStr(dimension);
+
+	return dimension;
+
+}
+
+//Is called by Dimension elements
+operation kpi!Dimension buildDimStr(suffix: String): String {
+
+	var dimension = new String();
+	dimension = self.name.concat(".");
+	dimension = dimension.concat(suffix);
+	
+	if(self.eContainer.isTypeOf(kpi!Dimension))
+		return self.eContainer.buildDimStr(dimension);		
+
+	return dimension;
+
+}
