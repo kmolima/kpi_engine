@@ -2,7 +2,6 @@ import "kpi-utils.eol";
 import "units.eol";
 
 operation smartocean!System get(kpi: kpi!Kpi): Any{
-
 	
 	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
 	var target  = kpi.target_value.getValue(self);
@@ -25,7 +24,7 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 
 operation kpi!Period getValue(): String {
 	if (self.period <= 0){
-	 return ""; //NOW - instant when the query is evaluated //Assumption
+	 return ""; //NOW - instant when the query is evaluated //Constraint
 	}
 	var result = new String();
 	result = result.concat("[");
@@ -37,7 +36,7 @@ operation kpi!Period getValue(): String {
 operation kpi!Instant getValue(): String {
 
 	if (self.timestamp <= 0){
-	 return ""; //NOW - instant when the query is evaluated //Assumption
+	 return ""; //NOW - instant when the query is evaluated //Constraint
 	}
 	else if(self.unit == kpi!TimeUnit#SEC){
 		var result = new String("@ "); //UNIX TIMESTAMP
@@ -117,8 +116,8 @@ var op = self.`operation`; //https://www.eclipse.org/epsilon/doc/eol/#escaping-r
 
 var expr = new String();
 
-//Precedence: Args -> Sub_Expression //Assumption
-//The first argument of sub_expressions are the parent Expression Element //Assumption
+//Precedence: Args -> Sub_Expression //Constraint
+//The first argument of sub_expressions are the parent Expression Element //Constraint
 
 //op: kpi!EEnumLiteral
 switch (op) {
@@ -170,7 +169,7 @@ switch (op) {
 	case kpi!Operation#RATE: 
 		expr = sub_expr == "" ? expr.concat(args).wrap("rate") : expr.concat(args).concat(sub_expr).wrap("rate");
 		break;
-	case kpi!Operation#FILTER: // 1st arg must be metric!! //Assumption
+	case kpi!Operation#FILTER: // 1st arg must be metric!! //Constraint
 		var result =  self.filter(system,args);
 		expr = sub_expr == "" ? expr.concat(result): expr.concat(result).concat(sub_expr);
 		break;

@@ -116,7 +116,7 @@ var filters =  new Sequence<String>();
 		for(filter in self.arguments.excluding(metric)){
 			var param = filter.getParameter();
 			if(param == null)
-				continue; //Key,Value used in labels filtering only ParameterValue Element allowed \\Assumption
+				continue; //Key,Value used in labels filtering only ParameterValue Element allowed \\Constraint
 			var label_check = system.monitoring_data.exists(metric | (metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase()
 				and metric.checkLabel(param.name)));
 			if(label_check){

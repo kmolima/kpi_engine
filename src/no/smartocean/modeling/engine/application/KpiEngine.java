@@ -13,6 +13,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class KpiEngine {
 
@@ -48,13 +50,17 @@ public class KpiEngine {
 					
 		            HttpEntity httpEntity = response.getEntity();
 		            
+		            // Create a reader with the input stream reader.
+		            //EntityUtils.toByteArray(httpEntity); //TODO Sanitize json
+		            
 		            String jsonOutput = EntityUtils.toString(httpEntity);
+		            
+		            JSONObject jsonObject=new JSONObject();
+		            JSONParser jsonParser=new  JSONParser();
+		            jsonObject=(JSONObject) jsonParser.parse(jsonOutput);
 
 		            System.out.println("Success!\n" + jsonOutput);
 					
-					// Create a reader with the input stream reader.
-		            //EntityUtils.toByteArray(httpEntity); //TODO Sanitize json
-	
 				} else if(statusCode == 400){
 					System.out.println("Error in connection to prometheus via the HTTP API for query: \n"+url.toString()+"\n Parameters are missing or incorrect");
 					System.err.println(response.getStatusLine().getReasonPhrase());
@@ -64,7 +70,7 @@ public class KpiEngine {
 					System.err.println("Response code: "+statusCode+ " "+response.getStatusLine().getReasonPhrase());
 				}
 
-			} catch (IOException e) {
+			} catch (IOException | org.json.simple.parser.ParseException e) {
 				e.printStackTrace();
 
 			} finally {
