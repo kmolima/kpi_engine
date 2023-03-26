@@ -36,7 +36,7 @@ public class EvaluationEngine {
 
 
 	
-	public void runEval(  String scpath, String kpipath) throws Exception{
+	public void runEval(String scpath, String kpipath) throws Exception{
 		long startTime = System.currentTimeMillis();
 		
 		
@@ -65,7 +65,7 @@ public class EvaluationEngine {
 		scmodel.load();
 				
 		EolModule module = new EolModule();
-				module.parse(EvaluationEngine.class.getResource("eol/get-state.eol").toURI());
+				module.parse(EvaluationEngine.class.getResource("eol/main.eol").toURI());
 				module.getContext().getModelRepository().addModel(kpimodel);
 				module.getContext().getModelRepository().addModel(scmodel);
 		Object result =	module.execute();
