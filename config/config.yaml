@@ -1,0 +1,8 @@
+host: "10.0.0.21" # prometheus HTTP API ADDR
+protocol: "http"
+port: 9090 
+endpoint: ["api","v1"]
+clientId: "KPI Engine"
+authentication:
+    token:
+
