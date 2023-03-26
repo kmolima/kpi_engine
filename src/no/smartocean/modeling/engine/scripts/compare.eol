@@ -1,0 +1,78 @@
+//Compares a state instance subject, dimension, categories and its KPI (name and units)
+operation kpi!State comparable(baseline: kpi!State): Boolean {
+
+	if(self.subject == baseline.subject){
+		for(result in self.snapshots){
+			//TODO optimize search of result in one state to the other
+		}
+	}
+		
+	return false;
+}
+
+//Compares a result instance dimensions and delegates to kpis
+operation kpi!Result comparable(baseline: kpi!Result): Boolean {
+
+	if(self.dimension != baseline.dimension)	
+		return false;
+		
+	return self.eval_result.comparable(baseline.eval_result);
+}
+
+//Compares a kpi instance categories and its KPI (name, category, and units)
+operation kpi!Kpi comparable(baseline: kpi!Kpi): Boolean {
+
+	if((self.name != baseline.name))
+		return false;
+	
+	//ensure valuetypes match
+	if(self.value.valuetype.type() != baseline.value.valuetype.type())	
+		return false;
+		
+	if(self.category != baseline.category)
+		return false;
+		
+	if((self.unit != "" and baseline.unit != "") and (self.unit != baseline.unit))
+		return false;
+		
+	return true;
+}
+
+//Comparative trend analysis in percentage - the rateOfChange
+operation kpi!Kpi compare(baseline: kpi!Kpi): Real {
+
+
+	// If values are form type string or boolean, use their weight in the range of values
+	if((self.value.valuetype().type() == kpi!StringValue) or (self.value.valuetype().type() == kpi!BoolValue))
+		return self.value.valuetype.compare(self.value.valuetype.weight,baseline.value.valuetype.weight);
+
+	//Assumption: self.comparable(baseline) = true
+		return self.value.valuetype.compare(self.value.getValue(),baseline.value.getValue());
+}
+
+// Using this formula for trend calculation:
+// Trend Percentage = ((Current Period Value - Base Period Value) / Base Period Value) * 100
+operation kpi!RealValue compare(snapshot: Real, baseline:Real): Real{
+
+	var result = ((snapshot - baseline) / baseline) * 100.0;
+	return result;
+}
+
+operation kpi!IntegerValue compare(snapshot: Integer, baseline:Integer): Real{
+    var result = ((snapshot - baseline) / baseline) * 100.0;
+	return result;
+}
+
+operation kpi!AggregatedRealValue compare(snapshot: Any, baseline:Any): Real{
+//TODO
+	return 0;
+}
+
+operation kpi!AggregatedIntegerValue compare(snapshot: Any, baseline:Any): Real{
+//TODO
+	return 0;
+}
+
+operation kpi!AggregatedRangedValue compare(){
+	return 0;
+}

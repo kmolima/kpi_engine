@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>SmartCityEvaluationEngine</groupId>
-  <artifactId>SmartCityEvaluationEngine</artifactId>
+  <groupId>no.smartocean.wp3.modeling</groupId>
+  <artifactId>kpi_engine</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
     <epsilon.version>2.3.0</epsilon.version>
@@ -76,6 +76,14 @@
     <artifactId>tinkerforge</artifactId>
     <version>2.1.31</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+      <dependency>
+          <groupId>org.yaml</groupId>
+          <artifactId>snakeyaml</artifactId>
+          <version>1.33</version>
+      </dependency>
+      
 <!-- https://mvnrepository.com/artifact/org.eclipse.core/org.eclipse.core.resources -->
 <dependency>
     <groupId>org.eclipse.core</groupId>
