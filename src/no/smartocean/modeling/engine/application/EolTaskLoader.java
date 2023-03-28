@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.launch.EolRunConfiguration;
 
 public class EolTaskLoader {
@@ -33,6 +34,18 @@ public class EolTaskLoader {
 		
 		kpimodel.dispose();
 		subjectmodel.dispose();
+		
+		return result;
+	}
+	
+	public Object execute(EmfModel kpimodel, EmfModel subjectmodel) throws URISyntaxException, Exception {
+		
+		EolModule module = new EolModule();
+		module.parse(EolTaskLoader.class.getResource("scripts/main.eol").toURI());
+		module.getContext().getModelRepository().addModel(kpimodel);
+		module.getContext().getModelRepository().addModel(subjectmodel);
+		Object result =	module.execute();
+			
 		
 		return result;
 	}
