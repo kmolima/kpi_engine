@@ -44,7 +44,7 @@ final private Path path;
 	public EmfModel loadModelFromFile(Path xmi, String name, boolean caching, boolean store) throws EolModelLoadingException {
 		
 		EmfModel model_instance = new EmfModel();
-		model_instance.clearCache();
+		//model_instance.clearCache();
 		model_instance.setName(name);
 		model_instance.setMetamodelFile(this.path.toAbsolutePath().toString());
 		model_instance.setModelFile(xmi.toAbsolutePath().toString());

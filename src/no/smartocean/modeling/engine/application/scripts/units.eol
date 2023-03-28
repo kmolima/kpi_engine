@@ -57,25 +57,18 @@ operation getPeriodStr(unit: kpi!EEnumLiteral): String{
 	switch(unit){
 		case kpi!TimeUnit#MS:
 			result = "ms";//getPromQLDurationStr("ms");
-			break;
 		case kpi!TimeUnit#SEC:
 			result = "s";//getPromQLDurationStr("sec");
-			break;
 	 	case kpi!TimeUnit#MIN:
 			result = "m";//getPromQLDurationStr("min");
-			break;
 		case kpi!TimeUnit#HR:
 			result = "h";//getPromQLDurationStr("hour");
-			break;
 		case kpi!TimeUnit#DAY:
 			result = "d";//getPromQLDurationStr("day");
-			break;
 		case kpi!TimeUnit#WEEK:
 			result = "w";//getPromQLDurationStr("week");
-			break;
 		case kpi!TimeUnit#YEAR:
 			result = "w";//getPromQLDurationStr("year");
-			break;
 		default:
 			result = "";	
 	}

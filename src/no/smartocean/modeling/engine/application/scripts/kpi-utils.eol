@@ -143,7 +143,7 @@ var filters =  new Sequence<String>();
 		var metric_check = system.monitoring_data.exists(metric | metric.name.toLowerCase() == parameter.value.value.asString().toLowerCase());
 		if(not metric_check)
 			return "";
-		result = result.concat(metric_id);
+		result = result.concat(metric_id); //Check Metric Type: COUNTER HISTOGRAM SUMMARY OR GAUGE
 		for(filter in self.arguments.excluding(metric)){
 			var param = filter.getParameter();
 			if(param == null)
@@ -159,7 +159,6 @@ var filters =  new Sequence<String>();
 		("Error First argument of filter operation should be a metric").println();
 		return "";
 	}
-	
 	if(filters.size() > 0){
 		result = result.concat("{");
 		for(filter in filters){

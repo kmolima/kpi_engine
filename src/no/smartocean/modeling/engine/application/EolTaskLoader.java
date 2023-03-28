@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.launch.EolRunConfiguration;
+import org.eclipse.epsilon.eol.types.EolSequence;
 
 public class EolTaskLoader {
 	
@@ -26,7 +27,7 @@ public class EolTaskLoader {
 				.withModel(subjectmodel)
 				//.withParameter("Thread", Thread.class)
 				.build();
-				
+		
 		runConfig.run();
 		
 		result = runConfig.getResult();
@@ -72,8 +73,9 @@ public class EolTaskLoader {
 			
 			EolTaskLoader task_loader = new EolTaskLoader("scripts/main.eol");
 			Object result= task_loader.run(kpi, subject);
+			EolSequence<String> sequence = (EolSequence<String>) result;
 			System.out.println("EOL result:");
-			System.out.println(result);
+			System.out.println(sequence);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

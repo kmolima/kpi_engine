@@ -123,74 +123,55 @@ var expr = new String();
 switch (op) {
 	case kpi!Operation#SUM: 
 		expr.concat(args).concat(sub_expr).wrap("sum");
-		break;
 	case kpi!Operation#ADD:
 		expr = is_sub ?  expr.concat(" + ").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#DIFF: 
 		expr = is_sub ?  expr.concat("-").concat(self.applyOp("-",args)) : expr.concat(self.applyOp("-",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#AVG:
 		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr); 
 		expr = instant? expr.wrap("avg") : expr.wrap("avg_over_time");
-		break;
 	case kpi!Operation#MIN: 
 		expr = sub_expr == "" ? expr.concat(args).wrap("min") : expr.concat(args).concat(sub_expr).wrap("min");
-		break;
 	case kpi!Operation#MAX: 
 		sub_expr == "" ? expr.concat(args).wrap("max") : expr.concat(args).concat(sub_expr).wrap("max");
-		break;
 	case kpi!Operation#DIV: 
 		expr = is_sub ?  expr.concat("/").concat(self.applyOp("/",args)) : expr.concat(self.applyOp("/",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#MULT: 
 		expr = is_sub ?  expr.concat("*").concat(self.applyOp("*",args)) : expr.concat(self.applyOp("*",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;	
 	case kpi!Operation#LE:  
 		is_sub ?  expr.concat("<=").concat(self.applyOp("<=",args)) : expr.concat(self.applyOp("<=",args));
 		sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#GE: 
 		expr = is_sub ?  expr.concat(">=").concat(self.applyOp(">=",args)) : expr.concat(self.applyOp(">=",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#LT: 
 		is_sub ?  expr.concat("<").concat(self.applyOp("<",args)) : expr.concat(self.applyOp("<",args));
 		sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#GT:
 		expr = is_sub ?  expr.concat(">").concat(self.applyOp(">",args)) : expr.concat(self.applyOp(">",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#RATE: 
 		expr = sub_expr == "" ? expr.concat(args).wrap("rate") : expr.concat(args).concat(sub_expr).wrap("rate");
-		break;
 	case kpi!Operation#FILTER: // 1st arg must be metric!! //Constraint
 		var result =  self.filter(system,args);
 		expr = sub_expr == "" ? expr.concat(result): expr.concat(result).concat(sub_expr);
-		break;
 	case kpi!Operation#AND:
 		expr = is_sub ?  expr.concat("and").concat(self.applyOp("and",args)) : expr.concat(self.applyOp("and",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#OR: 
 		expr = is_sub ?  expr.concat("or").concat(self.applyOp("or",args)) : expr.concat(self.applyOp("or",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#UNLESS:
 		expr = is_sub ?  expr.concat("unless").concat(self.applyOp("unless",args)) : expr.concat(self.applyOp("unless",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-		break;
 	case kpi!Operation#COUNT: 
 		expr = sub_expr == "" ? expr.concat(args).wrap("count") : expr.concat(args).concat(sub_expr).wrap("count");
-		break;
 	default : "Operation not supported".println(); 
 	}
-
 	return expr;
 }
 
