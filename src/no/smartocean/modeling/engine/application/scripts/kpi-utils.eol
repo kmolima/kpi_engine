@@ -28,6 +28,37 @@ operation kpi!Expression getMetrics(): OrderedSet{
 	return metrics;
 }
 
+// Build recursirvely name with dimension.dimension... 
+operation kpi!Kpi getDimStr(): String {
+
+	var dimension = new String();
+	var mother = self.eContainer;
+	
+	
+	if(mother.isTypeOf(kpi!Dimension))
+		dimension =  mother.name;
+				
+	if(mother.eContainer.isTypeOf(kpi!Dimension))
+		return mother.eContainer.buildDimStr(dimension);
+
+	return dimension;
+
+}
+
+//Is called by Dimension elements
+operation kpi!Dimension buildDimStr(suffix: String): String {
+
+	var dimension = new String();
+	dimension = self.name.concat(".");
+	dimension = dimension.concat(suffix);
+	
+	if(self.eContainer.isTypeOf(kpi!Dimension))
+		return self.eContainer.buildDimStr(dimension);		
+
+	return dimension;
+
+}
+
 //@cache
 operation kpi!ParameterValue getParameter(): kpi!Parameter{
 	var mother = self.eContainer;

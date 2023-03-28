@@ -15,7 +15,7 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValue();
 	 	}
 	else if(kpi.target_value.isTypeOf(kpi!Range)){
-		query = kpi.time_bound.getValue() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" :
+		query = kpi.time_bound.getValue() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
 	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValue();
 	}
 	
@@ -87,7 +87,7 @@ operation kpi!StringValue getValue(system: smartocean!System): String{
 }
 
 //PROMQL Query Operators: https://prometheus.io/docs/prometheus/latest/querying/operators/#operators
-//PROMQL Query Funcitons: https://prometheus.io/docs/prometheus/latest/querying/functions/
+//PROMQL Query Functions: https://prometheus.io/docs/prometheus/latest/querying/functions/
 operation kpi!Expression getValue(system: smartocean!System): String{
 
 var kpi = self.getKPI();
@@ -107,7 +107,7 @@ args  = self.arguments.collect(arg | arg.getValue(system));
 
 var sub_expr = self.sub_expression.isDefined() ? self.sub_expression.getValue(system) : "";
 
-if((self.arguments.first() == self.sub_expression)) //End of resursion for intermediate operation //assumption
+if((self.arguments.first() == self.sub_expression)) //End of resursion for intermediate operation //Constraint
 	sub_expr = "";
 
 var nargs = args.size();

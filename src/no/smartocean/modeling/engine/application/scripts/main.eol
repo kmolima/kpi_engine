@@ -1,5 +1,4 @@
 import "kpi-providers.eol";
-import "state-utils.eol";
 
 var result = new Sequence();
 for (system in smartocean!System.all) { 
