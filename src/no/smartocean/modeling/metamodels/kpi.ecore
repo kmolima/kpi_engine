@@ -53,6 +53,7 @@
     <eLiterals name="RATE" value="16"/>
     <eLiterals name="COUNT" value="11" literal="COUNT"/>
     <eLiterals name="ADD" value="17" literal="ADD"/>
+    <eLiterals name="CENN" value="18" literal="CEN"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumericalValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -69,7 +70,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SingleTarget" eSuperTypes="#//TargetType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//NumericalValue" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assessment" eType="#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assessment" eType="#//Assessment"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//ValueType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="#//Operation"/>
@@ -109,7 +110,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="#//TimeUnit"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instant" eSuperTypes="#//Time">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time_ago" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit">
@@ -120,6 +121,16 @@
     <eLiterals name="DAY" value="4"/>
     <eLiterals name="WEEK" value="5"/>
     <eLiterals name="YEAR" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Assessment">
+    <eLiterals name="MIN"/>
+    <eLiterals name="MAX" value="1"/>
+    <eLiterals name="AND" value="3"/>
+    <eLiterals name="OR" value="4"/>
+    <eLiterals name="LE" value="5"/>
+    <eLiterals name="GE" value="6"/>
+    <eLiterals name="LT" value="7"/>
+    <eLiterals name="GT" value="8"/>
   </eClassifiers>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
       nsPrefix="snapshot">

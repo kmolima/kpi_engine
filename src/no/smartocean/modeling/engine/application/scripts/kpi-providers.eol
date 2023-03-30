@@ -4,6 +4,37 @@ import "units.eol";
 operation smartocean!System get(kpi: kpi!Kpi): Any{
 	
 	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
+	var target = kpi.target_value.getValue(self);
+	
+	var expr = kpi.target_value.valuetype.getValue(self);
+	
+	var result = new String();
+	
+	
+	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
+		result = expr + target.op + " " + target.target;
+	 }
+	else if(kpi.target_value.isTypeOf(kpi!Range)){
+		result = "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")";
+	}
+	
+	var query = new String();
+	
+	//Build HTTP query: https://prometheus.io/docs/prometheus/latest/querying/api/#expression-query-result-formats
+	if(kpi.time_bound.isTypeOf(kpi!Instant)){
+		query = query.concat("query?query=").concat(result).concat("&time=").concat(kpi.time_bound.getValue());
+	}
+	else if(kpi.time_bound.isTypeOf(kpi!Period)){
+		var duration = "30s"; //Hard-coded - max resolution
+		query = query.concat("query_range?query=").concat(result).concat(kpi.time_bound.getValue()).concat("&step=").concat(duration); 
+	}
+	
+	return query;
+}
+
+operation smartocean!System getPromQLStr(kpi: kpi!Kpi): Any{
+	
+	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
 	var target  = kpi.target_value.getValue(self);
 	
 	var expr    = kpi.target_value.valuetype.getValue(self);
@@ -11,18 +42,62 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 	var query = new String();
 	
 	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
-		query = kpi.time_bound.getValue() == "" ? expr + target.op + " " + target.target :
-	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValue();
+		query = kpi.time_bound.getValueStr() == "" ? expr + target.op + " " + target.target :
+	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValueStr();
 	 	}
 	else if(kpi.target_value.isTypeOf(kpi!Range)){
-		query = kpi.time_bound.getValue() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
-	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValue();
+		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
+	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValueStr();
 	}
 	
 	return query;
 }
 
 operation kpi!Period getValue(): String {
+	if (self.period <= 0){
+		throw "Error: Period of evalution should be greater than zero.";
+		
+	 return "";
+	}
+	var result = new String();
+	result = result.concat("&start=");
+	result = result.concat(getTimeDelta(self.unit,self.period));
+	var instant = Native("java.time.Instant");
+	var time = instant.now().getEpochSecond();
+	result = result.concat("&end=").concat(time.toString());
+	return result;
+
+}
+
+operation kpi!Instant getValue(): String {
+
+	if (self.time_ago < 0){
+	 return ""; //Latest - instant when the query is evaluated //Constraint
+	}
+	else if (self.time_ago == 0){ //NOW - instant when the query is evaluated //Constraint
+	 var instant = Native("java.time.Instant");
+	 var time = instant.now().getEpochSecond();
+	 return time.toString(); //NOW - instant when the kpi is evaluated //Constraint
+	}
+	else if(self.unit == kpi!TimeUnit#SEC){
+		var result = new String(); //UNIX TIMESTAMP
+		result = result.concat(self.time_ago);
+		return result;
+	}
+	else if(self.unit == kpi!TimeUnit#MS){
+		var result = new String(); //UNIX TIMESTAMP
+		var temp = self.time_ago / 1000; //convert from millisencods to seconds
+		result = result.concat(temp.asInteger());
+		return result;
+	}
+	else {
+		var result = getTimeDelta(self.unit,self.time_ago); 
+		return result;
+	}
+	
+}
+
+operation kpi!Period getValueStr(): String {
 	if (self.period <= 0){
 	 return ""; //NOW - instant when the query is evaluated //Constraint
 	}
@@ -33,19 +108,22 @@ operation kpi!Period getValue(): String {
 
 }
 
-operation kpi!Instant getValue(): String {
+operation kpi!Instant getValueStr(): String {
 
-	if (self.timestamp <= 0){
+	if (self.time_ago < 0){
+	 return ""; //Latest - instant when the query is evaluated //Constraint
+	}
+	else if (self.time_ago == 0){
 	 return ""; //NOW - instant when the query is evaluated //Constraint
 	}
 	else if(self.unit == kpi!TimeUnit#SEC){
 		var result = new String("@ "); //UNIX TIMESTAMP
-		result = result.concat(self.timestamp);
+		result = result.concat(self.time_ago);
 		return result;
 	}
 	else {
 		var result = new String("offset ");
-		result = result.concat(self.timestamp).concat(getPeriodStr(self.unit));
+		result = result.concat(self.time_ago).concat(getPeriodStr(self.unit));
 		return result;
 	}
 	
@@ -199,20 +277,22 @@ var opStr;
 
 //op: kpi!EEnumLiteral
 switch (op) {
-	case kpi!Operation#LE: 
+	case kpi!Assessment#LE: 
 		opStr = "<=";
-	case kpi!Operation#GE: 
+	case kpi!Assessment#GE: 
 		opStr = ">=";
-	case kpi!Operation#LT: 
+	case kpi!Assessment#LT: 
 		opStr = "<";
-	case kpi!Operation#GT: 
+	case kpi!Assessment#GT: 
 		opStr = ">";
-	case kpi!Operation#AND: 
+	case kpi!Assessment#AND: 
 		opStr = "and";
-	case kpi!Operation#OR: 
+	case kpi!Assessment#OR: 
 		opStr = "or";
-	case kpi!Operation#UNLESS: 
-		opStr = "unless";
+	case kpi!Assessment#MIN: 
+		opStr = "min";
+	case kpi!Assessment#MAX: 
+		opStr = "max";
 	default : "Operation not supported for assessment".println(); 
 		opStr =  "";
 	}

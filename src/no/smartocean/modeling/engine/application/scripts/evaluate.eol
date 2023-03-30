@@ -1,17 +1,23 @@
 import "kpi-providers.eol";
 
-
-operation kpi!Kpi getParameters(): Set{
-
-	var tuples = new Set();
-
-	//FIX - look into Dimension Element
-	for(parameter in kpi!parameters) {
-		tupples.add(parameter.getValue());
+var result = new Sequence();
+for (system in smartocean!System.all) { 
+	("========== KPI model calculation applied on "+system.system_name+" ==========").println();
+	for (mykpi in kpi!Kpi.all) {
+	 ("KPI:"+mykpi.name+" | Dimension(s): "+mykpi.getDimStr()+" | Unit: "+mykpi.unit).println();
+	 ("KPI Description: "+mykpi.description).println();
+	 ("PromQL Query:").println();
+		var queriesStr = system.collect(sc|sc.getPromQLStr(mykpi)); 
+		for(query in queriesStr){
+			("\t"+query).println();
+			result.add(query);
+		}
+			
+			//mykpi.target_value.valuetype.getMetric().println();
+	 "=================================================================".println();
 	}
-	
-	return tuples;
 }
 
+return result;
 
 

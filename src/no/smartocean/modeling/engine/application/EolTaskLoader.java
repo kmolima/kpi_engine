@@ -1,12 +1,13 @@
 package no.smartocean.modeling.engine.application;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.launch.EolRunConfiguration;
-import org.eclipse.epsilon.eol.types.EolSequence;
 
 public class EolTaskLoader {
 	
@@ -52,11 +53,42 @@ public class EolTaskLoader {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	public ArrayList<String> translate(URI subject_metamodel_uri, URI kpi_metamodel_uri, URI subject_uri, URI kpi_uri, String subject_alias, String kpi_alias) {
+		Path kpi_model,kpi_metamodel;
+		Path so_model, so_metamodel;
+		ArrayList<String> sequence = new ArrayList<String>();
+		try {
+			
+			kpi_metamodel = Path.of(kpi_metamodel_uri);
+			so_metamodel = Path.of(subject_metamodel_uri);
+			
+			kpi_model = Path.of(kpi_uri);
+			so_model = Path.of(subject_uri);
+			
+			EcoreLoader kpi_loader = new EcoreLoader(kpi_metamodel);
+			EcoreLoader so_loader = new EcoreLoader(so_metamodel);
+			
+			EmfModel subject = so_loader.loadModelFromFile(so_model, subject_alias);
+			EmfModel kpi = kpi_loader.loadModelFromFile(kpi_model, kpi_alias);
+			
+			Object result = this.run(kpi, subject);
+			sequence = (ArrayList<String>) result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Error Loading EMF models instances to EOL script");
+		}
+		return sequence;
+	}
+	
+	
 
 	public static void main(String[] args) {
 		
 		Path kpi_model,kpi_metamodel;
 		Path so_model, so_metamodel;
+		ArrayList<String> sequence = new ArrayList<String>();
 		try {
 			
 			kpi_metamodel = Path.of(EolTaskLoader.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI());
@@ -73,9 +105,11 @@ public class EolTaskLoader {
 			
 			EolTaskLoader task_loader = new EolTaskLoader("scripts/main.eol");
 			Object result= task_loader.run(kpi, subject);
-			EolSequence<String> sequence = (EolSequence<String>) result;
+			sequence = (ArrayList<String>) result;
 			System.out.println("EOL result:");
 			System.out.println(sequence);
+			for(String query: sequence)
+				System.out.println(query);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

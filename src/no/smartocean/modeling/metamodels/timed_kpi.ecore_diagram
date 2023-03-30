@@ -426,6 +426,19 @@
     <element xmi:type="ecore:EEnum" href="kpi.ecore#//TimeUnit"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l7PtxcMeEe2Aya7U7kg7wA" x="-216" y="96"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_WzFcsM9IEe2VYIbZxE1JcA" type="2005" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_WzGDwM9IEe2VYIbZxE1JcA" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WzGDwc9IEe2VYIbZxE1JcA" type="7011">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WzGDws9IEe2VYIbZxE1JcA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WzGDw89IEe2VYIbZxE1JcA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WzGDxM9IEe2VYIbZxE1JcA" type="7012">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WzGDxc9IEe2VYIbZxE1JcA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WzGDxs9IEe2VYIbZxE1JcA"/>
+    </children>
+    <element xmi:type="ecore:EEnum" href="kpi.ecore#//Assessment"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WzFcsc9IEe2VYIbZxE1JcA" x="492" y="36"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_E0ik4aknEe2ITKyPGcIEwg"/>
   <element xmi:type="ecore:EPackage" href="kpi.ecore#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_E1fnIKknEe2ITKyPGcIEwg" type="4003" source="_E09boKknEe2ITKyPGcIEwg" target="_E0-CuqknEe2ITKyPGcIEwg">

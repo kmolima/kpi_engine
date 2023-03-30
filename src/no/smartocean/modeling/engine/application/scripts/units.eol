@@ -74,7 +74,40 @@ operation getPeriodStr(unit: kpi!EEnumLiteral): String{
 	}
 	return result;
 
-} 
+}
+
+operation getTimeDelta(unit: kpi!EEnumLiteral, ago: Integer): String{
+
+	var result = new String();
+	
+	var instant = Native("java.time.Instant");
+	var time = instant.now();
+	//Instant.now()
+	
+	switch(unit){
+	 	case kpi!TimeUnit#MIN:
+	 		var cunit = Native("java.time.temporal.ChronoUnit");
+			result = time.minus(ago, cunit.MINUTES).getEpochSecond().toString();
+		case kpi!TimeUnit#HR:
+			var cunit = Native("java.time.temporal.ChronoUnit");
+			result = time.minus(ago, cunit.HOURS).getEpochSecond().toString();
+		case kpi!TimeUnit#DAY:
+			var cunit = Native("java.time.temporal.ChronoUnit");
+			result = time.minus(ago, cunit.DAYS).getEpochSecond().toString();
+		case kpi!TimeUnit#WEEK:
+			var cunit = Native("java.time.temporal.ChronoUnit");
+			result = time.minus(ago, cunit.WEEKS).getEpochSecond().toString();
+		case kpi!TimeUnit#YEAR:
+			var cunit = Native("java.time.temporal.ChronoUnit");
+			result = time.minus(ago, cunit.YEARS).getEpochSecond().toString();
+		case kpi!TimeUnit#MS:
+		case kpi!TimeUnit#SEC:
+		default:
+			result = "";	
+	}
+	return result;
+
+}
 
 // https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations
 operation getPromQLDurationStr(unit: String): String {
