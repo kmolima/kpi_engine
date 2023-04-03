@@ -4,24 +4,17 @@
     <sub_dimensions xmi:id="_To75oMN7Ee2qzK0mq0P3iQ" name="Timeliness">
       <kpis xmi:id="_W7cWwMN8Ee2qzK0mq0P3iQ" name="near_factor" description="Time difference between data acquistion and arrival on the system (the near factor in near real-time)" unit="minutes">
         <target_value xsi:type="timed_kpi:SingleTarget" xmi:id="_BGm8AMN9Ee2qzK0mq0P3iQ" assessment="LE">
-          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_GAPiEMgrEe2Ajb9NR0ILcQ" arguments="_SxELkMN9Ee2qzK0mq0P3iQ _ogY1AMguEe2Ajb9NR0ILcQ">
-            <sub_expression xmi:id="_rvtl0MgwEe2Ajb9NR0ILcQ" operation="ADD" arguments="_xlwMIMgwEe2Ajb9NR0ILcQ">
-              <sub_expression xmi:id="_xlwMIMgwEe2Ajb9NR0ILcQ" arguments="_v7JDoMN-Ee2qzK0mq0P3iQ _ogY1AMguEe2Ajb9NR0ILcQ"/>
-            </sub_expression>
-          </valuetype>
+          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_V3U7QNIKEe2b1u5VHAEiSQ" operation="ADD" arguments="_SxELkMN9Ee2qzK0mq0P3iQ _v7JDoMN-Ee2qzK0mq0P3iQ"/>
           <target xsi:type="timed_kpi:IntegerValue" xmi:id="_Cdi5wMN9Ee2qzK0mq0P3iQ" unit="hours" value="3"/>
         </target_value>
-        <time_bound xsi:type="timed_kpi:Period" xmi:id="_1ycgIMN8Ee2qzK0mq0P3iQ" unit="HOUR" period="2"/>
+        <time_bound xsi:type="timed_kpi:Period" xmi:id="_1ycgIMN8Ee2qzK0mq0P3iQ" unit="DAY" period="30"/>
       </kpis>
       <parameters xmi:id="_N3AsYMN9Ee2qzK0mq0P3iQ" name="metric">
-        <value xsi:type="timed_kpi:StringValue" xmi:id="_SxELkMN9Ee2qzK0mq0P3iQ" value="near_factor"/>
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_SxELkMN9Ee2qzK0mq0P3iQ" value="delay"/>
       </parameters>
       <parameters xmi:id="_uj3HoMN-Ee2qzK0mq0P3iQ" name="metric">
         <value xsi:type="timed_kpi:StringValue" xmi:id="_v7JDoMN-Ee2qzK0mq0P3iQ" value="overhead"/>
       </parameters>
     </sub_dimensions>
-    <parameters xmi:id="_muARYMguEe2Ajb9NR0ILcQ" name="producer">
-      <value xsi:type="timed_kpi:StringValue" xmi:id="_ogY1AMguEe2Ajb9NR0ILcQ" value="AADI"/>
-    </parameters>
   </dimension>
 </timed_kpi:KpiModel>
