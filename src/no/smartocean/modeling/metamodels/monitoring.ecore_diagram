@@ -15,7 +15,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_8ij8pW8HEe2wpLy9pf7F1A"/>
     </children>
     <element xmi:type="ecore:EClass" href="monitoring.ecore#//RealValue"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8ijVqW8HEe2wpLy9pf7F1A" x="768" y="384"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8ijVqW8HEe2wpLy9pf7F1A" x="456" y="444"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_8ij8sm8HEe2wpLy9pf7F1A" type="2001" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_8ij8tG8HEe2wpLy9pf7F1A" type="5001"/>
@@ -32,7 +32,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_8ij8vW8HEe2wpLy9pf7F1A"/>
     </children>
     <element xmi:type="ecore:EClass" href="monitoring.ecore#//IntegerValue"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8ij8s28HEe2wpLy9pf7F1A" x="768" y="300"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8ij8s28HEe2wpLy9pf7F1A" x="636" y="432"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_MRHZkKo3Ee2bncCce7cp7A" type="2001" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_MRHZkqo3Ee2bncCce7cp7A" type="5001"/>
@@ -151,7 +151,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_InaQabztEe2k3sajFaW3KA"/>
     </children>
     <element xmi:type="ecore:EClass" href="monitoring.ecore#//Label"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_InZpUbztEe2k3sajFaW3KA" x="792" y="108"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_InZpUbztEe2k3sajFaW3KA" x="552" y="-12"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_fAnG4MNXEe2qzK0mq0P3iQ" type="2005" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_fAnG4sNXEe2qzK0mq0P3iQ" type="5005"/>
@@ -164,7 +164,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_fAnG6MNXEe2qzK0mq0P3iQ"/>
     </children>
     <element xmi:type="ecore:EEnum" href="monitoring.ecore#//MetricType"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fAnG4cNXEe2qzK0mq0P3iQ" x="576" y="-12"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fAnG4cNXEe2qzK0mq0P3iQ" x="264" y="396"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_38DrkW8HEe2wpLy9pf7F1A"/>
   <element xmi:type="ecore:EPackage" href="monitoring.ecore#/"/>
@@ -258,10 +258,10 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_7b14wMNUEe2qzK0mq0P3iQ" type="4003" source="_T43LkK38Ee2Gi5hpFQZW0g" target="_InZpULztEe2k3sajFaW3KA">
     <children xmi:type="notation:DecorationNode" xmi:id="_7b2f0MNUEe2qzK0mq0P3iQ" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_7b2f0cNUEe2qzK0mq0P3iQ" x="-14" y="13"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_7b2f0cNUEe2qzK0mq0P3iQ" y="27"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_7b2f0sNUEe2qzK0mq0P3iQ" type="6004">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_7b2f08NUEe2qzK0mq0P3iQ" x="-22" y="13"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_7b2f08NUEe2qzK0mq0P3iQ" x="2" y="21"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_7b14wcNUEe2qzK0mq0P3iQ" fontName="Ubuntu"/>
     <element xmi:type="ecore:EReference" href="monitoring.ecore#//RuntimeMetric/labels"/>

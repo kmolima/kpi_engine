@@ -53,7 +53,9 @@
     <eLiterals name="RATE" value="16"/>
     <eLiterals name="COUNT" value="11" literal="COUNT"/>
     <eLiterals name="ADD" value="17" literal="ADD"/>
-    <eLiterals name="CENN" value="18" literal="CEN"/>
+    <eLiterals name="PCENT" value="18" literal="PCENT"/>
+    <eLiterals name="EQ" value="19"/>
+    <eLiterals name="NOTEQ" value="20"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumericalValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -91,20 +93,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="#//Time">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="step" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueType" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EvaluationResult">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" lowerBound="1" eType="#//Kpi"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//snapshot_model/State"
-        eOpposite="#//snapshot_model/State/kpi_result"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
-        eType="#//NumericalValue" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="within_target" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true" eSuperTypes="#//ValueType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Time" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="#//TimeUnit"/>
@@ -131,6 +122,8 @@
     <eLiterals name="GE" value="6"/>
     <eLiterals name="LT" value="7"/>
     <eLiterals name="GT" value="8"/>
+    <eLiterals name="EQ" value="9"/>
+    <eLiterals name="NOTEQ" value="10"/>
   </eClassifiers>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
       nsPrefix="snapshot">
@@ -140,7 +133,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="State">
       <eStructuralFeatures xsi:type="ecore:EReference" name="kpi_result" lowerBound="1"
-          eType="#//EvaluationResult" containment="true" eOpposite="#//EvaluationResult/state"/>
+          eType="#//snapshot_model/EvaluationResult" containment="true" eOpposite="#//snapshot_model/EvaluationResult/state"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//snapshot_model/Tendency"
           containment="true"/>
     </eClassifiers>
@@ -165,6 +158,18 @@
       <eLiterals name="MIN" value="4"/>
       <eLiterals name="MAX" value="5"/>
       <eLiterals name="STDDEV" value="6"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EvaluationResult">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" lowerBound="1" eType="#//Kpi"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1"
+          eType="#//snapshot_model/State" eOpposite="#//snapshot_model/State/kpi_result"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
+          eType="#//NumericalValue" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="within_target" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

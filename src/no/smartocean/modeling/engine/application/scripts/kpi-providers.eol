@@ -25,8 +25,8 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 		query = query.concat("query?query=").concat(result).concat("&time=").concat(kpi.time_bound.getValue());
 	}
 	else if(kpi.time_bound.isTypeOf(kpi!Period)){
-		var duration = "30s"; //Hard-coded - max resolution
-		query = query.concat("query_range?query=").concat(result).concat(kpi.time_bound.getValue()).concat("&step=").concat(duration); 
+		var step = kpi.time_bound.step.isDefined ? kpi.time_bound.getStepStr(): "30s"; //Hard-coded - max resolution
+		query = query.concat("query_range?query=").concat(result).concat(kpi.time_bound.getValue()).concat("&step=").concat(step); 
 	}
 	
 	return query;
@@ -53,6 +53,33 @@ operation smartocean!System getPromQLStr(kpi: kpi!Kpi): Any{
 	return query;
 }
 
+operation smartocean!System getExprBrowserStr(kpi: kpi!Kpi): Any{
+	
+	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
+	var target  = kpi.target_value.getValue(self);
+	
+	var expr    = kpi.target_value.valuetype.getValue(self);
+	
+	var query = new String();
+	
+	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
+		query = kpi.time_bound.getValueStr() == "" ? expr + target.op + " " + target.target :
+	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValueStr();
+	 	}
+	else if(kpi.target_value.isTypeOf(kpi!Range)){
+	 	if(target.max == target.min){
+	 		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")" : 
+	 		"(" + "("+expr + " >= " + target.min +")"+")" + kpi.time_bound.getValueStr();
+	 	}
+	 	else {
+	 		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
+	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValueStr();
+	 	}
+	}
+	
+	return query;
+}
+
 operation kpi!Period getValue(): String {
 	if (self.period <= 0){
 		throw "Error: Period of evalution should be greater than zero.";
@@ -67,6 +94,17 @@ operation kpi!Period getValue(): String {
 	result = result.concat("&end=").concat(time.toString());
 	return result;
 
+}
+
+operation kpi!Period getStepStr(): String {
+	var step = new String();
+	var value = self.step;
+	if(self.step < 30){
+		("Maximum step duration resolution is 30 seconds.").println();
+		value = 30;
+	}
+	step = step.concat(value.toString()).concat("s");
+	return step;
 }
 
 operation kpi!Instant getValue(): String {
@@ -140,6 +178,16 @@ operation kpi!IntegerValue getValue(system: smartocean!System): String{
 	return result.asString();//self.value.asInteger();
 }
 
+operation kpi!RealValue getValue(): String{
+	var result = getPromQLUnit(self.unit,self.value);
+	return result.asString();//self.value.asReal(); self.value + unit;
+}
+
+operation kpi!IntegerValue getValue(): String{
+	var result = getPromQLUnit(self.unit,self.value.asReal());
+	return result.asString();//self.value.asInteger();
+}
+
 //@cache
 operation kpi!StringValue getValue(system: smartocean!System): String{
 	var parameter = self.getParameter();
@@ -151,7 +199,12 @@ operation kpi!StringValue getValue(system: smartocean!System): String{
 				("Error: Undefined metric "+parameter.name+" in "+system.system_name+" system subject model").println();
 			else if(metrics.size == 1){
 				var metric = metrics.flatten();
-				return metric.metric_id.first();
+				var result = new String();
+				result = result.concat(metric.metric_id.first());
+				if(metric.metric_type.first() == smartocean!MetricType#COUNTER){
+					result = result.concat("_total");
+				}
+				return result;
 			}
 			else if(metrics.size > 1)
 			 ("Error: Multiple metric "+parameter.name+" in "+system.system_name+" system subject model").println();
@@ -200,7 +253,8 @@ var expr = new String();
 //op: kpi!EEnumLiteral
 switch (op) {
 	case kpi!Operation#SUM: 
-		expr.concat(args).concat(sub_expr).wrap("sum");
+		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr);
+		expr = instant? expr.wrap("sum") : expr.wrap("sum_over_time");
 	case kpi!Operation#ADD:
 		expr = is_sub ?  expr.concat(" + ").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
@@ -210,10 +264,12 @@ switch (op) {
 	case kpi!Operation#AVG:
 		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr); 
 		expr = instant? expr.wrap("avg") : expr.wrap("avg_over_time");
-	case kpi!Operation#MIN: 
-		expr = sub_expr == "" ? expr.concat(args).wrap("min") : expr.concat(args).concat(sub_expr).wrap("min");
+	case kpi!Operation#MIN:
+		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr);
+		expr = instant? expr.wrap("min") : expr.wrap("min_over_time");
 	case kpi!Operation#MAX: 
-		sub_expr == "" ? expr.concat(args).wrap("max") : expr.concat(args).concat(sub_expr).wrap("max");
+		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr);
+		expr = instant? expr.wrap("max") : expr.wrap("max_over_time");
 	case kpi!Operation#DIV: 
 		expr = is_sub ?  expr.concat("/").concat(self.applyOp("/",args)) : expr.concat(self.applyOp("/",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
@@ -221,7 +277,7 @@ switch (op) {
 		expr = is_sub ?  expr.concat("*").concat(self.applyOp("*",args)) : expr.concat(self.applyOp("*",args));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
 	case kpi!Operation#LE:  
-		is_sub ?  expr.concat("<=").concat(self.applyOp("<=",args)) : expr.concat(self.applyOp("<=",args));
+		expr = is_sub ?  expr.concat("<=").concat(self.applyOp("<=",args)) : expr.concat(self.applyOp("<=",args));
 		sub_expr == "" ? expr : expr.concat(sub_expr);
 	case kpi!Operation#GE: 
 		expr = is_sub ?  expr.concat(">=").concat(self.applyOp(">=",args)) : expr.concat(self.applyOp(">=",args));
@@ -248,6 +304,15 @@ switch (op) {
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
 	case kpi!Operation#COUNT: 
 		expr = sub_expr == "" ? expr.concat(args).wrap("count") : expr.concat(args).concat(sub_expr).wrap("count");
+	case kpi!Operation#PCENT: 
+		var result =  self.pcent(system,args);
+		expr = sub_expr == "" ? expr.concat(result): expr.concat(result).concat(sub_expr);
+	case kpi!Operation#EQ: 
+		expr = is_sub ?  expr.concat(" == ").concat(self.applyOp("==",args)) : expr.concat(self.applyOp("==",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
+	case kpi!Operation#NOTEQ: 
+		expr = is_sub ?  expr.concat(" != ").concat(self.applyOp("!=",args)) : expr.concat(self.applyOp("!=",args));
+		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
 	default : "Operation not supported".println(); 
 	}
 	return expr;
@@ -293,6 +358,10 @@ switch (op) {
 		opStr = "min";
 	case kpi!Assessment#MAX: 
 		opStr = "max";
+	case kpi!Assessment#EQ: 
+		opStr = "==";
+	case kpi!Assessment#NOTEQ: 
+		opStr = "=!";
 	default : "Operation not supported for assessment".println(); 
 		opStr =  "";
 	}

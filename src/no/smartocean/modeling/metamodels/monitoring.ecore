@@ -50,7 +50,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
         eType="#//Label" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//MetricType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric_type" lowerBound="1"
+        eType="#//MetricType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Label">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -59,5 +60,6 @@
     <eLiterals name="COUNTER"/>
     <eLiterals name="GAUGE" value="1"/>
     <eLiterals name="HIST" value="2" literal="HISTOGRAM"/>
+    <eLiterals name="SUM" value="3" literal="SUMMARY"/>
   </eClassifiers>
 </ecore:EPackage>

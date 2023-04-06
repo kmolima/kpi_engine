@@ -14,6 +14,20 @@ operation kpi!Expression getMetric(): String{
 }
 
 //Looks for metrics in Expression arguments
+operation kpi!Expression getMetric_ID(system: smartocean!System): String{
+	for(valuetype in self.arguments){
+		if(valuetype.isTypeOf(kpi!StringValue)){
+			return valuetype.getValue(system);
+			}
+		else if(valuetype.isTypeOf(kpi!Expression)){
+			//TODO
+		 }
+		}
+		
+	return "";
+}
+
+//Looks for metrics in Expression arguments
 operation kpi!Expression getMetrics(): OrderedSet{
 	var metrics = new OrderedSet();
 	for(valuetype in self.arguments){
@@ -186,11 +200,54 @@ operation kpi!Parameter str(): String {
 }
 
 operation smartocean!RuntimeMetric checkLabel(name: String): Boolean{
-	var labels = self.labels.collect(label | label.name.toLowerCase() == name.toLowerCase());
-	
-	if(labels.size() == 1){
-		return true;
+	var check = self.labels.exists(label | label.name.toLowerCase() == name.toLowerCase());
+	return check;
+}
+
+operation kpi!Expression pcent(system: smartocean!System, values: Sequence<String>): String {
+
+assert(self.arguments.size() == values.size());
+
+
+var metric_selector = new String();
+metric_selector = values.first(); //PCENT OP must be applied to a Metric selector - expects only one argument //Constraint
+var metric_id = self.arguments.first().getMetric_ID(system);
+var metric_alias = self.arguments.first().getMetric();
+
+
+var result = new String();
+
+	if(metric_id==""){
+		("Error First argument of percentage operation should be a metric").println();
+		return "";
 	}
+
+	if(metric_alias != ""){
+		var metric_check = system.monitoring_data.exists(metric | metric.name.toLowerCase() == metric_alias.toLowerCase()); //TODO consider complex metrics expressions as well
+		if(not metric_check)
+			return "";
+		var metric_type = system.monitoring_data.select(metric | metric.name.toLowerCase() == metric_alias.toLowerCase()).flatten().metric_type.first();
+		//Check Metric Type: COUNTER HISTOGRAM SUMMARY OR GAUGE self.arguments.excluding(metric)
+		switch(metric_type){
+			case smartocean!MetricType#COUNTER:
+				result = result.concat("(").concat(metric_selector).concat("/").concat(metric_id).concat(")");
+			case smartocean!MetricType#GAUGE:
+			case smartocean!MetricType#HIST:
+				var total = metric_id.concat("_count");
+				result = result.concat(metric_selector);
+				result = result.wrap("count").concat("/").concat(total);
+			case smartocean!MetricType#SUM:
+			default:
+		}
+		return result;
+	}
+	else{
+		("Error First argument of filter operation should be a metric").println();
+		return "";
+	}
+	return "";
 	
-	return false;
+}
+
+operation kpi!Expression getBinaryOpLabels(system: smartocean!System): String{
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" xmi:id="_Q2CgsNLQEe2cCrroI-qMxQ" system="Smart Ocean Platform">
+  <dimension xmi:id="_T010INLQEe2cCrroI-qMxQ" name="Data Flow">
+    <sub_dimensions xmi:id="_VmWOANLQEe2cCrroI-qMxQ" name="Accuracy">
+      <kpis xmi:id="_YZAi4NLQEe2cCrroI-qMxQ" name="good data" description="percentage of data delivered with &quot;good&quot; QC flag metadata" unit="percentage">
+        <target_value xsi:type="timed_kpi:Range" xmi:id="_p5YCUNLQEe2cCrroI-qMxQ" rangeName="good">
+          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_mxMT8NLREe2cCrroI-qMxQ" operation="PCENT" arguments="_zOIH8NOQEe2QHvAIF_xe5A">
+            <sub_expression xmi:id="_zOIH8NOQEe2QHvAIF_xe5A" arguments="_ll6CANLQEe2cCrroI-qMxQ _20IlUNOQEe2QHvAIF_xe5A"/>
+          </valuetype>
+          <min xsi:type="timed_kpi:RealValue" xmi:id="_y4Zy0NLQEe2cCrroI-qMxQ" unit="percentage" value="0.9"/>
+          <max xsi:type="timed_kpi:RealValue" xmi:id="_tfOusNLQEe2cCrroI-qMxQ" unit="percentage" value="1.0"/>
+        </target_value>
+        <ranges xmi:id="_4DHkMNLQEe2cCrroI-qMxQ" rangeName="bad">
+          <min xsi:type="timed_kpi:RealValue" xmi:id="_PaX-gNLREe2cCrroI-qMxQ" unit="percentage" value="0.75"/>
+          <max xsi:type="timed_kpi:RealValue" xmi:id="_6i4LMNLQEe2cCrroI-qMxQ" unit="percentage" value="0.899"/>
+        </ranges>
+        <ranges xmi:id="_bxdP8NLREe2cCrroI-qMxQ" rangeName="critical">
+          <min xsi:type="timed_kpi:RealValue" xmi:id="_f21J4NLREe2cCrroI-qMxQ" unit="percentage"/>
+          <max xsi:type="timed_kpi:RealValue" xmi:id="_dxlUoNLREe2cCrroI-qMxQ" unit="percentage" value="0.749"/>
+        </ranges>
+        <time_bound xsi:type="timed_kpi:Period" xmi:id="_jqm9gNLREe2cCrroI-qMxQ" unit="DAY" period="30"/>
+      </kpis>
+      <parameters xmi:id="_j2FDINLQEe2cCrroI-qMxQ" name="metric">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_ll6CANLQEe2cCrroI-qMxQ" value="qc_flags"/>
+      </parameters>
+      <parameters xmi:id="_0YLgQNOQEe2QHvAIF_xe5A" name="qcFlag">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_20IlUNOQEe2QHvAIF_xe5A" value="good"/>
+      </parameters>
+    </sub_dimensions>
+  </dimension>
+</timed_kpi:KpiModel>
