@@ -230,12 +230,12 @@ var result = new String();
 		//Check Metric Type: COUNTER HISTOGRAM SUMMARY OR GAUGE self.arguments.excluding(metric)
 		switch(metric_type){
 			case smartocean!MetricType#COUNTER:
-				result = result.concat("(").concat(metric_selector).concat("/").concat(metric_id).concat(")");
+				result = result.concat("(").concat(metric_selector).concat(" ").concat("/").concat(" ").concat(metric_id).concat(")");
 			case smartocean!MetricType#GAUGE:
 			case smartocean!MetricType#HIST:
-				var total = metric_id.concat("_count");
+				var total = metric_id.replace("_bucket","_count"); //TODO test
 				result = result.concat(metric_selector);
-				result = result.wrap("count").concat("/").concat(total);
+				result = result.wrap("count").concat(" ").concat("/").concat(" ").concat(total);
 			case smartocean!MetricType#SUM:
 			default:
 		}

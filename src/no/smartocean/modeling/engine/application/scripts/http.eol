@@ -1,0 +1,18 @@
+import "kpi-providers.eol";
+
+var result = new Native("java.util.ArrayList");
+for (system in smartocean!System.all) { 
+	("KPI model translation applied on "+system.system_name).println();
+	for (mykpi in kpi!Kpi.all) {
+	 ("KPI:"+mykpi.name+" | Dimension(s): "+mykpi.getDimStr()+" | Unit: "+mykpi.unit).println();
+	 ("KPI Description: "+mykpi.description).println();
+	 ("PromQL Query:").println();
+		var queries = system.collect(sc|sc.get(mykpi));
+		for(query in queries){
+			("\t"+query).println();
+			result.add(query);
+		}
+	}
+}
+
+return result;

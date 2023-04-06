@@ -1,4 +1,4 @@
-package no.smartocean.modeling.engine.application.scripts;
+package no.smartocean.modeling.engine.application;
 
 import org.json.simple.JSONObject;
 

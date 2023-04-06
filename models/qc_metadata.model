@@ -8,7 +8,7 @@
             <sub_expression xmi:id="_zOIH8NOQEe2QHvAIF_xe5A" arguments="_ll6CANLQEe2cCrroI-qMxQ _20IlUNOQEe2QHvAIF_xe5A"/>
           </valuetype>
           <min xsi:type="timed_kpi:RealValue" xmi:id="_y4Zy0NLQEe2cCrroI-qMxQ" unit="percentage" value="0.9"/>
-          <max xsi:type="timed_kpi:RealValue" xmi:id="_tfOusNLQEe2cCrroI-qMxQ" unit="percentage" value="1.0"/>
+          <max xsi:type="timed_kpi:RealValue" xmi:id="_tfOusNLQEe2cCrroI-qMxQ" unit="percentage" value="0.9"/>
         </target_value>
         <ranges xmi:id="_4DHkMNLQEe2cCrroI-qMxQ" rangeName="bad">
           <min xsi:type="timed_kpi:RealValue" xmi:id="_PaX-gNLREe2cCrroI-qMxQ" unit="percentage" value="0.75"/>

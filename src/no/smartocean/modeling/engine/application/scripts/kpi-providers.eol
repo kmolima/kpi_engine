@@ -15,7 +15,13 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 		result = expr + target.op + " " + target.target;
 	 }
 	else if(kpi.target_value.isTypeOf(kpi!Range)){
-		result = "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")";
+		
+		if(target.max == target.min){
+	 		result = "("+expr + " >= " + target.min +")";
+	 	}
+	 	else {
+	 		result = "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")";
+	 	}
 	}
 	
 	var query = new String();
@@ -46,8 +52,16 @@ operation smartocean!System getPromQLStr(kpi: kpi!Kpi): Any{
 	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValueStr();
 	 	}
 	else if(kpi.target_value.isTypeOf(kpi!Range)){
-		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
+		//query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
+	 	//	"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValueStr();
+	 	if(target.max == target.min){
+	 		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")" : 
+	 		"(" + "("+expr + " >= " + target.min +")"+")" + kpi.time_bound.getValueStr();
+	 	}
+	 	else {
+	 		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
 	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValueStr();
+	 	}
 	}
 	
 	return query;
@@ -96,14 +110,36 @@ operation kpi!Period getValue(): String {
 
 }
 
+//https://github.com/prometheus/prometheus/issues/9999
 operation kpi!Period getStepStr(): String {
 	var step = new String();
 	var value = self.step;
-	if(self.step < 30){
-		("Maximum step duration resolution is 30 seconds.").println();
-		value = 30;
+	if(self.step < 15){
+		("Maximum step duration resolution is 15 seconds.").println();
+		value = 15;
 	}
-	step = step.concat(value.toString()).concat("s");
+	switch(self.unit){
+			
+		case kpi!TimeUnit#DAY:
+		value=1;
+		step = step.concat(value.toString()).concat("h"); // 1 hour step
+			
+		case kpi!TimeUnit#WEEK:
+		value=1;
+		step = step.concat(value.toString()).concat("d"); // 1 day step
+			
+		case kpi!TimeUnit#YEAR:
+		value=30;
+		step = step.concat(value.toString()).concat("d"); // 30 day step
+		
+		case kpi!TimeUnit#MIN:		
+		case kpi!TimeUnit#HR:	
+		case kpi!TimeUnit#MS:
+		case kpi!TimeUnit#SEC:
+		default:
+			step = step.concat(value.toString()).concat("s"); //default step
+	}
+	
 	return step;
 }
 
