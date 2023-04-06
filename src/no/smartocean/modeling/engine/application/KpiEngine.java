@@ -4,7 +4,6 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class KpiEngine {
 				URI kpi_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI();
 				
 				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
-				URI kpi_model_uri = KpiEngine.class.getResource("/timed_kpi_manual.model").toURI();
+				URI kpi_model_uri = KpiEngine.class.getResource("/near_factor_kpi.model").toURI();
 				
 				ArrayList<String> queries = semantic_translator.translate(subject_metamodel_uri,kpi_metamodel_uri,subject_model_uri,kpi_model_uri,"smartocean","kpi");
 				
@@ -35,7 +34,7 @@ public class KpiEngine {
 					System.out.println("\t"+query);
 					
 				
-					URL browser = config.getConsoleBrowserAddr(queries);
+					URI browser = config.getConsoleBrowserAddr(queries);
 					KpiEngine.openInBrowser(browser);
 					
 					System.out.println("Request URL Encoded:");
@@ -54,18 +53,18 @@ public class KpiEngine {
 		}
 	}
 	
-	public static boolean openInBrowser(URL url) {
+	public static boolean openInBrowser(URI uri) {
 	    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 	    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 	        try {
-	            desktop.browse(url.toURI());
+	            desktop.browse(uri);
 	            return true;
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
 	    }
 	    else {
-	    	System.out.println("Browser Expression URL:\n\t"+url);
+	    	System.out.println("Browser Expression URL:\n\t"+uri);
 	    }
 	    return false;
 	}

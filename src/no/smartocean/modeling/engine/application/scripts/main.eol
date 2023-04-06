@@ -6,10 +6,11 @@ for (system in smartocean!System.all) {
 	for (mykpi in kpi!Kpi.all) {
 	 ("KPI:"+mykpi.name+" | Dimension(s): "+mykpi.getDimStr()+" | Unit: "+mykpi.unit).println();
 	 ("KPI Description: "+mykpi.description).println();
-	 ("PromQL Query:").println();
-		var queries = system.collect(sc|sc.get(mykpi));
+	 ("Browser Expression:").println();
+	 	var count = loopCount-1;
+		var queries = system.collect(sc|sc.getExprBrowserStr(mykpi,count));
 		for(query in queries){
-			("\t"+query).println();
+			("\t"+count+": "+query).println();
 			result.add(query);
 		}
 	}

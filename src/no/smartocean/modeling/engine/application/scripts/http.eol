@@ -6,7 +6,7 @@ for (system in smartocean!System.all) {
 	for (mykpi in kpi!Kpi.all) {
 	 ("KPI:"+mykpi.name+" | Dimension(s): "+mykpi.getDimStr()+" | Unit: "+mykpi.unit).println();
 	 ("KPI Description: "+mykpi.description).println();
-	 ("PromQL Query:").println();
+	 ("HTTP API Query:").println();
 		var queries = system.collect(sc|sc.get(mykpi));
 		for(query in queries){
 			("\t"+query).println();

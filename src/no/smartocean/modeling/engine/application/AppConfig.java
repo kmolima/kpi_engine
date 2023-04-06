@@ -3,6 +3,7 @@ package no.smartocean.modeling.engine.application;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -132,13 +133,23 @@ public class AppConfig {
     	
     }
     
-    public URL getConsoleBrowserAddr(List<String> queries) throws MalformedURLException, URISyntaxException {
+    public URI getConsoleBrowserAddr(List<String> queries) throws MalformedURLException, URISyntaxException {
     	
     	URIBuilder builder = new URIBuilder();
-    	builder.setScheme(this.protocol).setHost(this.host).setPort(this.port).setPath("graph?");
+    	builder.setScheme(this.protocol).setHost(this.host).setPort(this.port).setPath("graph");
+    	String query = new String();
     	
-    	URL url = builder.build().toURL();
-    	return url;
+    	for(String q: queries) {
+    		query = query.concat(q);
+    	}
+    	
+    	builder.setCustomQuery(query);
+    	
+    	String ascii = builder.build().toASCIIString().replace("+", "%2B").replace("=%22", "%3D%22").replace("%3C=", "%3C%3D").replace("%3E=", "%3E%3D");
+    	
+    	URI uri = new URI(ascii);
+    	
+    	return uri; //.toASCIIString().replace("+", "%2B").replace("%3C=", "%3C%3D").replace("%3E=", "%3E%3D") =%22
     }
     
     public String getURLEncoded(String url) throws UnsupportedEncodingException {

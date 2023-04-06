@@ -1,7 +1,7 @@
 import "kpi-utils.eol";
 import "units.eol";
 
-operation smartocean!System get(kpi: kpi!Kpi): Any{
+operation smartocean!System get(kpi: kpi!Kpi): Any{ //HTTP Request
 	
 	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
 	var target = kpi.target_value.getValue(self);
@@ -67,7 +67,7 @@ operation smartocean!System getPromQLStr(kpi: kpi!Kpi): Any{
 	return query;
 }
 
-operation smartocean!System getExprBrowserStr(kpi: kpi!Kpi): Any{
+operation smartocean!System getExprBrowserStr(kpi: kpi!Kpi, index: Integer): Any{
 	
 	//expr.getPromQLUnitStr(kpi.unit); - to be comparable with target 
 	var target  = kpi.target_value.getValue(self);
@@ -76,19 +76,43 @@ operation smartocean!System getExprBrowserStr(kpi: kpi!Kpi): Any{
 	
 	var query = new String();
 	
+	var result = new String();
+	
+	
 	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
-		query = kpi.time_bound.getValueStr() == "" ? expr + target.op + " " + target.target :
-	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValueStr();
-	 	}
+		result = "("+expr + target.op + " " + target.target+")";
+	 }
 	else if(kpi.target_value.isTypeOf(kpi!Range)){
-	 	if(target.max == target.min){
-	 		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")" : 
-	 		"(" + "("+expr + " >= " + target.min +")"+")" + kpi.time_bound.getValueStr();
+		
+		if(target.max == target.min){
+	 		result = "("+expr + " >= " + target.min +")";
 	 	}
 	 	else {
-	 		query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
-	 		"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValueStr();
+	 		result = "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")";
 	 	}
+	}
+	
+	//g0.expr=
+	query = query.concat("g").concat(index.toString()).concat(".expr=").concat(result);
+	//&g0.tab=0&g0.stacked=0&g0.show_exemplars=0
+	query = query.concat("&g").concat(index.toString()).concat(".tab=0").concat("&g").concat(index.toString()).concat(".stacked=0").concat("&g").concat(index.toString()).concat(".show_exemplars=0");
+	
+	if(kpi.time_bound.isTypeOf(kpi!Instant)){
+	
+		var time = kpi.time_bound.getValue();
+		
+		//&g0.range_input=1h
+		query = query.concat("&g").concat(index.toString()).concat(".range_input=").concat("1h"); //TODO hard-coded
+		if(time != ""){
+			//&g0.end_input=
+			query = query.concat("&g").concat(index.toString()).concat(".end_input=").concat(time);
+			//&g0.moment_input=
+			query = query.concat("&g").concat(index.toString()).concat(".moment_input=").concat(time);
+		}
+	}
+	else if(kpi.time_bound.isTypeOf(kpi!Period)){
+		//&g0.range_input=1h
+		query = query.concat("&g").concat(index.toString()).concat(".range_input=").concat(kpi.time_bound.period.asString()).concat(getPeriodStr(kpi.time_bound.unit));
 	}
 	
 	return query;
