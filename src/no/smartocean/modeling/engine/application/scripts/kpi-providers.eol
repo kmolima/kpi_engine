@@ -204,6 +204,12 @@ operation kpi!StringValue getValue(system: smartocean!System): String{
 				if(metric.metric_type.first() == smartocean!MetricType#COUNTER){
 					result = result.concat("_total");
 				}
+				else if(metric.metric_type.first() == smartocean!MetricType#HIST){
+					result = result.concat("_bucket");
+				}
+				else if(metric.metric_type.first() == smartocean!MetricType#SUM) {
+				//TODO
+				}
 				return result;
 			}
 			else if(metrics.size > 1)
@@ -256,10 +262,12 @@ switch (op) {
 		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr);
 		expr = instant? expr.wrap("sum") : expr.wrap("sum_over_time");
 	case kpi!Operation#ADD:
-		expr = is_sub ?  expr.concat(" + ").concat(self.applyOp("+",args)) : expr.concat(self.applyOp("+",args));
+		var constraints = self.getBinaryOpLabels(system,args);
+		expr = is_sub ?  expr.concat(" + ").concat(self.applyOp("+",args,constraints)) : expr.concat(self.applyOp("+",args,constraints));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-	case kpi!Operation#DIFF: 
-		expr = is_sub ?  expr.concat("-").concat(self.applyOp("-",args)) : expr.concat(self.applyOp("-",args));
+	case kpi!Operation#DIFF:
+		var constraints = self.getBinaryOpLabels(system,args); 
+		expr = is_sub ?  expr.concat("-").concat(self.applyOp("-",args,constraints)) : expr.concat(self.applyOp("-",args,constraints));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
 	case kpi!Operation#AVG:
 		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr); 
@@ -271,13 +279,15 @@ switch (op) {
 		expr = sub_expr == "" ? expr.concat(args) : expr.concat(args).concat(sub_expr);
 		expr = instant? expr.wrap("max") : expr.wrap("max_over_time");
 	case kpi!Operation#DIV: 
-		expr = is_sub ?  expr.concat("/").concat(self.applyOp("/",args)) : expr.concat(self.applyOp("/",args));
+		var constraints = self.getBinaryOpLabels(system,args);
+		expr = is_sub ?  expr.concat("/").concat(self.applyOp("/",args,constraints)) : expr.concat(self.applyOp("/",args,constraints));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
-	case kpi!Operation#MULT: 
-		expr = is_sub ?  expr.concat("*").concat(self.applyOp("*",args)) : expr.concat(self.applyOp("*",args));
+	case kpi!Operation#MULT:
+		var constraints = self.getBinaryOpLabels(system,args); 
+		expr = is_sub ?  expr.concat("*").concat(self.applyOp("*",args,constraints)) : expr.concat(self.applyOp("*",args,constraints));
 		expr = sub_expr == "" ? expr : expr.concat(sub_expr);
 	case kpi!Operation#LE:  
-		expr = is_sub ?  expr.concat("<=").concat(self.applyOp("<=",args)) : expr.concat(self.applyOp("<=",args));
+		expr = is_sub ?  expr.concat("<=").concat(self.applyOp("<=",args)) : expr.concat(self.applyOp("<=",args)); //ADD ,constraints ?
 		sub_expr == "" ? expr : expr.concat(sub_expr);
 	case kpi!Operation#GE: 
 		expr = is_sub ?  expr.concat(">=").concat(self.applyOp(">=",args)) : expr.concat(self.applyOp(">=",args));

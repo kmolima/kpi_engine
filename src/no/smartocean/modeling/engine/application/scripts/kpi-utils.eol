@@ -85,13 +85,13 @@ operation kpi!ParameterValue getParameter(): kpi!Parameter{
 	return null;
 }
 
-operation kpi!Expression applyOp(op: String, set: Sequence<String>): String{
+operation kpi!Expression applyOp(op: String, set: Sequence<String>, constraints: OrderedSet<String>): String{
 
 	var result = new String();
 	for(arg in set){
 		result = result.concat(arg.asString());
 		if(hasMore)
-			result = result.concat(op);
+			result = result.concat(" ").concat(op).concat(" ").concat(constraints.at(loopCount-1)).concat(" ");
 	}
 	return result;
 }
@@ -249,5 +249,46 @@ var result = new String();
 	
 }
 
-operation kpi!Expression getBinaryOpLabels(system: smartocean!System): String{
+//<vector expr> <bin-op> on(<label list>) <vector expr>
+// https://prometheus.io/docs/prometheus/latest/querying/operators/#vector-matching
+operation kpi!Expression getBinaryOpLabels(system: smartocean!System, values: Sequence<String>): OrderedSet<String>{
+
+var result = new OrderedSet<String>();
+
+for(argument in self.arguments){
+	
+	var left = argument;
+	
+		if(hasMore){ //Binary op should be used with at least 2 arguments
+			var right  = self.arguments.get(loopCount);
+			
+			var labels_left = system.monitoring_data.select(metric | metric.name.toLowerCase() == argument.value.toLowerCase()).first().labels.collect(label| label.name);
+			var labels_right = system.monitoring_data.select(metric | metric.name.toLowerCase() == right.value.toLowerCase()).first().labels.collect(label| label.name);
+			var op_constraint = labels_left.select(label | labels_right.contains(label));
+			if(op_constraint.size() == 0)
+				("Error on binary operation with metrics with no common labels").println();
+				//TODO Throw error?
+			else if(op_constraint.size() == labels_left.size() and op_constraint.size() == labels_right.size()){
+				result.add(""); //if the metrics have the same labels no constraints on binary operations needed
+			}
+			else {
+				var constraint = new String();
+				constraint = constraint.concat("on(");
+				for(label in op_constraint){
+					constraint = constraint.concat(label);
+					if(hasMore)
+						constraint = constraint.concat(",");
+				}
+				constraint = constraint.concat(")");
+					
+				result.add(constraint);
+			}
+		}
+
+	}
+
+return result;
+
 }
+
+
