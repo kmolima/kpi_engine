@@ -112,21 +112,33 @@ public class AppConfig {
     	
     }
     
-    public URL getURL(String query) throws MalformedURLException, URISyntaxException {
+    public String getURL(String query) throws MalformedURLException, URISyntaxException, UnsupportedEncodingException {
     	URIBuilder builder = new URIBuilder();
     	builder.setScheme(this.protocol).setHost(this.host).setPort(this.port);
     	
+    	    	
     	if(query.contains("?")) {
     		ArrayList<String> path = new ArrayList<>(this.endpoint);
     		String[] result = query.split("\\?");
     		path.add(result[0]);
-    		builder.setPathSegments(path).setCustomQuery(result[1]);
+    		builder.setPathSegments(path).setCustomQuery(result[1]); //.replace("(", "%28").replace(")", "%29")
     	}
     	else
     		builder.setPathSegments(this.endpoint).setCustomQuery(query);
+    	
+    	//URL url = builder.build().toURL();
+    	
+    	return builder.build().toASCIIString().replace("+", "%2B").replace("%3C=", "%3C%3D").replace("%3E=", "%3E%3D");
+    	
+    }
+    
+    public URL getConsoleBrowserAddr(List<String> queries) throws MalformedURLException, URISyntaxException {
+    	
+    	URIBuilder builder = new URIBuilder();
+    	builder.setScheme(this.protocol).setHost(this.host).setPort(this.port).setPath("graph?");
+    	
     	URL url = builder.build().toURL();
     	return url;
-    	
     }
     
     public String getURLEncoded(String url) throws UnsupportedEncodingException {

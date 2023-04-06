@@ -12,7 +12,7 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{
 	
 	
 	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
-		result = expr + target.op + " " + target.target;
+		result = "("+expr + target.op + " " + target.target+")";
 	 }
 	else if(kpi.target_value.isTypeOf(kpi!Range)){
 		
@@ -389,25 +389,25 @@ var opStr;
 //op: kpi!EEnumLiteral
 switch (op) {
 	case kpi!Assessment#LE: 
-		opStr = "<=";
+		opStr = " <=";
 	case kpi!Assessment#GE: 
-		opStr = ">=";
+		opStr = " >=";
 	case kpi!Assessment#LT: 
-		opStr = "<";
+		opStr = " <";
 	case kpi!Assessment#GT: 
-		opStr = ">";
+		opStr = " >";
 	case kpi!Assessment#AND: 
-		opStr = "and";
+		opStr = " and";
 	case kpi!Assessment#OR: 
-		opStr = "or";
+		opStr = " or";
 	case kpi!Assessment#MIN: 
-		opStr = "min";
+		opStr = " min";
 	case kpi!Assessment#MAX: 
-		opStr = "max";
+		opStr = " max";
 	case kpi!Assessment#EQ: 
-		opStr = "==";
+		opStr = " ==";
 	case kpi!Assessment#NOTEQ: 
-		opStr = "=!";
+		opStr = " =!";
 	default : "Operation not supported for assessment".println(); 
 		opStr =  "";
 	}

@@ -36,7 +36,7 @@ public class KpiService {
 				URI kpi_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI();
 				
 				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
-				URI kpi_model_uri = KpiEngine.class.getResource("/qc_metadata.model").toURI();
+				URI kpi_model_uri = KpiEngine.class.getResource("/near_factor_kpi.model").toURI();
 				
 				ArrayList<String> queries = semantic_translator.translate(subject_metamodel_uri,kpi_metamodel_uri,subject_model_uri,kpi_model_uri,"smartocean","kpi");
 				
@@ -45,15 +45,15 @@ public class KpiService {
 					System.out.println("Processing Query:");
 					System.out.println("\t"+query);
 					
-					URL url = config.getURL(query); //"query?query=com_hivemq_messages_incoming_publish_bytes"
+					String ascii = config.getURL(query); //"query?query=com_hivemq_messages_incoming_publish_bytes"
 					
 					ResponseHandler handler = new ResponseHandler();
-					JSONObject jsonObject = KpiService.getHTTPResponse(config, url);
+					JSONObject jsonObject = KpiService.getHTTPResponse(config, ascii);
 		            handler.handle(jsonObject);
 					
 					
 					System.out.println("Request URL Encoded:");
-					System.out.println("\t"+url);
+					System.out.println("\t"+ascii);
 					
 					
 				}
@@ -67,7 +67,7 @@ public class KpiService {
 		}
 	}
 	
-	public static JSONObject getHTTPResponse(AppConfig config, URL url) throws ClientProtocolException, IOException, ParseException, URISyntaxException {
+	public static JSONObject getHTTPResponse(AppConfig config, String ascii) throws ClientProtocolException, IOException, ParseException, URISyntaxException {
 		
 		JSONObject jsonObject=new JSONObject();
 		
@@ -82,7 +82,7 @@ public class KpiService {
 		builder.setDefaultRequestConfig(requestBuilder.build());
 
 		CloseableHttpClient client = builder.build();
-		final HttpPost httpPost = new HttpPost(url.toURI());
+		final HttpPost httpPost = new HttpPost(ascii); 
 		httpPost.setHeader(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded");
 
 		CloseableHttpResponse response = client.execute(httpPost);
@@ -104,7 +104,7 @@ public class KpiService {
             System.out.println("Success!\n" + jsonObject);
 			
 		} else if(statusCode == 400){
-			System.out.println("Error in connection to prometheus via the HTTP API for query: \n"+url.toString()+"\n Parameters are missing or incorrect");
+			System.out.println("Error in connection to prometheus via the HTTP API for query: \n"+ascii+"\n Parameters are missing or incorrect");
 			System.err.println(response.getStatusLine().getReasonPhrase());
 		}
 		else {
