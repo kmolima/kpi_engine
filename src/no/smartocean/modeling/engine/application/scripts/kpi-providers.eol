@@ -169,10 +169,10 @@ operation kpi!Period getStepStr(): String {
 
 operation kpi!Instant getValue(): String {
 
-	if (self.time_ago < 0){
+	if (self.time_ago == 0){
 	 return ""; //Latest - instant when the query is evaluated //Constraint
 	}
-	else if (self.time_ago == 0){ //NOW - instant when the query is evaluated //Constraint
+	else if (self.time_ago < 0){ //NOW - instant when the query is evaluated //Constraint //TODO FIX
 	 var instant = Native("java.time.Instant");
 	 var time = instant.now().getEpochSecond();
 	 return time.toString(); //NOW - instant when the kpi is evaluated //Constraint

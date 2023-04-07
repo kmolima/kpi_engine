@@ -145,13 +145,15 @@ public class AppConfig {
     	while(iterator.hasNext()) {
     		String q = iterator.next();
     		
-    		query = iterator.hasNext()? query.concat("&").concat(q): query.concat(q);
+    		query = query.concat(q);
+    		
+    		if(iterator.hasNext())
+    			query =  query.concat("&");
     	}
-    	System.out.println(query);
     	
     	builder.setCustomQuery(query);
     	
-    	String ascii = builder.build().toASCIIString().replace("+", "%2B").replace("=%22", "%3D%22").replace("%3C=", "%3C%3D").replace("%3E=", "%3E%3D");
+    	String ascii = builder.build().toASCIIString().replace("+", "%2B").replace("=%22", "%3D%22").replace("%3C=", "%3C%3D").replace("%3E=", "%3E%3D").replace("%20/%20", "%20%2F%20");
     	
     	URI uri = new URI(ascii);
     	

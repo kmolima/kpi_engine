@@ -3,7 +3,6 @@ package no.smartocean.modeling.engine.application;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class KpiService {
 				URI kpi_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI();
 				
 				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
-				URI kpi_model_uri = KpiEngine.class.getResource("/qc_metadata.model").toURI();
+				URI kpi_model_uri = KpiEngine.class.getResource("/oceanops_kpis.model").toURI();
 				
 				ArrayList<String> queries = semantic_translator.translate(subject_metamodel_uri,kpi_metamodel_uri,subject_model_uri,kpi_model_uri,"smartocean","kpi");
 				
