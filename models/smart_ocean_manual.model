@@ -3,12 +3,11 @@
   <ecosystem_systems xmi:id="_AgTe4MNaEe2qzK0mq0P3iQ" system_name="Smart Ocean Platform">
     <sources xmi:id="_DQw0UMNaEe2qzK0mq0P3iQ" name="HiveMQ" instance_id="uid1" operated_by="_Fa-pIMNaEe2qzK0mq0P3iQ"/>
     <sources xmi:id="_KGzfEMNaEe2qzK0mq0P3iQ" name="Data Validator" instance_id="uid2" operated_by="_Fa-pIMNaEe2qzK0mq0P3iQ"/>
-    <monitoring_data xmi:id="_mu4SwMNaEe2qzK0mq0P3iQ" name="published_bytes" metric_id="com_hivemq_messages_incoming_publish_bytes" metric_type="HISTOGRAM">
-      <labels xmi:id="_UT1DcNQTEe2ip8dUggkcog" name="le"/>
+    <monitoring_data xmi:id="_mu4SwMNaEe2qzK0mq0P3iQ" name="consumed_msgs" metric_id="com_hivemq_messages_outgoing_publish_count">
       <labels xmi:id="_UT1DcdQTEe2ip8dUggkcog" name="job"/>
       <labels xmi:id="_UT1DctQTEe2ip8dUggkcog" name="instance"/>
     </monitoring_data>
-    <monitoring_data xmi:id="_qoCVoMNaEe2qzK0mq0P3iQ" name="publised_msgs" metric_id="com_hivemq_messages_incoming_publish_count">
+    <monitoring_data xmi:id="_qoCVoMNaEe2qzK0mq0P3iQ" name="published_msgs" metric_id="com_hivemq_messages_incoming_publish_count">
       <labels xmi:id="_cSgKMNQTEe2ip8dUggkcog" name="job"/>
       <labels xmi:id="_cSgKMdQTEe2ip8dUggkcog" name="instance"/>
     </monitoring_data>
@@ -24,7 +23,7 @@
       <labels xmi:id="_RoISMdQTEe2ip8dUggkcog" name="job"/>
       <labels xmi:id="_RoISMtQTEe2ip8dUggkcog" name="instance"/>
     </monitoring_data>
-    <monitoring_data xmi:id="_29aW4MNaEe2qzK0mq0P3iQ" name="qc_flags" metric_id="no_smartocean_data_ingestion_quality_controlled_count">
+    <monitoring_data xmi:id="_29aW4MNaEe2qzK0mq0P3iQ" name="qc_flags" metric_id="no_smartocean_data_ingestion_quality_controlled_count_total">
       <labels xmi:id="_iLkqMMNbEe2qzK0mq0P3iQ" name="producer"/>
       <labels xmi:id="_ES4gcMowEe2mBsuE5_6gbg" name="qcFlag"/>
       <labels xmi:id="_ZWK78NQTEe2ip8dUggkcog" name="job"/>
