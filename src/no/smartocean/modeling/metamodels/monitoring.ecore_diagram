@@ -151,7 +151,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_InaQabztEe2k3sajFaW3KA"/>
     </children>
     <element xmi:type="ecore:EClass" href="monitoring.ecore#//Label"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_InZpUbztEe2k3sajFaW3KA" x="552" y="-12"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_InZpUbztEe2k3sajFaW3KA" x="588" y="-24"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_fAnG4MNXEe2qzK0mq0P3iQ" type="2005" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_fAnG4sNXEe2qzK0mq0P3iQ" type="5005"/>
@@ -222,6 +222,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_T44Zsa38Ee2Gi5hpFQZW0g" fontName="Ubuntu"/>
     <element xmi:type="ecore:EReference" href="monitoring.ecore#//RuntimeMetric/data"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T44Zsq38Ee2Gi5hpFQZW0g" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yrd18NVvEe2k6oqlvKqT2A" id="(0.40476190476190477,0.978021978021978)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_zyWQMK39Ee2Gi5hpFQZW0g" type="4003" source="_tW38sKo7Ee2bncCce7cp7A" target="_MRHZkKo3Ee2bncCce7cp7A">
     <children xmi:type="notation:DecorationNode" xmi:id="_zyWQM639Ee2Gi5hpFQZW0g" type="6002">
