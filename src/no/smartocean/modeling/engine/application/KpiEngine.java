@@ -8,11 +8,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import org.apache.commons.io.FilenameUtils;
+
 public class KpiEngine {
 
 	public static void main(String args[]) {
 
-		Path conf = args.length > 0 ? Path.of(args[0]) : Path.of("config/config.yaml");
+		Path conf   = args.length > 0 ? Path.of(args[0]) : Path.of("config/config.yaml");
+		String kpis = args.length > 1 && FilenameUtils.getExtension(args[1]).toLowerCase().equals("ecore") ? args[1] : "/oceanops_kpis.model";
+		
 		if (Files.isReadable(conf)) {
 			try {
 				
@@ -24,25 +28,19 @@ public class KpiEngine {
 				URI kpi_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI();
 				
 				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
-				URI kpi_model_uri = KpiEngine.class.getResource("/near_factor_kpi.model").toURI();
+				URI kpi_model_uri = KpiEngine.class.getResource(kpis).toURI();
 				
 				ArrayList<String> queries = semantic_translator.translate(subject_metamodel_uri,kpi_metamodel_uri,subject_model_uri,kpi_model_uri,"smartocean","kpi");
 				
-				
+				System.out.println("Processing Queries:");
 				for(String query: queries) {
-					System.out.println("Processing Query:");
 					System.out.println("\t"+query);
-					
-				
-					URI browser = config.getConsoleBrowserAddr(queries);
-					KpiEngine.openInBrowser(browser);
-					
-					System.out.println("Request URL Encoded:");
-					System.out.println("\t"+browser);
-
-					
-					
 				}
+				URI browser = config.getConsoleBrowserAddr(queries);
+				KpiEngine.openInBrowser(browser);
+				
+				System.out.println("Request URL Encoded:");
+				System.out.println("\t"+browser);
 
 			} catch (IOException | URISyntaxException e) {
 				e.printStackTrace();

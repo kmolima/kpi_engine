@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -139,9 +140,14 @@ public class AppConfig {
     	builder.setScheme(this.protocol).setHost(this.host).setPort(this.port).setPath("graph");
     	String query = new String();
     	
-    	for(String q: queries) {
-    		query = query.concat(q);
+    	ListIterator<String> iterator = queries.listIterator();
+    	
+    	while(iterator.hasNext()) {
+    		String q = iterator.next();
+    		
+    		query = iterator.hasNext()? query.concat("&").concat(q): query.concat(q);
     	}
+    	System.out.println(query);
     	
     	builder.setCustomQuery(query);
     	
