@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" xmi:id="_ym7g8NVEEe2ABPB7iwJxKQ" system="Smart Ocean Platform">
+  <dimension xmi:id="_21SXwNVEEe2ABPB7iwJxKQ" name="Data Flow">
+    <sub_dimensions xmi:id="_7htqoNVEEe2ABPB7iwJxKQ" name="Timeliness">
+      <kpis xmi:id="_DeNAENVFEe2ABPB7iwJxKQ" name="near_factor" description="Time difference between data acquistion and arrival on the system (the near factor in near real-time)" unit="hours">
+        <target_value xsi:type="timed_kpi:SingleTarget" xmi:id="_SVsYwNVFEe2ABPB7iwJxKQ" assessment="LE">
+          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_A678oNVGEe2ABPB7iwJxKQ" operation="ADD" arguments="_hoWDcNVFEe2ABPB7iwJxKQ _mIU1wNVFEe2ABPB7iwJxKQ"/>
+          <target xsi:type="timed_kpi:IntegerValue" xmi:id="_u_zMwNVFEe2ABPB7iwJxKQ" unit="hours" value="3"/>
+        </target_value>
+        <time_bound xsi:type="timed_kpi:Period" xmi:id="_X6p2INVFEe2ABPB7iwJxKQ" unit="DAY" period="30"/>
+      </kpis>
+      <parameters xmi:id="_gUXTENVFEe2ABPB7iwJxKQ" name="metric">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_hoWDcNVFEe2ABPB7iwJxKQ" value="delay"/>
+      </parameters>
+      <parameters xmi:id="_k7M7UNVFEe2ABPB7iwJxKQ" name="metric">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_mIU1wNVFEe2ABPB7iwJxKQ" value="overhead"/>
+      </parameters>
+    </sub_dimensions>
+    <sub_dimensions xmi:id="_U_8jENVGEe2ABPB7iwJxKQ" name="Accuracy">
+      <sub_dimensions xmi:id="_WNWxYNVGEe2ABPB7iwJxKQ" name="Completeness">
+        <sub_dimensions xmi:id="_YTD5oNVGEe2ABPB7iwJxKQ" name="Concordance">
+          <kpis xmi:id="_g6rPsNVGEe2ABPB7iwJxKQ" name="good qc flag" description="percentage of data delivered with &quot;good&quot; QC flag metadata" unit="percentage">
+            <target_value xsi:type="timed_kpi:Range" xmi:id="_sblHENVGEe2ABPB7iwJxKQ" rangeName="Good">
+              <valuetype xsi:type="timed_kpi:Expression" xmi:id="_LWK6gNVIEe2ABPB7iwJxKQ" operation="PCENT" arguments="_Nu4eUNVIEe2ABPB7iwJxKQ">
+                <sub_expression xmi:id="_Nu4eUNVIEe2ABPB7iwJxKQ" arguments="_bCNLANVHEe2ABPB7iwJxKQ _fBjVcNVHEe2ABPB7iwJxKQ"/>
+              </valuetype>
+              <min xsi:type="timed_kpi:RealValue" xmi:id="_xylA8NVGEe2ABPB7iwJxKQ" unit="percentage" value="0.9"/>
+              <max xsi:type="timed_kpi:RealValue" xmi:id="_vO5jQNVGEe2ABPB7iwJxKQ" unit="percentage" value="0.9"/>
+            </target_value>
+            <ranges xmi:id="_0uTLMNVGEe2ABPB7iwJxKQ" rangeName="Bad">
+              <min xsi:type="timed_kpi:RealValue" xmi:id="_8qK1kNVGEe2ABPB7iwJxKQ" unit="percentage" value="0.75"/>
+              <max xsi:type="timed_kpi:RealValue" xmi:id="__j2_gNVGEe2ABPB7iwJxKQ" unit="percentage" value="0.8999"/>
+            </ranges>
+            <ranges xmi:id="_CJOfQNVHEe2ABPB7iwJxKQ" rangeName="Critical">
+              <min xsi:type="timed_kpi:RealValue" xmi:id="_E4uLYNVHEe2ABPB7iwJxKQ" unit="percentage"/>
+              <max xsi:type="timed_kpi:RealValue" xmi:id="_IRHqkNVHEe2ABPB7iwJxKQ" unit="percentage" value="0.7499"/>
+            </ranges>
+            <time_bound xsi:type="timed_kpi:Period" xmi:id="_MA2rsNVHEe2ABPB7iwJxKQ" unit="DAY" period="30"/>
+          </kpis>
+        </sub_dimensions>
+      </sub_dimensions>
+      <parameters xmi:id="_ZJ0GANVHEe2ABPB7iwJxKQ" name="metric">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_bCNLANVHEe2ABPB7iwJxKQ" value="qc_flags"/>
+      </parameters>
+      <parameters xmi:id="_dJH0MNVHEe2ABPB7iwJxKQ" name="qcFlag">
+        <value xsi:type="timed_kpi:StringValue" xmi:id="_fBjVcNVHEe2ABPB7iwJxKQ" value="good"/>
+      </parameters>
+    </sub_dimensions>
+  </dimension>
+  <dimension xmi:id="_5KQEANVEEe2ABPB7iwJxKQ" name="Data Uptake"/>
+</timed_kpi:KpiModel>
