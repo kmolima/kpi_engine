@@ -14,7 +14,7 @@ public class EolTaskLoader {
 	final private Path script;
 	
 	public EolTaskLoader(String resource) throws URISyntaxException {
-		script = Path.of(EolTaskLoader.class.getResource(resource).toURI());
+		script = Path.of(resource);
 		System.out.println(script);
 		
 	}
@@ -55,6 +55,35 @@ public class EolTaskLoader {
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList<String> translate(URI subject_metamodel_uri, URI kpi_metamodel_uri, URI subject_uri, URI kpi_uri, String subject_alias, String kpi_alias) {
+		Path kpi_model,kpi_metamodel;
+		Path so_model, so_metamodel;
+		ArrayList<String> sequence = new ArrayList<String>();
+		try {
+			
+			kpi_metamodel = Path.of(kpi_metamodel_uri);
+			so_metamodel = Path.of(subject_metamodel_uri);
+			
+			kpi_model = Path.of(kpi_uri);
+			so_model = Path.of(subject_uri);
+			
+			EcoreLoader kpi_loader = new EcoreLoader(kpi_metamodel);
+			EcoreLoader so_loader = new EcoreLoader(so_metamodel);
+			
+			EmfModel subject = so_loader.loadModelFromFile(so_model, subject_alias);
+			EmfModel kpi = kpi_loader.loadModelFromFile(kpi_model, kpi_alias);
+			
+			Object result = this.run(kpi, subject);
+			sequence = (ArrayList<String>) result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Error Loading EMF models instances to EOL script");
+		}
+		return sequence;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<String> translate(String subject_metamodel_uri, String kpi_metamodel_uri, String subject_uri, String kpi_uri, String subject_alias, String kpi_alias) {
 		Path kpi_model,kpi_metamodel;
 		Path so_model, so_metamodel;
 		ArrayList<String> sequence = new ArrayList<String>();

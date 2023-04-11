@@ -15,22 +15,22 @@ public class KpiEngine {
 	public static void main(String args[]) {
 
 		Path conf   = args.length > 0 ? Path.of(args[0]) : Path.of("config/config.yaml");
-		String kpis = args.length > 1 && FilenameUtils.getExtension(args[1]).toLowerCase().equals("ecore") ? args[1] : "/oceanops_kpis.model";
+		String kpis = args.length > 1 && FilenameUtils.getExtension(args[1]).toLowerCase().equals("ecore") ? args[1] : "models/oceanops_kpis.model";
 		
 		if (Files.isReadable(conf)) {
 			try {
 				
 				final AppConfig config = AppConfig.loadFromFile(conf);
 				
-				EolTaskLoader semantic_translator = new EolTaskLoader("scripts/main.eol");
+				EolTaskLoader semantic_translator = new EolTaskLoader("src/no/smartocean/modeling/engine/application/scripts/main.eol");
 				
-				URI subject_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/monitoring.ecore").toURI();
-				URI kpi_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI();
+//				URI subject_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/monitoring.ecore").toURI();
+//				URI kpi_metamodel_uri = KpiEngine.class.getResource("/no/smartocean/modeling/metamodels/kpi.ecore").toURI();
+//				
+//				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
+//				URI kpi_model_uri = KpiEngine.class.getResource(kpis).toURI();
 				
-				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
-				URI kpi_model_uri = KpiEngine.class.getResource(kpis).toURI();
-				
-				ArrayList<String> queries = semantic_translator.translate(subject_metamodel_uri,kpi_metamodel_uri,subject_model_uri,kpi_model_uri,"smartocean","kpi");
+				ArrayList<String> queries = semantic_translator.translate("src/no/smartocean/modeling/metamodels/monitoring.ecore","src/no/smartocean/modeling/metamodels/kpi.ecore","models/smart_ocean_manual.model",kpis,"smartocean","kpi");
 				
 				System.out.println("Processing Queries:");
 				for(String query: queries) {

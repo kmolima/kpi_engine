@@ -80,12 +80,11 @@ final private Path path;
 	 * @return EmfModel object
 	 * @throws EolModelLoadingException
 	 */
-	public InMemoryEmfModel loadModelFromResource(Resource xmi, String name, boolean caching, boolean store) throws EolModelLoadingException {
+	public InMemoryEmfModel loadModelFromResource(Resource uri, String name, boolean caching, boolean store) throws EolModelLoadingException {
 				
-		InMemoryEmfModel model_instance = new InMemoryEmfModel(xmi);
+		InMemoryEmfModel model_instance = new InMemoryEmfModel(uri);
 		model_instance.setName(name);
 		model_instance.setReadOnLoad(true);
-		model_instance.setStoredOnDisposal(true);
 		model_instance.setCachingEnabled(caching);
 		model_instance.setStoredOnDisposal(store);
 		

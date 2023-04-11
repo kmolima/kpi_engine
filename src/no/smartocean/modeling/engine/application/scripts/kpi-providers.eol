@@ -26,9 +26,11 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{ //HTTP Request
 	
 	var query = new String();
 	
-	//Build HTTP query: https://prometheus.io/docs/prometheus/latest/querying/api/#expression-query-result-formats
+	//Build HTTP query: https://prometheus.io/docs/prometheus/latest/querying/api/#expression-queries
 	if(kpi.time_bound.isTypeOf(kpi!Instant)){
-		query = query.concat("query?query=").concat(result).concat("&time=").concat(kpi.time_bound.getValue());
+		var time = kpi.time_bound.getValue();
+		query = time == "" ? query.concat("query?query=").concat(result)
+		 :query.concat("query?query=").concat(result).concat("&time=").concat(time);
 	}
 	else if(kpi.time_bound.isTypeOf(kpi!Period)){
 		var step = kpi.time_bound.step.isDefined ? kpi.time_bound.getStepStr(): "30s"; //Hard-coded - max resolution
