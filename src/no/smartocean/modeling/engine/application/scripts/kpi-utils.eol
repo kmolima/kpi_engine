@@ -106,7 +106,7 @@ operation kpi!Expression getKPI(): Any{
 
 	var mother = self.eContainer;
 
-	if(mother.isTypeOf(kpi!SingleTarget) or mother.isTypeOf(kpi!Range) or mother.isTypeOf(kpi!Expression)) //sub-expression
+	if(mother.isTypeOf(kpi!SingleTarget) or mother.isTypeOf(kpi!RangeTarget) or mother.isTypeOf(kpi!Expression)) //sub-expression
 		return mother.getKPI();
 		
 	return null;
@@ -123,7 +123,7 @@ operation kpi!TargetType getKPI(): kpi!Kpi{
 	return null;
 }
 
-operation kpi!Range getKPI(): kpi!Kpi{
+operation kpi!RangeTarget getKPI(): kpi!Kpi{
 
 	var mother = self.eContainer;
 		

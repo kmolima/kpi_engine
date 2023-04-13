@@ -84,7 +84,7 @@ operation smartocean!System getExprBrowserStr(kpi: kpi!Kpi, index: Integer): Any
 	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
 		result = "("+expr + target.op + " " + target.target+")";
 	 }
-	else if(kpi.target_value.isTypeOf(kpi!Range)){
+	else if(kpi.target_value.isTypeOf(kpi!RangeTarget)){
 		
 		if(target.max == target.min){
 	 		result = "("+expr + " >= " + target.min +")";
@@ -390,11 +390,15 @@ switch (op) {
 	return expr;
 }
 
+operation kpi!RangeTarget getValue(system: smartocean!System): Any {
+	return self.target.getValue(system);
+}
+
 operation kpi!Range getValue(system: smartocean!System): Any {
 	return new Tuple(max=self.getMaxValue(), min=self.getMinValue());
 }
 
-operation kpi!RangeValue _in(value: kpi!SingleValue): Boolean {
+operation kpi!Range _in(value: kpi!SingleValue): Boolean {
 	return (value <= self.getMaxValue() and value >= self.getMinValue());
 }
 
@@ -404,6 +408,14 @@ operation kpi!Range getMaxValue(): Any {
 
 operation kpi!Range getMinValue(): Any {
 	return self.min.getValue(); 
+}
+
+operation kpi!RangeTarget getMaxValue(): Any {
+	return self.target.max.getValue(); 
+}
+
+operation kpi!RangeTarget getMinValue(): Any {
+	return self.target.min.getValue(); 
 }
 
 operation kpi!SingleTarget getValue(system: smartocean!System): Tuple{

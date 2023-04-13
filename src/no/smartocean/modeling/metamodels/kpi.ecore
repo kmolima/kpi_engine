@@ -27,7 +27,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="time_bound" lowerBound="1"
         eType="#//Time" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Range" eSuperTypes="#//TargetType">
+  <eClassifiers xsi:type="ecore:EClass" name="Range">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="min" lowerBound="1" eType="#//NumericalValue"
         containment="true"/>
@@ -125,6 +125,10 @@
     <eLiterals name="GT" value="8"/>
     <eLiterals name="EQ" value="9"/>
     <eLiterals name="NOTEQ" value="10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeTarget" eSuperTypes="#//TargetType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Range"/>
   </eClassifiers>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
       nsPrefix="snapshot">

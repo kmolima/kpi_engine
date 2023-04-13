@@ -3,13 +3,15 @@
   <dimension xmi:id="_T010INLQEe2cCrroI-qMxQ" name="Data Flow">
     <sub_dimensions xmi:id="_VmWOANLQEe2cCrroI-qMxQ" name="Accuracy">
       <kpis xmi:id="_YZAi4NLQEe2cCrroI-qMxQ" name="good data" description="percentage of data delivered with &quot;good&quot; QC flag metadata" unit="percentage">
-        <target_value xsi:type="timed_kpi:Range" xmi:id="_p5YCUNLQEe2cCrroI-qMxQ" rangeName="good">
-          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_mxMT8NLREe2cCrroI-qMxQ" operation="PCENT" arguments="_zOIH8NOQEe2QHvAIF_xe5A">
-            <sub_expression xmi:id="_zOIH8NOQEe2QHvAIF_xe5A" arguments="_ll6CANLQEe2cCrroI-qMxQ _20IlUNOQEe2QHvAIF_xe5A"/>
+        <target_value xsi:type="timed_kpi:RangeTarget" xmi:id="_B2oawNomEe23orslpoKXMA" target="_-OiSsNolEe23orslpoKXMA">
+          <valuetype xsi:type="timed_kpi:Expression" xmi:id="_DOsZ4NomEe23orslpoKXMA" operation="PCENT" arguments="_EM1dINomEe23orslpoKXMA">
+            <sub_expression xmi:id="_EM1dINomEe23orslpoKXMA" arguments="_ll6CANLQEe2cCrroI-qMxQ _20IlUNOQEe2QHvAIF_xe5A"/>
           </valuetype>
+        </target_value>
+        <ranges xmi:id="_-OiSsNolEe23orslpoKXMA" rangeName="good">
           <min xsi:type="timed_kpi:RealValue" xmi:id="_y4Zy0NLQEe2cCrroI-qMxQ" unit="percentage" value="0.9"/>
           <max xsi:type="timed_kpi:RealValue" xmi:id="_tfOusNLQEe2cCrroI-qMxQ" unit="percentage" value="0.9"/>
-        </target_value>
+        </ranges>
         <ranges xmi:id="_4DHkMNLQEe2cCrroI-qMxQ" rangeName="bad">
           <min xsi:type="timed_kpi:RealValue" xmi:id="_PaX-gNLREe2cCrroI-qMxQ" unit="percentage" value="0.75"/>
           <max xsi:type="timed_kpi:RealValue" xmi:id="_6i4LMNLQEe2cCrroI-qMxQ" unit="percentage" value="0.899"/>

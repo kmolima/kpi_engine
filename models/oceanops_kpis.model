@@ -20,13 +20,15 @@
       <sub_dimensions xmi:id="_WNWxYNVGEe2ABPB7iwJxKQ" name="Completeness">
         <sub_dimensions xmi:id="_YTD5oNVGEe2ABPB7iwJxKQ" name="Concordance">
           <kpis xmi:id="_g6rPsNVGEe2ABPB7iwJxKQ" name="good qc flag" description="percentage of data delivered with &quot;good&quot; QC flag metadata" unit="percentage">
-            <target_value xsi:type="timed_kpi:Range" xmi:id="_sblHENVGEe2ABPB7iwJxKQ" rangeName="Good">
-              <valuetype xsi:type="timed_kpi:Expression" xmi:id="_LWK6gNVIEe2ABPB7iwJxKQ" operation="PCENT" arguments="_Nu4eUNVIEe2ABPB7iwJxKQ">
-                <sub_expression xmi:id="_Nu4eUNVIEe2ABPB7iwJxKQ" arguments="_bCNLANVHEe2ABPB7iwJxKQ _fBjVcNVHEe2ABPB7iwJxKQ"/>
+            <target_value xsi:type="timed_kpi:RangeTarget" xmi:id="_9NxEINojEe23orslpoKXMA" target="_sblHENVGEe2ABPB7iwJxKQ">
+              <valuetype xsi:type="timed_kpi:Expression" xmi:id="_GYl08NokEe23orslpoKXMA" operation="PCENT" arguments="_Ybh18NokEe23orslpoKXMA">
+                <sub_expression xmi:id="_Ybh18NokEe23orslpoKXMA" arguments="_bCNLANVHEe2ABPB7iwJxKQ _fBjVcNVHEe2ABPB7iwJxKQ"/>
               </valuetype>
+            </target_value>
+            <ranges xmi:id="_sblHENVGEe2ABPB7iwJxKQ" rangeName="Good">
               <min xsi:type="timed_kpi:RealValue" xmi:id="_xylA8NVGEe2ABPB7iwJxKQ" unit="percentage" value="0.9"/>
               <max xsi:type="timed_kpi:RealValue" xmi:id="_vO5jQNVGEe2ABPB7iwJxKQ" unit="percentage" value="0.9"/>
-            </target_value>
+            </ranges>
             <ranges xmi:id="_0uTLMNVGEe2ABPB7iwJxKQ" rangeName="Bad">
               <min xsi:type="timed_kpi:RealValue" xmi:id="_8qK1kNVGEe2ABPB7iwJxKQ" unit="percentage" value="0.75"/>
               <max xsi:type="timed_kpi:RealValue" xmi:id="__j2_gNVGEe2ABPB7iwJxKQ" unit="percentage" value="0.8999"/>
