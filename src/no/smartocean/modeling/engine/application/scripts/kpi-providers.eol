@@ -14,7 +14,7 @@ operation smartocean!System get(kpi: kpi!Kpi): Any{ //HTTP Request
 	if(kpi.target_value.isTypeOf(kpi!SingleTarget)){
 		result = "("+expr + target.op + " " + target.target+")";
 	 }
-	else if(kpi.target_value.isTypeOf(kpi!Range)){
+	else if(kpi.target_value.isTypeOf(kpi!RangeTarget)){
 		
 		if(target.max == target.min){
 	 		result = "("+expr + " >= " + target.min +")";
@@ -53,7 +53,7 @@ operation smartocean!System getPromQLStr(kpi: kpi!Kpi): Any{
 		query = kpi.time_bound.getValueStr() == "" ? expr + target.op + " " + target.target :
 	 		"(" + expr + " " + target.op + " " + target.target + ")" + kpi.time_bound.getValueStr();
 	 	}
-	else if(kpi.target_value.isTypeOf(kpi!Range)){
+	else if(kpi.target_value.isTypeOf(kpi!RangeTarget)){
 		//query = kpi.time_bound.getValueStr() == "" ? "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" : 
 	 	//	"(" + "("+expr + " >= " + target.min +")"+" and " +"("+ expr + " <= " + target.max+")" + ")" + kpi.time_bound.getValueStr();
 	 	if(target.max == target.min){
