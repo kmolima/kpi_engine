@@ -3,7 +3,7 @@ KPI model translation applied on Smart Ocean Platform
 KPI:near_factor | Dimension(s): Data Flow.Timeliness | Unit: hours
 KPI Description: Time difference between data acquistion and arrival on the system (the near factor in near real-time)
 Browser Expression:
-	0: g0.expr=(no_smartocean_data_ingestion_arrival_delay_bucket + on(le,job,instance) no_smartocean_faas_invoke_duration_bucket <= 10800.0)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=30d
+	0: g0.expr=(no_smartocean_data_ingestion_arrival_delay + on(job,instance) no_smartocean_faas_invoke_duration <= 10800.0)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=30d
 KPI:good qc flag | Dimension(s): Data Flow.Accuracy.Completeness.Concordance | Unit: percentage
 KPI Description: percentage of data delivered with "good" QC flag metadata
 Browser Expression:
@@ -14,8 +14,8 @@ Browser Expression:
 	2: g2.expr=((com_hivemq_messages_incoming_publish_count -  com_hivemq_messages_outgoing_publish_count) /  (com_hivemq_messages_incoming_publish_count) > 0.0)&g2.tab=0&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h
 EOL script execution took: 0
 Processing Queries:
-	g0.expr=(no_smartocean_data_ingestion_arrival_delay_bucket + on(le,job,instance) no_smartocean_faas_invoke_duration_bucket <= 10800.0)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=30d
+	g0.expr=(no_smartocean_data_ingestion_arrival_delay + on(job,instance) no_smartocean_faas_invoke_duration <= 10800.0)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=30d
 	g1.expr=((no_smartocean_data_ingestion_quality_controlled_count_total{qcFlag="good"} / no_smartocean_data_ingestion_quality_controlled_count_total) >= 0.9)&g1.tab=0&g1.stacked=0&g1.show_exemplars=0&g1.range_input=30d
 	g2.expr=((com_hivemq_messages_incoming_publish_count -  com_hivemq_messages_outgoing_publish_count) /  (com_hivemq_messages_incoming_publish_count) > 0.0)&g2.tab=0&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h
 Request URL Encoded:
-	http://localhost:9090/graph?g0.expr=(no_smartocean_data_ingestion_arrival_delay_bucket%20%2B%20on(le,job,instance)%20no_smartocean_faas_invoke_duration_bucket%20%3C%3D%2010800.0)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=30d&g1.expr=((no_smartocean_data_ingestion_quality_controlled_count_total%7BqcFlag%3D%22good%22%7D%20%2F%20no_smartocean_data_ingestion_quality_controlled_count_total)%20%3E%3D%200.9)&g1.tab=0&g1.stacked=0&g1.show_exemplars=0&g1.range_input=30d&g2.expr=((com_hivemq_messages_incoming_publish_count%20-%20%20com_hivemq_messages_outgoing_publish_count)%20%2F%20%20(com_hivemq_messages_incoming_publish_count)%20%3E%200.0)&g2.tab=0&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h
+	http://localhost:9090/graph?g0.expr=(no_smartocean_data_ingestion_arrival_delay%20%2B%20on(job,instance)%20no_smartocean_faas_invoke_duration%20%3C%3D%2010800.0)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=30d&g1.expr=((no_smartocean_data_ingestion_quality_controlled_count_total%7BqcFlag%3D%22good%22%7D%20%2F%20no_smartocean_data_ingestion_quality_controlled_count_total)%20%3E%3D%200.9)&g1.tab=0&g1.stacked=0&g1.show_exemplars=0&g1.range_input=30d&g2.expr=((com_hivemq_messages_incoming_publish_count%20-%20%20com_hivemq_messages_outgoing_publish_count)%20%2F%20%20(com_hivemq_messages_incoming_publish_count)%20%3E%200.0)&g2.tab=0&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h

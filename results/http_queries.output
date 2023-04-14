@@ -3,31 +3,31 @@ KPI model translation applied on Smart Ocean Platform
 KPI:near_factor | Dimension(s): Data Flow.Timeliness | Unit: hours
 KPI Description: Time difference between data acquistion and arrival on the system (the near factor in near real-time)
 HTTP API Query:
-	query_range?query=(no_smartocean_data_ingestion_arrival_delay_bucket + on(le,job,instance) no_smartocean_faas_invoke_duration_bucket <= 10800.0)&start=1678642624&end=1681234624&step=1h
+	query_range?query=(no_smartocean_data_ingestion_arrival_delay + on(job,instance) no_smartocean_faas_invoke_duration <= 10800.0)&start=1678880386&end=1681472386&step=1h
 KPI:good qc flag | Dimension(s): Data Flow.Accuracy.Completeness.Concordance | Unit: percentage
 KPI Description: percentage of data delivered with "good" QC flag metadata
 HTTP API Query:
-	query_range?query=((no_smartocean_data_ingestion_quality_controlled_count_total{qcFlag="good"} / no_smartocean_data_ingestion_quality_controlled_count_total) >= 0.9)&start=1678642624&end=1681234624&step=1h
+	query_range?query=((no_smartocean_data_ingestion_quality_controlled_count_total{qcFlag="good"} / no_smartocean_data_ingestion_quality_controlled_count_total) >= 0.9)&start=1678880386&end=1681472386&step=1h
 KPI:data use | Dimension(s): Data Uptake.Utility | Unit: percentage
 KPI Description: percentage of data consumed w.r.t. published data
 HTTP API Query:
 	query?query=((com_hivemq_messages_incoming_publish_count -  com_hivemq_messages_outgoing_publish_count) /  (com_hivemq_messages_incoming_publish_count) > 0.0)
 EOL script execution took: 0
 Processing Query:
-	query_range?query=(no_smartocean_data_ingestion_arrival_delay_bucket + on(le,job,instance) no_smartocean_faas_invoke_duration_bucket <= 10800.0)&start=1678642624&end=1681234624&step=1h
-Success!
-{"data":{"result":[{"metric":{"instance":"127.0.0.1:9091","le":"+Inf","job":"data validation"},"values":[[1681234624,"10"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.005","job":"data validation"},"values":[[1681234624,"0"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.01","job":"data validation"},"values":[[1681234624,"0"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.025","job":"data validation"},"values":[[1681234624,"2"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.05","job":"data validation"},"values":[[1681234624,"4"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.075","job":"data validation"},"values":[[1681234624,"4"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.1","job":"data validation"},"values":[[1681234624,"4"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.25","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.5","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"0.75","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"1.0","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"10.0","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"2.5","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"5.0","job":"data validation"},"values":[[1681234624,"5"]]},{"metric":{"instance":"127.0.0.1:9091","le":"7.5","job":"data validation"},"values":[[1681234624,"5"]]}],"resultType":"matrix"},"status":"success"}
-Request URL Encoded:
-	http://localhost:9090/api/v1/query_range?query=(no_smartocean_data_ingestion_arrival_delay_bucket%20%2B%20on(le,job,instance)%20no_smartocean_faas_invoke_duration_bucket%20%3C%3D%2010800.0)&start=1678642624&end=1681234624&step=1h
-Processing Query:
-	query_range?query=((no_smartocean_data_ingestion_quality_controlled_count_total{qcFlag="good"} / no_smartocean_data_ingestion_quality_controlled_count_total) >= 0.9)&start=1678642624&end=1681234624&step=1h
+	query_range?query=(no_smartocean_data_ingestion_arrival_delay + on(job,instance) no_smartocean_faas_invoke_duration <= 10800.0)&start=1678880386&end=1681472386&step=1h
 Success!
 {"data":{"result":[],"resultType":"matrix"},"status":"success"}
 Request URL Encoded:
-	http://localhost:9090/api/v1/query_range?query=((no_smartocean_data_ingestion_quality_controlled_count_total%7BqcFlag=%22good%22%7D%20/%20no_smartocean_data_ingestion_quality_controlled_count_total)%20%3E%3D%200.9)&start=1678642624&end=1681234624&step=1h
+	http://localhost:9090/api/v1/query_range?query=(no_smartocean_data_ingestion_arrival_delay%20%2B%20on(job,instance)%20no_smartocean_faas_invoke_duration%20%3C%3D%2010800.0)&start=1678880386&end=1681472386&step=1h
+Processing Query:
+	query_range?query=((no_smartocean_data_ingestion_quality_controlled_count_total{qcFlag="good"} / no_smartocean_data_ingestion_quality_controlled_count_total) >= 0.9)&start=1678880386&end=1681472386&step=1h
+Success!
+{"data":{"result":[],"resultType":"matrix"},"status":"success"}
+Request URL Encoded:
+	http://localhost:9090/api/v1/query_range?query=((no_smartocean_data_ingestion_quality_controlled_count_total%7BqcFlag=%22good%22%7D%20/%20no_smartocean_data_ingestion_quality_controlled_count_total)%20%3E%3D%200.9)&start=1678880386&end=1681472386&step=1h
 Processing Query:
 	query?query=((com_hivemq_messages_incoming_publish_count -  com_hivemq_messages_outgoing_publish_count) /  (com_hivemq_messages_incoming_publish_count) > 0.0)
 Success!
-{"data":{"result":[{"metric":{"instance":"127.0.0.1:9399","job":"hivemq broker"},"value":[1.681234624786E9,"0.5"]}],"resultType":"vector"},"status":"success"}
+{"data":{"result":[{"metric":{"instance":"127.0.0.1:9399","job":"hivemq broker"},"value":[1.681472386468E9,"0.5"]}],"resultType":"vector"},"status":"success"}
 Request URL Encoded:
 	http://localhost:9090/api/v1/query?query=((com_hivemq_messages_incoming_publish_count%20-%20%20com_hivemq_messages_outgoing_publish_count)%20/%20%20(com_hivemq_messages_incoming_publish_count)%20%3E%200.0)

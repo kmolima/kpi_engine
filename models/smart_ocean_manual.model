@@ -11,15 +11,13 @@
       <labels xmi:id="_cSgKMNQTEe2ip8dUggkcog" name="job"/>
       <labels xmi:id="_cSgKMdQTEe2ip8dUggkcog" name="instance"/>
     </monitoring_data>
-    <monitoring_data xmi:id="_uqrrsMNaEe2qzK0mq0P3iQ" name="delay" metric_id="no_smartocean_data_ingestion_arrival_delay" metric_type="HISTOGRAM">
+    <monitoring_data xmi:id="_uqrrsMNaEe2qzK0mq0P3iQ" name="delay" metric_id="no_smartocean_data_ingestion_arrival_delay" metric_type="GAUGE">
       <labels xmi:id="_IJ9icMNbEe2qzK0mq0P3iQ" name="producer"/>
-      <labels xmi:id="_MFYbUNQTEe2ip8dUggkcog" name="le"/>
       <labels xmi:id="_NefjUNQTEe2ip8dUggkcog" name="job"/>
       <labels xmi:id="_PSZJ4NQTEe2ip8dUggkcog" name="instance"/>
     </monitoring_data>
-    <monitoring_data xmi:id="_y55eIMNaEe2qzK0mq0P3iQ" name="overhead" metric_id="no_smartocean_faas_invoke_duration" metric_type="HISTOGRAM">
+    <monitoring_data xmi:id="_y55eIMNaEe2qzK0mq0P3iQ" name="overhead" metric_id="no_smartocean_faas_invoke_duration" metric_type="GAUGE">
       <labels xmi:id="_rlC7AMNbEe2qzK0mq0P3iQ" name="service"/>
-      <labels xmi:id="_RoISMNQTEe2ip8dUggkcog" name="le"/>
       <labels xmi:id="_RoISMdQTEe2ip8dUggkcog" name="job"/>
       <labels xmi:id="_RoISMtQTEe2ip8dUggkcog" name="instance"/>
     </monitoring_data>
