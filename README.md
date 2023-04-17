@@ -11,11 +11,11 @@ For more details please check: [Rossi, Maria Teresa, et al. "Leveraging Multi-Le
 
 ## Ocean Data Platform Metamodel (The Subject in the framework)
 
-![Ocean Data Platform Metamodel](/img/data_platform-diag.png "Ecore Diagram")
+![Ocean Data Platform Metamodel](/img/data_platform-diag.jpeg "Ecore Diagram")
 
 
 ## Time-bounded KPI Metamodel (The Quality Definition in the framework)
 Key Performance Indicators (KPI) for the platform with a focus on monitoring data quality.
 
-![KPI Metamodel](/img/timedKpi-diag.png "Ecore Diagram")
+![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
