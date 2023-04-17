@@ -1,23 +1,21 @@
 # KPI Engine
 
-Ocean Data Platform Observability Models for the GSSI Multi-level Model Framework for Quality Evaluation of Subjects.
+Ocean Data Platform Observability Models for the GSSI Multi-level Model Framework for Quality Evaluation of Systems (QES).
 
 Particularly, we are working at the levels @1 and @0 of the specified multi-level model.
 
 
-In particular, this work extends previous implementations of the refered framework [GSSI's Multi-level Model Framework for Quality Evaluation of Subjects](https://github.com/gssi/SmartCityModeling), being the subject a platform that receives data from diferent monitored sites at sea.
+This work extends previous implementations of the refered framework [GSSI's Multi-level Model Framework for Quality Evaluation of Systems](https://github.com/gssi/SmartCityModeling), being the subject a platform that receives data from diferent monitored sites at sea.
 
 For more details please check: [Rossi, Maria Teresa, et al. "Leveraging Multi-Level Modeling for Multi-Domain Quality Assessment." 2021 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C). IEEE, 2021.](https://ieeexplore.ieee.org/abstract/document/9643700)
 
-## Ocean Data Platform Metamodel (The subject in the framework)
+## Ocean Data Platform Metamodel (The Subject in the framework)
 
-![Ocean Data Platform Metamodel](/src/no/smartocean/modeling/metamodels/monitoring.png "Ecore Diagram")
+![Ocean Data Platform Metamodel](/img/data_platform-diag.png "Ecore Diagram")
 
-### Rationale
-To DO
 
-## Time-bounded KPI Metamodel
+## Time-bounded KPI Metamodel (The Quality Definition in the framework)
 Key Performance Indicators (KPI) for the platform with a focus on monitoring data quality.
 
-![KPI Metamodel](/src/no/smartocean/modeling/metamodels/timed_kpi.png "Ecore Diagram")
+![KPI Metamodel](/img/timedKpi-diag.png "Ecore Diagram")
 
