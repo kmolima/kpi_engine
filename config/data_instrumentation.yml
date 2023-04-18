@@ -1,0 +1,12 @@
+# Broker client configuration file
+# ClusterURL
+host: "hivemq"
+port: 1883
+clientId: "Data Validation"
+authentication:
+  token:
+# Data service data flow
+topics:
+  - subscribeTopic: "smartocean/pd1/austevoll-nord/raw"
+    publishTopic: "smartocean/pd1/austevoll-nord/validated"
+    qos: 2 # 0 - AT_MOST_ONCE  | 1 - AT_LEAST_ONCE | 2 - EXACTLY_ONCE
