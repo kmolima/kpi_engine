@@ -1,14 +1,30 @@
-# KPI Engine
+# Marine Data Observability using KPIs
+This is the repository for the Case Study submitted for ACM/IEEE 26th International Conference on Model-Driven Engineering Languages and Systems (MODELS).
+The results from the Query Engine execution can be found [under the results folder](results/).
 
-Ocean Data Platform Observability Models for the GSSI Multi-level Model Framework for Quality Evaluation of Systems (QES).
 
-Particularly, we are working at the levels @1 and @0 of the specified multi-level model.
+This work builds on top of previous implementations of the refered framework: [[Rossi, Maria Teresa, et al. "Leveraging Multi-Level Modeling for Multi-Domain Quality Assessment." 2021 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C). IEEE, 2021.](https://ieeexplore.ieee.org/abstract/document/9643700).
+
 This instantiation aims to enable observability of systems, using the multi-level model framework as a semantic translator between the platform and the platform-defined KPIs, and the [Prometheus](https://prometheus.io/) monitoring toolkit.
 
+This repository contains the following components of the overall solution:
+* Quality Evaluation System (QES) that receives as input a subject and a quality definition model
+* Query Engine
 
-This work extends previous implementations of the refered framework [GSSI's Multi-level Model Framework for Quality Evaluation of Systems](https://github.com/gssi/SmartCityModeling), being the subject a platform that receives data from diferent monitored sites at sea.
+The remaining components part of the contribution, namely the data platform data validation service and the data provider are available in:
+* [Data Validation Repository (including the metrics producer component)](https://github.com/kmolima/data_instrumentation)
+* [MQTT Data Publisher Repository](https://github.com/kmolima/data_instrumentation)
 
-For more details please check: [Rossi, Maria Teresa, et al. "Leveraging Multi-Level Modeling for Multi-Domain Quality Assessment." 2021 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C). IEEE, 2021.](https://ieeexplore.ieee.org/abstract/document/9643700)
+For the messasing service we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition). 
+
+All these components can be setup locally to replicate the prototype by following the instructions below in the [Setup section](https://github.com/kmolima/kpi_engine#run-a-local-instance-of-the-data-platform).
+
+
+# QES Engine
+This component concerns the instantiation of the MLM framework for system observability purposes using KPIs.
+
+Particularly, we are working at the levels @1 and @0 of the specified multi-level model. The models at level @1, namely the Ocean Data Platform model and the time bounded KPI model are used in input for the QES engine which interacts with the Query service. The models overview are showned below.
+
 
 ## Ocean Data Platform Metamodel (The Subject in the framework)
 
@@ -22,7 +38,7 @@ Models instances with a focus on monitoring marine data quality are available [u
 
 ![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
-# Test the KPI Engine
+# Test the Query Engine
 After clonning this repository and changing the working directory into the cloned folder.
 
 Note: Add execution permission to the scripts 
@@ -45,7 +61,7 @@ http://localhost:9090/targets.
 In general the targets will be in *UP* State around 1 minute after building the docker contatiners.
 
 
-## Build and Execute the KPI Engine 
+## Build and Execute the Query Engine
 Dependency: [Java 11](https://www.oracle.com/java/technologies/downloads/#java11)
 
 ### Build with Maven Wrapper
