@@ -20,7 +20,7 @@ The remaining components part of the contribution, namely the data validation se
 * [Data Validation Repository (including the metrics producer component)](https://github.com/kmolima/data_instrumentation)
 * [MQTT Data Publisher Repository](https://github.com/kmolima/data_instrumentation)
 
-All these components can be set up locally using Docker Compose to replicate the prototype. Instructions are provided below in the [setup section](https://github.com/kmolima/kpi_engine#run-a-local-instance-of-the-data-platform).
+All the prototype components (data platform + observability subsystem) can be set up locally using Docker Compose to replicate the prototype. Instructions are provided below in the [setup section](https://github.com/kmolima/kpi_engine#run-a-local-instance-of-the-data-platform).
 
 
 # QES Engine
