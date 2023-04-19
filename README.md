@@ -24,7 +24,7 @@ Key Performance Indicators (KPI) for the platform with a focus on monitoring dat
 Note: Add execution permission to scripts 
 
 ```bash
-chmod +x steup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
+chmod +x setup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
 ```
 
 ## Run a local instance of the data platform
