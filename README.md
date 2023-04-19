@@ -13,7 +13,7 @@ This instantiation aims to enable observability of software systems, using the m
 
 This repository contains the following components of the overall solution:
 * Quality Evaluation System (QES) that receives as input a subject and a quality definition model
-* Query Engine
+* Query Engine that interfaces with the metrics monitoring toolkit.
 
 
 The remaining components part of the contribution, namely the data validation service of the platform and a data provider are available in:
