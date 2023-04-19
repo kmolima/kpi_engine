@@ -42,7 +42,7 @@ Note: If you need elevated privileges to run docker, please run the script bello
 Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers targets:
 http://localhost:9090/targets.
 
-In general the targets will be in *UP* State after 1 minute.
+In general the targets will be in *UP* State around 1 minute after building the docker contatiners.
 
 
 ## Build and Execute the KPI Engine 
