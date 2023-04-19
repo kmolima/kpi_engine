@@ -40,6 +40,7 @@ Note: If you need elevated privileges to run docker, please run the script bello
 ```
 Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers targets:
 http://localhost:9090/targets.
+
 In general the targets will be in *UP* State after 30 seconds.
 
 
