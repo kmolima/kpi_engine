@@ -47,6 +47,12 @@ In general the targets will be in *UP* State after 30 seconds.
 ## Build and Execute the KPI Engine 
 Dependency: [Java 11](https://www.oracle.com/java/technologies/downloads/#java11)
 
+### Build with Maven Wrapper
+
+```bash
+./mvnw clean package
+```
+
 ### HTTP Service in Action
 Run the KPI Engine to translate the Models and interact with the HTTP Query API to fullfill the KPIs:
 
