@@ -3,6 +3,7 @@
 Ocean Data Platform Observability Models for the GSSI Multi-level Model Framework for Quality Evaluation of Systems (QES).
 
 Particularly, we are working at the levels @1 and @0 of the specified multi-level model.
+This instantiation aims to enable observability of systems, using the multi-level model framework as a semantic translator between the platform and the platform-defined KPIs, and the [Prometheus](https://prometheus.io/) monitoring toolkit.
 
 
 This work extends previous implementations of the refered framework [GSSI's Multi-level Model Framework for Quality Evaluation of Systems](https://github.com/gssi/SmartCityModeling), being the subject a platform that receives data from diferent monitored sites at sea.
