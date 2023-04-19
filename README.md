@@ -16,7 +16,9 @@ For more details please check: [Rossi, Maria Teresa, et al. "Leveraging Multi-Le
 
 
 ## Time-bounded KPI Metamodel (The Quality Definition in the framework)
-Key Performance Indicators (KPI) for the platform with a focus on monitoring data quality.
+Key Performance Indicators (KPI) for the platform measured runtime metrics.
+
+Models instances with a focus on monitoring marine data quality are available [under the models folder](models/).
 
 ![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
