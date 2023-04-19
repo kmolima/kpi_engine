@@ -19,3 +19,48 @@ Key Performance Indicators (KPI) for the platform with a focus on monitoring dat
 
 ![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
+# Test the KPI Engine
+
+Note: Add execution permission to scripts 
+
+```bash
+chmod +x steup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
+```
+
+## Run a local instance of the data platform
+Dependency: [Docker Compose](https://docs.docker.com/compose/install/)
+
+Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
+
+```bash
+./setup &
+```
+Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers targets:
+http://localhost:9090/targets
+
+
+## Build and Execute the KPI Engine 
+Dependency: [Java 11](https://www.oracle.com/java/technologies/downloads/#java11)
+
+### HTTP Service in Action
+Run the KPI Engine to translate the Models and interact with the HTTP Query API to fullfill the KPIs:
+
+```bash
+./run_http_service.sh
+```
+
+
+### Launch the Prometheus Browser Expression (Dashboard)
+Launch the Expression Browser of the Prometheus toolkit to visualize the KPI metrics and results:
+
+```bash
+./launch_browser.sh
+```
+
+### Cleanup
+
+Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
+
+```bash
+./clean.sh
+```
