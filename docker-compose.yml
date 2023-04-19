@@ -11,7 +11,7 @@ services:
       - "8080:8080"
       - "9399:9399"
     volumes:
-      - ./config/config.xml:/opt/hivemq/conf/config.xml
+      - ./config/hive-config.xml:/opt/hivemq/conf/config.xml
       - ./hivemq-prometheus-extension:/opt/hivemq/extensions/hivemq-prometheus-extension
     networks:
       - hivemq_net

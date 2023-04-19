@@ -15,7 +15,7 @@ public class KpiEngine {
 	public static void main(String args[]) {
 
 		Path conf   = args.length > 0 ? Path.of(args[0]) : Path.of("config/config.yaml");
-		String kpis = args.length > 1 && FilenameUtils.getExtension(args[1]).toLowerCase().equals("ecore") ? args[1] : "models/oceanops_kpis.model";
+		String kpis = args.length > 1 && FilenameUtils.getExtension(args[1]).toLowerCase().equals("model") ? args[1] : "models/oceanops_kpis.model";
 		
 		if (Files.isReadable(conf)) {
 			try {

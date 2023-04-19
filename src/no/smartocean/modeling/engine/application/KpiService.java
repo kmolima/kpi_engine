@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.ClientProtocolException;
@@ -23,6 +24,8 @@ public class KpiService {
 	public static void main(String args[]){
 
 		Path conf = args.length > 0 ? Path.of(args[0]) : Path.of("config/config.yaml");
+		String kpis = args.length > 1 && FilenameUtils.getExtension(args[1]).toLowerCase().equals("model") ? args[1] : "models/oceanops_kpis.model";
+		
 		if (Files.isReadable(conf)) {
 			try {
 				
@@ -35,7 +38,7 @@ public class KpiService {
 //				URI subject_model_uri = KpiEngine.class.getResource("/smart_ocean_manual.model").toURI();
 //				URI kpi_model_uri = KpiEngine.class.getResource("/oceanops_kpis.model").toURI();
 				
-				ArrayList<String> queries = semantic_translator.translate("src/no/smartocean/modeling/metamodels/monitoring.ecore","src/no/smartocean/modeling/metamodels/kpi.ecore","models/smart_ocean_manual.model","models/oceanops_kpis.model","smartocean","kpi");
+				ArrayList<String> queries = semantic_translator.translate("src/no/smartocean/modeling/metamodels/monitoring.ecore","src/no/smartocean/modeling/metamodels/kpi.ecore","models/smart_ocean_manual.model",kpis,"smartocean","kpi");
 				
 				
 				for(String query: queries) {
