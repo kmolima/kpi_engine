@@ -23,6 +23,7 @@ Models instances with a focus on monitoring marine data quality are available [u
 ![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
 # Test the KPI Engine
+After clonning this repository and changing the working directory into the cloned folder.
 
 Note: Add execution permission to scripts 
 
