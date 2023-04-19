@@ -2,9 +2,14 @@
 This is the repository for the Case Study submitted for ACM/IEEE 26th International Conference on Model-Driven Engineering Languages and Systems (MODELS).
 The results from the Query Engine execution can be found [under the results folder](results/).
 
-Ocean data is crucial for climate forecast, ocean state determination, and to industry to detect and prevent incidents such as oil spills, structural integrity faults, fish welfare degradation. Many challenges can impact the quality of marine data at different points of data delivery pipelines: from acquisition and transmission at the Internet-of-Underwater-Things (IoUT) level up to management and sharing.
 
-This work builds on top of previous implementations of the refered framework: [Rossi, Maria Teresa, et al. "Leveraging Multi-Level Modeling for Multi-Domain Quality Assessment." 2021 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C). IEEE, 2021](https://ieeexplore.ieee.org/abstract/document/9643700), demonstrating its generalizability.
+Instructions on how to test the execution of these components can be found in the [test section below](https://github.com/kmolima/kpi_engine/blob/main/README.md#test-the-query-engine).
+
+## Overview
+
+Ocean data is crucial for climate forecast, ocean state determination, and to industry to detect and prevent incidents such as oil spills, structural integrity faults, fish welfare degradation. Many challenges can impact the quality of marine data at different points of data delivery pipelines: from acquisition and transmission at the Internet-of-Underwater-Things (IoUT) level up to management and sharing.
+We propose a model-driven solution for marine data quality assessment in a platform using Key Performance Indicators (KPIs) to identify violations of established objectives and help optimize the usage of data generated during sensor battery lifetime.
+The solution work builds on top of previous implementations of the refered framework: [Rossi, Maria Teresa, et al. "Leveraging Multi-Level Modeling for Multi-Domain Quality Assessment." 2021 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C). IEEE, 2021](https://ieeexplore.ieee.org/abstract/document/9643700), demonstrating its generalizability.
 
 This instantiation aims to enable observability of software systems, using the multi-level model framework as a semantic translator between the platform and the platform-defined KPIs, and the [Prometheus](https://prometheus.io/) monitoring toolkit where the platform measured metrics are stored.
 
@@ -12,13 +17,10 @@ This repository contains the following components of the overall solution:
 * Quality Evaluation System (QES) that receives as input a subject and a quality definition model
 * Query Engine
 
-Instructions on how to test the execution of these components can be found in the [test section below](https://github.com/kmolima/kpi_engine/blob/main/README.md#test-the-query-engine).
 
-The remaining components part of the contribution, namely the data platform data validation service and the data provider are available in:
+The remaining components part of the contribution, namely the data validation service of the platform and a data provider are available in:
 * [Data Validation Repository (including the metrics producer component)](https://github.com/kmolima/data_instrumentation)
 * [MQTT Data Publisher Repository](https://github.com/kmolima/data_instrumentation)
-
-For the messasing service we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition). 
 
 All these components can be setup locally using Docker Compose to replicate the prototype. Instructions are provided below in the [setup section](https://github.com/kmolima/kpi_engine#run-a-local-instance-of-the-data-platform).
 
@@ -52,6 +54,9 @@ chmod +x setup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
 
 ## Run a local instance of the data platform
 Dependency: [Docker Compose](https://docs.docker.com/compose/install/)
+
+For the messasing service we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer extension. 
+
 
 Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
 
