@@ -36,7 +36,7 @@ Dependency: [Docker Compose](https://docs.docker.com/compose/install/)
 Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
 
 ```bash
-./setup &
+./setup.sh &
 ```
 Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers targets:
 http://localhost:9090/targets
