@@ -25,7 +25,7 @@ Models instances with a focus on monitoring marine data quality are available [u
 # Test the KPI Engine
 After clonning this repository and changing the working directory into the cloned folder.
 
-Note: Add execution permission to scripts 
+Note: Add execution permission to the scripts 
 
 ```bash
 chmod +x setup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
