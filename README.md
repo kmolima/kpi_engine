@@ -3,7 +3,7 @@ This is the repository for the Case Study submitted for ACM/IEEE 26th Internatio
 The results from the Query Engine execution can be found [under the results folder](results/).
 
 
-Instructions on how to test the execution of the prototype can be found in the [test section below](https://github.com/kmolima/kpi_engine/blob/main/README.md#test-the-query-engine).
+Instructions on how to test the execution of the prototype can be found in the [test section](https://github.com/kmolima/kpi_engine/blob/main/README.md#test-the-query-engine) below.
 
 ## Overview
 
