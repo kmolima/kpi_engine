@@ -60,12 +60,24 @@ Run the KPI Engine to translate the Models and interact with the HTTP Query API 
 ./run_http_service.sh
 ```
 
+To configure a specific KPI model file add as the first argument:
+
+```bash
+./run_http_service.sh models/test/near_factor_kpi.model
+```
+
 
 ### Launch the Prometheus Browser Expression (Dashboard)
 Launch the Expression Browser of the Prometheus toolkit to visualize the KPI metrics and results:
 
 ```bash
 ./launch_browser.sh
+```
+
+To configure a specific KPI model file add as the first argument:
+
+```bash
+./launch_browser.sh models/test/near_factor_kpi.model
 ```
 
 ### Cleanup
