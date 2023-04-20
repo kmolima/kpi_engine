@@ -77,7 +77,7 @@ Dependency: [Java 11](https://www.oracle.com/java/technologies/downloads/#java11
 ```
 
 ### HTTP Service in Action
-Run the KPI Engine to translate the Models and interact with the HTTP Query API to fullfill the KPIs:
+Run the KPI Engine to translate the Models and interact with the HTTP Query API to fullfill the KPIs (uses the 3 data-related KPI from OceanOps):
 
 ```bash
 ./run_http_service.sh
@@ -91,7 +91,7 @@ To configure a specific KPI model file add as the first argument:
 
 
 ### Launch the Prometheus Browser Expression (Dashboard)
-Launch the Expression Browser of the Prometheus toolkit to visualize the KPI metrics and results:
+Launch the Expression Browser of the Prometheus toolkit to visualize the KPI metrics and results (uses the 3 data-related KPI from OceanOps):
 
 ```bash
 ./launch_browser.sh
