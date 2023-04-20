@@ -105,6 +105,8 @@ To configure a specific KPI model file add as the first argument:
 
 ### Cleanup
 
+Deletes the dependent repositories, build folder, and docker container images.
+
 Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
 
 ```bash
