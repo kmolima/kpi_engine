@@ -32,6 +32,15 @@ services:
       - "hivemq"
     networks:
       - hivemq_net
+  grafana:
+    container_name: grafana-ce
+    image: grafana/grafana
+    depends_on:
+      - "prometheus"
+    ports:
+      - 3000:3000
+    networks:
+      - hivemq_net
   publiser:
     image: publisher
     container_name: publisher-ce
