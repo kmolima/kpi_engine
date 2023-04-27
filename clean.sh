@@ -3,7 +3,7 @@
 
 docker compose down
 
-docker image rm -f hivemq-ce prometheus-ce data-validation-ce publisher-ce
+docker image rm -f hivemq/hivemq-ce prom/prometheus data_instrumentation publisher grafana/grafana
 
 rm -rf publisher/ data_instrumentation/ hivemq-prometheus-extension*
 
