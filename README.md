@@ -85,7 +85,7 @@ The script then launches the KPI Engine to perform the semantic translation base
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
 1. **http_queries.output** - One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
-There are differences in the output that refers to the time windows parameters of the queries because of the difference between the time when the paper results were executed and the replicated experiments and the environment where they were executed (outside docker). The query expressions, which all are successfully executed (syntactically correct) are the same as the ones presented in the results section and folder of the archive.
+There are differences in the output that refers to the time windows parameters of the queries because of the difference between the time when the paper results were executed and the replicated experiments and the environment where they were executed (outside docker). The query expressions, which all are successfully executed (semantically correct) are the same as the ones presented in the results section and folder of the archive.
 
 To check the difference between both outputs you can run the following command:
 
