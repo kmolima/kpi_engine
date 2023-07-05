@@ -2,6 +2,12 @@
 This is the repository for the Case Study submitted for ACM/IEEE 26th International Conference on Model-Driven Engineering Languages and Systems (MODELS).
 
 
+
+[![DOI](https://zenodo.org/badge/618756916.svg)](https://zenodo.org/badge/latestdoi/618756916)
+
+The DOI refers to the submitted version of the study. A camera ready release will be done timely and updated accordingly.
+
+
 ## Overview
 
 Ocean data is crucial for climate forecast, ocean state determination, and for the industry to detect and prevent incidents such as oil spills, structural integrity faults, and fish welfare degradation. Many challenges can impact the quality of marine data at different points of data delivery pipelines: from acquisition and transmission at the Internet-of-Underwater-Things (IoUT) level up to management and sharing. We propose a model-driven solution for marine data quality assessment in a platform using Key Performance Indicators (KPIs) to identify violations of established objectives and help optimize the usage of data generated during the sensor battery lifetime. The solution work builds on top of previous implementations of the multi-level model framework [1] demonstrating its generalizability. 
