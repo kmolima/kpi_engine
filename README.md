@@ -52,7 +52,7 @@ Clone this repository.
 ```bash
 git clone https://github.com/kmolima/kpi_engine.git
 ```
-**Make sure the scripts are ran from the home directory of the repository.**
+**Make sure the scripts are run from the home directory of the repository.**
 
 Note: Add execution permission to the scripts 
 
@@ -61,35 +61,45 @@ chmod +x ./scripts/reproduce.sh ./scripts/clean.sh
 ```
 
 ## Run a local instance of the data platform
-Dependency: [Docker Compose](https://docs.docker.com/compose/install/)
+Dependency: [Docker](https://docs.docker.com/engine/install/)
 
-For the messasing service we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer extension. 
+For the messaging service, we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer extension. 
 
 
-Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```).  
+Note: If you need elevated privileges to run docker, please run the script below accordingly (e.g. add ``` sudo ```).  
 
 
 ```bash
 ./scripts/reproduce.sh
 ```
-Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers targets:
+Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers' targets:
 http://localhost:9090/targets.
 
-In general the targets will be in *UP* State around 1 minute after building the docker contatiners.
+In general, the targets will be in *UP* State around 1 minute after building the docker containers.
 
 The script then launches the KPI Engine to perform the semantic translation based on the [KPIs and the Data Platform model instances](models/), being also responsible for the interaction with the Prometheus toolkit.
 
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
-1. One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
-2. Another with the URL to visualize the queries in the Prometheus Expression Browser. When running locally outside docker (see intructions in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md)), the application can launch the browser directly. Otherwise, if desktop is not supported, it is printed on the console ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)). This will be the case when running from docker.
+1. **http_queries.output** - One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
+2. **browser_expr.output** - Another is with the URL to visualize the queries in the Prometheus Expression Browser. When running locally outside docker (see instructions in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md)), the application can launch the browser directly. Otherwise, if the desktop is not supported, it is printed on the console and must be manually copied to a browser for visualization ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)). This will be the case when running from docker and if compared both outputs, the difference will reside precisely on this aspect.
 
+To check the difference between both outputs:
+
+```bash
+diff results/browser_expr.output reproduced/browser_expr.output
+```
+
+
+![Example of a generated URL](/img/URL.png "Example of a generated URL")
+
+Please refer to the paper for more details on the results obtained.
    
 ## Cleanup
 
 Deletes the dependent folders and docker container images.
 
-Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
+Note: If you need elevated privileges to run docker, please run the script below accordingly (e.g. add ``` sudo ```) 
 
 ```bash
 ./scripts/clean.sh
