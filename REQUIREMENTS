@@ -1,1 +1,6 @@
+As for the requirements to replicate the setup described in the case study, one only needs docker.
+More specifically, the data platform prototype and additional implemented services are run via docker-compose. Then after some metrics are generated from the platform execution, 
+the KPI Engine is also launched using docker to perform the semantic translation between the instantiated models and the Prometheus toolkit.
 
+For docker-compose installation scenarios: https://docs.docker.com/compose/install/#installation-scenarios.
+In general, the docker Desktop version should have both the docker engine and the docker-compose installed.
