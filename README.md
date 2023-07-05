@@ -45,9 +45,9 @@ Models instances with a focus on monitoring marine data quality are available [u
 
 ![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
-# Reproduce the case study setup
+# Replicate the case study setup
 
-Clone this repository
+Clone this repository.
 
 ```bash
 git clone https://github.com/kmolima/kpi_engine.git
@@ -76,6 +76,8 @@ Access the Prometheus monitoring toolkit configuration panel and verify the metr
 http://localhost:9090/targets.
 
 In general the targets will be in *UP* State around 1 minute after building the docker contatiners.
+
+The script then launches the KPI Engine to perform the semantic translation based on the [KPIs and the Data Platform model instances](models/), being also responsible for the interaction with the Prometheus toolkit.
 
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
