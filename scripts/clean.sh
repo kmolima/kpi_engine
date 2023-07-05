@@ -3,6 +3,6 @@
 
 docker compose down
 
-docker image rm -f hivemq-ce prometheus-ce data-validation-ce publisher-ce kpi-engine-ce
+docker rmi -f hivemq/hivemq-ce prom/prometheus km0lima/data_instrumentation_models23 km0lima/mqtt_virtual_publisher kpi_engine
 
-rm -rf publisher/ data_instrumentation/ hivemq-prometheus-extension*
+rm -rf hivemq-prometheus-extension* reproduced/*
