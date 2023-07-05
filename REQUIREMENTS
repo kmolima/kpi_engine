@@ -1,4 +1,4 @@
-As for the requirements to replicate the setup described in the case study, one only needs docker.
+As for the requirements to replicate the setup described in the case study, one only needs docker which is called from a bash script under scripts/reproduce.sh.
 More specifically, the data platform prototype and additional implemented services are run via docker-compose. Then after some metrics are generated from the platform execution, 
 the KPI Engine is also launched using docker to perform the semantic translation between the instantiated models and the Prometheus toolkit.
 
