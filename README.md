@@ -85,6 +85,15 @@ The script then launches the KPI Engine to perform the semantic translation base
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
 1. **http_queries.output** - One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
+There are differences on the ouput that refer to the time windows parameters of the queries because of the difference between the time when the paper results were executed and the replicated experiments and the environment where they were executed (outside docker). The query expressions, which all are successfully executed (syntatically correct) are the same as the ones presented in the results section and folder of the archive.
+The results indicates that the Data platform is violating targets of 2 KPIs by the empty response returned from the queries.
+
+To check the difference between both outputs you can run the following command:
+
+```bash
+diff results/http_queries.output reproduced/http_queries.output
+```
+
 2. **browser_expr.output** - Another is with the URL to visualize the queries in the Prometheus Expression Browser. When running locally outside docker (see instructions in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md)), the application can launch the browser directly. Otherwise, if the desktop is not supported, it is printed on the console and must be manually copied to a browser for visualization ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)). This will be the case when running from docker and if compared both outputs, the difference will reside precisely on this aspect.
 
 To check the difference between both outputs you can run the following command:
