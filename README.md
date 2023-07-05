@@ -85,8 +85,7 @@ The script then launches the KPI Engine to perform the semantic translation base
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
 1. **http_queries.output** - One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
-There are differences on the ouput that refer to the time windows parameters of the queries because of the difference between the time when the paper results were executed and the replicated experiments and the environment where they were executed (outside docker). The query expressions, which all are successfully executed (syntatically correct) are the same as the ones presented in the results section and folder of the archive.
-The results indicates that the Data platform is violating targets of 2 KPIs by the empty response returned from the queries.
+There are differences in the output that refers to the time windows parameters of the queries because of the difference between the time when the paper results were executed and the replicated experiments and the environment where they were executed (outside docker). The query expressions, which all are successfully executed (syntactically correct) are the same as the ones presented in the results section and folder of the archive.
 
 To check the difference between both outputs you can run the following command:
 
@@ -101,10 +100,11 @@ To check the difference between both outputs you can run the following command:
 ```bash
 diff results/browser_expr.output reproduced/browser_expr.output
 ```
-An example of such difference is depicted in the image below:
+An example of such a difference is depicted in the image below:
 
 ![Example of a generated URL](/img/URL.png "Example of a generated URL")
 
+The results indicate that the Data platform is violating targets of 2 KPIs by the empty response returned from the queries.
 Please refer to the paper for more details on the results obtained.
    
 ## Cleanup
