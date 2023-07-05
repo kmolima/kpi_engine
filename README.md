@@ -20,7 +20,10 @@ The remaining components part of the contribution, namely the data validation se
 * [MQTT Data Publisher Repository](https://github.com/kmolima/data_instrumentation)
 Those are used via the published container images in: [https://hub.docker.com/repositories/km0lima](https://hub.docker.com/repositories/km0lima)
 
-All the prototype components (data platform + observability subsystem) can be set up locally using Docker Compose to replicate the prototype used in the case study setup. Instructions are provided below in the [setup section](https://github.com/kmolima/kpi_engine/edit/main/README.md#reproduce-case-study-setup).
+All the prototype components (data platform + observability subsystem) can be set up locally using Docker Compose to replicate the prototype used in the case study setup. 
+Besides the implemented components, there is also a messaging service that is using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer [extension for Prometheus](https://www.hivemq.com/extension/prometheus-extension/). Lastly, Prometheus is also part of the components of the prototype.
+
+Instructions to reproduce the case study setup are provided below in the [setup section](https://github.com/kmolima/kpi_engine/edit/main/README.md#reproduce-case-study-setup).
 
 The results reported in the paper from the Query Engine execution can be found [under the results folder](results/).
 
@@ -46,6 +49,7 @@ Models instances with a focus on monitoring marine data quality are available [u
 ![KPI Metamodel](/img/timedkpi_diagram.png "Ecore Diagram")
 
 # Replicate the case study setup
+To replicate the case study please follow the steps described below. Check the [REQUIREMENTS](REQUIREMENTS) for more details on the execution environments and OS.
 
 Clone this repository.
 
@@ -57,13 +61,11 @@ git clone https://github.com/kmolima/kpi_engine.git
 Note: Add execution permission to the scripts 
 
 ```bash
-chmod +x ./scripts/reproduce.sh ./scripts/clean.sh 
+chmod +x ./scripts/replicate.sh ./scripts/clean.sh 
 ```
 
 ## Run a local instance of the data platform
 Dependency: [Docker](https://docs.docker.com/engine/install/)
-
-For the messaging service, we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer extension. 
 
 ### Run the setup script
 To replicate the case study setup please run the script below.
@@ -71,7 +73,7 @@ Note: If you need elevated privileges to run docker, please run the script below
 
 
 ```bash
-./scripts/reproduce.sh
+./scripts/replicate.sh
 ```
 Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers' targets:
 http://localhost:9090/targets.
