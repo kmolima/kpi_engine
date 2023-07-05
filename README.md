@@ -43,7 +43,7 @@ Key Performance Indicators (KPI) for the platform measured runtime metrics.
 
 Models instances with a focus on monitoring marine data quality are available [under the models folder](models/).
 
-![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
+![KPI Metamodel](/img/timedkpi_diagram.png "Ecore Diagram")
 
 # Replicate the case study setup
 
