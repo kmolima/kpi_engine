@@ -33,17 +33,17 @@ services:
     networks:
       - hivemq_net
   publiser:
-    image: publisher
+    image: km0lima/mqtt_virtual_publisher:latest
     container_name: publisher-ce
     volumes:
       - ./config/publisher.yml:/etc/publisher/config.yaml
-      - ./publisher/data:/data   
+      # - ./publisher/data:/data   
     depends_on:
       - "data-validation"
     networks:
       - hivemq_net
   data-validation:
-    image: data_instrumentation
+    image: km0lima/data_instrumentation_models23:latest
     container_name: data-validation-ce
     ports:
       - "9091:9091"
