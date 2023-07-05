@@ -65,7 +65,8 @@ Dependency: [Docker](https://docs.docker.com/engine/install/)
 
 For the messaging service, we are using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer extension. 
 
-
+### Run the setup script
+To replicate the case study setup please run the script below.
 Note: If you need elevated privileges to run docker, please run the script below accordingly (e.g. add ``` sudo ```).  
 
 
@@ -84,12 +85,12 @@ The results of the KPI Engine execution are stored under the [reproduced folder]
 1. **http_queries.output** - One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
 2. **browser_expr.output** - Another is with the URL to visualize the queries in the Prometheus Expression Browser. When running locally outside docker (see instructions in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md)), the application can launch the browser directly. Otherwise, if the desktop is not supported, it is printed on the console and must be manually copied to a browser for visualization ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)). This will be the case when running from docker and if compared both outputs, the difference will reside precisely on this aspect.
 
-To check the difference between both outputs:
+To check the difference between both outputs you can run the following command:
 
 ```bash
 diff results/browser_expr.output reproduced/browser_expr.output
 ```
-
+An example of such difference is depicted in the image below:
 
 ![Example of a generated URL](/img/URL.png "Example of a generated URL")
 
