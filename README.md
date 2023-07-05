@@ -24,7 +24,7 @@ All the prototype components (data platform + observability subsystem) can be se
 
 The results reported in the paper from the Query Engine execution can be found [under the results folder](results/).
 
-Instructions on how to test the execution of the prototype can be found in the [test section](https://github.com/kmolima/kpi_engine/blob/main/README.md#test-the-query-engine) below.
+Instructions on how to test the execution of the prototype can be found in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md).
 
 
 # QES Engine
@@ -45,7 +45,20 @@ Models instances with a focus on monitoring marine data quality are available [u
 
 ![KPI Metamodel](/img/timedKpi-diag.jpeg "Ecore Diagram")
 
-# Reproduce case study setup
+# Reproduce the case study setup
+
+Clone this repository
+
+```bash
+git clone https://github.com/kmolima/kpi_engine.git
+```
+**Make sure the scripts are ran from the home directory of the repository.**
+
+Note: Add execution permission to the scripts 
+
+```bash
+chmod +x ./scripts/reproduce.sh ./scripts/clean.sh 
+```
 
 ## Run a local instance of the data platform
 Dependency: [Docker Compose](https://docs.docker.com/compose/install/)
@@ -54,7 +67,7 @@ For the messasing service we are using the [community edition of the HiveMQ MQTT
 
 
 Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```).  
-Make sure the scripts are ran from the home directory of the repository.
+
 
 ```bash
 ./scripts/reproduce.sh
@@ -67,60 +80,15 @@ In general the targets will be in *UP* State around 1 minute after building the 
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
 1. One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
-2. Another with the URL to visualize the queries in the Prometheus Expression Browser. When running locally outside docker (see intructions below in the [test section](https://github.com/kmolima/kpi_engine#run-a-local-instance-of-the-data-platform)), the application can launch the browser directly. Otherwise, if desktop is not supported, it is printed on the console ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)).
-  
+2. Another with the URL to visualize the queries in the Prometheus Expression Browser. When running locally outside docker (see intructions in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md)), the application can launch the browser directly. Otherwise, if desktop is not supported, it is printed on the console ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)). This will be the case when running from docker.
 
-# Test the Prototype
-After clonning this repository and changing the working directory into the cloned folder.
+   
+## Cleanup
 
-Note: Add execution permission to the scripts 
-
-```bash
-chmod +x setup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
-```
-
-## Build and Execute the Query Engine Locally
-Dependency: [Java 11](https://www.oracle.com/java/technologies/downloads/#java11)
-
-### Build with Maven Wrapper
-
-```bash
-./mvnw clean package
-```
-
-### HTTP Service in Action
-Run the KPI Engine to translate the Models and interact with the HTTP Query API to fullfill the KPIs (uses the 3 data-related KPI from OceanOps):
-
-```bash
-./run_http_service.sh
-```
-
-To configure a specific KPI model file add as the first argument:
-
-```bash
-./run_http_service.sh models/test/near_factor_kpi.model
-```
-
-
-### Launch the Prometheus Browser Expression (Dashboard)
-Launch the Expression Browser of the Prometheus toolkit to visualize the KPI metrics and results (uses the 3 data-related KPI from OceanOps):
-
-```bash
-./launch_browser.sh
-```
-
-To configure a specific KPI model file add as the first argument:
-
-```bash
-./launch_browser.sh models/test/near_factor_kpi.model
-```
-
-### Cleanup
-
-Deletes the dependent repositories, build folder, and docker container images.
+Deletes the dependent folders and docker container images.
 
 Note: If you need elevated privileges to run docker, please run the script bellow accordingly (e.g. add ``` sudo ```) 
 
 ```bash
-./clean.sh
+./scripts/clean.sh
 ```
