@@ -88,6 +88,31 @@ In general, the targets will be in *UP* State around 1 minute after building the
 
 The script then launches the KPI Engine to perform the semantic translation based on the [KPIs and the Data Platform model instances](models/), being also responsible for the interaction with the Prometheus toolkit.
 
+### Instructions to run on Windows
+After cloning the repository, download the [metrics producer extension for HiveMQ](https://github.com/hivemq/hivemq-prometheus-extension/releases/download/4.0.8/hivemq-prometheus-extension-4.0.8.zip). Uncompress the folder into the cloned repository folder. Create an additional folder named "reproduced".
+
+Run the data platforms prototype on the terminal:
+
+```bash
+docker compose -f docker-compose.yml up -d
+```
+
+Build the docker image for the KPI Engine:
+
+```bash
+docker build -t kpi_engine .
+```
+
+Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers' targets:
+http://localhost:9090/targets.
+
+
+Wait a few minutes for the runtime metrics production from the data platform execution and then run the KPI Engine:
+
+```bash
+docker run --network="host" -v reproduced:/home/kpi_engine/reproduced -it kpi_engine
+```
+
 ## Interpretation of results
 The results of the KPI Engine execution are stored under the [reproduced folder](reproduced/). After the execution 2 output files must be listed under that directory.
 1. **http_queries.output** - One with the generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB).
