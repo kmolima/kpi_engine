@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir ./reproduced
+
 # Configure MQTT Broker Metrics Producer
 if [ ! -d "hivemq-prometheus-extension/" ]; then
   echo "Setting up HiveMQ Prometheus extension"
