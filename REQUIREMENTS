@@ -10,3 +10,6 @@ Summary of Requirements:
 - OS: Linux/Unix
 - Environment: Docker - Docker Engine CLI with Docker Compose Plugin.
 - Launch: Bash script
+
+It is also possible to run the setup on Windows following the instructions in: https://github.com/kmolima/kpi_engine/blob/main/README.md#instructions-to-run-on-windows
+But the in this case some additional manual steps is required for the users.
