@@ -149,12 +149,8 @@ An example of such a difference is depicted in the image below:
 
 ![Example of a generated URL](/img/URL.png "Example of a generated URL")
 
-The results indicate that the Data platform is violating targets of 2 KPIs by the empty response returned from the queries. Because of the setup of the study, with replayed data from the production system, the time difference between the data collection and the arrival to the running prototype can be verified running the function "_month_" on the delay metric ID, as depicted in the figure: 
 
-
-Please refer to the paper for more details on the results obtained (section V).
-
-![Delay time difference.](/img/kpi1_time_in_months.png "Delay time difference (page 9, section V. B)")
+Please refer to the [README](results/Readme.md) in the results folder for more details.
    
 ## Cleanup
 
