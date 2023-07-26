@@ -39,7 +39,7 @@ Instructions on how to test the execution of the prototype can be found in the [
 # QES Engine
 This component concerns the instantiation of the MLM framework for system observability purposes using KPIs.
 
-Particularly, we are working at the levels @1 and @0 of the specified multi-level model. The models at level @1, namely the Ocean Data Platform model and the time bounded KPI model are used in input for the QES engine which interacts with the Query service. The models overview are showned below.
+Particularly, we are working at the levels @1 and @0 of the specified multi-level model. The models at level @1, namely the Ocean Data Platform model and the time bounded KPI model are used in input for the QES engine which interacts with the Query service. The models overview are showed below.
 
 
 ## Ocean Data Platform Metamodel (The Subject in the framework)
