@@ -61,8 +61,12 @@ Clone this repository and work in the home directory of the repository.
 
 ```bash
 git clone https://github.com/kmolima/kpi_engine.git
+```
+
+```bash
 cd kpi_engine
 ```
+
 **Make sure the scripts are run from the home directory of the repository.**
 
 Note: Add execution permission to the scripts 
@@ -150,7 +154,7 @@ The results indicate that the Data platform is violating targets of 2 KPIs by th
 
 Please refer to the paper for more details on the results obtained (section V).
 
-![Delay time difference.](/results/kpi1_time_in_months.pdf "Delay time difference (page 9, section V. B)")
+![Delay time difference.](/img/kpi1_time_in_months.png "Delay time difference (page 9, section V. B)")
    
 ## Cleanup
 
