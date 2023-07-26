@@ -57,10 +57,11 @@ Models instances with a focus on monitoring marine data quality are available [u
 # Replicate the case study setup
 To replicate the case study please follow the steps described below. Check the [REQUIREMENTS](REQUIREMENTS) for more details on the execution environments and OS.
 
-Clone this repository.
+Clone this repository and work in the home directory of the repository.
 
 ```bash
 git clone https://github.com/kmolima/kpi_engine.git
+cd kpi_engine
 ```
 **Make sure the scripts are run from the home directory of the repository.**
 
@@ -74,7 +75,7 @@ chmod +x ./scripts/replicate.sh ./scripts/clean.sh
 Dependency: [Docker](https://docs.docker.com/engine/install/)
 
 ### Run the setup script
-To replicate the case study setup please run the script below.
+To replicate the case study setup please run the script below from the home directory of the repository.
 Note: If you need elevated privileges to run docker, please run the script below accordingly (e.g. add ``` sudo ```).  
 
 
@@ -84,7 +85,16 @@ Note: If you need elevated privileges to run docker, please run the script below
 Access the Prometheus monitoring toolkit configuration panel and verify the metrics producers' targets:
 http://localhost:9090/targets.
 
+
 In general, the targets will be in *UP* State around 1 minute after building the docker containers.
+
+To verify the runtime metrics being produced by the prototype execution access the following link:
+http://localhost:9090/graph?g0.expr=no_smartocean_data_ingestion_arrival_bucket&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h
+
+For the newly developed metrics search for the ones with the prefix: "_no_smartocean__"
+
+![Example of runtime metrics (Figure 7 a)](/img/running_system_zoom.png "Example of runtime metrics")
+
 
 The script then launches the KPI Engine to perform the semantic translation based on the [KPIs and the Data Platform model instances](models/), being also responsible for the interaction with the Prometheus toolkit.
 
@@ -135,8 +145,12 @@ An example of such a difference is depicted in the image below:
 
 ![Example of a generated URL](/img/URL.png "Example of a generated URL")
 
-The results indicate that the Data platform is violating targets of 2 KPIs by the empty response returned from the queries.
-Please refer to the paper for more details on the results obtained.
+The results indicate that the Data platform is violating targets of 2 KPIs by the empty response returned from the queries. Because of the setup of the study, with replayed data from the production system, the time difference between the data collection and the arrival to the running prototype can be verified running the function "_month_" on the delay metric ID, as depicted in the figure: 
+
+
+Please refer to the paper for more details on the results obtained (section V).
+
+![Delay time difference.](/results/kpi1_time_in_months.pdf "Delay time difference (page 9, section V. B)")
    
 ## Cleanup
 
