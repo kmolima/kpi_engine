@@ -58,7 +58,7 @@ Models instances with a focus on monitoring marine data quality are available [u
 # Replicate the case study setup
 To replicate the case study please follow the steps described below. Check the [REQUIREMENTS](REQUIREMENTS) for more details on the execution environments and OS.
 
-A video tutorial following the steps described below is available in:
+A video tutorial following the steps described below is available in: https://youtu.be/JM3qUPPS0fQ
 
 https://github.com/kmolima/kpi_engine/assets/22734455/67efdb73-980d-4c7e-b084-0906295c0e79
 
