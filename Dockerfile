@@ -13,12 +13,10 @@ RUN mvn -f /home/kpi_engine/pom.xml clean package
 #
 # Package stage
 #
-FROM openjdk:11-jre-slim
+FROM eclipse-temurin:11-alpine
 
-# Install python3 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y python3
+# Install python3 on alpine
+RUN apk add --no-cache python3
 
 # Build KPI Engine - use docker.yaml to run from docker compose - use --no-cache flag to build
 COPY --from=build /home/kpi_engine/target/kpi_engine-0.0.1-SNAPSHOT-jar-with-dependencies.jar /usr/local/lib/kpi.jar
