@@ -1,10 +1,29 @@
 # Test the Prototype Locally
-After clonning this repository and changing the working directory into the cloned folder.
 
-Note: Add execution permission to the scripts 
+## Step-by-Step
+
+### Setup
+
+```bash
+git clone https://github.com/kmolima/kpi_engine.git
+```
+
+```bash
+cd kpi_engine
+```
+After clonning this repository and changing the working directory into the cloned folder add execution permission to the scripts. 
 
 ```bash
 chmod +x mvnw ./scripts/*
+```
+
+### Run the setup script
+To replicate the case study setup please run the script below from the home directory of the repository.
+Note: If you need elevated privileges to run docker, please run the script below accordingly (e.g. add ``` sudo ```).  
+
+
+```bash
+./scripts/setup.sh
 ```
 
 ## Build and Execute the Query Engine Locally
