@@ -52,3 +52,7 @@ Note: If you need elevated privileges to run docker, please run the script bello
 ```bash
 ./scripts/clean.sh
 ```
+
+```bash
+./mvnw clean
+```
