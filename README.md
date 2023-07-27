@@ -24,12 +24,13 @@ This repository contains the following components of the overall solution:
 The remaining components part of the contribution, namely the data validation service of the platform and a data provider are available in:
 * [Data Validation Repository (including the metrics producer component)](https://github.com/kmolima/data_instrumentation)
 * [MQTT Data Publisher Repository](https://github.com/kmolima/data_instrumentation)
+
 Those are used via the published container images in: [https://hub.docker.com/repositories/km0lima](https://hub.docker.com/repositories/km0lima)
 
 All the prototype components (data platform + observability subsystem) can be set up locally using Docker Compose to replicate the prototype used in the case study setup. 
 Besides the implemented components, there is also a messaging service that is using the [community edition of the HiveMQ MQTT Broker](https://github.com/hivemq/hivemq-community-edition) and its metrics producer [extension for Prometheus](https://www.hivemq.com/extension/prometheus-extension/). Lastly, Prometheus is also part of the components of the prototype.
 
-Instructions to reproduce the case study setup are provided below in the [setup section](https://github.com/kmolima/kpi_engine/edit/main/README.md#reproduce-case-study-setup).
+Instructions to reproduce the case study setup are provided below in the [setup section](https://github.com/kmolima/kpi_engine/tree/main#replicate-the-case-study-setup).
 
 The results reported in the paper from the Query Engine execution can be found [under the results folder](results/).
 
