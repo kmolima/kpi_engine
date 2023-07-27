@@ -1,7 +1,7 @@
 # Interpretation of results
 This folder contains the results of the case study setup execution. The generated queries showcase the abstraction of constraints imposed by the query language such as long identifiers, metric types or labels.
 The 2 output files refers to:
-1. [**http_queries.output**](http_queries.output) - Generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB). The query expressions, which all are successfully executed (semantically correct) results from the translation of the data platform and the 3 selected KPIs model instances into the TSDB HTTP API.
+1. [**http_queries.output**](http_queries.output) - Generated PromQL queries used by the KPI Engine service to fetch runtime metrics from Prometheus Timeseries Database (TSDB). The query expressions, which all are successfully executed (semantically correct), results from the translation of the data platform and the 3 selected KPIs model instances into the TSDB HTTP API (QES).
 
 2. [**browser_expr.output**](browser_expr.output) - Generated URL to visualize the queries in the Prometheus Expression Browser with the incorporated PromQL query and the parametrized configurations of the dashboard for visualization. When running locally outside docker (see instructions in the [test section](https://github.com/kmolima/kpi_engine/blob/main/Test.md)), the application can launch the browser directly. Otherwise, if the desktop is not supported, it is printed on the console and must be manually copied to a browser for visualization ([reference to implementation](https://github.com/kmolima/kpi_engine/blob/748129288d7419b3884296c90adf3267e1810e93/src/no/smartocean/modeling/engine/application/KpiEngine.java#L65C1-L65C61)).
 
