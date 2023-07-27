@@ -4,7 +4,7 @@ After clonning this repository and changing the working directory into the clone
 Note: Add execution permission to the scripts 
 
 ```bash
-chmod +x setup.sh clean.sh mvnw run_http_service.sh launch_browser.sh
+chmod +x mvnw ./scripts/*
 ```
 
 ## Build and Execute the Query Engine Locally
