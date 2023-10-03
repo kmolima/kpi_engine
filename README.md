@@ -5,8 +5,6 @@ This is the repository for the Case Study submitted for ACM/IEEE 26th Internatio
 
 [![DOI](https://zenodo.org/badge/618756916.svg)](https://zenodo.org/badge/latestdoi/618756916)
 
-The DOI refers to the submitted version of the study. A camera ready release will be done timely and updated accordingly.
-
 
 ## Overview
 
