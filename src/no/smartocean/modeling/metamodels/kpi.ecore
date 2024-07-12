@@ -15,6 +15,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kpi">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -26,6 +28,8 @@
         eType="#//Range" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="time_bound" lowerBound="1"
         eType="#//Time" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        upperBound="-1" eType="#//FailureTrigger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Range">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -130,6 +134,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//Range"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FailureTrigger">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="period" lowerBound="1"
+        eType="#//Period"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fault_budget" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
       nsPrefix="snapshot">
     <eClassifiers xsi:type="ecore:EClass" name="Snapshot">
@@ -137,10 +147,9 @@
           eType="#//snapshot_model/State" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="State">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="kpi_result" lowerBound="1"
-          eType="#//snapshot_model/EvaluationResult" containment="true" eOpposite="#//snapshot_model/EvaluationResult/state"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//snapshot_model/Tendency"
-          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="kpi_results" lowerBound="1"
+          upperBound="-1" eType="#//snapshot_model/EvaluationResult" containment="true"
+          eOpposite="#//snapshot_model/EvaluationResult/state"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Tendency">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//snapshot_model/TendencyType"
@@ -149,16 +158,20 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="TendencyType">
-      <eLiterals name="IMPROVING" value="1"/>
-      <eLiterals name="DETEORATING" value="-1"/>
-      <eLiterals name="MAINTAINIG"/>
-      <eLiterals name="NA" value="2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Alert">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" lowerBound="1"
+          eType="#//snapshot_model/Severity"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1"
+          eType="#//snapshot_model/State"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rules" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EvaluationResult">
       <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" lowerBound="1" eType="#//Kpi"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trend" eType="#//snapshot_model/Tendency"
+          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1"
-          eType="#//snapshot_model/State" eOpposite="#//snapshot_model/State/kpi_result"/>
+          eType="#//snapshot_model/State" eOpposite="#//snapshot_model/State/kpi_results"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="eval_result" lowerBound="1"
           eType="#//NumericalValue" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
@@ -166,6 +179,23 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="within_target" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" lowerBound="1"
+          eType="#//snapshot_model/OperationalLevel"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="TendencyType">
+      <eLiterals name="IMPROVING" value="1"/>
+      <eLiterals name="DETEORATING" value="-1"/>
+      <eLiterals name="MAINTAINIG"/>
+      <eLiterals name="NA" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="OperationalLevel">
+      <eLiterals name="OPERATIONAL"/>
+      <eLiterals name="FAULT" value="1"/>
+      <eLiterals name="FAILURE" value="2" literal="FAILURE"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Severity">
+      <eLiterals name="LOW"/>
+      <eLiterals name="HIGH" value="1"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
