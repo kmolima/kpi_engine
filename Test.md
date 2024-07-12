@@ -1,6 +1,7 @@
 # Test the Prototype Locally
 
 ## Step-by-Step
+**Make sure the scripts are run from the home directory of the repository.**
 
 ### Setup
 
@@ -18,6 +19,7 @@ chmod +x mvnw ./scripts/*
 ```
 
 ### Run the setup script
+
 To replicate the case study setup please run the script below from the home directory of the repository.
 Note: If you need elevated privileges to run docker, please run the script below accordingly (e.g. add ``` sudo ```).  
 
