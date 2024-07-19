@@ -28,8 +28,10 @@
         eType="#//Range" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="time_bound" lowerBound="1"
         eType="#//Time" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        upperBound="-1" eType="#//FailureTrigger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fault_budget" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="update_interval" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Range">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,34 +40,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="max" lowerBound="1" eType="#//NumericalValue"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Operation">
-    <eLiterals name="FILTER"/>
-    <eLiterals name="SUM" value="1"/>
-    <eLiterals name="DIFF" value="2"/>
-    <eLiterals name="AVG" value="3"/>
-    <eLiterals name="MIN" value="4"/>
-    <eLiterals name="MAX" value="5"/>
-    <eLiterals name="DIV" value="6"/>
-    <eLiterals name="AND" value="7"/>
-    <eLiterals name="OR" value="8"/>
-    <eLiterals name="UNLESS" value="9"/>
-    <eLiterals name="MULT" value="10"/>
-    <eLiterals name="LE" value="12"/>
-    <eLiterals name="GE" value="13"/>
-    <eLiterals name="LT" value="14"/>
-    <eLiterals name="GT" value="15"/>
-    <eLiterals name="RATE" value="16"/>
-    <eLiterals name="COUNT" value="11" literal="COUNT"/>
-    <eLiterals name="ADD" value="17" literal="ADD"/>
-    <eLiterals name="PCENT" value="18" literal="PCENT"/>
-    <eLiterals name="EQ" value="19"/>
-    <eLiterals name="NOTEQ" value="20"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumericalValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="metric"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//ParameterValue"
         containment="true"/>
   </eClassifiers>
@@ -81,7 +61,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//ValueType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" lowerBound="1"
-        upperBound="-1" eType="#//ValueType"/>
+        upperBound="-1" eType="#//ParameterValue"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sub_expression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
@@ -109,6 +89,52 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time_ago" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeTarget" eSuperTypes="#//TargetType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Range"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Alert">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//snapshot_model/State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rule" lowerBound="1" eType="#//AlertRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notification" lowerBound="1"
+        eType="#//NotificationPolicy"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AlertRule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" lowerBound="1" upperBound="-1"
+        eType="#//Kpi"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" lowerBound="1"
+        eType="#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_rule" lowerBound="1"
+        eType="#//AlertRule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotificationPolicy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" lowerBound="1"
+        eType="#//Severity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Operation">
+    <eLiterals name="FILTER"/>
+    <eLiterals name="SUM" value="1"/>
+    <eLiterals name="DIFF" value="2"/>
+    <eLiterals name="AVG" value="3"/>
+    <eLiterals name="MIN" value="4"/>
+    <eLiterals name="MAX" value="5"/>
+    <eLiterals name="DIV" value="6"/>
+    <eLiterals name="AND" value="7"/>
+    <eLiterals name="OR" value="8"/>
+    <eLiterals name="UNLESS" value="9"/>
+    <eLiterals name="MULT" value="10"/>
+    <eLiterals name="LE" value="12"/>
+    <eLiterals name="GE" value="13"/>
+    <eLiterals name="LT" value="14"/>
+    <eLiterals name="GT" value="15"/>
+    <eLiterals name="RATE" value="16"/>
+    <eLiterals name="COUNT" value="11" literal="COUNT"/>
+    <eLiterals name="ADD" value="17" literal="ADD"/>
+    <eLiterals name="PCENT" value="18" literal="PCENT"/>
+    <eLiterals name="EQ" value="19"/>
+    <eLiterals name="NOTEQ" value="20"/>
+    <eLiterals name="NOT" value="21"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit">
     <eLiterals name="MS" literal="MILLISECOND"/>
     <eLiterals name="SEC" value="1" literal="SECOND"/>
@@ -130,15 +156,9 @@
     <eLiterals name="EQ" value="9"/>
     <eLiterals name="NOTEQ" value="10"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RangeTarget" eSuperTypes="#//TargetType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="#//Range"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FailureTrigger">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="period" lowerBound="1"
-        eType="#//Period"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fault_budget" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Severity">
+    <eLiterals name="LOW"/>
+    <eLiterals name="HIGH" value="1"/>
   </eClassifiers>
   <eSubpackages name="snapshot_model" nsURI="https://ict.hvl.no/ocean_monitoring/snapshot"
       nsPrefix="snapshot">
@@ -157,14 +177,6 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateOfChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Alert">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" lowerBound="1"
-          eType="#//snapshot_model/Severity"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1"
-          eType="#//snapshot_model/State"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rules" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EvaluationResult">
       <eStructuralFeatures xsi:type="ecore:EReference" name="kpi" lowerBound="1" eType="#//Kpi"/>
@@ -192,10 +204,6 @@
       <eLiterals name="OPERATIONAL"/>
       <eLiterals name="FAULT" value="1"/>
       <eLiterals name="FAILURE" value="2" literal="FAILURE"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="Severity">
-      <eLiterals name="LOW"/>
-      <eLiterals name="HIGH" value="1"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
