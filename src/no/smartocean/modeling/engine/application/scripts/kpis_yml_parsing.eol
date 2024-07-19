@@ -1,0 +1,56 @@
+// Get and print all nodes
+m_KPI.all.size().println();
+
+m_alert.all.println();
+
+var kpiModel: new kpi!KpiModel;
+
+for(f in m_formula.all){
+
+	new_formula = f.replaceOps();
+	f.println();
+	
+}
+
+
+for (dim in m_quality.all){
+
+	dim.sc_name.first().value.println(); //dim.sc_name.first().name.println(); name of the property
+	dim.sc_weight.first().value.println();
+	
+	var d = new kpi!Dimension;
+	
+	kpiModel.dimension = createDim(dim, true) ; //FIXME assignment
+}
+
+
+kpiModel.dimension.all.println();
+
+operation createDim(node, root: Boolean): kpi!Dimension{
+
+	var d = new kpi!Dimension;
+	
+	d.name = node.sc_name.first().value;
+	d.weight = node.sc_weight.first().value;
+	
+	d.name.println();
+	d.weight.println();
+	
+	if(root) {
+	
+	}
+	else {
+	//TODO assign parent node
+	}
+	
+	return d;
+}
+
+// Parses Expression into assocated model aggregation or assessment operations
+operation parseFormula(f: String){
+
+	f.replace("<=");
+
+}
+
+return kpiModel;

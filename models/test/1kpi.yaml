@@ -1,0 +1,49 @@
+System:
+- quality:
+    name: Performance
+    weight: 2.0
+    KPIs:
+    - KPI:
+        id: kpi1
+        name: mqtt_correctness
+        sub_quality:
+          name: Time Response
+          weight: 2.0
+        eval_interval: 5s
+        formula: 'rate(emqx_messages_publish_total)'
+        target_value:
+          assessment: '>= 90'
+        fault_budget: 1
+        period: 1h
+        unit: '%'
+        description: 'Percentage of successfully handled Publish messages per second. Fail criteria: rate of successfully processed PUBLISH messages falls under 90%.'
+    - KPI:
+        id: kpi2
+        name: mqtt_capacity
+        sub_quality:
+          name: Capacity
+          weight: 2.0
+        eval_interval: 3s
+        formula: 'emqx_messages_publish_total'
+        target_value:
+         assessment: '>= 1000'
+        fault_budget: 3
+        period: 1s
+        unit: 'msg/s'
+        description: 'Number of successfully handled Publish messages per second. Threshold is initially set to 1000.'
+- alert:
+    name: fault
+    rule: '!kpi1 OR !kp2'
+    eval_interval: null
+    notification:
+      name: null
+      rule: null
+    action: null
+- alert:
+    name: failure
+    rule: '!kpi1 AND !kp2'
+    eval_interval: null
+    notification:
+      name:
+        rule: null
+    action: null
