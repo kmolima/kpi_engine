@@ -1,0 +1,93 @@
+// Generated with: https://codepal.ai/schema-resolver/yaml
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "System": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "quality": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number"
+              },
+              "KPIs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "KPI": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "sub_quality": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "weight": {
+                              "type": "number"
+                            }
+                          },
+                          "required": ["name", "weight"]
+                        },
+                        "eval_interval": {
+                          "type": "string"
+                        },
+                        "formula": {
+                          "type": "string"
+                        },
+                        "target_value": {
+                          "type": "object",
+                          "properties": {
+                            "assessment": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["assessment"]
+                        },
+                        "fault_budget": {
+                          "type": "integer"
+                        },
+                        "period": {
+                          "type": "string"
+                        },
+                        "unit": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["id", "name", "sub_quality", "eval_interval", "formula", "target_value", "fault_budget", "period", "unit", "description"]
+                    }
+                  },
+                  "required": ["KPI"]
+                }
+              }
+            },
+            "required": ["name", "weight", "KPIs"]
+          },
+		  "alert":{
+			"type": "object",
+				"properties": {}
+		  }
+        },
+        "required": ["quality"]
+      }
+    }
+  },
+  "required": ["System"]
+}
