@@ -1,0 +1,9 @@
+it
+img
+outputs
+reproduced
+results
+**/*.txt
+**/*.md
+**/*.pdf
+**/*.zip

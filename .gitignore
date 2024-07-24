@@ -1,3 +1,8 @@
+# MODELS23 Artifact files and folders
+results/
+outputs/
+reproduced/
+
 # Compiled class file
 *.class
 
