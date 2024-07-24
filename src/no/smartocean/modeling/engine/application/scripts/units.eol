@@ -50,6 +50,52 @@ switch(self){
 
 }
 
+operation String getTimeUnitEnum(): kpi!EEnumLiteral {
+// check for units property in elements
+
+switch(self){
+
+	case "ms":
+	case "milliseconds":
+	case "millisecond":
+	case "millis":
+	return kpi!TimeUnit#MS;
+
+	case "s":
+	case "sec":
+	case "seconds":
+	case "secs":
+	return kpi!TimeUnit#SEC; //default unit in Prometheus
+	
+	case "minutes":
+	case "min":
+	case "mins":
+	return kpi!TimeUnit#MIN;
+	
+	case "hour":
+	case "hours":
+	case "hrs":
+	case "hr":
+	return kpi!TimeUnit#HR;
+	
+	case "y":
+	case "year":
+	case "yr":
+	case "yrs":
+	return kpi!TimeUnit#YEAR;
+	
+	case "w":
+	case "week":
+	case "weeks":
+	return kpi!TimeUnit#WEEK;
+	
+	default:
+		return kpi!TimeUnit#SEC; //default unit in Prometheus
+	
+	}
+
+}
+
 operation getPeriodStr(unit: kpi!EEnumLiteral): String{
 
 	var result = new String();
