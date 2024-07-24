@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" xmi:id="_Q2CgsNLQEe2cCrroI-qMxQ" system="Smart Ocean Platform">
   <dimension xmi:id="_T010INLQEe2cCrroI-qMxQ" name="Data Flow">
-    <sub_dimensions xmi:id="_VmWOANLQEe2cCrroI-qMxQ" name="Accuracy">
+    <sub_dimension xmi:id="_VmWOANLQEe2cCrroI-qMxQ" name="Accuracy">
       <kpis xmi:id="_YZAi4NLQEe2cCrroI-qMxQ" name="good data" description="percentage of data delivered with &quot;good&quot; QC flag metadata" unit="percentage">
         <target_value xsi:type="timed_kpi:RangeTarget" xmi:id="_B2oawNomEe23orslpoKXMA" target="_-OiSsNolEe23orslpoKXMA">
           <valuetype xsi:type="timed_kpi:Expression" xmi:id="_DOsZ4NomEe23orslpoKXMA" operation="PCENT" arguments="_EM1dINomEe23orslpoKXMA">
@@ -28,6 +28,6 @@
       <parameters xmi:id="_0YLgQNOQEe2QHvAIF_xe5A" name="qcFlag">
         <value xsi:type="timed_kpi:StringValue" xmi:id="_20IlUNOQEe2QHvAIF_xe5A" value="good"/>
       </parameters>
-    </sub_dimensions>
+    </sub_dimension>
   </dimension>
 </timed_kpi:KpiModel>

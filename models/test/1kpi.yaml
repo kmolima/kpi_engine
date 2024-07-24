@@ -28,7 +28,7 @@ system:
            target_value:
             assessment: '>= 1000'
            fault_budget: 3
-           period: 1s
+           period: 1s # alternative: now - by the time the query is evaluated
            unit: 'msg/s'
            description: 'MQTT capacity: Number of successfully handled Publish messages per second. Threshold is initially set to 1000.'
    alerts:
