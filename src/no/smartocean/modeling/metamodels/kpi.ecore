@@ -8,15 +8,15 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dimension">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_dimensions" upperBound="-1"
-        eType="#//Dimension" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_dimension" eType="#//Dimension"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="kpis" upperBound="-1" eType="#//Kpi"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kpi">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -29,9 +29,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="time_bound" lowerBound="1"
         eType="#//Time" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fault_budget" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="update_interval" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Range">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -94,18 +94,18 @@
         eType="#//Range"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Alert">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//snapshot_model/State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="#//snapshot_model/State"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rule" lowerBound="1" eType="#//AlertRule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notification" lowerBound="1"
         eType="#//NotificationPolicy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlertRule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" lowerBound="1" upperBound="-1"
         eType="#//Kpi"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" lowerBound="1"
         eType="#//Operation"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_rule" lowerBound="1"
-        eType="#//AlertRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_rule" eType="#//AlertRule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotificationPolicy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" lowerBound="1"

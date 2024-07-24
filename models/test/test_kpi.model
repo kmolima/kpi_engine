@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" system="GSSI IoT">
+  <dimension name="Performance" weight="2.0"/>
+</timed_kpi:KpiModel>

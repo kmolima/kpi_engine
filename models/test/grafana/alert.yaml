@@ -3,6 +3,7 @@ groups:
     - orgId: 1
       name: group
       folder: alerts
+      # Can be generated
       interval: 15m
       rules:
         - uid: eds7g3hf4hgxsf
@@ -15,14 +16,17 @@ groups:
                 to: 0
               datasourceUid: cds7f4fqqsp34c
               model:
+                # Can be generated
                 datasource:
                     type: prometheus
                     uid: cds7f4fqqsp34c
                 editorMode: code
+                # Can be generated ----------
                 expr: rate(emqx_messages_publish_total[15m]) >= 0.01
                 instant: false
                 interval: ""
                 intervalMs: 15000
+                # ---------------------------
                 legendFormat: __auto
                 maxDataPoints: 43200
                 range: true
