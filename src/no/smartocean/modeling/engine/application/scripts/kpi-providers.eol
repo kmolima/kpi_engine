@@ -445,7 +445,7 @@ switch (op) {
 	case kpi!Assessment#EQ: 
 		opStr = " ==";
 	case kpi!Assessment#NOTEQ: 
-		opStr = " =!";
+		opStr = " !=";
 	default : "Operation not supported for assessment".println(); 
 		opStr =  "";
 	}
