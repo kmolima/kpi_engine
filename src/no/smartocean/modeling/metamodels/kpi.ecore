@@ -8,8 +8,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dimension">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_dimension" eType="#//Dimension"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_dimensions" upperBound="-1"
+        eType="#//Dimension" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="kpis" upperBound="-1" eType="#//Kpi"
         containment="true"/>
@@ -41,7 +41,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumericalValue" abstract="true" eSuperTypes="#//ValueType #//ParameterValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

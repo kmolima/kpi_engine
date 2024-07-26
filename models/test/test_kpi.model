@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="ASCII"?>
-<timed_kpi:KpiModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi" system="GSSI IoT">
-  <dimension name="Performance" weight="2.0"/>
-</timed_kpi:KpiModel>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:timed_kpi="https://ict.hvl.no/timed_kpi">
+  <timed_kpi:KpiModel system="GSSI IoT">
+    <dimension name="Performance" weight="2.0">
+      <sub_dimensions name="Time Response" weight="2.0">
+        <kpis name="kpi1" description="MQTT correctness: Percentage of successfully handled Publish messages per second. Fail criteria: rate of successfully processed PUBLISH messages falls under 90%." unit="%" fault_budget="1"/>
+      </sub_dimensions>
+      <sub_dimensions name="Capacity" weight="2.0">
+        <kpis name="kpi2" description="MQTT capacity: Number of successfully handled Publish messages per second. Threshold is initially set to 1000." unit="msg/s" fault_budget="3"/>
+      </sub_dimensions>
+    </dimension>
+  </timed_kpi:KpiModel>
+  <timed_kpi:Period unit="HOUR" period="3" step="5"/>
+  <timed_kpi:Period period="1" step="5"/>
+  <timed_kpi:Alert name="fault"/>
+  <timed_kpi:Alert name="failure"/>
+</xmi:XMI>

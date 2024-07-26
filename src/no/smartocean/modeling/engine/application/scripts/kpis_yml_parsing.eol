@@ -1,39 +1,47 @@
 import "units.eol";
 
-var kpiModel: new kpi!KpiModel;
+var kpiModel = new kpi!KpiModel;
 
 kpiModel.system = m_system.all.first().sc_name.first().value;
 
 for (dim in m_quality.all){
 	
 	var root_dim = createDim(dim);
+	kpiModel.dimension.add(root_dim);
 	
 	//dim.le_kpis.println(); == dim.lc_kpis.first().println(); dim.le_kpis dim.le_kpis.value.last().println();
 
 	for(k in dim.le_kpis.value) {
+	"Loop count"+loopCount.println();
 	
 		var kp = new kpi!Kpi;
+		
+		var sub_dimension = createDim(k.me_kpi.value.me_sub_quality);
+		sub_dimension.kpis.add(kp);
 		
 		kp.name = k.me_kpi.value.se_name.value;
 		kp.fault_budget = k.me_kpi.value.se_fault_budget.value;  //.asDouble()
 		kp.description = k.me_kpi.value.se_description.value;
+		kp.unit = k.me_kpi.value.se_unit.value;
 		
-		var sub_dimension = createDim(k.me_kpi.value.me_sub_quality);
+		
+		k.me_kpi.value.me_sub_quality.println();
 				
 		//k.update_interval = //TODO infer?
-		var period = getTime(k.me_kpi.value.se_period.value); // String or instant?
-		var unit   = k.me_kpi.value.se_unit.value;
+		var period = getTime(k.me_kpi.value.se_period.value);
 		
-		//Add relations between elements
+		
+		//Add relations between model elements before accessing them
 		kp.time_bound = period;
-		sub_dimension.kpis.add(kp);
-		root_dim.sub_dimension = sub_dimension;
+		
+		root_dim.sub_dimensions.add(sub_dimension);
+		
+		kp.eContents().println();
 	}
 	
-	kpiModel.dimension.add(root_dim);
+	
+	kpiModel.eContents().println();
 }
-
-m_system.all.first().le_alerts.value.println();
 
 for (node in m_system.all.first().le_alerts.value){
 	
@@ -45,7 +53,7 @@ for (node in m_system.all.first().le_alerts.value){
 
 operation createDim(node): kpi!Dimension{
 
-	var d = new kpi!Dimension;
+	var d= new kpi!Dimension;
 	
 	d.name = node.se_name.value;
 	d.weight = node.se_weight.value;
@@ -64,18 +72,20 @@ operation String parseFormula(f: String): String{
 operation getTime(str: String): kpi!Time{ //Add step as an option? (sampling interval? vs update_interval?)
 
 	if(str.equalsIgnoreCase("now")){
-		var instant = new kpi!Instant();
+		var instant= new kpi!Instant();
 		instant.unit=kpi!TimeUnit#MS;
-		instant.time_ago = 0;
+		instant.time_ago = 0l;
 		return instant;
 	}
 	else{
-		var period = new kpi!Period;
+		var period= new kpi!Period;
 		// regex from: https://www.baeldung.com/java-split-string-digits-letters#using-the-stringsplit-method
 		var splits = str.split("(?<=\\d)(?=\\D)"); //TODO verification of input needed? - at schema level?
-		period.unit=splits.at(1).getTimeUnitEnum();
+		var unit = splits.at(1).getTimeUnitEnum();
+		unit.println();
+		period.unit=unit;
 		period.period = splits.at(0).asLong();
-		period.step = 15l; //15s, minimum step allowed depends on timeseries returned: https://github.com/prometheus/prometheus/issues/9999
+		period.step = 5l; //minimum step allowed depends on timeseries returned: https://github.com/prometheus/prometheus/issues/9999
 	}
 
 }

@@ -15,7 +15,7 @@ system:
            target_value:
              assessment: '>= 90'
            fault_budget: 1
-           period: 1h
+           period: 3h
            unit: '%'
            description: 'MQTT correctness: Percentage of successfully handled Publish messages per second. Fail criteria: rate of successfully processed PUBLISH messages falls under 90%.'
        - kpi:
