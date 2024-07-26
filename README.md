@@ -1,6 +1,7 @@
-# Marine Data Observability using KPIs
-This is the repository for the Case Study submitted for ACM/IEEE 26th International Conference on Model-Driven Engineering Languages and Systems (MODELS).
+# System KPI Engine 
 
+This repository contains data and instructions for the Case Study submitted for ACM/IEEE 26th International Conference on Model-Driven Engineering Languages and Systems (MODELS).
+## Marine Data Observability using KPIs
 
 
 [![DOI](https://zenodo.org/badge/618756916.svg)](https://zenodo.org/badge/latestdoi/618756916)
